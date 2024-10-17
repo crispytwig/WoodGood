@@ -133,6 +133,7 @@ public class WoodGood {
         addModule("mcwwindows", () -> MacawWindowsModule::new);
         addModule("mcwfences", () -> MacawFencesModule::new);
         addModule("mcwbridges", () -> MacawBridgesModule::new);
+        addModule("mcwstairs", () -> MacawStairsModule::new);
 
         addModule("cfm", () -> MrCrayfishFurnitureModule::new);
 
