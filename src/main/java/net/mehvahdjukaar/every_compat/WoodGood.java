@@ -10,6 +10,7 @@ import net.mehvahdjukaar.every_compat.misc.CustomRecipeLoader;
 import net.mehvahdjukaar.every_compat.misc.EntriesRemapper;
 
 import net.mehvahdjukaar.every_compat.modules.CompatModule;
+import net.mehvahdjukaar.every_compat.modules.absent_by_design.AbsentByDesignModule;
 import net.mehvahdjukaar.every_compat.modules.another_furniture.AnotherFurnitureModule;
 import net.mehvahdjukaar.every_compat.modules.architect_palette.ArchitectsPaletteModule;
 import net.mehvahdjukaar.every_compat.modules.backpacked.BackpackedModule;
@@ -108,6 +109,7 @@ public class WoodGood {
 
     public WoodGood() {
 
+// ================================================== ADD COMPAT MODS =============================================== \\
         addOtherCompatMod("compatoplenty", "biomesoplenty", List.of("twigs", "farmersdelight", "quark"));
         addOtherCompatMod("compat_makeover", "biomemakeover", List.of("habitat", "farmersdelight", "quark", "decorative_blocks"));
         addOtherCompatMod("decorative_compat", "biomesoplenty", List.of("decorative_blocks"));
@@ -123,7 +125,7 @@ public class WoodGood {
         //TODO: add folwering azalea special textures, fix vertical planks not generating & add leaves to it. same for quark
         //also fix that one crash that idk what was about
 
-        // ========================================== ADD MODULES =================================================== \\
+// ================================================== ADD MODULES =================================================== \\
         addModule("mcwlights", () -> MacawLightsModule::new);
         addModule("mcwdoors", () -> MacawDoorsModule::new);
         addModule("mcwfurnitures", () -> MacawFurnitureModule::new);
@@ -176,8 +178,7 @@ public class WoodGood {
         addModule("decorative_blocks", () -> DecorativeBlocksModule::new);
         addModule("chipped", () -> ChippedModule::new);
         addModule("table_top_craft", () -> TableTopCraftModule::new);
-
-        // =========================================== CURRENTLY WIP ================================================ \\
+        addModule("absentbydesign", () -> AbsentByDesignModule::new);
 
         // ============================================= NOT ADDED ================================================== \\
 //        addModule("justaraft", () -> JustARaftModule::new);
@@ -185,8 +186,9 @@ public class WoodGood {
 
         // ======================================= DISABLED FOR A REASON ============================================ \\
 //        addModule("graveyard", () -> GraveyardModule::new);
-//        addModule("benched", () -> BenchedModule::new); # OBJ Format not supported
 
+
+// ================================================ OTHERS ========================================================== \\
         forAllModules(m -> WoodGood.LOGGER.info("Loaded {}", m.toString()));
 
         BlockSetManager.addBlockSetRegistrationCallback(this::registerWoodStuff, Block.class, WoodType.class);

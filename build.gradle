@@ -146,8 +146,8 @@ dependencies {
         // ======================================== DEPENDENCIES ==================================================== \\
     compileOnly fg.deobf("curse.maven:flywheel-486392:4341461") // Create
     compileOnly fg.deobf("curse.maven:autoreglib-250363:3642382") // Quark
-    compileOnly fg.deobf("curse.maven:supermartijn642s-config-lib-438332:4629792") // Benched
-    compileOnly fg.deobf("curse.maven:supermartijn642s-core-lib-454372:4654024") // Benched
+//    runtimeOnly fg.deobf("curse.maven:supermartijn642s-config-lib-438332:4629792") // Benched
+//    runtimeOnly fg.deobf("curse.maven:supermartijn642s-core-lib-454372:4654024") // Benched
     compileOnly fg.deobf("curse.maven:ortuslib-616457:3768197")
     compileOnly fg.deobf("curse.maven:geckolib-388172:4215249") // Graveyard
     compileOnly fg.deobf("curse.maven:blueprint-382216:3991478") // Woodworks
@@ -217,6 +217,7 @@ dependencies {
     compileOnly fg.deobf(getModVersion("stylishstiles-1.1.1-1.18.2.jar"))
     compileOnly fg.deobf(getModVersion("buildersdelight-1.18.2-1.0.jar"))
     compileOnly fg.deobf(getModVersion("shutters-1.18.2-1.0.7.jar"))
+    compileOnly fg.deobf(getModVersion("absentbydesign-1.18.2-1.6.2.jar"))
 
     //=========================================== TODO: NOT ADDED YET =============================================== \\
 //    compileOnly fg.deobf("curse.maven:malum-484064:4631612")
