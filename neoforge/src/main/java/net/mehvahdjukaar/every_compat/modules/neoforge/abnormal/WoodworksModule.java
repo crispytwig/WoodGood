@@ -109,6 +109,7 @@ public class WoodworksModule extends SimpleModule {
                         () -> WoodTypeRegistry.getValue(ResourceLocation.parse("spruce")),
                         w -> new LadderBlock(WoodworksBlocks.WoodworksProperties.SPRUCE_WOOD.ladder()))
                 .setTabKey(tab)
+                .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(BlockTags.CLIMBABLE, Registries.BLOCK)
                 .addTag(ResourceLocation.parse("quark:ladders"), Registries.BLOCK)
                 .addTag(ResourceLocation.parse("quark:ladders"), Registries.ITEM)
