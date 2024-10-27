@@ -11,6 +11,7 @@ import net.mehvahdjukaar.every_compat.api.SimpleModule;
 import net.mehvahdjukaar.every_compat.dynamicpack.ClientDynamicResourcesHandler;
 import net.mehvahdjukaar.every_compat.dynamicpack.ServerDynamicResourcesHandler;
 import net.mehvahdjukaar.every_compat.type.StoneTypeRegistry;
+import net.mehvahdjukaar.moonlight.api.platform.PlatHelper;
 import net.mehvahdjukaar.moonlight.api.resources.ResType;
 import net.mehvahdjukaar.moonlight.api.set.wood.WoodType;
 import net.mehvahdjukaar.moonlight.api.set.wood.WoodTypeRegistry;
@@ -110,7 +111,7 @@ public class CreateModule extends SimpleModule {
         }
     }
 
-    public WindowBlock makeWindow(WoodType w) {
+    private WindowBlock makeWindow(WoodType w) {
         return new WindowBlock(Utils.copyPropertySafe(Blocks.GLASS)
                 .isValidSpawn((s, l, ps, t) -> false).isRedstoneConductor((s, l, ps) -> false)
                 .isSuffocating((s, l, ps) -> false).isViewBlocking((s, l, ps) -> false), false);
@@ -137,15 +138,16 @@ public class CreateModule extends SimpleModule {
     // Recipes
     public void addDynamicServerResources(ServerDynamicResourcesHandler handler, ResourceManager manager) {
         super.addDynamicServerResources(handler, manager);
-        for (WoodType w : WoodTypeRegistry.getTypes()) {
+        if (!PlatHelper.isModLoaded("sawmill")) {
+            for (WoodType w : WoodTypeRegistry.getTypes()) {
+                if (w.getBlockOfThis("slab") != null)
+                    sawRecipe(2, w.planks.asItem(), Objects.requireNonNull(w.getBlockOfThis("slab")).asItem(),null,  w, handler);
 
-            if (w.getBlockOfThis("slab") != null)
-                sawRecipe(2, w.planks.asItem(), Objects.requireNonNull(w.getBlockOfThis("slab")).asItem(),null,  w, handler);
+                if (w.getBlockOfThis("stairs") != null)
+                    sawRecipe(1, w.planks.asItem(), Objects.requireNonNull(w.getBlockOfThis("stairs")).asItem(),null,  w, handler);
 
-            if (w.getBlockOfThis("stairs") != null)
-                sawRecipe(1, w.planks.asItem(), Objects.requireNonNull(w.getBlockOfThis("stairs")).asItem(),null,  w, handler);
-
-            sawRecipe(6, w.planks.asItem(), null, ResourceLocation.withDefaultNamespace("stick"), w, handler);
+                sawRecipe(6, w.planks.asItem(), null, ResourceLocation.withDefaultNamespace("stick"), w, handler);
+            }
         }
 
     }
@@ -162,25 +164,24 @@ public class CreateModule extends SimpleModule {
             }
             """;
 
-        String recipe = null;
+        ResourceLocation resloc;
+        String recipe;
         if (output != null) {
             recipe = blank.replace("[amount]", String.valueOf(amount))
                     .replace("[input]", Utils.getID(input).toString())
                     .replace("[output]", Utils.getID(output).toString());
+            resloc = EveryCompat.res(
+                    shortenedId() + "/" + woodType.getNamespace() + "/" + output + "_from_" + input + "_stonecutting");
         }
-        else if (item != null) {
+        else { // item != null
             recipe = blank.replace("[amount]", String.valueOf(amount))
                     .replace("[input]", Utils.getID(input).toString())
                     .replace("[output]", item.toString());
+            resloc = EveryCompat.res(
+                    shortenedId() + "/" + woodType.getNamespace() + "/" + item.getPath() + "_from_" + input + "_stonecutting");
         }
 
-        ResourceLocation resloc = EveryCompat.res(
-                shortenedId() + "/" + woodType.getNamespace() + "/" + output + "_from_" + input + "_stonecutting");
-
-
-        if (recipe != null) {
-            handler.dynamicPack.addBytes(resloc, recipe.getBytes(), ResType.RECIPES);
-        }
+        handler.dynamicPack.addBytes(resloc, recipe.getBytes(), ResType.RECIPES);
 
     }
 }
