@@ -1,5 +1,6 @@
 package net.mehvahdjukaar.every_compat.neoforge;
 
+import com.google.common.util.concurrent.ListenableFuture;
 import net.mehvahdjukaar.every_compat.EveryCompat;
 import net.mehvahdjukaar.every_compat.EveryCompatClient;
 import net.mehvahdjukaar.every_compat.api.CompatModule;
@@ -55,6 +56,8 @@ import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.entity.player.ItemTooltipEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerNegotiationEvent;
 
+import java.lang.ref.WeakReference;
+
 /**
  * Author: MehVahdJukaar
  */
@@ -62,7 +65,10 @@ import net.neoforged.neoforge.event.entity.player.PlayerNegotiationEvent;
 public class EveryCompatForge extends EveryCompat {
     public static final String MOD_ID = EveryCompat.MOD_ID;
 
+    private static WeakReference<IEventBus> BUS = new WeakReference<>(null);
+
     public EveryCompatForge(IEventBus bus) {
+        BUS = new WeakReference<>(bus);
         this.commonInit();
 
 //!!================================================ Add Modules ==================================================== \\
@@ -135,6 +141,10 @@ public class EveryCompatForge extends EveryCompat {
         if (PlatHelper.getPhysicalSide().isClient()) {
             EveryCompatClient.init();
         }
+    }
+
+    public static IEventBus getModEventBus() {
+        return BUS.get();
     }
 
 

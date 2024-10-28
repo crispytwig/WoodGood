@@ -1,7 +1,6 @@
 package net.mehvahdjukaar.every_compat.modules.neoforge.workshop;
 
 import moonfather.workshop_for_handsome_adventurer.blocks.*;
-import moonfather.workshop_for_handsome_adventurer.initialization.ExternalWoodSupport;
 import moonfather.workshop_for_handsome_adventurer.initialization.Registration;
 import moonfather.workshop_for_handsome_adventurer.items.BlockItemEx;
 import moonfather.workshop_for_handsome_adventurer.items.WorkstationPlacerItem;
@@ -10,6 +9,7 @@ import net.mehvahdjukaar.every_compat.api.ItemOnlyEntrySet;
 import net.mehvahdjukaar.every_compat.api.SimpleEntrySet;
 import net.mehvahdjukaar.every_compat.api.SimpleModule;
 import net.mehvahdjukaar.every_compat.dynamicpack.ServerDynamicResourcesHandler;
+import net.mehvahdjukaar.every_compat.neoforge.EveryCompatForge;
 import net.mehvahdjukaar.moonlight.api.resources.SimpleTagBuilder;
 import net.mehvahdjukaar.moonlight.api.set.wood.WoodType;
 import net.mehvahdjukaar.moonlight.api.set.wood.WoodTypeRegistry;
@@ -273,7 +273,7 @@ public class WorkshopForHandsomeAdventurerModule extends SimpleModule {
 
     @Override
     public void onModInit() {
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(WorkshopForHandsomeAdventurerModule::sendIMC);
+        EveryCompatForge.getModEventBus().addListener(WorkshopForHandsomeAdventurerModule::sendIMC);
     }
 
 
