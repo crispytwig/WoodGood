@@ -194,12 +194,11 @@ dependencies {
     modCompileOnly("curse.maven:more-crafting-tables-for-forge-417365:4786212") //!! 1.20.1
     modCompileOnly("curse.maven:mosaic-carpentry-690226:4068673") //!! 1.20.1
     modCompileOnly("curse.maven:mrcrayfish-furniture-mod-55438:4602980") //!! 1.20.1
-    modCompileOnly("curse.maven:oreberries-replanted-454062:5138729") //!! 1.20.1
+    modCompileOnly("curse.maven:oreberries-replanted-454062:5817304")
     modCompileOnly("curse.maven:pokecube-aoi-285121:4816899") //!! 1.20.1
     modCompileOnly("curse.maven:premium-wood-353515:3905203") //!! 1.20.1
     modCompileOnly("curse.maven:productivebees-377897:5304827") //v12.5.1 | WIP //!! 1.20.1
     modCompileOnly("curse.maven:quark-243121:5093415") //!! 1.20.1
-    modCompileOnly("curse.maven:storage-drawers-223852:4668552") //!! 1.20.1
     modCompileOnly("maven.modrinth:stylish-stiles:l9FFA4BK") //!! 1.20.1
     modCompileOnly("curse.maven:table-top-craft-467136:5318681") //!! 1.20.1
     modCompileOnly("curse.maven:timber-frames-606011:5372390") //!! 1.20.1
@@ -213,7 +212,7 @@ dependencies {
     modCompileOnly("curse.maven:villagersplus-forge-817272:4996995") //!! 1.20.1
     modCompileOnly("curse.maven:woodster-869951:4670471") //!! 1.20.1
     modCompileOnly("curse.maven:woodworks-543610:5228779") //!! 1.20.1
-    modCompileOnly("curse.maven:workshop-for-handsome-adventurer-875843:5713529") //!! 1.20.1
+    modCompileOnly("curse.maven:workshop-for-handsome-adventurer-875843:5752681")
     modCompileOnly("curse.maven:xercamod-341575:4667995") //!! 1.20.1
 
     modCompileOnly("curse.maven:regions-unexplored-659110:5579932")

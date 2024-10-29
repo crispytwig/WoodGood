@@ -1,4 +1,4 @@
-package net.mehvahdjukaar.every_compat.modules.neoforge.storagedrawers;
+package net.mehvahdjukaar.every_compat.modules.storagedrawers;
 
 import com.jaquadro.minecraft.storagedrawers.block.BlockDrawers;
 import com.jaquadro.minecraft.storagedrawers.block.BlockStandardDrawers;
@@ -7,6 +7,8 @@ import com.jaquadro.minecraft.storagedrawers.block.tile.BlockEntityDrawers;
 import com.jaquadro.minecraft.storagedrawers.block.tile.BlockEntityDrawersStandard;
 import com.jaquadro.minecraft.storagedrawers.client.renderer.BlockEntityDrawersRenderer;
 import com.jaquadro.minecraft.storagedrawers.core.ModBlocks;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.mehvahdjukaar.every_compat.api.SimpleEntrySet;
 import net.mehvahdjukaar.every_compat.api.SimpleModule;
 import net.mehvahdjukaar.every_compat.dynamicpack.ClientDynamicResourcesHandler;
@@ -17,15 +19,12 @@ import net.mehvahdjukaar.moonlight.api.set.wood.WoodTypeRegistry;
 import net.mehvahdjukaar.moonlight.api.util.Utils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
-import net.neoforged.api.distmarker.Dist;
-import net.neoforged.api.distmarker.OnlyIn;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Collection;
@@ -215,14 +214,14 @@ public class StorageDrawersModule extends SimpleModule {
     }
 
     @Override
-    @OnlyIn(Dist.CLIENT)
+    @Environment(EnvType.CLIENT)
     public void registerBlockEntityRenderers(ClientHelper.BlockEntityRendererEvent event) {
         FULL_DRAWERS_1.registerTileRenderer(event, BlockEntityDrawersRenderer::new);
         FULL_DRAWERS_2.registerTileRenderer(event, BlockEntityDrawersRenderer::new);
-        event.register(FULL_DRAWERS_4.getTile(BlockEntityDrawers.class), BlockEntityDrawersRenderer::new);
-        event.register(HALF_DRAWERS_1.getTile(BlockEntityDrawers.class), BlockEntityDrawersRenderer::new);
-        event.register(HALF_DRAWERS_2.getTile(BlockEntityDrawers.class), BlockEntityDrawersRenderer::new);
-        event.register(HALF_DRAWERS_4.getTile(BlockEntityDrawers.class), BlockEntityDrawersRenderer::new);
+        FULL_DRAWERS_4.registerTileRenderer(event, BlockEntityDrawersRenderer::new);
+        HALF_DRAWERS_1.registerTileRenderer(event, BlockEntityDrawersRenderer::new);
+        HALF_DRAWERS_2.registerTileRenderer(event, BlockEntityDrawersRenderer::new);
+        HALF_DRAWERS_4.registerTileRenderer(event, BlockEntityDrawersRenderer::new);
     }
 
     private class CompatStandardDrawers extends BlockStandardDrawers {

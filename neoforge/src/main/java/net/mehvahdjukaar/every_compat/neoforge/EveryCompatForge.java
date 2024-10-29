@@ -1,6 +1,5 @@
 package net.mehvahdjukaar.every_compat.neoforge;
 
-import net.mehvahdjukaar.every_compat.ECNetworking;
 import net.mehvahdjukaar.every_compat.EveryCompat;
 import net.mehvahdjukaar.every_compat.EveryCompatClient;
 import net.mehvahdjukaar.every_compat.api.CompatModule;
@@ -15,7 +14,6 @@ import net.mehvahdjukaar.every_compat.modules.neoforge.builders_delight.Builders
 import net.mehvahdjukaar.every_compat.modules.neoforge.buildersaddition.BuildersAdditionModule;
 import net.mehvahdjukaar.every_compat.modules.neoforge.building_but_better.BuildingButBetterModule;
 import net.mehvahdjukaar.every_compat.modules.neoforge.corail_pillar.CorailPillarModule;
-import net.mehvahdjukaar.every_compat.modules.neoforge.create.CreateModule;
 import net.mehvahdjukaar.every_compat.modules.neoforge.decoration_delight.DecorationDelightModule;
 import net.mehvahdjukaar.every_compat.modules.neoforge.dramaticdoors.DramaticDoorsMacawModule;
 import net.mehvahdjukaar.every_compat.modules.neoforge.dramaticdoors.DramaticDoorsModule;
@@ -37,7 +35,7 @@ import net.mehvahdjukaar.every_compat.modules.neoforge.pokecube.PokecubeLegendsM
 import net.mehvahdjukaar.every_compat.modules.neoforge.premium_wood.PremiumWoodModule;
 import net.mehvahdjukaar.every_compat.modules.neoforge.redeco.ReDecoModule;
 import net.mehvahdjukaar.every_compat.modules.neoforge.regions_unexplored.RegionsUnexploredModule;
-import net.mehvahdjukaar.every_compat.modules.neoforge.storagedrawers.StorageDrawersModule;
+import net.mehvahdjukaar.every_compat.modules.storagedrawers.StorageDrawersModule;
 import net.mehvahdjukaar.every_compat.modules.neoforge.timber_frames.TimberFramesModule;
 import net.mehvahdjukaar.every_compat.modules.neoforge.tropicraft.TropicraftModule;
 import net.mehvahdjukaar.every_compat.modules.neoforge.twilightforest.TwilightForestModule;
@@ -54,7 +52,6 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.common.NeoForge;
-import net.neoforged.neoforge.common.crafting.CraftingHelper;
 import net.neoforged.neoforge.event.entity.player.ItemTooltipEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerNegotiationEvent;
 
@@ -97,7 +94,6 @@ public class EveryCompatForge extends EveryCompat {
         addModule("redeco", () -> ReDecoModule::new);
         addModule("regions_unexplored", () -> RegionsUnexploredModule::new);
         addModule("shutter", () -> LauchsShuttersModule::new);
-        addModule("storagedrawers", () -> StorageDrawersModule::new);
         addModule("stylishstiles", () -> StylishStilesModule::new);
         addModule("timber_frames", () -> TimberFramesModule::new);
         addModule("tropicraft", () -> TropicraftModule::new);
