@@ -16,10 +16,9 @@ import net.minecraft.world.level.block.ChestBlock;
 import net.minecraft.world.level.block.DoubleBlockCombiner;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
+import net.neoforged.api.distmarker.Dist;
 
-@OnlyIn(Dist.CLIENT)
+@net.neoforged.api.distmarker.OnlyIn(Dist.CLIENT)
 public class CompatCoffinRenderer extends SarcophagusBlockEntityRenderer<GraveyardModule.CompatCoffinBlockTile> {
     public CompatCoffinRenderer(BlockEntityRendererProvider.Context ctx) {
         super(ctx);

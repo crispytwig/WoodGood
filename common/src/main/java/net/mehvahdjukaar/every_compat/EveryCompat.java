@@ -87,10 +87,10 @@ public abstract class EveryCompat {
 
 
     protected void commonInit() {
-        StoneTypeRegistry.init();
+
+        //StoneTypeRegistry.init();
 
         ModConfigs.init();
-        //TODO: this class is a mess. Should be split and cleaned up
         ECNetworking.init();
 
         ServerDynamicResourcesHandler.INSTANCE.register();

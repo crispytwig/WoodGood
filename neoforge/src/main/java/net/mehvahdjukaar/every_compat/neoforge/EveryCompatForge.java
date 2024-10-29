@@ -68,8 +68,6 @@ public class EveryCompatForge extends EveryCompat {
     public EveryCompatForge(IEventBus bus) {
         this.commonInit();
 
-        CraftingHelper.register(new BlockTypeEnabledCondition.Serializer());
-
 //!!================================================ Add Modules ==================================================== \\
         addModule("absentbydesign", () -> AbsentByDesignModule::new);
         addModule("architects_palette", () -> ArchitectsPaletteModule::new);

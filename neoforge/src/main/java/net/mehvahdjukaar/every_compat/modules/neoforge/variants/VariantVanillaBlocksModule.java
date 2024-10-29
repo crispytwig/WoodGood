@@ -30,9 +30,9 @@ import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.entity.ChestBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.common.Tags;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
+import net.neoforged.neoforge.common.Tags;
 import net.xanthian.variantvanillablocks.block.*;
 import net.xanthian.variantvanillablocks.utils.ModCreativeModTabs;
 
@@ -45,19 +45,19 @@ import static net.mehvahdjukaar.every_compat.common_classes.CompatChestTexture.g
 
 //SUPPORT: v1.3.6+
 public class VariantVanillaBlocksModule extends SimpleModule {
-    public final SimpleEntrySet<WoodType, Block> barrel;
-    public final SimpleEntrySet<WoodType, Block> beehive;
+    public final SimpleEntrySet<WoodType, BarrelBlock> barrel;
+    public final SimpleEntrySet<WoodType, BeehiveBlock> beehive;
     public final SimpleEntrySet<WoodType, Block> bookshelves;
-    public final SimpleEntrySet<WoodType, Block> cartography;
-    public final SimpleEntrySet<WoodType, Block> chests;
-    public final SimpleEntrySet<WoodType, Block> chiseledBookshelves;
-    public final SimpleEntrySet<WoodType, Block> composters;
-    public final SimpleEntrySet<WoodType, Block> craftingTable;
-    public final SimpleEntrySet<WoodType, Block> fletchingTable;
-    public final SimpleEntrySet<WoodType, Block> grindstones;
-    public final SimpleEntrySet<WoodType, Block> lectern;
-    public final SimpleEntrySet<WoodType, Block> smithingTable;
-    public final SimpleEntrySet<WoodType, Block> smoker;
+    public final SimpleEntrySet<WoodType, CartographyTableBlock> cartography;
+    public final SimpleEntrySet<WoodType, CompatChestBlock> chests;
+    public final SimpleEntrySet<WoodType, ChiseledBookShelfBlock> chiseledBookshelves;
+    public final SimpleEntrySet<WoodType, ComposterBlock> composters;
+    public final SimpleEntrySet<WoodType, CraftingTableBlock> craftingTable;
+    public final SimpleEntrySet<WoodType, FletchingTableBlock> fletchingTable;
+    public final SimpleEntrySet<WoodType, GrindstoneBlock> grindstones;
+    public final SimpleEntrySet<WoodType, LecternBlock> lectern;
+    public final SimpleEntrySet<WoodType, SmithingTableBlock> smithingTable;
+    public final SimpleEntrySet<WoodType, SmokerBlock> smoker;
 
     protected final ResourceLocation poiId = EveryCompat.res("vvb_beehive");
     @SuppressWarnings("unused")
@@ -66,7 +66,7 @@ public class VariantVanillaBlocksModule extends SimpleModule {
 
     public VariantVanillaBlocksModule(String modID) {
         super(modID, "vvb");
-        var tab = ModCreativeModTabs.VVB_TAB;
+        ResourceLocation tab = modRes("variantvanillablocks");
 
         barrel = SimpleEntrySet.builder(WoodType.class, "barrel",
                         Barrels.OAK_BARREL, () -> WoodTypeRegistry.OAK_TYPE,
@@ -88,7 +88,7 @@ public class VariantVanillaBlocksModule extends SimpleModule {
                 .addTexture(modRes("block/oak_barrel_top_open"))
                 .addTile(() -> BlockEntityType.BARREL)
                 .defaultRecipe()
-                .setTab(tab)
+                .setTabKey(tab)
                 .build();
         this.addEntry(barrel);
 
@@ -109,7 +109,7 @@ public class VariantVanillaBlocksModule extends SimpleModule {
                         EveryCompat.res("block/spruce_beehive_side_m"))
                 .addTile(() -> BlockEntityType.BEEHIVE)
                 .defaultRecipe()
-                .setTab(tab)
+                .setTabKey(tab)
                 .build();
         this.addEntry(beehive);
 
@@ -126,7 +126,7 @@ public class VariantVanillaBlocksModule extends SimpleModule {
                 .addTag(Tags.Items.BOOKSHELVES, Registries.ITEM)
                 .addTextureM(modRes("block/acacia_bookshelf"), EveryCompat.res("block/acacia_bookshelf_m"))
                 .defaultRecipe()
-                .setTab(tab)
+                .setTabKey(tab)
                 .build();
         this.addEntry(bookshelves);
 
@@ -142,7 +142,7 @@ public class VariantVanillaBlocksModule extends SimpleModule {
                 .addTexture(modRes("block/oak_cartography_table_side3"))
                 .addTextureM(modRes("block/oak_cartography_table_top"), EveryCompat.res("block/vanilla_cartography_table_top_m"))
                 .defaultRecipe()
-                .setTab(tab)
+                .setTabKey(tab)
                 .build();
         this.addEntry(cartography);
 
@@ -162,7 +162,7 @@ public class VariantVanillaBlocksModule extends SimpleModule {
                 .addCustomItem((w, block, properties) -> new CompatChestItem(block, properties))
                 .addTile(VariantChestBlockEntity::new)
                 .defaultRecipe()
-                .setTab(tab)
+                .setTabKey(tab)
                 .build();
         this.addEntry(chests);
 
@@ -181,7 +181,7 @@ public class VariantVanillaBlocksModule extends SimpleModule {
                 .addTexture(modRes("block/acacia_chiseled_bookshelf_top"))
                 .addTile(() -> BlockEntityType.CHISELED_BOOKSHELF)
                 .defaultRecipe()
-                .setTab(tab)
+                .setTabKey(tab)
                 .build();
         this.addEntry(chiseledBookshelves);
 
@@ -197,7 +197,7 @@ public class VariantVanillaBlocksModule extends SimpleModule {
                 .addTexture(modRes("block/oak_composter_side"))
                 .addTexture(modRes("block/oak_composter_top"))
                 .defaultRecipe()
-                .setTab(tab)
+                .setTabKey(tab)
                 .build();
         this.addEntry(composters);
 
@@ -216,7 +216,7 @@ public class VariantVanillaBlocksModule extends SimpleModule {
                         EveryCompat.res("block/vct/spruce_crafting_table_side_m"))
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .defaultRecipe()
-                .setTab(tab)
+                .setTabKey(tab)
                 .build();
         this.addEntry(craftingTable);
 
@@ -235,7 +235,7 @@ public class VariantVanillaBlocksModule extends SimpleModule {
                 .addTextureM(modRes("block/oak_fletching_table_top"),
                         EveryCompat.res("block/vanilla_fletching_table_top_m"))
                 .defaultRecipe()
-                .setTab(tab)
+                .setTabKey(tab)
                 .build();
         this.addEntry(fletchingTable);
 
@@ -249,7 +249,7 @@ public class VariantVanillaBlocksModule extends SimpleModule {
                 .addTag(modRes("grindstones"), Registries.ITEM)
                 .addTexture(modRes("block/oak_grindstone_pivot"))
                 .defaultRecipe()
-                .setTab(tab)
+                .setTabKey(tab)
                 .build();
         this.addEntry(grindstones);
 
@@ -269,7 +269,7 @@ public class VariantVanillaBlocksModule extends SimpleModule {
                 .addTexture(modRes("block/acacia_lectern_top"))
                 .addTile(() -> BlockEntityType.LECTERN)
                 .defaultRecipe()
-                .setTab(tab)
+                .setTabKey(tab)
                 .build();
         this.addEntry(lectern);
 
@@ -288,7 +288,7 @@ public class VariantVanillaBlocksModule extends SimpleModule {
                 .addTextureM(modRes("block/oak_smithing_table_side"),
                         EveryCompat.res("block/vanilla_smithing_table_side_m"))
                 .defaultRecipe()
-                .setTab(tab)
+                .setTabKey(tab)
                 .build();
         this.addEntry(smithingTable);
 
@@ -312,7 +312,7 @@ public class VariantVanillaBlocksModule extends SimpleModule {
                         EveryCompat.res("block/vanilla_smoker_x_m"))
                 .addTile(() -> BlockEntityType.SMOKER)
                 .defaultRecipe()
-                .setTab(tab)
+                .setTabKey(tab)
                 .build();
         this.addEntry(smoker);
 

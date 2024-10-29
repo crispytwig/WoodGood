@@ -16,7 +16,7 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 //SUPPORT: v0.5.2+
 public class OreberriesReplantedModule extends SimpleModule {
 
-    public final SimpleEntrySet<WoodType, Block> vats;
+    public final SimpleEntrySet<WoodType, VatBlock> vats;
 
     public OreberriesReplantedModule(String modId) {
         super(modId, "or");

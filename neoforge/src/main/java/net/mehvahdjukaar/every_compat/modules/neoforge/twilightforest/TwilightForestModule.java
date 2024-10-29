@@ -15,8 +15,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.FoliageColor;
 import net.minecraft.world.level.block.Block;
-import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.neoforge.registries.DeferredHolder;
 import org.jetbrains.annotations.NotNull;
 import twilightforest.block.BanisterBlock;
 import twilightforest.block.HollowLogClimbable;
@@ -70,7 +69,7 @@ public class TwilightForestModule extends SimpleModule {
                         TFBlocks.HOLLOW_BIRCH_LOG_VERTICAL, getBirch(),
                         w -> {
                             var id = EveryCompat.res(this.shortenedId() + "/" + w.getVariantId("hollow", true) + "_log_climbable");
-                            return new HollowLogVertical(Utils.copyPropertySafe(w.log), RegistryObject.create(id, ForgeRegistries.BLOCKS));
+                            return new HollowLogVertical(Utils.copyPropertySafe(w.log), DeferredHolder.create(Registries.BLOCK,id));
                         })
                 .requiresChildren("stripped_log") //REASON: Textures
                 .addTag(modRes("hollow_logs_vertical"), Registries.BLOCK)
@@ -83,7 +82,7 @@ public class TwilightForestModule extends SimpleModule {
         hollowLogsClimbable = SimpleEntrySet.builder(WoodType.class, "log_climbable", "hollow",
                         TFBlocks.HOLLOW_BIRCH_LOG_CLIMBABLE, getBirch(),
                         w  -> new HollowLogClimbable(Utils.copyPropertySafe(w.log),
-                                RegistryObject.create(Utils.getID(hollowLogsVertical.blocks.get(w)), ForgeRegistries.BLOCKS))
+                                DeferredHolder.create( Registries.BLOCK, Utils.getID(hollowLogsVertical.blocks.get(w))))
                 )
                 .requiresChildren("stripped_log") //REASON: Textures
                 .addTag(modRes("hollow_logs_climbable"), Registries.BLOCK)
@@ -106,9 +105,9 @@ public class TwilightForestModule extends SimpleModule {
             String itemName = Utils.getID(b).getPath().replace("_vertical", "");
             String childKey = this.getModId() + ":hollow_log";
             Item i = new HollowLogItem(
-                    RegistryObject.create(EveryCompat.res(itemName + "_horizontal"), ForgeRegistries.BLOCKS),
-                    RegistryObject.create(Utils.getID(b), ForgeRegistries.BLOCKS),
-                    RegistryObject.create(EveryCompat.res(itemName + "_climbable"), ForgeRegistries.BLOCKS),
+                    DeferredHolder.create(Registries.BLOCK, EveryCompat.res(itemName + "_horizontal")),
+                    DeferredHolder.create(Registries.BLOCK, Utils.getID(b)),
+                    DeferredHolder.create(Registries.BLOCK, EveryCompat.res(itemName + "_climbable")),
                     new Item.Properties());
             hollowLogsVertical.items.put(w, i);
             w.addChild(childKey, i);

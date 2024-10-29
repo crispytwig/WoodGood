@@ -394,7 +394,7 @@ public class DramaticDoorsMacawModule extends SimpleModule {
                     var t = mask.makeCopy();
                     t.applyOverlayOnExisting(logTexture.makeCopy(), overlay.makeCopy());
 
-                    handler.dynamicPack.addAndCloseTexture(ResourceLocation.parse(id.getNamespace(),
+                    handler.dynamicPack.addAndCloseTexture(id.withPath(
                             "item/macaw/" + id.getPath().replace("_macaw", "")), t);
 
                 } catch (Exception ignored) {

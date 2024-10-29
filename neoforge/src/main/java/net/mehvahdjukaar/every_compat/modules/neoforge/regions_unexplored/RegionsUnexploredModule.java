@@ -43,10 +43,10 @@ public class RegionsUnexploredModule extends SimpleModule {
     public RegionsUnexploredModule(String modId) {
         super(modId, "ru");
         var tab = modRes("ru_main");
-
+//TODO:add branch beard block
         branchs = SimpleEntrySet.builder(WoodType.class, "branch",
             getModBlock("oak_branch"), () -> WoodTypeRegistry.OAK_TYPE,
-            w -> new BranchBlock(BlockBehaviour.Properties.copy(RuBlocks.ACACIA_BRANCH.get()), "branch")
+            w -> new BranchBlock(BlockBehaviour.Properties.ofFullCopy(RuBlocks.ACACIA_BRANCH.get()), BranchBlock.BranchType.BRANCH)
         )
             .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
             .addTag(modRes("branches_can_survive_on"), Registries.BLOCK)

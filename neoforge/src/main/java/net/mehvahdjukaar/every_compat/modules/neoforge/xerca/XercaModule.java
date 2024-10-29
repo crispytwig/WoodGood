@@ -196,7 +196,6 @@ public class XercaModule extends SimpleModule {
 
         JsonObject json = new JsonObject();
         json.addProperty("type","xercamod:carving");
-        json.add("ingredient", Ingredient.fromJson(json.get("ingredient")).toJson());
         String s1 = GsonHelper.getAsString(json, "result");
         int i = GsonHelper.getAsInt(json, "count");
         json.addProperty("result", Utils.getID((new ItemStack( BuiltInRegistries.ITEM.get(ResourceLocation.parse(s1)), i)).getItem()).toString());

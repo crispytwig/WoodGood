@@ -2,9 +2,6 @@ package net.mehvahdjukaar.every_compat.modules.neoforge.beautify_decorate;
 
 import com.github.Pandarix.beautify.Beautify;
 import com.github.Pandarix.beautify.common.block.Blinds;
-import com.github.Pandarix.beautify.common.block.OakBlinds;
-import com.github.Pandarix.beautify.common.block.OakPictureFrame;
-import com.github.Pandarix.beautify.common.block.OakTrellis;
 import com.github.Pandarix.beautify.common.block.PictureFrame;
 import com.github.Pandarix.beautify.common.block.Trellis;
 import com.github.Pandarix.beautify.core.init.BlockInit;
