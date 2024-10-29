@@ -4,7 +4,6 @@ import decor.delight.block.*;
 import decor.delight.block.entity.OakCounterBlockEntity;
 import decor.delight.block.entity.OakCounterCornerBlockEntity;
 import decor.delight.init.DecorationDelightModBlocks;
-import decor.delight.init.DecorationDelightModTabs;
 import net.mehvahdjukaar.every_compat.EveryCompat;
 import net.mehvahdjukaar.every_compat.api.SimpleEntrySet;
 import net.mehvahdjukaar.every_compat.api.SimpleModule;
@@ -12,22 +11,19 @@ import net.mehvahdjukaar.moonlight.api.set.wood.WoodType;
 import net.mehvahdjukaar.moonlight.api.set.wood.WoodTypeRegistry;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.tags.BlockTags;
-import net.minecraft.world.item.CreativeModeTab;
-import net.minecraft.world.level.block.Block;
-import net.minecraftforge.registries.RegistryObject;
 
 //SUPPORT: v1.0.0
 public class DecorationDelightModule extends SimpleModule {
-    public final SimpleEntrySet<WoodType, Block> COUNTER;
-    public final SimpleEntrySet<WoodType, Block> COUNTER_CORNER;
-    public final SimpleEntrySet<WoodType, Block> COUNTER_BEND;
-    public final SimpleEntrySet<WoodType, Block> COUNTER_TOP;
-    public final SimpleEntrySet<WoodType, Block> STOOL;
-    public final SimpleEntrySet<WoodType, Block> MOSAIC;
+    public final SimpleEntrySet<WoodType, OakCounterBlock> COUNTER;
+    public final SimpleEntrySet<WoodType, OakCounterCornerBlock> COUNTER_CORNER;
+    public final SimpleEntrySet<WoodType, OakCounterBendBlock> COUNTER_BEND;
+    public final SimpleEntrySet<WoodType, OakCountertopBlock> COUNTER_TOP;
+    public final SimpleEntrySet<WoodType, OakStoolBlock> STOOL;
+    public final SimpleEntrySet<WoodType, OakMosaicBlock> MOSAIC;
 
     public DecorationDelightModule(String modId) {
         super(modId, "ddr");
-        RegistryObject<CreativeModeTab> tab = DecorationDelightModTabs.DECORATION_DELIGHT_TAB;
+        var tab = modRes("decoration_delight_tab");
 
         COUNTER = SimpleEntrySet.builder(WoodType.class, "counter",
                 DecorationDelightModBlocks.OAK_COUNTER, () -> WoodTypeRegistry.OAK_TYPE,
@@ -41,7 +37,7 @@ public class DecorationDelightModule extends SimpleModule {
                 )
                 .addTextureM(EveryCompat.res("block/ddr/lighter_oak_counter"), EveryCompat.res("block/ddr/lighter_oak_counter_m"))
                 .addTexture(EveryCompat.res("block/ddr/oak_planks"))
-                .setTab(tab)
+                .setTabKey(tab)
                 .addRecipe(modRes("oak_counter_recipe"))
                 .addRecipe(modRes("oak_counter_recipe_2"))
                 .build();
@@ -59,7 +55,7 @@ public class DecorationDelightModule extends SimpleModule {
                 )
                 .addTextureM(EveryCompat.res("block/ddr/lighter_oak_counter_corner"), EveryCompat.res("block/ddr/lighter_oak_counter_corner_m"))
                 .addTexture(EveryCompat.res("block/ddr/oak_planks"))
-                .setTab(tab)
+                .setTabKey(tab)
                 .addRecipe(modRes("oak_counter_corner_recipe"))
                 .build();
         this.addEntry(COUNTER_CORNER);
@@ -75,7 +71,7 @@ public class DecorationDelightModule extends SimpleModule {
                 )
                 .addTexture(EveryCompat.res("block/ddr/lighter_oak_counter_bend"))
                 .addTexture(EveryCompat.res("block/ddr/oak_planks"))
-                .setTab(tab)
+                .setTabKey(tab)
                 .addRecipe(modRes("oak_counter_bend_recipe"))
                 .build();
         this.addEntry(COUNTER_BEND);
@@ -89,7 +85,7 @@ public class DecorationDelightModule extends SimpleModule {
                         .replaceString("lighter_oak_countertop", "ddr/lighter_oak_countertop")
                 )
                 .addTexture(EveryCompat.res("block/ddr/lighter_oak_countertop"))
-                .setTab(tab)
+                .setTabKey(tab)
                 .addRecipe(modRes("oak_countertop_recipe"))
                 .build();
         this.addEntry(COUNTER_TOP);
@@ -107,7 +103,7 @@ public class DecorationDelightModule extends SimpleModule {
                 .addTexture(EveryCompat.res("block/ddr/new_oak_stool"))
                 .addTexture(EveryCompat.res("block/ddr/oak_planks"))
                 .addTexture(EveryCompat.res("block/ddr/new_oak_stoolrealreal"))
-                .setTab(tab)
+                .setTabKey(tab)
                 .addRecipe(modRes("oak_stool_recipe"))
                 .build();
         this.addEntry(STOOL);
@@ -121,7 +117,7 @@ public class DecorationDelightModule extends SimpleModule {
                         .replaceString("oakmosaic", "ddr/oak_mosaic")
                 )
                 .addTexture(EveryCompat.res("block/ddr/oak_mosaic"))
-                .setTab(tab)
+                .setTabKey(tab)
                 .addRecipe(modRes("oak_mosaic_recipe"))
                 .build();
         this.addEntry(MOSAIC);

@@ -2,7 +2,6 @@ package net.mehvahdjukaar.every_compat.modules.neoforge.just_a_raft;
 
 import com.google.gson.JsonObject;
 import com.mrbysco.justaraftmod.entities.RaftType;
-import com.mrbysco.justaraftmod.init.RaftRegistry;
 import com.mrbysco.justaraftmod.items.RaftItem;
 import net.mehvahdjukaar.every_compat.EveryCompat;
 import net.mehvahdjukaar.every_compat.api.ItemOnlyEntrySet;
@@ -46,7 +45,7 @@ public class JustARaftModule extends SimpleModule {
                 .createPaletteFromChild("log", SpriteHelper.LOOKS_LIKE_SIDE_LOG_TEXTURE)
                 .addTextureM(modRes("entity/raft/oak_raft"), EveryCompat.res("entity/raft/oak_raft_m"))
                 .addTag(modRes("rafts"), Registries.ITEM)
-                .setTabKey(RaftRegistry.RAFT_TAB.getId())
+                .setTabKey(modRes("tab"))
                 .build();
         this.addEntry(rafts);
     }

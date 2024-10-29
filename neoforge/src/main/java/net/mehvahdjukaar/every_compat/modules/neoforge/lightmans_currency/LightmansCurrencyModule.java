@@ -43,7 +43,7 @@ public class LightmansCurrencyModule extends SimpleModule {
                                 .mapColor(w.getColor()).strength(2.0F)
                         )
                 )
-                .addTile(ModBlockEntities.AUCTION_STAND)
+                .addTile(getModTile("auction_stand"))
                 //TEXTURE: Using log & log_top
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(LCTags.Blocks.SAFE_INTERACTABLE, Registries.BLOCK)
@@ -62,7 +62,7 @@ public class LightmansCurrencyModule extends SimpleModule {
                                 1
                         )
                 )
-                .addTile(ModBlockEntities.ITEM_TRADER)
+                .addTile(getModTile("item_trader"))
                 //TEXTURE: Using planks
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(BlockTags.WITHER_IMMUNE, Registries.BLOCK)
@@ -87,7 +87,7 @@ public class LightmansCurrencyModule extends SimpleModule {
                                 4
                         )
                 )
-                .addTile(ModBlockEntities.ITEM_TRADER)
+                .addTile(getModTile("item_trader"))
                 //TEXTURE: Using planks
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(BlockTags.WITHER_IMMUNE, Registries.BLOCK)
@@ -112,7 +112,7 @@ public class LightmansCurrencyModule extends SimpleModule {
                                 .sound(SoundType.WOOD)
                         )
                 )
-                .addTile(ModBlockEntities.BOOK_TRADER)
+                .addTile(getModTile("book_trader"))
                 //TEXTURE: Using planks
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(BlockTags.WITHER_IMMUNE, Registries.BLOCK)
@@ -135,10 +135,10 @@ public class LightmansCurrencyModule extends SimpleModule {
     @Override
     public void registerBlockEntityRenderers(ClientHelper.BlockEntityRendererEvent event) {
         super.registerBlockEntityRenderers(event);
-        event.register(auction_stands.getTile(AuctionStandBlockEntity.class), AuctionStandBlockEntityRenderer::new);
-        event.register(shelves.getTile(ItemTraderBlockEntity.class), ItemTraderBlockEntityRenderer::new);
-        event.register(shelves_2x2.getTile(ItemTraderBlockEntity.class), ItemTraderBlockEntityRenderer::new);
-        event.register(bookshelf_traders.getTile(BookTraderBlockEntity.class), BookTraderBlockEntityRenderer::new);
+//        event.register(auction_stands.getTile(AuctionStandBlockEntity.class), AuctionStandBlockEntityRenderer::new);
+//        event.register(shelves.getTile(ItemTraderBlockEntity.class), ItemTraderBlockEntityRenderer::new);
+//        event.register(shelves_2x2.getTile(ItemTraderBlockEntity.class), ItemTraderBlockEntityRenderer::new);
+//        event.register(bookshelf_traders.getTile(BookTraderBlockEntity.class), BookTraderBlockEntityRenderer::new);
     }
 
 

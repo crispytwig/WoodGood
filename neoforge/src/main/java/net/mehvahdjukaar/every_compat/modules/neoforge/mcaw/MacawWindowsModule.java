@@ -1,5 +1,6 @@
 package net.mehvahdjukaar.every_compat.modules.neoforge.mcaw;
 
+import com.mcwwindows.kikoz.MacawsWindows;
 import com.mcwwindows.kikoz.init.BlockInit;
 import com.mcwwindows.kikoz.objects.*;
 import net.mehvahdjukaar.every_compat.api.RenderLayer;
@@ -10,8 +11,6 @@ import net.mehvahdjukaar.moonlight.api.set.wood.WoodType;
 import net.mehvahdjukaar.moonlight.api.set.wood.WoodTypeRegistry;
 import net.mehvahdjukaar.moonlight.api.util.Utils;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.block.Block;
 
@@ -35,11 +34,9 @@ public class MacawWindowsModule extends SimpleModule {
     public final SimpleEntrySet<WoodType, Block> shutter;
     public final SimpleEntrySet<WoodType, Block> louveredShutter;
 
-
-
     public MacawWindowsModule(String modId) {
         super(modId, "mcw");
-        var tab = ResourceKey.create(Registries.CREATIVE_MODE_TAB, ResourceLocation.parse("mcwwindows:mcwwindows"));
+        var tab = modRes(MacawsWindows.MOD_ID);
 
         window = SimpleEntrySet.builder(WoodType.class, "window",
                         BlockInit.OAK_WINDOW, () -> WoodTypeRegistry.OAK_TYPE,

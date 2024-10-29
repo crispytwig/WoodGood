@@ -28,9 +28,10 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.entity.ChestBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.MapColor;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.common.Tags;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
+import net.neoforged.neoforge.common.Tags;
+
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -40,8 +41,8 @@ import static net.mehvahdjukaar.every_compat.common_classes.CompatChestTexture.g
 //SUPPORT: v1.5.4+
 public class MoreChestVariantsModule extends SimpleModule {
 
-    public final SimpleEntrySet<WoodType, Block> chests;
-    public final SimpleEntrySet<WoodType, Block> trappedChests;
+    public final SimpleEntrySet<WoodType, CompatChestBlock> chests;
+    public final SimpleEntrySet<WoodType, CompatTrappedChestBlock> trappedChests;
 
     public MoreChestVariantsModule(String modID) {
         super(modID, "mcv");
@@ -58,8 +59,8 @@ public class MoreChestVariantsModule extends SimpleModule {
                 .addTag(modRes("chests/normal"), Registries.BLOCK)
                 .addTag(Tags.Blocks.CHESTS, Registries.BLOCK)
                 .addTag(Tags.Blocks.CHESTS_WOODEN, Registries.BLOCK)
-                .addTag(ResourceLocation.parse("quad", "cats_on_blocks/sit"), Registries.BLOCK)
-                .addTag(ResourceLocation.parse("quad", "fuel/wood"), Registries.ITEM)
+                .addTag(ResourceLocation.parse("quad:cats_on_blocks/sit"), Registries.BLOCK)
+                .addTag(ResourceLocation.parse("quad:fuel/wood"), Registries.ITEM)
                 .addTag(Tags.Items.CHESTS_WOODEN, Registries.ITEM)
                 .addTag(Tags.Items.CHESTS, Registries.ITEM)
                 .addTag(modRes("chests/normal"), Registries.ITEM)
@@ -81,7 +82,7 @@ public class MoreChestVariantsModule extends SimpleModule {
                 .addTag(BlockTags.GUARDED_BY_PIGLINS, Registries.BLOCK)
                 .addTag(Tags.Blocks.CHESTS, Registries.BLOCK)
                 .addTag(Tags.Blocks.CHESTS_WOODEN, Registries.BLOCK)
-                .addTag(ResourceLocation.parse("quad", "fuel/wood"), Registries.ITEM)
+                .addTag(ResourceLocation.parse("quad:fuel/wood"), Registries.ITEM)
                 .addTag(modRes("chests/trapped"), Registries.ITEM)
                 .addTag(modRes("chests/wooden"), Registries.ITEM)
                 .addTag(Tags.Items.CHESTS_WOODEN, Registries.ITEM)
@@ -124,7 +125,6 @@ public class MoreChestVariantsModule extends SimpleModule {
         CompatChestBlockRenderer.register(event, trappedChests.getTile(CompatChestBlockEntity.class), shortenedId());
     }
 
-    @Deprecated(forRemoval = true)
     @Override
     // Textures
     public void addDynamicClientResources(ClientDynamicResourcesHandler handler, ResourceManager manager) {

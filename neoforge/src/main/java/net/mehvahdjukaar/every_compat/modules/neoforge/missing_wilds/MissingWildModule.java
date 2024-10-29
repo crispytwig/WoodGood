@@ -21,13 +21,13 @@ public class MissingWildModule extends SimpleModule {
         super(modId, "msw");
 
         fallenLogs = SimpleEntrySet.builder(WoodType.class, "log", "fallen",
-                        MissingWildsBlocks.FALLEN_ACACIA_LOG, () -> WoodTypeRegistry.getValue(ResourceLocation.parse("acacia")),
+                        getModBlock("fallen_acacia_log"), () -> WoodTypeRegistry.getValue(ResourceLocation.parse("acacia")),
                         w -> new FallenLogBlock(Utils.copyPropertySafe(w.log).noOcclusion()))
+                .setRenderType(RenderLayer.CUTOUT_MIPPED)
                 .addTag(modRes("fallen_logs"), Registries.BLOCK)
                 .addTag(modRes("fallen_logs"), Registries.ITEM)
                 .setTabKey(modRes("items"))
                 .defaultRecipe()
-                .setRenderType(RenderLayer.CUTOUT_MIPPED)
                 .build();
         this.addEntry(fallenLogs);
     }

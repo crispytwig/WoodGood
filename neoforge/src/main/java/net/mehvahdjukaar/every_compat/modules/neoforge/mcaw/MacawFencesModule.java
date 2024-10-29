@@ -33,8 +33,7 @@ public class MacawFencesModule extends SimpleModule {
 
     public MacawFencesModule(String modId) {
         super(modId, "mcf");
-
-        var tab = TabInit.FENCEITEMGROUP;
+        var tab = modRes("fenceitemgroup");
 
         picketFences = SimpleEntrySet.builder(WoodType.class, "picket_fence",
                         BlockInit.OAK_PICKET_FENCE, () -> WoodTypeRegistry.OAK_TYPE,
@@ -42,7 +41,7 @@ public class MacawFencesModule extends SimpleModule {
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(BlockTags.FENCES, Registries.BLOCK)
                 .addTag(ItemTags.FENCES, Registries.ITEM)
-                .setTab(tab)
+                .setTabKey(tab)
                 .defaultRecipe()
                 .build();
         this.addEntry(picketFences);
@@ -53,7 +52,7 @@ public class MacawFencesModule extends SimpleModule {
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(BlockTags.FENCES, Registries.BLOCK)
                 .addTag(ItemTags.FENCES, Registries.ITEM)
-                .setTab(tab)
+                .setTabKey(tab)
                 .defaultRecipe()
                 .build();
         this.addEntry(stockadeFences);
@@ -64,7 +63,7 @@ public class MacawFencesModule extends SimpleModule {
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(BlockTags.FENCES, Registries.BLOCK)
                 .addTag(ItemTags.FENCES, Registries.ITEM)
-                .setTab(tab)
+                .setTabKey(tab)
                 .defaultRecipe()
                 .build();
         this.addEntry(horseFences);
@@ -76,7 +75,7 @@ public class MacawFencesModule extends SimpleModule {
                 .addTag(BlockTags.FENCES, Registries.BLOCK)
                 .addTag(ItemTags.FENCES, Registries.ITEM)
                 .setRenderType(RenderLayer.CUTOUT)
-                .setTab(tab)
+                .setTabKey(tab)
                 .defaultRecipe()
                 .build();
         this.addEntry(wiredFences);
@@ -84,22 +83,22 @@ public class MacawFencesModule extends SimpleModule {
 
         pyramidGates = SimpleEntrySet.builder(WoodType.class, "pyramid_gate",
                         BlockInit.OAK_PYRAMID_GATE, () -> WoodTypeRegistry.OAK_TYPE,
-                        w -> new FenceGateBlock(Utils.copyPropertySafe(w.planks), w.toVanillaOrOak()))
+                        w -> new FenceGateBlock(w.toVanillaOrOak(), Utils.copyPropertySafe(w.planks)))
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(BlockTags.UNSTABLE_BOTTOM_CENTER, Registries.BLOCK)
                 .addTag(BlockTags.FENCE_GATES, Registries.BLOCK)
-                .setTab(tab)
+                .setTabKey(tab)
                 .defaultRecipe()
                 .build();
         this.addEntry(pyramidGates);
 
         highleyGates = SimpleEntrySet.builder(WoodType.class, "highley_gate",
                         BlockInit.OAK_HIGHLEY_GATE, () -> WoodTypeRegistry.OAK_TYPE,
-                        w -> new FenceGateBlock(Utils.copyPropertySafe(w.planks),w.toVanillaOrOak()))
+                        w -> new FenceGateBlock(w.toVanillaOrOak(), Utils.copyPropertySafe(w.planks)))
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(BlockTags.UNSTABLE_BOTTOM_CENTER, Registries.BLOCK)
                 .addTag(BlockTags.FENCE_GATES, Registries.BLOCK)
-                .setTab(tab)
+                .setTabKey(tab)
                 .defaultRecipe()
                 .build();
         this.addEntry(highleyGates);
@@ -114,7 +113,7 @@ public class MacawFencesModule extends SimpleModule {
                 .addTag(BlockTags.FENCES, Registries.BLOCK)
                 .addTag(BlockTags.WALLS, Registries.BLOCK)
                 .addTag(ItemTags.WALLS, Registries.ITEM)
-                .setTab(tab)
+                .setTabKey(tab)
                 .copyParentTint()
                 .defaultRecipe()
                 .addModelTransform(m -> m.addModifier((s, id, l) -> {
