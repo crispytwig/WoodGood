@@ -164,7 +164,7 @@ dependencies {
     modCompileOnly("curse.maven:another-furniture-610492:4034009") //WARNING: version 2.1.2-1.19.2
     modCompileOnly("curse.maven:architects-palette-433862:5036133") //!! 1.20.1
     modCompileOnly("curse.maven:backpacked-352835:5401965") //!! 1.20.1
-    modCompileOnly("curse.maven:beautify-decorate-633252:4781709") //!! 1.20.1
+    modCompileOnly("curse.maven:beautify-decorate-633252:5810850")
     modCompileOnly("curse.maven:boatload-337396:5292325") //!! 1.20.1
     modCompileOnly("curse.maven:buildersaddition-389697:5544431")
     modCompileOnly("maven.modrinth:building-but-better:zGMhmLYb") // v1.1.1 | MidnightLib //!! 1.20.1
