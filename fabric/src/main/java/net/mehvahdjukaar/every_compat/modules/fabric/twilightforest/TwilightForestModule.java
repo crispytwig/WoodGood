@@ -1,6 +1,5 @@
 package net.mehvahdjukaar.every_compat.modules.fabric.twilightforest;
 
-import io.github.fabricators_of_create.porting_lib.util.RegistryObject;
 import net.mehvahdjukaar.every_compat.EveryCompat;
 import net.mehvahdjukaar.every_compat.api.RenderLayer;
 import net.mehvahdjukaar.every_compat.api.SimpleEntrySet;

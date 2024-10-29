@@ -13,6 +13,7 @@ import net.mehvahdjukaar.every_compat.neoforge.EveryCompatForge;
 import net.mehvahdjukaar.moonlight.api.resources.SimpleTagBuilder;
 import net.mehvahdjukaar.moonlight.api.set.wood.WoodType;
 import net.mehvahdjukaar.moonlight.api.set.wood.WoodTypeRegistry;
+import net.mehvahdjukaar.moonlight.api.util.Utils;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.resources.ResourceManager;
@@ -267,7 +268,7 @@ public class WorkshopForHandsomeAdventurerModule extends SimpleModule {
 
         // we need to generate tag file for supported planks
         SimpleTagBuilder tagBuilder = SimpleTagBuilder.of(modRes("supported_planks"));
-        simple_tables.blocks.forEach((w, value) -> tagBuilder.add(ForgeRegistries.ITEMS.getKey(w.planks.asItem())));
+        simple_tables.blocks.forEach((w, value) -> tagBuilder.add(Utils.getID(w.planks.asItem())));
         handler.dynamicPack.addTag(tagBuilder, Registries.ITEM);
     }
 

@@ -5,6 +5,7 @@ import com.buuz135.functionalstorage.block.DrawerBlock;
 import com.buuz135.functionalstorage.block.tile.DrawerTile;
 import com.buuz135.functionalstorage.client.DrawerRenderer;
 import com.buuz135.functionalstorage.util.IWoodType;
+import com.hrznstudio.titanium.module.BlockWithTile;
 import net.mehvahdjukaar.every_compat.EveryCompat;
 import net.mehvahdjukaar.every_compat.api.SimpleEntrySet;
 import net.mehvahdjukaar.every_compat.api.SimpleModule;
@@ -97,27 +98,27 @@ public class FunctionalStorageModule extends SimpleModule {
     @Override
     public void onModSetup() {
         super.onModSetup();
-        var x_1 = FunctionalStorage.DRAWER_TYPES.get(FunctionalStorage.DrawerType.X_1);
-        var tileRO_1 = DeferredHolder.create(Registries.ENTITY_TYPE, modRes("oak_1"));
+        var     x_1 = FunctionalStorage.DRAWER_TYPES.get(FunctionalStorage.DrawerType.X_1);
+        var tileRO_1 = DeferredHolder.create(Registries.BLOCK_ENTITY_TYPE, modRes("oak_1"));
         var x_2 = FunctionalStorage.DRAWER_TYPES.get(FunctionalStorage.DrawerType.X_2);
-        var tileRO_2 = DeferredHolder.create(Registries.ENTITY_TYPE, modRes("oak_2"));
+        var tileRO_2 = DeferredHolder.create(Registries.BLOCK_ENTITY_TYPE, modRes("oak_2"));
         var x_4 = FunctionalStorage.DRAWER_TYPES.get(FunctionalStorage.DrawerType.X_4);
-        var tileRO_4 = DeferredHolder.create(Registries.ENTITY_TYPE, modRes("oak_4"));
+        var tileRO_4 = DeferredHolder.create(Registries.BLOCK_ENTITY_TYPE, modRes("oak_4"));
 
 
         for (var block : drawer_1.blocks.values()) {
             var re = DeferredHolder.create(Registries.BLOCK, Utils.getID(block));
-            x_1.add(Pair.of(re, tileRO_1));
+            x_1.add(new BlockWithTile(re, tileRO_1));
         }
 
         for (var block : drawer_2.blocks.values()) {
             var re = DeferredHolder.create(Registries.BLOCK, Utils.getID(block));
-            x_2.add(Pair.of(re, tileRO_2));
+            x_2.add(new BlockWithTile(re, tileRO_2));
         }
 
         for (var block : drawer_4.blocks.values()) {
             var re = DeferredHolder.create(Registries.BLOCK, Utils.getID(block));
-            x_4.add(Pair.of(re, tileRO_4));
+            x_4.add(new BlockWithTile(re, tileRO_4));
         }
 
     }
