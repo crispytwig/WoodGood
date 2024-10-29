@@ -65,8 +65,9 @@ dependencies {
 //    modImplementation("net.moddingplayground.frame:frame-fabric:0.22.2+1.19") // is no longer maintained
 
         //!! Tools
-    modRuntimeOnly("curse.maven:emi-580555:5704392")
-//    modRuntimeOnly("curse.maven:jade-324717:5666690")
+    modRuntimeOnly("curse.maven:emi-580555:5619577")
+    modRuntimeOnly("curse.maven:jade-324717:5571122")
+//    modRuntimeOnly("curse.maven:worldedit-225608:5830452") // required loom 1.7.410
 
 //!!=================================================== IMPORTS ===================================================== \\
 
@@ -80,55 +81,54 @@ dependencies {
     modCompileOnly("net.darktree.redbits:redbits-1.20.1-1.16.1")
 
         //!! MACAW's
-    modCompileOnly("curse.maven:macaws-bridges-351725:5240495")
-    modCompileOnly("curse.maven:macaws-doors-378646:4649888")
-    modCompileOnly("curse.maven:macaws-fences-and-walls-453925:5442191")
-    modCompileOnly("curse.maven:macaws-lights-and-lamps-502372:5450302")
-    modCompileOnly("curse.maven:macaws-paths-and-pavings-629153:5054857")
-    modCompileOnly("curse.maven:macaws-roofs-352039:4590013")
-    modCompileOnly("curse.maven:macaws-trapdoors-400933:4841534")
-    modCompileOnly("curse.maven:macaws-windows-363569:4750644")
-    modCompileOnly("curse.maven:macaws-furniture-359540:4726281")
-    modCompileOnly("curse.maven:macaws-stairs-1119394:5802479")
+    modCompileOnly("curse.maven:macaws-bridges-351725:5240495") //!! 1.20.1
+    modCompileOnly("curse.maven:macaws-doors-378646:4649888") //!! 1.20.1
+    modCompileOnly("curse.maven:macaws-fences-and-walls-453925:5442191") //!! 1.20.1
+    modCompileOnly("curse.maven:macaws-lights-and-lamps-502372:5450302") //!! 1.20.1
+    modCompileOnly("curse.maven:macaws-paths-and-pavings-629153:5054857") //!! 1.20.1
+    modCompileOnly("curse.maven:macaws-roofs-352039:4590013") //!! 1.20.1
+    modCompileOnly("curse.maven:macaws-trapdoors-400933:4841534") //!! 1.20.1
+    modCompileOnly("curse.maven:macaws-windows-363569:4750644") //!! 1.20.1
+    modCompileOnly("curse.maven:macaws-furniture-359540:4726281") //!! 1.20.1
+    modCompileOnly("curse.maven:macaws-stairs-1119394:5802479") //!! 1.20.1
 
         //!! OTHERS
-    modCompileOnly("curse.maven:another-furniture-610492:4815126")
-    modCompileOnly("curse.maven:beautify-refabricated-809311:5405529")
-    modCompileOnly("curse.maven:bewitchment-394915:5205373")
-    modCompileOnly("curse.maven:building-but-better-989479:5362379")
-    modCompileOnly("curse.maven:backpacked-352835:5401968")
-    modCompileOnly("curse.maven:camp-chair-531744:4579676")
-    modCompileOnly("curse.maven:chipped-456956:4634858") // v3.0.1
-    modCompileOnly("curse.maven:clutter-826060:5776595") //RML: Geckolib
-//    modCompileOnly("curse.maven:cozy-625281:4728202")
-    modCompileOnly("curse.maven:create-fabric-624165:5168511")
-    modCompileOnly("curse.maven:dawn-of-time-312359:5651253")
-    modCompileOnly("curse.maven:decorative-blocks-362528:3941637")
-    modCompileOnly("curse.maven:dramatic-doors-380617:4815647")
-    modCompileOnly("curse.maven:exlines-awnings-526698:4668406")
-    modCompileOnly("curse.maven:exlines-bark-carpets-527296:4062547")
-    modCompileOnly("curse.maven:farmers-delight-fabric-482834:4939709") // legacy
-    modCompileOnly("curse.maven:farmers-delight-refabricated-993166:5215829")
-    modCompileOnly("curse.maven:friends-and-foes-551364:4968876")
-    modCompileOnly("curse.maven:furnish-547069:4821516")
-    modCompileOnly("curse.maven:handcrafted-538214:5118730")
-    modCompileOnly("curse.maven:hearth-and-home-849364:4828281")
-    modCompileOnly("curse.maven:infinity-buttons-661902:4716987")
-    modCompileOnly("curse.maven:lightmans-currency-fabric-724119:5544643")
-    modCompileOnly("curse.maven:mighty-mail-fabric-904097:4750271")
-    modCompileOnly("curse.maven:missing-wilds-622590:5053651")
-    modCompileOnly("curse.maven:more-crafting-tables-lieonlion-913586:5104629")
-    modCompileOnly("maven.modrinth:stylish-stiles:zLlRqz68")
-    modCompileOnly("curse.maven:table-top-craft-fabric-729535:5319819") //RLM: exp4j
-    modCompileOnly("curse.maven:the-twilight-forest-unofficial-1111023:5791503") // Use RLM
-    modCompileOnly("curse.maven:twigs-496913:4603805")
-    modCompileOnly("curse.maven:valhelsia-furniture-694349:5189603")
-    modCompileOnly("curse.maven:variant-vanilla-blocks-866509:5150741") //v1.3.8
-    modCompileOnly("curse.maven:villagersplus-fabric-809542:4996993")
-    modCompileOnly("maven.modrinth:wilder-wild:2.4-mc1.20.1")
-    modCompileOnly("curse.maven:wooden-hoppers-406021:4796143")
+    modCompileOnly("curse.maven:another-furniture-610492:4815126") //!! 1.20.1
+    modCompileOnly("curse.maven:beautify-refabricated-809311:5405529") //!! 1.20.1
+    modCompileOnly("curse.maven:bewitchment-394915:5205373") //!! 1.20.1
+    modCompileOnly("curse.maven:building-but-better-989479:5362379") //!! 1.20.1
+    modCompileOnly("curse.maven:backpacked-352835:5401968") //!! 1.20.1
+    modCompileOnly("curse.maven:camp-chair-531744:4579676") //!! 1.20.1
+    modCompileOnly("curse.maven:chipped-456956:4634858") // v3.0.1 //!! 1.20.1
+    modCompileOnly("curse.maven:clutter-826060:5776595") //RML: Geckolib //!! 1.20.1
+    modCompileOnly("curse.maven:create-fabric-624165:5168511") //!! 1.20.1
+    modCompileOnly("curse.maven:dawn-of-time-312359:5651253") //!! 1.20.1
+    modCompileOnly("curse.maven:decorative-blocks-362528:3941637") //!! 1.20.1
+    modCompileOnly("curse.maven:dramatic-doors-380617:4815647") //!! 1.20.1
+    modCompileOnly("curse.maven:exlines-awnings-526698:4668406") //!! 1.20.1
+    modCompileOnly("curse.maven:exlines-bark-carpets-527296:4062547") //!! 1.20.1
+    modCompileOnly("curse.maven:farmers-delight-fabric-482834:4939709") // legacy //!! 1.20.1
+    modCompileOnly("curse.maven:farmers-delight-refabricated-993166:5215829") //!! 1.20.1
+    modCompileOnly("curse.maven:friends-and-foes-551364:4968876") //!! 1.20.1
+    modCompileOnly("curse.maven:furnish-547069:4821516") //!! 1.20.1
+    modCompileOnly("curse.maven:handcrafted-538214:5118730") //!! 1.20.1
+    modCompileOnly("curse.maven:hearth-and-home-849364:4828281") //!! 1.20.1
+    modCompileOnly("curse.maven:infinity-buttons-661902:4716987") //!! 1.20.1
+    modCompileOnly("curse.maven:lightmans-currency-fabric-724119:5544643") //!! 1.20.1
+    modCompileOnly("curse.maven:mighty-mail-fabric-904097:4750271") //!! 1.20.1
+    modCompileOnly("curse.maven:missing-wilds-622590:5053651") //!! 1.20.1
+    modCompileOnly("curse.maven:more-crafting-tables-lieonlion-913586:5104629") //!! 1.20.1
+    modCompileOnly("maven.modrinth:stylish-stiles:zLlRqz68") //!! 1.20.1
+    modCompileOnly("curse.maven:table-top-craft-fabric-729535:5319819") //RLM: exp4j //!! 1.20.1
+    modCompileOnly("curse.maven:the-twilight-forest-unofficial-1111023:5791503") // Use RLM //!! 1.20.1
+    modCompileOnly("curse.maven:twigs-496913:4603805") //!! 1.20.1
+    modCompileOnly("curse.maven:valhelsia-furniture-694349:5189603") //!! 1.20.1
+    modCompileOnly("curse.maven:variant-vanilla-blocks-866509:5150741") //v1.3.8 //!! 1.20.1
+    modCompileOnly("curse.maven:villagersplus-fabric-809542:4996993") //!! 1.20.1
+    modCompileOnly("maven.modrinth:wilder-wild:2.4-mc1.20.1") //!! 1.20.1
+    modCompileOnly("curse.maven:wooden-hoppers-406021:4796143") //!! 1.20.1
 
-    modCompileOnly("curse.maven:regions-unexplored-659110:5151837")
+    modCompileOnly("curse.maven:regions-unexplored-659110:5151837") //!! 1.20.1
 
     // ======================================== DISABLED FOR A REASON =============================================== \\
 //    modCompileOnly("curse.maven:the-twilight-forest-227639:4389094") // Not available & Currently "The Twilight Forest Unofficial" is available
