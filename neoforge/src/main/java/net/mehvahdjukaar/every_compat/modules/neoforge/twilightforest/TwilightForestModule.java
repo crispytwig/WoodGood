@@ -18,9 +18,7 @@ import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import org.jetbrains.annotations.NotNull;
 import twilightforest.block.BanisterBlock;
-import twilightforest.block.HollowLogClimbable;
-import twilightforest.block.HollowLogHorizontal;
-import twilightforest.block.HollowLogVertical;
+import twilightforest.block.HorizontalHollowLogBlock;
 import twilightforest.enums.HollowLogVariants;
 import twilightforest.init.TFBlocks;
 import twilightforest.item.HollowLogItem;
@@ -32,7 +30,7 @@ public class TwilightForestModule extends SimpleModule {
 
     public final SimpleEntrySet<WoodType, BanisterBlock> banisters;
     public final SimpleEntrySet<WoodType, HollowLogVertical> hollowLogsVertical;
-    public final SimpleEntrySet<WoodType, HollowLogHorizontal> hollowLogsHorizontal;
+    public final SimpleEntrySet<WoodType, HorizontalHollowLogBlock> hollowLogsHorizontal;
     public final SimpleEntrySet<WoodType, HollowLogClimbable> hollowLogsClimbable;
 
     public TwilightForestModule(String modId) {
@@ -55,7 +53,7 @@ public class TwilightForestModule extends SimpleModule {
 
         hollowLogsHorizontal = SimpleEntrySet.builder(WoodType.class, "log_horizontal", "hollow",
                         TFBlocks.HOLLOW_BIRCH_LOG_HORIZONTAL, getBirch(),
-                        w -> new HollowLogHorizontal(Utils.copyPropertySafe(w.log))
+                        w -> new HorizontalHollowLogBlock(Utils.copyPropertySafe(w.log))
                 )
                 .requiresChildren("stripped_log") //REASON: Textures
                 .addTag(modRes("hollow_logs_horizontal"), Registries.BLOCK)

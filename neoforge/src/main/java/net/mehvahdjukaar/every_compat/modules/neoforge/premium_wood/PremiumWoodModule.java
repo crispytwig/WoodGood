@@ -15,7 +15,7 @@ import net.minecraft.tags.BlockTags;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.GlassBlock;
+import net.minecraft.world.level.block.TransparentBlock;
 
 
 public class PremiumWoodModule extends SimpleModule {
@@ -59,7 +59,7 @@ public class PremiumWoodModule extends SimpleModule {
         framedGlass = SimpleEntrySet.builder(WoodType.class, "framed_glass",
                         getModBlock("tiger_framed_glass"),
                         () -> WoodTypeRegistry.getValue(ResourceLocation.parse("premium_wood:tiger")),
-                        w -> new GlassBlock(Utils.copyPropertySafe(Blocks.GLASS)))
+                        w -> new TransparentBlock(Utils.copyPropertySafe(Blocks.GLASS)))
                 .addTextureM(modRes("block/tiger/tiger_framed_glass"), EveryCompat.res("block/pw/tiger_framed_glass_m"))
                 .addTag(BlockTags.MINEABLE_WITH_PICKAXE, Registries.BLOCK)
                 .addTag(modRes("framed_glass"), Registries.BLOCK)

@@ -8,6 +8,7 @@ import net.mehvahdjukaar.every_compat.EveryCompat;
 import net.mehvahdjukaar.every_compat.api.RenderLayer;
 import net.mehvahdjukaar.every_compat.api.SimpleEntrySet;
 import net.mehvahdjukaar.every_compat.api.SimpleModule;
+import net.mehvahdjukaar.every_compat.misc.SpriteHelper;
 import net.mehvahdjukaar.moonlight.api.resources.BlockTypeResTransformer;
 import net.mehvahdjukaar.moonlight.api.set.wood.WoodType;
 import net.mehvahdjukaar.moonlight.api.set.wood.WoodTypeRegistry;
@@ -61,7 +62,7 @@ public class BuildingButBetterModule extends SimpleModule {
                 .addCustomItem((wood, block, properties) -> new DescriptionBlockItem(block, properties))
                 .defaultRecipe()
                 .copyParentDrop()
-                .addModelTransform(BlockTypeResTransformer::replaceOakPlanks)
+                .addModelTransform(SpriteHelper::replaceOakPlanks)
                 .build();
         this.addEntry(layers);
 
@@ -156,7 +157,7 @@ public class BuildingButBetterModule extends SimpleModule {
                 .addTexture(modRes("block/frame/oak"))
                 .addTexture(modRes("block/frame/oak_sticks"))
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
-                .addTag(ResourceLocation.parse("create", "movable_empty_collider"), Registries.BLOCK)
+                .addTag(ResourceLocation.fromNamespaceAndPath("create", "movable_empty_collider"), Registries.BLOCK)
                 .addTag(modRes("wooden_blocks"), Registries.BLOCK)
                 .addTag(modRes("frames"), Registries.BLOCK)
                 .addTag(modRes("frames"), Registries.ITEM)

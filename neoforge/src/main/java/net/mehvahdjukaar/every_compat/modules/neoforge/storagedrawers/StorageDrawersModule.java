@@ -24,8 +24,8 @@ import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Collection;
@@ -43,7 +43,7 @@ public class StorageDrawersModule extends SimpleModule {
 
     public StorageDrawersModule(String modId) {
         super(modId, "sd");
-        var tab = ResourceKey.create(Registries.CREATIVE_MODE_TAB, ResourceLocation.parse("storagedrawers", "storagedrawers"));
+        ResourceLocation tab =modRes(  "storagedrawers");
 
         FULL_DRAWERS_1 = SimpleEntrySet.builder(WoodType.class, "full_drawers_1",
                         ModBlocks.OAK_FULL_DRAWERS_1, () -> WoodTypeRegistry.OAK_TYPE,
