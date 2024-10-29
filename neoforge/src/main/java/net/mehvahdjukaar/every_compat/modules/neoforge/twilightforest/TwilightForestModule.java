@@ -39,7 +39,6 @@ public class TwilightForestModule extends SimpleModule {
         super(modId, "tf");
         var tab = modRes("blocks");
 
-        //TODO: check face culling
         banisters = SimpleEntrySet.builder(WoodType.class, "banister",
                         TFBlocks.OAK_BANISTER, () -> WoodTypeRegistry.OAK_TYPE,
                         w -> new BanisterBlock(Utils.copyPropertySafe(w.planks).noOcclusion())
