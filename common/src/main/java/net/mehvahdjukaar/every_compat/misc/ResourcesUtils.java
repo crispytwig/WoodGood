@@ -344,7 +344,6 @@ public class ResourcesUtils {
                                                                               Map<T, B> items, ResourceLocation oakRecipe, T fromType,
                                                                               int index) {
         Recipe<?> template = RPUtils.readRecipe(manager, oakRecipe);
-
         items.forEach((w, i) -> {
 
             if (ModEntriesConfigs.isEntryEnabled(w, i)) {
