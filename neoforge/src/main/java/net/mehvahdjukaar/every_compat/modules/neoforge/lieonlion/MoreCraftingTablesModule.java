@@ -39,7 +39,6 @@ public class MoreCraftingTablesModule extends SimpleModule {
                 .setTabKey(tab)
                 .defaultRecipe()
                 .build();
-
         this.addEntry(craftingTable);
     }
 }

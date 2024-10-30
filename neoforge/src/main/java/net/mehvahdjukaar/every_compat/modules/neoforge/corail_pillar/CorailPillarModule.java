@@ -17,7 +17,7 @@ import ovh.corail.corail_pillar.block.BlockPillar;
 
 import java.util.function.Supplier;
 
-//SUPPORT: v5.9.1+
+//SUPPORT: v6.4.0+
 public class CorailPillarModule extends SimpleModule {
     public final SimpleEntrySet<WoodType, Block> LOG_PILLAR;
     public final SimpleEntrySet<WoodType, Block> SMALL_LOG_PILLAR;
@@ -25,7 +25,7 @@ public class CorailPillarModule extends SimpleModule {
     public final SimpleEntrySet<WoodType, Block> SMALL_PLANK_PILLAR;
     public CorailPillarModule(String modId) {
         super(modId, "cpr");
-        Supplier<CreativeModeTab> tab = getModTab("corail_pillar");
+        ResourceLocation tab = modRes("creative_tab");
 
         LOG_PILLAR = SimpleEntrySet.builder(WoodType.class, "log", "pillar",
                 getModBlock("pillar_oak_log"), () -> WoodTypeRegistry.OAK_TYPE,
@@ -34,7 +34,7 @@ public class CorailPillarModule extends SimpleModule {
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(modRes("pillar"), Registries.BLOCK)
                 .addTag(modRes("wooden_pillar"), Registries.BLOCK)
-                .setTab(tab)
+                .setTabKey(tab)
                 .addRecipe(modRes("stonecutting/pillar_oak_log"))
                 .build();
         this.addEntry(LOG_PILLAR);
@@ -46,7 +46,7 @@ public class CorailPillarModule extends SimpleModule {
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(modRes("pillar"), Registries.BLOCK)
                 .addTag(modRes("wooden_pillar"), Registries.BLOCK)
-                .setTab(tab)
+                .setTabKey(tab)
                 .addRecipe(modRes("stonecutting/pillar_oak_planks"))
                 .build();
         this.addEntry(SMALL_LOG_PILLAR);
@@ -58,7 +58,7 @@ public class CorailPillarModule extends SimpleModule {
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(modRes("pillar"), Registries.BLOCK)
                 .addTag(modRes("wooden_pillar"), Registries.BLOCK)
-                .setTab(tab)
+                .setTabKey(tab)
                 .build();
         this.addEntry(PLANK_PILLAR);
 
@@ -69,7 +69,7 @@ public class CorailPillarModule extends SimpleModule {
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(modRes("pillar"), Registries.BLOCK)
                 .addTag(modRes("wooden_pillar"), Registries.BLOCK)
-                .setTab(tab)
+                .setTabKey(tab)
 //                .addRecipe(modRes("stonecutting/"))
                 .build();
         this.addEntry(SMALL_PLANK_PILLAR);
@@ -94,7 +94,7 @@ public class CorailPillarModule extends SimpleModule {
 
     public void stonecuttingRecipe(ServerDynamicResourcesHandler handler, Block input, Block output, int count) {
         String recipeJSON = """
-            {   
+            {
                 "type":"minecraft:stonecutting",
                 "ingredient":{
                     "item":"[INPUT]"

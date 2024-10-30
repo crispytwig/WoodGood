@@ -15,18 +15,18 @@ import pokecube.core.init.ItemGenerator;
 import pokecube.legends.init.BlockInit;
 
 
-public class PokecubeLegendsModule extends SimpleModule {
+public class PokecubeAOIModule extends SimpleModule {
 
     public final SimpleEntrySet<WoodType, Block> distorticPlanks;
-    public final SimpleEntrySet<WoodType, ItemGenerator.GenericStairs> distorticStairs;
-    public final SimpleEntrySet<WoodType, SlabBlock> DISTORTICSLABS;
+    public final SimpleEntrySet<WoodType, Block> distorticStairs;
+    public final SimpleEntrySet<WoodType, Block> DISTORTICSLABS;
 
-    public PokecubeLegendsModule(String modId) {
+    public PokecubeAOIModule(String modId) {
         super(modId, "pcl");
         ResourceLocation tab = modRes("building_blocks_tab");
 
         distorticPlanks = SimpleEntrySet.builder(WoodType.class, "planks", "distortic",
-                        BlockInit.DISTORTIC_OAK_PLANKS, () -> WoodTypeRegistry.OAK_TYPE,
+                        getModBlock("distortic_oak_planks"), () -> WoodTypeRegistry.OAK_TYPE,
                         w -> new Block(Utils.copyPropertySafe(w.planks)))
                 .addRecipe(modRes("dimensions/distorted_world/distortic_planks/distortic_oak_planks"))
                 .addTag(modRes("legends_planks"), Registries.BLOCK)
@@ -41,7 +41,7 @@ public class PokecubeLegendsModule extends SimpleModule {
         this.addEntry(distorticPlanks);
 
         distorticStairs = SimpleEntrySet.builder(WoodType.class, "stairs", "distortic",
-                        BlockInit.DISTORTIC_OAK_STAIRS, () -> WoodTypeRegistry.OAK_TYPE,
+                        getModBlock("distortic_oak_stairs"), () -> WoodTypeRegistry.OAK_TYPE,
                         w -> new ItemGenerator.GenericStairs(w.planks.defaultBlockState(), Utils.copyPropertySafe(w.planks)))
                 .addRecipe(modRes("dimensions/distorted_world/distortic_planks/distortic_oak_stairs"))
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
@@ -54,7 +54,7 @@ public class PokecubeLegendsModule extends SimpleModule {
         this.addEntry(distorticStairs);
 
         DISTORTICSLABS = SimpleEntrySet.builder(WoodType.class, "slab", "distortic",
-                        BlockInit.DISTORTIC_OAK_SLAB, () -> WoodTypeRegistry.OAK_TYPE,
+                        getModBlock("distortic_oak_slab"), () -> WoodTypeRegistry.OAK_TYPE,
                         w -> new SlabBlock(Utils.copyPropertySafe(w.planks)))
                 .addRecipe(modRes("dimensions/distorted_world/distortic_planks/distortic_oak_slab"))
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)

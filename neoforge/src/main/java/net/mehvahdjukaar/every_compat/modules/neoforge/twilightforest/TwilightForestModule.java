@@ -27,7 +27,7 @@ import twilightforest.item.HollowLogItem;
 
 import java.util.function.Supplier;
 
-//SUPPORT: v4.3.1750+
+//SUPPORT: v4.6.2790+
 public class TwilightForestModule extends SimpleModule {
 
     public final SimpleEntrySet<WoodType, BanisterBlock> banisters;
@@ -39,6 +39,7 @@ public class TwilightForestModule extends SimpleModule {
         super(modId, "tf");
         var tab = modRes("blocks");
 
+        //TODO: check face culling
         banisters = SimpleEntrySet.builder(WoodType.class, "banister",
                         TFBlocks.OAK_BANISTER, () -> WoodTypeRegistry.OAK_TYPE,
                         w -> new BanisterBlock(Utils.copyPropertySafe(w.planks).noOcclusion())

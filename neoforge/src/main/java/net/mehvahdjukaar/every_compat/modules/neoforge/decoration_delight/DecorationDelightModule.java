@@ -11,22 +11,23 @@ import net.mehvahdjukaar.moonlight.api.set.wood.WoodType;
 import net.mehvahdjukaar.moonlight.api.set.wood.WoodTypeRegistry;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.world.level.block.Block;
 
 //SUPPORT: v1.0.0
 public class DecorationDelightModule extends SimpleModule {
-    public final SimpleEntrySet<WoodType, OakCounterBlock> COUNTER;
-    public final SimpleEntrySet<WoodType, OakCounterCornerBlock> COUNTER_CORNER;
-    public final SimpleEntrySet<WoodType, OakCounterBendBlock> COUNTER_BEND;
-    public final SimpleEntrySet<WoodType, OakCountertopBlock> COUNTER_TOP;
-    public final SimpleEntrySet<WoodType, OakStoolBlock> STOOL;
-    public final SimpleEntrySet<WoodType, OakMosaicBlock> MOSAIC;
+    public final SimpleEntrySet<WoodType, Block> COUNTER;
+    public final SimpleEntrySet<WoodType, Block> COUNTER_CORNER;
+    public final SimpleEntrySet<WoodType, Block> COUNTER_BEND;
+    public final SimpleEntrySet<WoodType, Block> COUNTER_TOP;
+    public final SimpleEntrySet<WoodType, Block> STOOL;
+    public final SimpleEntrySet<WoodType, Block> MOSAIC;
 
     public DecorationDelightModule(String modId) {
         super(modId, "ddr");
         var tab = modRes("decoration_delight_tab");
 
         COUNTER = SimpleEntrySet.builder(WoodType.class, "counter",
-                DecorationDelightModBlocks.OAK_COUNTER, () -> WoodTypeRegistry.OAK_TYPE,
+                getModBlock("oak_counter"), () -> WoodTypeRegistry.OAK_TYPE,
                 w -> new OakCounterBlock()
         )
                 .addTag(BlockTags.MINEABLE_WITH_HOE, Registries.BLOCK)
@@ -44,7 +45,7 @@ public class DecorationDelightModule extends SimpleModule {
         this.addEntry(COUNTER);
 
         COUNTER_CORNER = SimpleEntrySet.builder(WoodType.class, "counter_corner",
-                DecorationDelightModBlocks.OAK_COUNTER_CORNER, () -> WoodTypeRegistry.OAK_TYPE,
+                getModBlock("oak_counter_corner"), () -> WoodTypeRegistry.OAK_TYPE,
                 w -> new OakCounterCornerBlock()
         )
                 .addTag(BlockTags.MINEABLE_WITH_HOE, Registries.BLOCK)
@@ -61,7 +62,7 @@ public class DecorationDelightModule extends SimpleModule {
         this.addEntry(COUNTER_CORNER);
 
         COUNTER_BEND = SimpleEntrySet.builder(WoodType.class, "counter_bend",
-                DecorationDelightModBlocks.OAK_COUNTER_BEND, () -> WoodTypeRegistry.OAK_TYPE,
+                getModBlock("oak_counter_bend"), () -> WoodTypeRegistry.OAK_TYPE,
                 w -> new OakCounterBendBlock()
         )
                 .addTag(BlockTags.MINEABLE_WITH_HOE, Registries.BLOCK)
@@ -77,7 +78,7 @@ public class DecorationDelightModule extends SimpleModule {
         this.addEntry(COUNTER_BEND);
 
         COUNTER_TOP = SimpleEntrySet.builder(WoodType.class, "countertop",
-                DecorationDelightModBlocks.OAK_COUNTERTOP, () -> WoodTypeRegistry.OAK_TYPE,
+                getModBlock("oak_countertop"), () -> WoodTypeRegistry.OAK_TYPE,
                 w -> new OakCountertopBlock()
         )
                 .addTag(BlockTags.MINEABLE_WITH_HOE, Registries.BLOCK)
@@ -91,7 +92,7 @@ public class DecorationDelightModule extends SimpleModule {
         this.addEntry(COUNTER_TOP);
 
         STOOL = SimpleEntrySet.builder(WoodType.class, "stool",
-                DecorationDelightModBlocks.OAK_STOOL, () -> WoodTypeRegistry.OAK_TYPE,
+                getModBlock("oak_stool"), () -> WoodTypeRegistry.OAK_TYPE,
                 w -> new OakStoolBlock()
                 )
                 .addTag(BlockTags.MINEABLE_WITH_HOE, Registries.BLOCK)
@@ -109,7 +110,7 @@ public class DecorationDelightModule extends SimpleModule {
         this.addEntry(STOOL);
 
         MOSAIC = SimpleEntrySet.builder(WoodType.class, "mosaic",
-                DecorationDelightModBlocks.OAK_MOSAIC, () -> WoodTypeRegistry.OAK_TYPE,
+                getModBlock("oak_mosaic"), () -> WoodTypeRegistry.OAK_TYPE,
                 w -> new OakMosaicBlock()
                 )
                 .addTag(BlockTags.MINEABLE_WITH_HOE, Registries.BLOCK)

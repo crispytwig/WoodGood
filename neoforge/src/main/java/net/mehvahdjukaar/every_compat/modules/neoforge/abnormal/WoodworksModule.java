@@ -50,12 +50,12 @@ import static net.mehvahdjukaar.every_compat.common_classes.TagUtility.getATagOr
 public class WoodworksModule extends SimpleModule {
     public final SimpleEntrySet<WoodType, Block> bookshelves;
     public final SimpleEntrySet<WoodType, Block> chiseled_bookshelves;
-    public final SimpleEntrySet<WoodType, RotatedPillarBlock> boards;
+    public final SimpleEntrySet<WoodType, Block> boards;
     public final SimpleEntrySet<WoodType, Block> ladders;
     public final SimpleEntrySet<WoodType, Block> beehives;
     public final SimpleEntrySet<WoodType, Block> chests;
     public final SimpleEntrySet<WoodType, Block> trappedChests;
-    public final SimpleEntrySet<LeavesType, LeafPileBlock> leafPiles;
+    public final SimpleEntrySet<LeavesType, Block> leafPiles;
 
     public WoodworksModule(String modId) {
         super(modId, "abnww");
@@ -94,7 +94,7 @@ public class WoodworksModule extends SimpleModule {
         this.addEntry(chiseled_bookshelves);
 
         boards = SimpleEntrySet.builder(WoodType.class, "boards",
-                        WoodworksBlocks.OAK_BOARDS, () -> WoodTypeRegistry.OAK_TYPE,
+                        getModBlock("oak_boards"), () -> WoodTypeRegistry.OAK_TYPE,
                         w -> new RotatedPillarBlock(Utils.copyPropertySafe(w.planks)))
                 .setTabKey(tab)
                 .copyParentDrop()
@@ -166,9 +166,8 @@ public class WoodworksModule extends SimpleModule {
                 .build();
         this.addEntry(trappedChests);
 
-
         leafPiles = SimpleEntrySet.builder(LeavesType.class, "leaf_pile",
-                        WoodworksBlocks.OAK_LEAF_PILE, () -> LeavesTypeRegistry.OAK_TYPE,
+                        getModBlock("oak_leaf_pile"), () -> LeavesTypeRegistry.OAK_TYPE,
                         (w) -> {
                             if (w.getWoodType() == null) return null;
                             return new LeafPileBlock(WoodworksBlocks.WoodworksProperties.OAK_WOOD.leafPile());

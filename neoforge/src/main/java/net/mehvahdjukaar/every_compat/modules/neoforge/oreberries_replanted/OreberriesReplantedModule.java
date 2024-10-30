@@ -16,13 +16,13 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 //SUPPORT: v0.5.2+
 public class OreberriesReplantedModule extends SimpleModule {
 
-    public final SimpleEntrySet<WoodType, VatBlock> vats;
+    public final SimpleEntrySet<WoodType, Block> vats;
 
     public OreberriesReplantedModule(String modId) {
         super(modId, "or");
 
         vats = SimpleEntrySet.builder(WoodType.class, "vat",
-                        OreBerryRegistry.OAK_VAT, () -> WoodTypeRegistry.OAK_TYPE,
+                        getModBlock("oak_vat"), () -> WoodTypeRegistry.OAK_TYPE,
                         w -> new VatBlock(BlockBehaviour.Properties.of()
                                 .mapColor(w.planks.defaultMapColor())
                                 .sound(SoundType.SWEET_BERRY_BUSH)
@@ -32,6 +32,7 @@ public class OreberriesReplantedModule extends SimpleModule {
                 )
                 .addTile(OreBerryRegistry.VAT_BLOCK_ENTITY)
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
+                .setTabKey(modRes("tab"))
                 .defaultRecipe()
                 .build();
         this.addEntry(vats);

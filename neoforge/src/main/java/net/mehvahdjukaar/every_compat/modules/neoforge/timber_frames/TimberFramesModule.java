@@ -23,6 +23,7 @@ import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraft.world.phys.HitResult;
 import net.rasanovum.timberframes.block.OakTimberFrameAlphaBlock;
 import net.rasanovum.timberframes.block.OakTimberFrameBetaBlock;
+import org.jetbrains.annotations.NotNull;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -105,7 +106,7 @@ public class TimberFramesModule extends SimpleModule {
         }
 
         @Override
-        public List<ItemStack> getDrops(BlockState state, LootParams.Builder builder) {
+        public @NotNull List<ItemStack> getDrops(@NotNull BlockState state, LootParams.@NotNull Builder builder) {
             return Collections.singletonList(new ItemStack(alpha));
         }
 

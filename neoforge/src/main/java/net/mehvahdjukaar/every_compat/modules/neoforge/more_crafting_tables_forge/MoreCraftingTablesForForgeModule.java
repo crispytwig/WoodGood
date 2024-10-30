@@ -1,4 +1,4 @@
-package net.mehvahdjukaar.every_compat.modules.neoforge.more;
+package net.mehvahdjukaar.every_compat.modules.neoforge.more_crafting_tables_forge;
 
 import com.duart.mctb.blocks.CraftingBlock;
 import net.mehvahdjukaar.every_compat.EveryCompat;
@@ -42,7 +42,6 @@ public class MoreCraftingTablesForForgeModule extends SimpleModule {
                 .setTabKey(tab)
                 .defaultRecipe()
                 .build();
-
         this.addEntry(craftingTable);
     }
 

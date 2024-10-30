@@ -41,14 +41,14 @@ import static net.mehvahdjukaar.every_compat.common_classes.CompatChestTexture.g
 //SUPPORT: v1.5.4+
 public class MoreChestVariantsModule extends SimpleModule {
 
-    public final SimpleEntrySet<WoodType, CompatChestBlock> chests;
-    public final SimpleEntrySet<WoodType, CompatTrappedChestBlock> trappedChests;
+    public final SimpleEntrySet<WoodType, Block> chests;
+    public final SimpleEntrySet<WoodType, Block> trappedChests;
 
     public MoreChestVariantsModule(String modID) {
         super(modID, "mcv");
 
         chests = SimpleEntrySet.builder(WoodType.class, "chest",
-                        McvBlockInit.OAK_CHEST, () -> WoodTypeRegistry.OAK_TYPE,
+                        getModBlock("oak_chest"), () -> WoodTypeRegistry.OAK_TYPE,
                         w -> new CompatChestBlock(this::getChestTile,
                                 Utils.copyPropertySafe(Blocks.CHEST).mapColor(MapColor.WOOD))
                 )
@@ -71,7 +71,7 @@ public class MoreChestVariantsModule extends SimpleModule {
         this.addEntry(chests);
 
         trappedChests = SimpleEntrySet.builder(WoodType.class, "trapped_chest",
-                        McvBlockInit.OAK_TRAPPED_CHEST, () -> WoodTypeRegistry.OAK_TYPE,
+                        getModBlock("oak_trapped_chest"), () -> WoodTypeRegistry.OAK_TYPE,
                         w -> new CompatTrappedChestBlock(this::getTrappedTile,
                                 Utils.copyPropertySafe(Blocks.TRAPPED_CHEST).mapColor(MapColor.WOOD))
                 )

@@ -34,7 +34,7 @@ public class TropicraftModule extends SimpleModule {
                         getModBlock("mangrove_boardwalk"), () -> WoodTypeRegistry.getValue(ResourceLocation.parse("mangrove")),
                         w -> new BoardwalkBlock(BlockBehaviour.Properties.of().noOcclusion())
                 )
-                //TEXTURE: using planks
+                //TEXTURE: planks
                 //REASON: tropicraft has its own planks texture for mangrove, Below is use mod's planks texture
                 .addModelTransform(m -> m.addModifier((s, resLoc, woodType) -> {
                     if (woodType.getNamespace().equals("tfc"))
@@ -46,7 +46,7 @@ public class TropicraftModule extends SimpleModule {
                         }
                 ))
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
-                .setTab(getModTab("tropicraft"))
+                .setTabKey(modRes("tropicraft"))
                 .build();
         this.addEntry(boardwalks);
 

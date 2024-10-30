@@ -24,7 +24,7 @@ public class MosaicCarpentryModule extends SimpleModule {
 
     public MosaicCarpentryModule(String modId) {
         super(modId, "mc");
-        CreativeModeTab tab = MosaicCarpentry.MOSAIC_CARPENTRY_TAB;
+        var tab = modRes(MosaicCarpentry.MOD_ID);
 
 
         mosaics = SimpleEntrySet.builder(WoodType.class, "mosaic",
@@ -34,10 +34,9 @@ public class MosaicCarpentryModule extends SimpleModule {
                 .addTag(BlockTags.PLANKS, Registries.BLOCK)
                 .addTag(ItemTags.PLANKS, Registries.ITEM)
                 .addTexture(modRes("block/spruce_mosaic"))
-                .setTab(() -> tab)
+                .setTabKey(tab)
                 .defaultRecipe()
                 .build();
-
         this.addEntry(mosaics);
 
         mosaicStairs = SimpleEntrySet.builder(WoodType.class, "mosaic_stairs",
@@ -47,10 +46,9 @@ public class MosaicCarpentryModule extends SimpleModule {
                 .addTag(BlockTags.WOODEN_STAIRS, Registries.BLOCK)
                 .addTag(ItemTags.WOODEN_STAIRS, Registries.ITEM)
                 .addTexture(modRes("block/spruce_mosaic"))
-                .setTab(() -> tab)
+                .setTabKey(tab)
                 .defaultRecipe()
                 .build();
-
         this.addEntry(mosaicStairs);
 
         mosaicSlabs = SimpleEntrySet.builder(WoodType.class, "mosaic_slab",
@@ -60,10 +58,9 @@ public class MosaicCarpentryModule extends SimpleModule {
                 .addTag(BlockTags.WOODEN_SLABS, Registries.BLOCK)
                 .addTag(ItemTags.WOODEN_SLABS, Registries.ITEM)
                 .addTexture(modRes("block/spruce_mosaic"))
-                .setTab(() -> tab)
+                .setTabKey(tab)
                 .defaultRecipe()
                 .build();
-
         this.addEntry(mosaicSlabs);
     }
 }

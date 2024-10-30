@@ -43,7 +43,7 @@ public class RegionsUnexploredModule extends SimpleModule {
     public RegionsUnexploredModule(String modId) {
         super(modId, "ru");
         var tab = modRes("ru_main");
-//TODO:add branch beard block
+
         branchs = SimpleEntrySet.builder(WoodType.class, "branch",
             getModBlock("oak_branch"), () -> WoodTypeRegistry.OAK_TYPE,
             w -> new BranchBlock(BlockBehaviour.Properties.ofFullCopy(RuBlocks.ACACIA_BRANCH.get()), BranchBlock.BranchType.BRANCH)
@@ -60,9 +60,7 @@ public class RegionsUnexploredModule extends SimpleModule {
         shrubs = SimpleEntrySet.builder(LeavesType.class, "shrub",
                         getModBlock("dark_oak_shrub"),
                         () -> LeavesTypeRegistry.getValue(ResourceLocation.parse("dark_oak")),
-                        l -> new ShrubBlock(Utils.copyPropertySafe(l.leaves).pushReaction(PushReaction.DESTROY)
-                                .ignitedByLava().noCollission().instabreak().sound(SoundType.AZALEA)
-                                .offsetType(BlockBehaviour.OffsetType.XZ))
+                        l -> new ShrubBlock(BlockBehaviour.Properties.ofFullCopy(RuBlocks.ACACIA_SHRUB.get()))
                 )
                 .addCondition(l -> {
                     boolean log = l.getWoodType() != null; //REASON: textures

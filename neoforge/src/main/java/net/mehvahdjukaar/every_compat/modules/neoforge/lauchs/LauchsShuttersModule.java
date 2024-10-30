@@ -9,6 +9,7 @@ import net.mehvahdjukaar.moonlight.api.set.wood.WoodTypeRegistry;
 import net.mehvahdjukaar.moonlight.api.util.Utils;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.world.level.block.Block;
 import net.stehschnitzel.shutter.common.blocks.Shutter;
 import net.stehschnitzel.shutter.init.BlockInit;
 import net.stehschnitzel.shutter.init.CreativTabInit;
@@ -18,13 +19,13 @@ import java.util.List;
 //SUPPORT: v2.0.2+
 public class LauchsShuttersModule extends SimpleModule {
 
-    public final SimpleEntrySet<WoodType, Shutter> shutters;
+    public final SimpleEntrySet<WoodType, Block> shutters;
 
     public LauchsShuttersModule(String modId) {
         super(modId, "ls");
 
         shutters = SimpleEntrySet.builder(WoodType.class, "shutter",
-                        BlockInit.OAK_SHUTTER, () -> WoodTypeRegistry.OAK_TYPE,
+                        getModBlock("oak_shutter"), () -> WoodTypeRegistry.OAK_TYPE,
                         w -> new Shutter(Utils.copyPropertySafe(w.planks)))
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTextureM(modRes("block/oak_shutter_lower"), EveryCompat.res("block/ls/oak_shutter_lower_m"))
@@ -40,7 +41,6 @@ public class LauchsShuttersModule extends SimpleModule {
                 .setTabKey(modRes("shutter_tab"))
                 .defaultRecipe()
                 .build();
-
         this.addEntry(shutters);
     }
 

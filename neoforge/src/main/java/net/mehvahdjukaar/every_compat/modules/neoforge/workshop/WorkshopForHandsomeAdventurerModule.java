@@ -27,7 +27,7 @@ import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-//SUPPORT: v1.15.2+
+//SUPPORT: v1.31.2+
 public class WorkshopForHandsomeAdventurerModule extends SimpleModule {
     private static final ResourceLocation SPRUCE = ResourceLocation.parse("spruce");
     private static final ResourceLocation TAG_FORGE_WORKBENCH = ResourceLocation.fromNamespaceAndPath("c", "workbench");
@@ -296,9 +296,9 @@ public class WorkshopForHandsomeAdventurerModule extends SimpleModule {
                     blacklist.add(MessageFormat.format("{0}:wfha/{1}/dual_table_bottom_right_{2}", EveryCompat.MOD_ID, w.getNamespace(), w.getTypeName()));
                     blacklist.add(MessageFormat.format("{0}:wfha/{1}/dual_table_top_left_{2}", EveryCompat.MOD_ID, w.getNamespace(), w.getTypeName()));
                     blacklist.add(MessageFormat.format("{0}:wfha/{1}/dual_table_top_right_{2}", EveryCompat.MOD_ID, w.getNamespace(), w.getTypeName()));
-                    // we need to register things for the workstation placer item - so that it knows what blocks to use
-                    ExternalWoodSupport.registerHostMod(w.getTypeName(), EveryCompat.MOD_ID);
-                    ExternalWoodSupport.registerPrefix(w.getTypeName(), "wfha/" + w.getNamespace() + "/");
+
+//                    ExternalWoodSupport.registerHostMod(w.getTypeName(), EveryCompat.MOD_ID);
+//                    ExternalWoodSupport.registerPrefix(w.getTypeName(), "wfha/" + w.getNamespace() + "/");
                 }
             }
         }
