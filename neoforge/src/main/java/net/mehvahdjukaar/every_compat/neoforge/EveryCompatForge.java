@@ -1,10 +1,10 @@
 package net.mehvahdjukaar.every_compat.neoforge;
 
-import com.google.common.util.concurrent.ListenableFuture;
 import net.mehvahdjukaar.every_compat.EveryCompat;
 import net.mehvahdjukaar.every_compat.EveryCompatClient;
 import net.mehvahdjukaar.every_compat.api.CompatModule;
 import net.mehvahdjukaar.every_compat.configs.ModConfigs;
+
 import net.mehvahdjukaar.every_compat.modules.farmersdelight.FarmersDelightModule;
 import net.mehvahdjukaar.every_compat.modules.neoforge.abnormal.BoatLoadModule;
 import net.mehvahdjukaar.every_compat.modules.neoforge.abnormal.WoodworksModule;
@@ -27,16 +27,14 @@ import net.mehvahdjukaar.every_compat.modules.neoforge.lieonlion.MoreCraftingTab
 import net.mehvahdjukaar.every_compat.modules.neoforge.lightmans_currency.LightmansCurrencyModule;
 import net.mehvahdjukaar.every_compat.modules.neoforge.mcaw.*;
 import net.mehvahdjukaar.every_compat.modules.neoforge.missing_wilds.MissingWildModule;
-import net.mehvahdjukaar.every_compat.modules.neoforge.more.MoreCraftingTablesForForgeModule;
+import net.mehvahdjukaar.every_compat.modules.neoforge.more_crafting_tables_forge.MoreCraftingTablesForForgeModule;
 import net.mehvahdjukaar.every_compat.modules.neoforge.mosaic_carpentry.MosaicCarpentryModule;
 import net.mehvahdjukaar.every_compat.modules.neoforge.mrcrayfish_furniture.MightyMailModule;
-import net.mehvahdjukaar.every_compat.modules.neoforge.mrcrayfish_furniture.MrCrayfishFurnitureModule;
 import net.mehvahdjukaar.every_compat.modules.neoforge.oreberries_replanted.OreberriesReplantedModule;
-import net.mehvahdjukaar.every_compat.modules.neoforge.pokecube.PokecubeLegendsModule;
+import net.mehvahdjukaar.every_compat.modules.neoforge.pokecube.PokecubeAOIModule;
 import net.mehvahdjukaar.every_compat.modules.neoforge.premium_wood.PremiumWoodModule;
 import net.mehvahdjukaar.every_compat.modules.neoforge.redeco.ReDecoModule;
 import net.mehvahdjukaar.every_compat.modules.neoforge.regions_unexplored.RegionsUnexploredModule;
-import net.mehvahdjukaar.every_compat.modules.storagedrawers.StorageDrawersModule;
 import net.mehvahdjukaar.every_compat.modules.neoforge.timber_frames.TimberFramesModule;
 import net.mehvahdjukaar.every_compat.modules.neoforge.tropicraft.TropicraftModule;
 import net.mehvahdjukaar.every_compat.modules.neoforge.twilightforest.TwilightForestModule;
@@ -47,6 +45,7 @@ import net.mehvahdjukaar.every_compat.modules.neoforge.woodster.WoodsterModule;
 import net.mehvahdjukaar.every_compat.modules.neoforge.workshop.WorkshopForHandsomeAdventurerModule;
 import net.mehvahdjukaar.every_compat.modules.neoforge.xerca.XercaModule;
 import net.mehvahdjukaar.every_compat.modules.stylish_stiles.StylishStilesModule;
+
 import net.mehvahdjukaar.moonlight.api.platform.PlatHelper;
 import net.neoforged.bus.api.EventPriority;
 import net.neoforged.bus.api.IEventBus;
@@ -63,8 +62,6 @@ import java.lang.ref.WeakReference;
  */
 @Mod(EveryCompat.MOD_ID)
 public class EveryCompatForge extends EveryCompat {
-    public static final String MOD_ID = EveryCompat.MOD_ID;
-
     private static WeakReference<IEventBus> BUS = new WeakReference<>(null);
 
     public EveryCompatForge(IEventBus bus) {
@@ -79,7 +76,6 @@ public class EveryCompatForge extends EveryCompat {
         addModule("buildersaddition", () -> BuildersAdditionModule::new);
         addModule("bbb", () -> BuildingButBetterModule::new);
         addModule("buildersdelight", () -> BuildersDelightModule::new);
-        addModule("cfm", () -> MrCrayfishFurnitureModule::new);
         addModule("corail_pillar", () -> CorailPillarModule::new);
 //        addModule("create", () -> CreateModule::new); //!! NOT AVAILABLE
         addModule("decoration_delight", () -> DecorationDelightModule::new);
@@ -95,7 +91,7 @@ public class EveryCompatForge extends EveryCompat {
         addModule("mosaic_carpentry", () -> MosaicCarpentryModule::new);
         addModule("oreberriesreplanted", () -> OreberriesReplantedModule::new);
         addModule("lightmanscurrency", () -> LightmansCurrencyModule::new);
-        addModule("pokecube_legends", () -> PokecubeLegendsModule::new);
+        addModule("pokecube_legends", () -> PokecubeAOIModule::new);
         addModule("premium_wood", () -> PremiumWoodModule::new);
         addModule("redeco", () -> ReDecoModule::new);
         addModule("regions_unexplored", () -> RegionsUnexploredModule::new);

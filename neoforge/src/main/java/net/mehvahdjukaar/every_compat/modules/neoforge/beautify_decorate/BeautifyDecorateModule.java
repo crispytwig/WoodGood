@@ -19,16 +19,16 @@ import net.minecraft.world.level.block.SoundType;
 //SUPPORT: v2.0.2+
 public class BeautifyDecorateModule extends SimpleModule {
 
-    public final SimpleEntrySet<WoodType, Trellis> tellis;
-    public final SimpleEntrySet<WoodType, Blinds> blinds;
-    public final SimpleEntrySet<WoodType, PictureFrame> picture_frames;
+    public final SimpleEntrySet<WoodType, Block> tellis;
+    public final SimpleEntrySet<WoodType, Block> blinds;
+    public final SimpleEntrySet<WoodType, Block> picture_frames;
 
     public BeautifyDecorateModule(String modId) {
         super(modId, "bd");
         var tab = modRes(Beautify.MODID);
 
         tellis = SimpleEntrySet.builder(WoodType.class, "trellis",
-                        BlockInit.OAK_TRELLIS, () -> WoodTypeRegistry.OAK_TYPE,
+                        getModBlock("oak_trellis"), () -> WoodTypeRegistry.OAK_TYPE,
                         w -> new Trellis(Utils.copyPropertySafe(w.planks)
                                 .strength(0.3F, 0.3F)
                                 .sound(SoundType.BAMBOO).noOcclusion()
@@ -42,7 +42,7 @@ public class BeautifyDecorateModule extends SimpleModule {
         this.addEntry(tellis);
 
         blinds = SimpleEntrySet.builder(WoodType.class, "blinds",
-                        BlockInit.OAK_BLINDS, () -> WoodTypeRegistry.OAK_TYPE,
+                        getModBlock("oak_blinds"), () -> WoodTypeRegistry.OAK_TYPE,
                         w -> new Blinds(Utils.copyPropertySafe(w.planks)
                                 .noOcclusion().strength(0.4F, 0.4F)
                                 .sound(SoundType.WOOD)
@@ -57,7 +57,7 @@ public class BeautifyDecorateModule extends SimpleModule {
         this.addEntry(blinds);
 
         picture_frames = SimpleEntrySet.builder(WoodType.class, "picture_frame",
-                        BlockInit.OAK_PICTURE_FRAME, () -> WoodTypeRegistry.OAK_TYPE,
+                        getModBlock("oak_picture_frame"), () -> WoodTypeRegistry.OAK_TYPE,
                         w -> new PictureFrame(Utils.copyPropertySafe(w.planks)
                                 .noOcclusion().strength(0.1F, 0.1F)
                                 .sound(SoundType.WOOD).noOcclusion()
