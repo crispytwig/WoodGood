@@ -88,7 +88,6 @@ public abstract class EveryCompat {
 
     protected void commonInit() {
 
-        //StoneTypeRegistry.init();
 
         ModConfigs.init();
         ECNetworking.init();
@@ -99,7 +98,8 @@ public abstract class EveryCompat {
 
         BlockSetAPI.addDynamicBlockRegistration(this::registerWoodStuff, WoodType.class);
         BlockSetAPI.addDynamicBlockRegistration(this::registerLeavesStuff, LeavesType.class);
-        BlockSetAPI.addDynamicBlockRegistration(this::registerStonesStuff, StoneType.class);
+        //StoneTypeRegistry.init();
+        //BlockSetAPI.addDynamicBlockRegistration(this::registerStonesStuff, StoneType.class);
 
         BlockSetAPI.addDynamicRegistration((r, c) -> this.registerItems(r), WoodType.class, BuiltInRegistries.ITEM);
         BlockSetAPI.addDynamicRegistration((r, c) -> this.registerTiles(r), WoodType.class, BuiltInRegistries.BLOCK_ENTITY_TYPE);

@@ -131,10 +131,10 @@ dependencies {
 
     //!! TOOLS
 //    modRuntimeOnly("curse.maven:jei-238222:5718385")
-    modRuntimeOnly("curse.maven:configured-457570:5441234")
-    modRuntimeOnly("curse.maven:worldedit-225608:5830452")
-    modRuntimeOnly("curse.maven:jade-324717:5591256")
-    modRuntimeOnly("curse.maven:emi-580555:5619579")
+    //modRuntimeOnly("curse.maven:configured-457570:5441234")
+    //modRuntimeOnly("curse.maven:worldedit-225608:5830452")
+    //modRuntimeOnly("curse.maven:jade-324717:5591256")
+    //modRuntimeOnly("curse.maven:emi-580555:5619579")
 
 //!!=================================================== IMPORTS ===================================================== \\
 

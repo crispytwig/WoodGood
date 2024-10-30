@@ -102,15 +102,6 @@ public class CreateModule extends SimpleModule {
 
     }
 
-    @Override
-    public void addDynamicClientResources(ClientDynamicResourcesHandler handler, ResourceManager manager) {
-        super.addDynamicClientResources(handler, manager);
-
-        for (var stone : StoneTypeRegistry.getTypes()) {
-            EveryCompat.LOGGER.warn("STONES: {}", stone);
-        }
-    }
-
     private WindowBlock makeWindow(WoodType w) {
         return new WindowBlock(Utils.copyPropertySafe(Blocks.GLASS)
                 .isValidSpawn((s, l, ps, t) -> false).isRedstoneConductor((s, l, ps) -> false)
