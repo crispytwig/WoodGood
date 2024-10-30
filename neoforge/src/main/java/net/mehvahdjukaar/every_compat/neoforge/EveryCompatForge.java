@@ -35,6 +35,7 @@ import net.mehvahdjukaar.every_compat.modules.neoforge.pokecube.PokecubeAOIModul
 import net.mehvahdjukaar.every_compat.modules.neoforge.premium_wood.PremiumWoodModule;
 import net.mehvahdjukaar.every_compat.modules.neoforge.redeco.ReDecoModule;
 import net.mehvahdjukaar.every_compat.modules.neoforge.regions_unexplored.RegionsUnexploredModule;
+import net.mehvahdjukaar.every_compat.modules.neoforge.storagedrawers.StorageDrawersModule;
 import net.mehvahdjukaar.every_compat.modules.neoforge.timber_frames.TimberFramesModule;
 import net.mehvahdjukaar.every_compat.modules.neoforge.tropicraft.TropicraftModule;
 import net.mehvahdjukaar.every_compat.modules.neoforge.twilightforest.TwilightForestModule;
@@ -97,6 +98,7 @@ public class EveryCompatForge extends EveryCompat {
         addModule("regions_unexplored", () -> RegionsUnexploredModule::new);
         addModule("shutter", () -> LauchsShuttersModule::new);
         addModule("stylishstiles", () -> StylishStilesModule::new);
+        addModule("storagedrawers", () -> StorageDrawersModule::new);
         addModule("timber_frames", () -> TimberFramesModule::new);
         addModule("tropicraft", () -> TropicraftModule::new);
         addModule("twilightforest", () -> TwilightForestModule::new);

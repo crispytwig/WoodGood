@@ -1,4 +1,4 @@
-package net.mehvahdjukaar.every_compat.modules.storagedrawers;
+package net.mehvahdjukaar.every_compat.modules.neoforge.storagedrawers;
 
 import com.jaquadro.minecraft.storagedrawers.StorageDrawers;
 import com.jaquadro.minecraft.storagedrawers.block.BlockDrawers;
@@ -8,8 +8,7 @@ import com.jaquadro.minecraft.storagedrawers.block.tile.BlockEntityDrawers;
 import com.jaquadro.minecraft.storagedrawers.block.tile.BlockEntityDrawersStandard;
 import com.jaquadro.minecraft.storagedrawers.client.renderer.BlockEntityDrawersRenderer;
 import com.jaquadro.minecraft.storagedrawers.core.ModBlocks;
-import net.fabricmc.api.EnvType;
-import net.fabricmc.api.Environment;
+import com.mrcrayfish.framework.api.Environment;
 import net.mehvahdjukaar.every_compat.api.SimpleEntrySet;
 import net.mehvahdjukaar.every_compat.api.SimpleModule;
 import net.mehvahdjukaar.every_compat.dynamicpack.ClientDynamicResourcesHandler;
@@ -26,6 +25,9 @@ import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
+import org.apache.commons.compress.archivers.sevenz.CLI;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Collection;
@@ -210,7 +212,7 @@ public class StorageDrawersModule extends SimpleModule {
     }
 
     @Override
-    @Environment(EnvType.CLIENT)
+    @OnlyIn(Dist.CLIENT)
     public void registerBlockEntityRenderers(ClientHelper.BlockEntityRendererEvent event) {
         FULL_DRAWERS_1.registerTileRenderer(event, BlockEntityDrawersRenderer::new);
         FULL_DRAWERS_2.registerTileRenderer(event, BlockEntityDrawersRenderer::new);
