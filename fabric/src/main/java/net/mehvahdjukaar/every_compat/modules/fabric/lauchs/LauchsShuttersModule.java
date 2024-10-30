@@ -34,7 +34,7 @@ public class LauchsShuttersModule extends SimpleModule {
                 .addTexture(modRes("block/oak_shutter_middle_big"))
                 .addTexture(modRes("item/oak_shutter"))
                 .setRenderType(RenderLayer.CUTOUT)
-                .setTab(() -> ShutterItemGroup.SHUTTER_GROUP)
+                .setTabKey(modRes("shutter"))
                 .defaultRecipe()
                 .build();
 
