@@ -187,7 +187,7 @@ public class BuildingButBetterModule extends SimpleModule {
                         w -> new WoodenLanternBlock(Utils.copyPropertySafe(w.planks).lightLevel((blockStatex) -> 15))
                 )
                 .requiresChildren("slab") //REASON: recipes
-                .addTextureM(modRes("block/lantern/oak"), EveryCompat.res("block/bbb/oak_lantern_m"))
+                .addTexture(modRes("block/lantern/oak")) //IMPORTANT: it's a 18x16, do not add a mask texture
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(modRes("wooden_lanterns"), Registries.BLOCK)
                 .addTag(modRes("wooden_blocks"), Registries.BLOCK)
