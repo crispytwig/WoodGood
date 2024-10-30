@@ -27,7 +27,7 @@ public class MightyMailModule extends SimpleModule {
                         getModBlock("oak_mail_box"), () -> WoodTypeRegistry.OAK_TYPE,
                         w -> new MailboxBlock(Utils.copyPropertySafe(w.planks)
                                 .strength(3.5F).sound(SoundType.WOOD).ignitedByLava()))
-                .setTab(ModCreativeTabs.MAIN::get)
+                .setTabKey(modRes("creative_tab"))
                 .addTile(ModBlockEntities.MAIL_BOX::get)
                 .addTextureM(modRes("block/oak_mail_box"),
                         EveryCompat.res("block/mm/oak_mail_box_m"))

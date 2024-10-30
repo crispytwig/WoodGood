@@ -25,16 +25,16 @@ public class MacawBridgesModule extends SimpleModule {
 
     public MacawBridgesModule(String modId) {
         super(modId, "mcb");
+        var tab = MacawsBridges.BRIDGEGROUP;
 
         BRIDGE_PIERS = SimpleEntrySet.builder(WoodType.class, "bridge_pier",
                         () -> BlockInit.OAK_BRIDGE_PIER, () -> WoodTypeRegistry.OAK_TYPE,
                         w -> new Bridge_Support(Utils.copyPropertySafe(w.planks)))
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(modRes("wooden_piers"), Registries.BLOCK)
-                .setTabKey(MacawsBridges.BRIDGEGROUP)
+                .setTabKey(tab)
                 .defaultRecipe()
                 .build();
-
         this.addEntry(BRIDGE_PIERS);
 
         ROPE_BRIDGES = SimpleEntrySet.builder(WoodType.class, "bridge", "rope",
@@ -43,10 +43,9 @@ public class MacawBridgesModule extends SimpleModule {
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(modRes("rope_bridges"), Registries.BLOCK)
                 .setRenderType(RenderLayer.CUTOUT)
-                .setTabKey(MacawsBridges.BRIDGEGROUP)
+                .setTabKey(tab)
                 .defaultRecipe()
                 .build();
-
         this.addEntry(ROPE_BRIDGES);
 
         BRIDGE_MIDDLES = SimpleEntrySet.builder(WoodType.class, "log_bridge_middle",
@@ -55,10 +54,9 @@ public class MacawBridgesModule extends SimpleModule {
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(modRes("log_bridges"), Registries.BLOCK)
                 .setRenderType(RenderLayer.CUTOUT)
-                .setTabKey(MacawsBridges.BRIDGEGROUP)
+                .setTabKey(tab)
                 .defaultRecipe()
                 .build();
-
         this.addEntry(BRIDGE_MIDDLES);
 
 
@@ -68,10 +66,9 @@ public class MacawBridgesModule extends SimpleModule {
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(modRes("rail_bridges"), Registries.BLOCK)
                 .setRenderType(RenderLayer.CUTOUT)
-                .setTabKey(MacawsBridges.BRIDGEGROUP)
+                .setTabKey(tab)
                 .defaultRecipe()
                 .build();
-
         this.addEntry(RAIL_BRIDGES);
 
 
@@ -81,10 +78,9 @@ public class MacawBridgesModule extends SimpleModule {
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(modRes("log_stairs"), Registries.BLOCK)
                 .setRenderType(RenderLayer.CUTOUT)
-                .setTabKey(MacawsBridges.BRIDGEGROUP)
+                .setTabKey(tab)
                 .defaultRecipe()
                 .build();
-
         this.addEntry(BRIDGE_STAIRS);
 
         ROPE_STAIRS = SimpleEntrySet.builder(WoodType.class, "rope_bridge_stair",
@@ -93,10 +89,9 @@ public class MacawBridgesModule extends SimpleModule {
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(modRes("rope_stairs"), Registries.BLOCK)
                 .setRenderType(RenderLayer.CUTOUT)
-                .setTabKey(MacawsBridges.BRIDGEGROUP)
+                .setTabKey(tab)
                 .defaultRecipe()
                 .build();
-
         this.addEntry(ROPE_STAIRS);
 
 

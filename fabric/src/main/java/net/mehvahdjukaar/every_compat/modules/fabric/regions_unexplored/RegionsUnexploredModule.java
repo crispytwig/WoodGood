@@ -27,9 +27,7 @@ import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.material.PushReaction;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -47,7 +45,7 @@ public class RegionsUnexploredModule extends SimpleModule {
 
         branchs = SimpleEntrySet.builder(WoodType.class, "branch",
                         getModBlock("oak_branch"), () -> WoodTypeRegistry.OAK_TYPE,
-                        w -> new BranchBlock(BlockBehaviour.Properties.copy(RuBlocks.ACACIA_BRANCH),
+                        w -> new BranchBlock(BlockBehaviour.Properties.ofFullCopy(RuBlocks.ACACIA_BRANCH),
                                 BranchBlock.BranchType.BRANCH)
                 )
                 .addTexture(modRes("block/oak_branch"))
@@ -62,12 +60,10 @@ public class RegionsUnexploredModule extends SimpleModule {
         shrubs = SimpleEntrySet.builder(LeavesType.class, "shrub",
                         getModBlock("dark_oak_shrub"),
                         () -> LeavesTypeRegistry.getValue(ResourceLocation.parse("dark_oak")),
-                        l -> new ShrubBlock(Utils.copyPropertySafe(l.leaves).pushReaction(PushReaction.DESTROY)
-                                .ignitedByLava().noCollission().instabreak().sound(SoundType.AZALEA)
-                                .offsetType(BlockBehaviour.OffsetType.XZ))
+                        l -> new ShrubBlock(BlockBehaviour.Properties.ofFullCopy(RuBlocks.ACACIA_SHRUB))
                 )
                 .addCondition(l -> {
-                    boolean log = l.getWoodType() != null; //REASON: textures
+                    boolean log = l.getWoodType().log != null; //REASON: textures
                     boolean sapling = l.getItemOfThis("sapling") != null; //REASON: recipes
                     return log && sapling;
                 })

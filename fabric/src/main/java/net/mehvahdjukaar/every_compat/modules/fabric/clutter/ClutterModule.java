@@ -11,17 +11,8 @@ import net.mehvahdjukaar.every_compat.api.SimpleModule;
 import net.mehvahdjukaar.moonlight.api.set.wood.WoodType;
 import net.mehvahdjukaar.moonlight.api.set.wood.WoodTypeRegistry;
 import net.mehvahdjukaar.moonlight.api.util.Utils;
-import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.BlockTags;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.AxeItem;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.SlabBlock;
@@ -29,12 +20,11 @@ import net.minecraft.world.level.block.StairBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.phys.BlockHitResult;
 
 import java.util.HashMap;
 import java.util.function.ToIntFunction;
 
-//SUPPORT: v0.5.11+
+//SUPPORT: //!! NOT AVAILABLE
 public class ClutterModule extends SimpleModule {
 
     public final SimpleEntrySet<WoodType, Block> wall_bookshelves;
@@ -355,7 +345,7 @@ public class ClutterModule extends SimpleModule {
             return mapTables.get(state.getBlock()).defaultBlockState().setValue(LEGS, state.getValue(LEGS)).setValue(LEG_POSITIONS, state.getValue(LEG_POSITIONS));
         }
 
-        @Override
+        /*@Override
         public InteractionResult use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
             ItemStack itemStack = player.getItemInHand(hand);
 
@@ -373,7 +363,7 @@ public class ClutterModule extends SimpleModule {
             } else {
                 return InteractionResult.PASS;
             }
-        }
+        }*/
     }
 
     public class CompatChairBlock extends WoodenChairBlock {
@@ -385,7 +375,7 @@ public class ClutterModule extends SimpleModule {
             return mapChairs.get(state.getBlock()).defaultBlockState().setValue(FACING, state.getValue(FACING));
         }
 
-        @Override
+        /*@Override
         public InteractionResult use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
             ItemStack itemStack = player.getItemInHand(hand);
             if (itemStack.getItem() instanceof AxeItem && state.is(ModBlockTags.STRIPPABLE_CHAIRS)) {
@@ -400,7 +390,7 @@ public class ClutterModule extends SimpleModule {
             } else {
                 return InteractionResult.PASS;
             }
-        }
+        }*/
     }
 
     public class CompatBenchBlock extends WoodenBenchBlock {
@@ -414,7 +404,7 @@ public class ClutterModule extends SimpleModule {
                     .setValue(LEGPOSITIONS, state.getValue(LEGPOSITIONS));
         }
 
-        @Override
+        /*@Override
         public InteractionResult use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
             ItemStack itemStack = player.getItemInHand(hand);
             if (itemStack.getItem() instanceof AxeItem && state.is(ModBlockTags.STRIPPABLE_BENCHES)) {
@@ -429,7 +419,7 @@ public class ClutterModule extends SimpleModule {
             } else {
                 return InteractionResult.PASS;
             }
-        }
+        }*/
 
     }
 }

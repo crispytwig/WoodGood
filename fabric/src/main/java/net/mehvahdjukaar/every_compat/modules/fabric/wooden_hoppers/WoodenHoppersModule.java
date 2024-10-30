@@ -9,9 +9,9 @@ import net.mehvahdjukaar.every_compat.api.SimpleModule;
 import net.mehvahdjukaar.moonlight.api.set.wood.WoodType;
 import net.mehvahdjukaar.moonlight.api.set.wood.WoodTypeRegistry;
 import net.mehvahdjukaar.moonlight.api.util.Utils;
-import net.minecraft.core.Registry;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.level.block.Block;
 
 //SUPPORT: v1.6.0+
@@ -30,6 +30,7 @@ public class WoodenHoppersModule extends SimpleModule {
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(WoodenHoppersBlockTags.WOODEN_HOPPERS, Registries.BLOCK)
                 .addTag(WoodenHoppersItemTags.WOODEN_HOPPERS, Registries.ITEM)
+                .setTabKey(CreativeModeTabs.REDSTONE_BLOCKS)
                 .defaultRecipe()
                 .build();
         this.addEntry(hoppers);

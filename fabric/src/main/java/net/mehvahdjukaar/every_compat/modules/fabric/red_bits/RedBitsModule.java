@@ -2,12 +2,15 @@ package net.mehvahdjukaar.every_compat.modules.fabric.red_bits;
 
 import net.darktree.redbits.RedBits;
 import net.darktree.redbits.blocks.LargeButtonBlock;
+import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
+import net.fabricmc.fabric.mixin.itemgroup.ItemGroupAccessor;
 import net.mehvahdjukaar.every_compat.api.SimpleEntrySet;
 import net.mehvahdjukaar.every_compat.api.SimpleModule;
 import net.mehvahdjukaar.moonlight.api.set.wood.WoodType;
 import net.mehvahdjukaar.moonlight.api.set.wood.WoodTypeRegistry;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
@@ -30,6 +33,7 @@ public class RedBitsModule extends SimpleModule {
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(modRes("large_buttons"), Registries.BLOCK)
                 .addTag(modRes("large_wooden_buttons"), Registries.BLOCK)
+                .setTabKey(CreativeModeTabs.REDSTONE_BLOCKS)
                 .defaultRecipe()
                 .build();
         this.addEntry(large_buttons);

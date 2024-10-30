@@ -76,7 +76,7 @@ public class FarmersDelightModuleOld extends SimpleModule {
                     handler.dynamicPack.addJson(EveryCompat.res(path), recipe, ResType.RECIPES);
                 }
                 catch (IOException e) {
-                    handler.getLogger().error("{Farmer's Delight} Failed to generate recipe via " + e);
+                    handler.getLogger().error("{Farmer's Delight} Failed to generate recipe via", e);
                 }
             }
         }));

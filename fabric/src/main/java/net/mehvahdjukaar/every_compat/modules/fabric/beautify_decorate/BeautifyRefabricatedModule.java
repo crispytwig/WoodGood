@@ -1,6 +1,5 @@
 package net.mehvahdjukaar.every_compat.modules.fabric.beautify_decorate;
 
-import io.github.suel_ki.beautify.Beautify;
 import io.github.suel_ki.beautify.common.block.Blinds;
 import io.github.suel_ki.beautify.common.block.PictureFrame;
 import io.github.suel_ki.beautify.common.block.Trellis;

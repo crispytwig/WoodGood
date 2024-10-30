@@ -1,5 +1,6 @@
 package net.mehvahdjukaar.every_compat.modules.storagedrawers;
 
+import com.jaquadro.minecraft.storagedrawers.StorageDrawers;
 import com.jaquadro.minecraft.storagedrawers.block.BlockDrawers;
 import com.jaquadro.minecraft.storagedrawers.block.BlockStandardDrawers;
 import com.jaquadro.minecraft.storagedrawers.block.BlockTrim;
@@ -42,17 +43,18 @@ public class StorageDrawersModule extends SimpleModule {
 
     public StorageDrawersModule(String modId) {
         super(modId, "sd");
-        ResourceLocation tab =modRes(  "storagedrawers");
+        ResourceLocation tab = modRes(StorageDrawers.MOD_ID);
 
         FULL_DRAWERS_1 = SimpleEntrySet.builder(WoodType.class, "full_drawers_1",
                         ModBlocks.OAK_FULL_DRAWERS_1, () -> WoodTypeRegistry.OAK_TYPE,
-                        w -> new CompatStandardDrawers(1, false, Utils.copyPropertySafe(ModBlocks.OAK_FULL_DRAWERS_1.get())))
+                        w -> new BlockStandardDrawers(1, false, Utils.copyPropertySafe(ModBlocks.OAK_FULL_DRAWERS_1.get())))
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(modRes("drawers"), Registries.BLOCK)
                 .addTag(modRes("drawers"), Registries.ITEM)
                 .setTabKey(tab)
                 .defaultRecipe()
-                .addTile(CompatStandardDrawersEntity1::new)
+//                .addTile(CompatStandardDrawersEntity1::new)
+                .addTile(getModTile("standard_drawers_1"))
                 .createPaletteFromOak(this::drawersPalette)
                 .addTexture(modRes("block/drawers_oak_front_1"))
                 .addTexture(modRes("block/drawers_oak_side"))
@@ -60,7 +62,6 @@ public class StorageDrawersModule extends SimpleModule {
                 .addTexture(modRes("block/drawers_oak_trim"))
                 .addModelTransform(m -> m.replaceGenericType("oak", "blocks"))
                 .build();
-
         this.addEntry(FULL_DRAWERS_1);
 
         FULL_DRAWERS_2 = SimpleEntrySet.builder(WoodType.class, "full_drawers_2",
@@ -79,7 +80,6 @@ public class StorageDrawersModule extends SimpleModule {
                 .addTexture(modRes("block/drawers_oak_trim"))
                 .addModelTransform(m -> m.replaceGenericType("oak", "blocks"))
                 .build();
-
         this.addEntry(FULL_DRAWERS_2);
 
         FULL_DRAWERS_4 = SimpleEntrySet.builder(WoodType.class, "full_drawers_4",
@@ -119,7 +119,6 @@ public class StorageDrawersModule extends SimpleModule {
                 .addTexture(modRes("block/drawers_oak_trim"))
                 .addModelTransform(m -> m.replaceGenericType("oak", "blocks"))
                 .build();
-
         this.addEntry(HALF_DRAWERS_1);
 
         HALF_DRAWERS_2 = SimpleEntrySet.builder(WoodType.class, "half_drawers_2",
@@ -140,7 +139,6 @@ public class StorageDrawersModule extends SimpleModule {
                 .addTexture(modRes("block/drawers_oak_trim"))
                 .addModelTransform(m -> m.replaceGenericType("oak", "blocks"))
                 .build();
-
         this.addEntry(HALF_DRAWERS_2);
 
         HALF_DRAWERS_4 = SimpleEntrySet.builder(WoodType.class, "half_drawers_4",
@@ -161,7 +159,6 @@ public class StorageDrawersModule extends SimpleModule {
                 .addTexture(modRes("block/drawers_oak_trim"))
                 .addModelTransform(m -> m.replaceGenericType("oak", "blocks"))
                 .build();
-
         this.addEntry(HALF_DRAWERS_4);
 
         TRIMS = SimpleEntrySet.builder(WoodType.class, "trim",
@@ -174,7 +171,6 @@ public class StorageDrawersModule extends SimpleModule {
                 .addTexture(modRes("block/drawers_oak_trim"))
                 .addModelTransform(m -> m.replaceGenericType("oak", "blocks"))
                 .build();
-
         this.addEntry(TRIMS);
     }
 

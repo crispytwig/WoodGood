@@ -17,13 +17,14 @@ import net.minecraft.world.level.block.Blocks;
 // SUPPORT: v0.5.1+
 public class CreateModule extends SimpleModule {
 
-    public final SimpleEntrySet<WoodType, Block> windows;
+//    public final SimpleEntrySet<WoodType, Block> windows;
     public final SimpleEntrySet<WoodType, Block> windowPanes;
 
 
     public CreateModule(String modId) {
         super(modId, "c");
 
+/*
         windows = SimpleEntrySet.builder(WoodType.class, "window",
                         getModBlock("oak_window"), () -> WoodTypeRegistry.OAK_TYPE, //AllPaletteBlocks.OAK_WINDOW
                         this::makeWindow)
@@ -35,18 +36,17 @@ public class CreateModule extends SimpleModule {
                 .addTextureM(modRes("block/palettes/oak_window"), EveryCompat.res("block/palettes/oak_window_m"))
                 .addTextureM(modRes("block/palettes/oak_window_connected"), EveryCompat.res("block/palettes/oak_window_connected_m"))
                 .build();
-
         this.addEntry(windows);
+*/
 
         windowPanes = SimpleEntrySet.builder(WoodType.class, "window_pane",
                         getModBlock("oak_window_pane"), () -> WoodTypeRegistry.OAK_TYPE, //AllPaletteBlocks.OAK_WINDOW_PANE
                         s -> new ConnectedGlassPaneBlock(Utils.copyPropertySafe(Blocks.GLASS_PANE)))
-                //.addTag(Tags.Items.GLASS_PANES, Registries.BLOCK)
+//                .addTag(Tags.Items.GLASS_PANES, Registries.BLOCK)
                 //.setTabKey(() -> CreativeModeTabs.BUILDING_BLOCKS)
                 .defaultRecipe()
                 .setRenderType(RenderLayer.CUTOUT_MIPPED)
                 .build();
-
         this.addEntry(windowPanes);
 
     }

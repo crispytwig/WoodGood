@@ -1,50 +1,37 @@
 package net.mehvahdjukaar.every_compat.modules.fabric.twilightforest;
 
-import net.mehvahdjukaar.every_compat.EveryCompat;
+import lilypuree.decorative_blocks.registration.RegistryObject;
 import net.mehvahdjukaar.every_compat.api.RenderLayer;
 import net.mehvahdjukaar.every_compat.api.SimpleEntrySet;
 import net.mehvahdjukaar.every_compat.api.SimpleModule;
-import net.mehvahdjukaar.moonlight.api.misc.Registrator;
-import net.mehvahdjukaar.moonlight.api.platform.ClientHelper;
 import net.mehvahdjukaar.moonlight.api.set.wood.WoodType;
 import net.mehvahdjukaar.moonlight.api.set.wood.WoodTypeRegistry;
 import net.mehvahdjukaar.moonlight.api.util.Utils;
-import net.minecraft.client.renderer.BiomeColors;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.level.FoliageColor;
 import net.minecraft.world.level.block.Block;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 import twilightforest.block.BanisterBlock;
-import twilightforest.block.HollowLogClimbable;
 import twilightforest.block.HollowLogHorizontal;
-import twilightforest.block.HollowLogVertical;
 import twilightforest.init.TFBlocks;
-import twilightforest.item.HollowLogItem;
 
 import java.lang.reflect.Field;
 import java.util.Arrays;
 import java.util.function.Supplier;
 
-//SUPPORT: v1.2+ | Currently, The Twilight Forest Unofficial
+//SUPPORT: //!! NOT AVAILABLE
 public class TwilightForestModule extends SimpleModule {
 
-    public final SimpleEntrySet<WoodType, BanisterBlock> banisters;
-    public final SimpleEntrySet<WoodType, HollowLogVertical> hollowLogsVertical;
+    public final SimpleEntrySet<WoodType, Block> banisters;
     public final SimpleEntrySet<WoodType, HollowLogHorizontal> hollowLogsHorizontal;
-    public final SimpleEntrySet<WoodType, HollowLogClimbable> hollowLogsClimbable;
+//    public final SimpleEntrySet<WoodType, HollowLogVertical> hollowLogsVertical;
+//    public final SimpleEntrySet<WoodType, HollowLogClimbable> hollowLogsClimbable;
 
     public TwilightForestModule(String modId) {
         super(modId, "tf");
         var tab = modRes("blocks");
 
-        //TODO: check face culling
         banisters = SimpleEntrySet.builder(WoodType.class, "banister",
-                        TFBlocks.OAK_BANISTER, () -> WoodTypeRegistry.OAK_TYPE,
+                        getModBlock("oak_banister"), () -> WoodTypeRegistry.OAK_TYPE,
                         w -> new BanisterBlock(Utils.copyPropertySafe(w.planks).noOcclusion())
                 )
                 .addTag(modRes("banisters"), Registries.BLOCK)
@@ -69,7 +56,7 @@ public class TwilightForestModule extends SimpleModule {
                 .build();
         this.addEntry(hollowLogsHorizontal);
 
-        hollowLogsVertical = SimpleEntrySet.builder(WoodType.class, "log_vertical", "hollow",
+/*        hollowLogsVertical = SimpleEntrySet.builder(WoodType.class, "log_vertical", "hollow",
                         TFBlocks.HOLLOW_ACACIA_LOG_VERTICAL, () -> WoodTypeRegistry.getValue(ResourceLocation.parse("acacia")),
                         w -> {
                             var id = EveryCompat.res(this.shortenedId() + "/" + w.getVariantId("hollow", true) + "_log_climbable");
@@ -84,6 +71,8 @@ public class TwilightForestModule extends SimpleModule {
                 .addRecipe(modRes("stonecutting/acacia_log/hollow_acacia_log"))
                 .build();
         this.addEntry(hollowLogsVertical);
+        */
+/*
 
         hollowLogsClimbable = SimpleEntrySet.builder(WoodType.class, "log_climbable", "hollow",
                         TFBlocks.HOLLOW_ACACIA_LOG_CLIMBABLE, () -> WoodTypeRegistry.getValue(ResourceLocation.parse("acacia")),
@@ -98,6 +87,7 @@ public class TwilightForestModule extends SimpleModule {
                 .setRenderType(RenderLayer.CUTOUT_MIPPED)
                 .build();
         this.addEntry(hollowLogsClimbable);
+*/
 
 
     }
@@ -105,7 +95,7 @@ public class TwilightForestModule extends SimpleModule {
    static Field portingLibBadAPI = Arrays.stream(RegistryObject.class.getDeclaredFields())
             .filter(f -> f.getType().equals(Supplier.class)).findFirst().get();
 
-    @NotNull
+/*    @NotNull
     private static<T extends Block> RegistryObject<T> makeRegObj(ResourceLocation id) {
         RegistryObject<T> r = new RegistryObject<>(id, ResourceKey.create(Registries.BLOCK, id));
         portingLibBadAPI.setAccessible(true);
@@ -115,9 +105,9 @@ public class TwilightForestModule extends SimpleModule {
            throw new RuntimeException(e);
         }
         return r;
-    }
+    }*/
 
-    @Override
+/*    @Override
     public void registerItems(Registrator<Item> registry) {
         super.registerItems(registry);
         hollowLogsVertical.blocks.forEach((w, b) -> {
@@ -132,9 +122,9 @@ public class TwilightForestModule extends SimpleModule {
             w.addChild(childKey, i);
             registry.register(EveryCompat.res(itemName), i);
         });
-    }
+    }*/
 
-    @Override
+/*    @Override
     public void registerBlockColors(ClientHelper.BlockColorEvent event) {
         super.registerBlockColors(event);
         event.register(
@@ -145,6 +135,6 @@ public class TwilightForestModule extends SimpleModule {
                 (s, l, pos, i) -> l != null && pos != null ?
                         BiomeColors.getAverageGrassColor(l, pos) : -1,
                 hollowLogsHorizontal.blocks.values().toArray(Block[]::new));
-    }
+    }*/
 
 }
