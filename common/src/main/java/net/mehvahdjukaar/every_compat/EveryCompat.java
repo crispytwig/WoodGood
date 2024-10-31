@@ -208,7 +208,8 @@ public abstract class EveryCompat {
                     RegHelper.registerCreativeModeTab(res(MOD_ID),
                             true,
                             builder -> builder.icon(() -> ALL_WOODS.get().getDefaultInstance())
-                                    .backgroundTexture(ResourceLocation.withDefaultNamespace( "item_search.png"))
+                                    .backgroundTexture(CreativeModeTab.createTextureLocation("item_search"))
+                                    .alignedRight()
                                     .title(Component.translatable("itemGroup.everycomp.everycomp"))
                                     .build()) : null;
 
