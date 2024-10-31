@@ -1,2 +1,4 @@
 ### UPDATED:
-- Every Compat (yes the mod itself, to 1.21)
+- **Wilder Wild** (FABRIC):
+  - Fixed the crash
+  - Outdated recipes
