@@ -1,9 +1,9 @@
 package net.mehvahdjukaar.every_compat.modules.neoforge.dramaticdoors;
 
-import com.fizzware.dramaticdoors.forge.blocks.TallDoorBlock;
-import com.fizzware.dramaticdoors.forge.blocks.TallSlidingDoorBlock;
-import com.fizzware.dramaticdoors.forge.blocks.TallStableDoorBlock;
-import com.fizzware.dramaticdoors.forge.DDRegistry;
+import com.fizzware.dramaticdoors.neoforge.blocks.TallDoorBlock;
+import com.fizzware.dramaticdoors.neoforge.blocks.TallSlidingDoorBlock;
+import com.fizzware.dramaticdoors.neoforge.blocks.TallStableDoorBlock;
+import com.fizzware.dramaticdoors.neoforge.registry.DDCreativeTabs;
 import com.mcwdoors.kikoz.init.BlockInit;
 import net.mehvahdjukaar.every_compat.EveryCompat;
 import net.mehvahdjukaar.every_compat.api.RenderLayer;
@@ -23,6 +23,7 @@ import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.block.Block;
 
+//SUPPORT: v3.2.7+
 public class DramaticDoorsMacawModule extends SimpleModule {
 
     public final SimpleEntrySet<WoodType, Block> tallBarkGlassDoors;
@@ -46,12 +47,11 @@ public class DramaticDoorsMacawModule extends SimpleModule {
 
     public DramaticDoorsMacawModule(String modId) {
         super(modId, "ddm");
-
-        var tab = DDRegistry.MAIN_TAB;
+        var tab = DDCreativeTabs.MAIN_TAB;
         
         tallBarnDoors = SimpleEntrySet.builder(WoodType.class, "barn_door", "tall_macaw",
                         getModBlock("tall_macaw_oak_barn_door"), () -> WoodTypeRegistry.OAK_TYPE,
-                        w -> new TallDoorBlock(BlockInit.OAK_BARN_DOOR.get(), w.toVanillaOrOak().setType()))
+                        w -> new TallDoorBlock(w.toVanillaOrOak().setType(), BlockInit.OAK_BARN_DOOR.get()))
                 .addTextureM(modRes("block/macaw/tall_oak_barn_door_lower"), EveryCompat.res("block/ddm/tall_oak_barn_door_lower_m"))
                 .addTextureM(modRes("block/macaw/tall_oak_barn_door_middle"), EveryCompat.res("block/ddm/tall_oak_barn_door_middle_m"))
                 .addTextureM(modRes("block/macaw/tall_oak_barn_door_upper"), EveryCompat.res("block/ddm/tall_oak_barn_door_upper_m"))
@@ -69,7 +69,7 @@ public class DramaticDoorsMacawModule extends SimpleModule {
 
         tallBarnGlassedDoors = SimpleEntrySet.builder(WoodType.class, "barn_glass_door", "tall_macaw",
                         getModBlock("tall_macaw_oak_barn_glass_door"), () -> WoodTypeRegistry.OAK_TYPE,
-                        w -> new TallDoorBlock(BlockInit.OAK_BARN_GLASS_DOOR.get(), w.toVanillaOrOak().setType()))
+                        w -> new TallDoorBlock(w.toVanillaOrOak().setType(), BlockInit.OAK_BARN_GLASS_DOOR.get()))
                 .addTextureM(modRes("block/macaw/tall_oak_barn_door_lower"), EveryCompat.res("block/ddm/tall_oak_barn_door_lower_m"))
                 .addTextureM(modRes("block/macaw/tall_oak_barn_glass_door_middle"), EveryCompat.res("block/ddm/tall_oak_barn_glass_door_middle_m"))
                 .addTextureM(modRes("block/macaw/tall_oak_barn_glass_door_upper"), EveryCompat.res("block/ddm/tall_oak_barn_glass_door_upper_m"))
@@ -87,7 +87,7 @@ public class DramaticDoorsMacawModule extends SimpleModule {
 
         tallStableDoors = SimpleEntrySet.builder(WoodType.class, "stable_door", "tall_macaw",
                         getModBlock("tall_macaw_oak_stable_door"), () -> WoodTypeRegistry.OAK_TYPE,
-                        w -> new TallStableDoorBlock(BlockInit.OAK_STABLE_DOOR.get(), w.toVanillaOrOak().setType()))
+                        w -> new TallStableDoorBlock(w.toVanillaOrOak().setType(), BlockInit.OAK_STABLE_DOOR.get()))
                 .addTextureM(modRes("block/macaw/tall_oak_stable_door_lower"), EveryCompat.res("block/ddm/tall_oak_stable_door_lower_m"))
                 .addTextureM(modRes("block/macaw/tall_oak_stable_door_middle"), EveryCompat.res("block/ddm/tall_oak_stable_door_middle_m"))
                 .addTextureM(modRes("block/macaw/tall_oak_stable_door_upper"), EveryCompat.res("block/ddm/tall_oak_stable_door_upper_m"))
@@ -105,7 +105,7 @@ public class DramaticDoorsMacawModule extends SimpleModule {
 
         tallStableHorseDoors = SimpleEntrySet.builder(WoodType.class, "stable_head_door", "tall_macaw",
                         getModBlock("tall_macaw_oak_stable_head_door"), () -> WoodTypeRegistry.OAK_TYPE,
-                        w -> new TallStableDoorBlock(BlockInit.OAK_STABLE_HEAD_DOOR.get(), w.toVanillaOrOak().setType()))
+                        w -> new TallStableDoorBlock(w.toVanillaOrOak().setType(), BlockInit.OAK_STABLE_HEAD_DOOR.get()))
                 .addTextureM(modRes("block/macaw/tall_oak_stable_door_lower"), EveryCompat.res("block/ddm/tall_oak_stable_door_lower_m"))
                 .addTextureM(modRes("block/macaw/tall_oak_stable_head_door_middle"), EveryCompat.res("block/ddm/tall_oak_stable_head_door_middle_m"))
                 .addTextureM(modRes("block/macaw/tall_oak_stable_door_upper"), EveryCompat.res("block/ddm/tall_oak_stable_door_upper_m"))
@@ -123,7 +123,7 @@ public class DramaticDoorsMacawModule extends SimpleModule {
 
         tallBarkGlassDoors = SimpleEntrySet.builder(WoodType.class, "bark_glass_door", "tall_macaw",
                         getModBlock("tall_macaw_oak_bark_glass_door"), () -> WoodTypeRegistry.OAK_TYPE,
-                        w -> new TallDoorBlock(BlockInit.OAK_BARK_GLASS_DOOR.get(), w.toVanillaOrOak().setType()))
+                        w -> new TallDoorBlock(w.toVanillaOrOak().setType(), BlockInit.OAK_BARK_GLASS_DOOR.get()))
                 .addTextureM(modRes("item/macaw/tall_oak_bark_glass_door"), EveryCompat.res("block/ddm/tall_oak_bark_glass_door_m"))
                 .addModelTransform(m -> m.replaceGenericType("oak", "item/macaw"))
                 .addTag(modRes("tall_wooden_doors"), Registries.BLOCK)
@@ -138,7 +138,7 @@ public class DramaticDoorsMacawModule extends SimpleModule {
 
         tallGlassDoors = SimpleEntrySet.builder(WoodType.class, "glass_door", "tall_macaw",
                         getModBlock("tall_macaw_oak_glass_door"), () -> WoodTypeRegistry.OAK_TYPE,
-                        w -> new TallDoorBlock(BlockInit.OAK_GLASS_DOOR.get(), w.toVanillaOrOak().setType()))
+                        w -> new TallDoorBlock(w.toVanillaOrOak().setType(), BlockInit.OAK_GLASS_DOOR.get()))
                 .addTextureM(modRes("block/macaw/tall_oak_glass_door_lower"), EveryCompat.res("block/ddm/tall_oak_glass_door_lower_m"))
                 .addTextureM(modRes("block/macaw/tall_oak_glass_door_middle"), EveryCompat.res("block/ddm/tall_oak_glass_door_middle_m"))
                 .addTextureM(modRes("block/macaw/tall_oak_glass_door_upper"), EveryCompat.res("block/ddm/tall_oak_glass_door_upper_m"))
@@ -156,7 +156,7 @@ public class DramaticDoorsMacawModule extends SimpleModule {
 
         tallModernDoors = SimpleEntrySet.builder(WoodType.class, "modern_door", "tall_macaw",
                         getModBlock("tall_macaw_oak_modern_door"), () -> WoodTypeRegistry.OAK_TYPE,
-                        w -> new TallDoorBlock(BlockInit.OAK_MODERN_DOOR.get(), w.toVanillaOrOak().setType()))
+                        w -> new TallDoorBlock(w.toVanillaOrOak().setType(), BlockInit.OAK_MODERN_DOOR.get()))
                 .addTextureM(modRes("block/macaw/tall_oak_modern_door_lower"), EveryCompat.res("block/ddm/tall_oak_modern_door_lower_m"))
                 .addTextureM(modRes("block/macaw/tall_oak_modern_door_middle"), EveryCompat.res("block/ddm/tall_oak_modern_door_middle_m"))
                 .addTextureM(modRes("block/macaw/tall_oak_modern_door_upper"), EveryCompat.res("block/ddm/tall_oak_modern_door_upper_m"))
@@ -174,7 +174,7 @@ public class DramaticDoorsMacawModule extends SimpleModule {
 
         tallShojiDoors = SimpleEntrySet.builder(WoodType.class, "japanese_door", "tall_macaw",
                         getModBlock("tall_macaw_oak_japanese_door"), () -> WoodTypeRegistry.OAK_TYPE,
-                        w -> new TallSlidingDoorBlock(BlockInit.OAK_JAPANESE_DOOR.get(), w.toVanillaOrOak().setType()))
+                        w -> new TallSlidingDoorBlock(w.toVanillaOrOak().setType(), BlockInit.OAK_JAPANESE_DOOR.get()))
                 .addTextureM(modRes("block/macaw/tall_oak_japanese_lower"), EveryCompat.res("block/ddm/tall_oak_japanese_door_lower_m"))
                 .addTextureM(modRes("block/macaw/tall_oak_japanese_middle"), EveryCompat.res("block/ddm/tall_oak_japanese_door_middle_m"))
                 .addTextureM(modRes("block/macaw/tall_oak_japanese_upper"), EveryCompat.res("block/ddm/tall_oak_japanese_door_upper_m"))
@@ -192,7 +192,7 @@ public class DramaticDoorsMacawModule extends SimpleModule {
 
         tallShojiWholeDoors = SimpleEntrySet.builder(WoodType.class, "japanese2_door", "tall_macaw",
                         getModBlock("tall_macaw_oak_japanese2_door"), () -> WoodTypeRegistry.OAK_TYPE,
-                        w -> new TallSlidingDoorBlock(BlockInit.OAK_JAPANESE2_DOOR.get(), w.toVanillaOrOak().setType()))
+                        w -> new TallSlidingDoorBlock(w.toVanillaOrOak().setType(), BlockInit.OAK_JAPANESE2_DOOR.get()))
                 .addTextureM(modRes("block/macaw/tall_oak_japanese2_door_lower"), EveryCompat.res("block/ddm/tall_oak_japanese2_door_lower_m"))
                 .addTextureM(modRes("block/macaw/tall_oak_japanese2_door_middle"), EveryCompat.res("block/ddm/tall_oak_japanese2_door_middle_m"))
                 .addTextureM(modRes("block/macaw/tall_oak_japanese2_door_upper"), EveryCompat.res("block/ddm/tall_oak_japanese2_door_upper_m"))
@@ -210,7 +210,7 @@ public class DramaticDoorsMacawModule extends SimpleModule {
 
         tallClassicDoors = SimpleEntrySet.builder(WoodType.class, "classic_door", "tall_macaw",
                         getModBlock("tall_macaw_spruce_classic_door"), () -> WoodTypeRegistry.getValue(ResourceLocation.parse("spruce")),
-                        w -> new TallDoorBlock(BlockInit.SPRUCE_CLASSIC_DOOR.get(), w.toVanillaOrOak().setType()))
+                        w -> new TallDoorBlock(w.toVanillaOrOak().setType(), BlockInit.SPRUCE_CLASSIC_DOOR.get()))
                 .addTextureM(modRes("block/macaw/tall_spruce_classic_door_lower"), EveryCompat.res("block/ddm/tall_oak_classic_door_lower_m"))
                 .addTextureM(modRes("block/macaw/tall_spruce_classic_door_middle"), EveryCompat.res("block/ddm/tall_oak_classic_door_middle_m"))
                 .addTextureM(modRes("block/macaw/tall_spruce_classic_door_upper"), EveryCompat.res("block/ddm/tall_oak_classic_door_upper_m"))
@@ -228,7 +228,7 @@ public class DramaticDoorsMacawModule extends SimpleModule {
 
         tallCottageDoors = SimpleEntrySet.builder(WoodType.class, "cottage_door", "tall_macaw",
                         getModBlock("tall_macaw_oak_cottage_door"), () -> WoodTypeRegistry.OAK_TYPE,
-                        w -> new TallDoorBlock(BlockInit.OAK_COTTAGE_DOOR.get(), w.toVanillaOrOak().setType()))
+                        w -> new TallDoorBlock(w.toVanillaOrOak().setType(), BlockInit.OAK_COTTAGE_DOOR.get()))
                 .addTextureM(modRes("block/macaw/tall_oak_cottage_door_lower"), EveryCompat.res("block/ddm/tall_oak_cottage_door_lower_m"))
                 .addTextureM(modRes("block/macaw/tall_oak_cottage_door_middle"), EveryCompat.res("block/ddm/tall_oak_cottage_door_middle_m"))
                 .addTextureM(modRes("block/macaw/tall_oak_cottage_door_upper"), EveryCompat.res("block/ddm/tall_oak_cottage_door_upper_m"))
@@ -246,7 +246,7 @@ public class DramaticDoorsMacawModule extends SimpleModule {
 
         tallPaperDoors = SimpleEntrySet.builder(WoodType.class, "paper_door", "tall_macaw",
                         getModBlock("tall_macaw_oak_paper_door"), () -> WoodTypeRegistry.OAK_TYPE,
-                        w -> new TallDoorBlock(BlockInit.OAK_PAPER_DOOR.get(), w.toVanillaOrOak().setType()))
+                        w -> new TallDoorBlock(w.toVanillaOrOak().setType(), BlockInit.OAK_PAPER_DOOR.get()))
                 .addTextureM(modRes("block/macaw/tall_oak_paper_door_lower"), EveryCompat.res("block/ddm/tall_oak_paper_door_lower_m"))
                 .addTextureM(modRes("block/macaw/tall_oak_paper_door_middle"), EveryCompat.res("block/ddm/tall_oak_paper_door_middle_m"))
                 .addTextureM(modRes("block/macaw/tall_oak_paper_door_upper"), EveryCompat.res("block/ddm/tall_oak_paper_door_upper_m"))
@@ -264,7 +264,7 @@ public class DramaticDoorsMacawModule extends SimpleModule {
 
         tallBeachDoors = SimpleEntrySet.builder(WoodType.class, "beach_door", "tall_macaw",
                         getModBlock("tall_macaw_oak_beach_door"), () -> WoodTypeRegistry.OAK_TYPE,
-                        w -> new TallDoorBlock(BlockInit.OAK_BEACH_DOOR.get(), w.toVanillaOrOak().setType()))
+                        w -> new TallDoorBlock(w.toVanillaOrOak().setType(), BlockInit.OAK_BEACH_DOOR.get()))
                 .addTextureM(modRes("block/macaw/tall_oak_beach_door_lower"), EveryCompat.res("block/ddm/tall_oak_beach_door_lower_m"))
                 .addTextureM(modRes("block/macaw/tall_oak_beach_door_middle"), EveryCompat.res("block/ddm/tall_oak_beach_door_middle_m"))
                 .addTextureM(modRes("block/macaw/tall_oak_beach_door_upper"), EveryCompat.res("block/ddm/tall_oak_beach_door_upper_m"))
@@ -282,7 +282,7 @@ public class DramaticDoorsMacawModule extends SimpleModule {
 
         tallTropicalDoors = SimpleEntrySet.builder(WoodType.class, "tropical_door", "tall_macaw",
                         getModBlock("tall_macaw_oak_tropical_door"), () -> WoodTypeRegistry.OAK_TYPE,
-                        w -> new TallDoorBlock(BlockInit.OAK_TROPICAL_DOOR.get(), w.toVanillaOrOak().setType()))
+                        w -> new TallDoorBlock(w.toVanillaOrOak().setType(), BlockInit.OAK_TROPICAL_DOOR.get()))
                 .addTextureM(modRes("block/macaw/tall_oak_tropical_door_lower"), EveryCompat.res("block/ddm/tall_oak_tropical_door_lower_m"))
                 .addTextureM(modRes("block/macaw/tall_oak_tropical_door_middle"), EveryCompat.res("block/ddm/tall_oak_tropical_door_middle_m"))
                 .addTextureM(modRes("block/macaw/tall_oak_tropical_door_upper"), EveryCompat.res("block/ddm/tall_oak_tropical_door_upper_m"))
@@ -300,7 +300,7 @@ public class DramaticDoorsMacawModule extends SimpleModule {
 
         tallFourPanelDoors = SimpleEntrySet.builder(WoodType.class, "four_panel_door", "tall_macaw",
                         getModBlock("tall_macaw_oak_four_panel_door"), () -> WoodTypeRegistry.OAK_TYPE,
-                        w -> new TallDoorBlock(BlockInit.OAK_FOUR_PANEL_DOOR.get(), w.toVanillaOrOak().setType()))
+                        w -> new TallDoorBlock(w.toVanillaOrOak().setType(), BlockInit.OAK_FOUR_PANEL_DOOR.get()))
                 .addTextureM(modRes("block/macaw/tall_oak_four_panel_door_lower"), EveryCompat.res("block/ddm/tall_oak_four_panel_door_lower_m"))
                 .addTextureM(modRes("block/macaw/tall_oak_four_panel_door_middle"), EveryCompat.res("block/ddm/tall_oak_four_panel_door_middle_m"))
                 .addTextureM(modRes("block/macaw/tall_oak_four_panel_door_upper"), EveryCompat.res("block/ddm/tall_oak_four_panel_door_upper_m"))
@@ -318,7 +318,7 @@ public class DramaticDoorsMacawModule extends SimpleModule {
 
         tallSwampDoors = SimpleEntrySet.builder(WoodType.class, "swamp_door", "tall_macaw",
                         getModBlock("tall_macaw_oak_swamp_door"), () -> WoodTypeRegistry.OAK_TYPE,
-                        w -> new TallDoorBlock(BlockInit.OAK_SWAMP_DOOR.get(), w.toVanillaOrOak().setType()))
+                        w -> new TallDoorBlock(w.toVanillaOrOak().setType(), BlockInit.OAK_SWAMP_DOOR.get()))
                 .addTextureM(modRes("block/macaw/tall_oak_swamp_door_lower"), EveryCompat.res("block/ddm/tall_oak_swamp_door_lower_m"))
                 .addTextureM(modRes("block/macaw/tall_oak_swamp_door_middle"), EveryCompat.res("block/ddm/tall_oak_swamp_door_middle_m"))
                 .addTextureM(modRes("block/macaw/tall_oak_swamp_door_upper"), EveryCompat.res("block/ddm/tall_oak_swamp_door_upper_m"))
@@ -337,7 +337,7 @@ public class DramaticDoorsMacawModule extends SimpleModule {
 
         tallNetherDoors = SimpleEntrySet.builder(WoodType.class, "nether_door", "tall_macaw",
                         getModBlock("tall_macaw_oak_nether_door"), () -> WoodTypeRegistry.OAK_TYPE,
-                        w -> new TallDoorBlock(BlockInit.OAK_NETHER_DOOR.get(), w.toVanillaOrOak().setType()))
+                        w -> new TallDoorBlock(w.toVanillaOrOak().setType(), BlockInit.OAK_NETHER_DOOR.get()))
                 .addTextureM(modRes("block/macaw/tall_oak_nether_door_lower"), EveryCompat.res("block/ddm/tall_oak_nether_door_lower_m"))
                 .addTextureM(modRes("block/macaw/tall_oak_nether_door_middle"), EveryCompat.res("block/ddm/tall_oak_nether_door_middle_m"))
                 .addTextureM(modRes("block/macaw/tall_oak_nether_door_upper"), EveryCompat.res("block/ddm/tall_oak_nether_door_upper_m"))
@@ -355,7 +355,7 @@ public class DramaticDoorsMacawModule extends SimpleModule {
 
         tallMysticDoors = SimpleEntrySet.builder(WoodType.class, "mystic_door", "tall_macaw",
                         getModBlock("tall_macaw_oak_mystic_door"), () -> WoodTypeRegistry.OAK_TYPE,
-                        w -> new TallDoorBlock(BlockInit.OAK_MYSTIC_DOOR.get(), w.toVanillaOrOak().setType()))
+                        w -> new TallDoorBlock(w.toVanillaOrOak().setType(), BlockInit.OAK_MYSTIC_DOOR.get()))
                 .addTextureM(modRes("block/macaw/tall_oak_mystic_door_lower"), EveryCompat.res("block/ddm/tall_oak_mystic_door_lower_m"))
                 .addTextureM(modRes("block/macaw/tall_oak_mystic_door_middle"), EveryCompat.res("block/ddm/tall_oak_mystic_door_middle_m"))
                 .addTextureM(modRes("block/macaw/tall_oak_mystic_door_upper"), EveryCompat.res("block/ddm/tall_oak_mystic_door_upper_m"))
