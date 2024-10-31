@@ -15,7 +15,7 @@ dependencies {
 //!! MOONLIGHT LIB -----------------------------------------------------------------------------------------------------
 
         //!! DEFAULT
-    modImplementation("curse.maven:selene-499980:5824029") // v2.14.34
+    modImplementation("curse.maven:selene-499980:5860046") // v2.15.0
         //!! LOCAL - only for testing
 //    modImplementation("net.mehvahdjukaar:moonlight:${moonlight_version}")
 

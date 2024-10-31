@@ -43,7 +43,7 @@ import java.util.function.Supplier;
 import static net.mehvahdjukaar.every_compat.common_classes.CompatChestTexture.generateChestTexture;
 
 
-//SUPPORT: v1.3.6+
+//SUPPORT: v2.1+
 public class VariantVanillaBlocksModule extends SimpleModule {
 
     public final SimpleEntrySet<WoodType, BarrelBlock> barrel;
@@ -77,7 +77,15 @@ public class VariantVanillaBlocksModule extends SimpleModule {
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(BlockTags.GUARDED_BY_PIGLINS, Registries.BLOCK)
                 .addTag(modRes("barrels"), Registries.BLOCK)
+                .addTag(ResourceLocation.fromNamespaceAndPath("c", "barrels"), Registries.BLOCK)
+                .addTag(ResourceLocation.fromNamespaceAndPath("c", "villager_job_sites"), Registries.BLOCK)
+                .addTag(ResourceLocation.fromNamespaceAndPath("c", "wooden_barrels"), Registries.BLOCK)
+                .addTag(ResourceLocation.fromNamespaceAndPath("c", "barrels/wooden"), Registries.BLOCK)
                 .addTag(modRes("barrels"), Registries.ITEM)
+                .addTag(ResourceLocation.fromNamespaceAndPath("c", "barrels"), Registries.ITEM)
+                .addTag(ResourceLocation.fromNamespaceAndPath("c", "villager_job_sites"), Registries.ITEM)
+                .addTag(ResourceLocation.fromNamespaceAndPath("c", "wooden_barrels"), Registries.ITEM)
+                .addTag(ResourceLocation.fromNamespaceAndPath("c", "barrels/wooden"), Registries.ITEM)
                 .addTexture(modRes("block/oak_barrel_bottom"))
                 .addTextureM(modRes("block/oak_barrel_side"),
                         EveryCompat.res("block/vanilla_barrel_side_m"))
@@ -97,6 +105,7 @@ public class VariantVanillaBlocksModule extends SimpleModule {
                 )
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(BlockTags.BEEHIVES, Registries.BLOCK)
+                .addTag(BlockTags.DOES_NOT_BLOCK_HOPPERS, Registries.BLOCK)
                 .addTag(modRes("beehives"), Registries.BLOCK)
                 .addTag(modRes("beehives"), Registries.ITEM)
                 .addTexture(modRes("block/spruce_beehive_end"))
@@ -119,7 +128,9 @@ public class VariantVanillaBlocksModule extends SimpleModule {
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(BlockTags.ENCHANTMENT_POWER_PROVIDER, Registries.BLOCK)
                 .addTag(modRes("bookshelves"), Registries.BLOCK)
+                .addTag(ResourceLocation.fromNamespaceAndPath("c", "bookshelves"), Registries.BLOCK)
                 .addTag(modRes("bookshelves"), Registries.ITEM)
+                .addTag(ResourceLocation.fromNamespaceAndPath("c", "bookshelves"), Registries.ITEM)
                 .addTextureM(modRes("block/acacia_bookshelf"), EveryCompat.res("block/acacia_bookshelf_m"))
                 .defaultRecipe()
                 .setTabKey(tab)
@@ -133,7 +144,9 @@ public class VariantVanillaBlocksModule extends SimpleModule {
                 )
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(modRes("cartography_tables"), Registries.BLOCK)
+                .addTag(ResourceLocation.fromNamespaceAndPath("c", "villager_job_sites"), Registries.BLOCK)
                 .addTag(modRes("cartography_tables"), Registries.ITEM)
+                .addTag(ResourceLocation.fromNamespaceAndPath("c", "villager_job_sites"), Registries.ITEM)
                 .addTextureM(modRes("block/oak_cartography_table_side1"), EveryCompat.res("block/vanilla_cartography_table_side1_m"))
                 .addTextureM(modRes("block/oak_cartography_table_side2"), EveryCompat.res("block/vanilla_cartography_table_side2_m"))
                 .addTexture(modRes("block/oak_cartography_table_side3"))
@@ -151,7 +164,13 @@ public class VariantVanillaBlocksModule extends SimpleModule {
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(BlockTags.GUARDED_BY_PIGLINS, Registries.BLOCK)
                 .addTag(modRes("chests"), Registries.BLOCK)
+                .addTag(ResourceLocation.fromNamespaceAndPath("c", "wooden_chests"), Registries.BLOCK)
+                .addTag(ResourceLocation.fromNamespaceAndPath("c", "chests"), Registries.BLOCK)
+                .addTag(ResourceLocation.fromNamespaceAndPath("c", "chests/wooden"), Registries.BLOCK)
                 .addTag(modRes("chests"), Registries.ITEM)
+                .addTag(ResourceLocation.fromNamespaceAndPath("c", "wooden_chests"), Registries.ITEM)
+                .addTag(ResourceLocation.fromNamespaceAndPath("c", "chests"), Registries.ITEM)
+                .addTag(ResourceLocation.fromNamespaceAndPath("c", "chests/wooden"), Registries.ITEM)
                 .addCustomItem((w, block, properties) -> new CompatChestItem(block, properties))
                 .addTile(VariantChestBlockEntity::new)
                 .defaultRecipe()
@@ -185,7 +204,9 @@ public class VariantVanillaBlocksModule extends SimpleModule {
                 )
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(modRes("composters"), Registries.BLOCK)
+                .addTag(ResourceLocation.fromNamespaceAndPath("c", "villager_job_sites"), Registries.BLOCK)
                 .addTag(modRes("composters"), Registries.ITEM)
+                .addTag(ResourceLocation.fromNamespaceAndPath("c", "villager_job_sites"), Registries.ITEM)
                 .addTexture(modRes("block/oak_composter_bottom"))
                 .addTexture(modRes("block/oak_composter_side"))
                 .addTexture(modRes("block/oak_composter_top"))
@@ -202,7 +223,9 @@ public class VariantVanillaBlocksModule extends SimpleModule {
                 )
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(modRes("crafting_tables"), Registries.BLOCK)
+                .addTag(ResourceLocation.fromNamespaceAndPath("c", "workbench"), Registries.BLOCK)
                 .addTag(modRes("crafting_tables"), Registries.ITEM)
+                .addTag(ResourceLocation.fromNamespaceAndPath("c", "workbench"), Registries.ITEM)
                 .addTexture(EveryCompat.res("block/spruce_crafting_table_top"))
                 .addTextureM(EveryCompat.res("block/spruce_crafting_table_front"),
                         EveryCompat.res("block/vct/spruce_crafting_table_front_m"))
@@ -222,7 +245,9 @@ public class VariantVanillaBlocksModule extends SimpleModule {
                 )
                 .addTag(BlockTags.MINEABLE_WITH_PICKAXE, Registries.BLOCK)
                 .addTag(modRes("fletching_tables"), Registries.BLOCK)
+                .addTag(ResourceLocation.fromNamespaceAndPath("c", "villager_job_sites"), Registries.BLOCK)
                 .addTag(modRes("fletching_tables"), Registries.ITEM)
+                .addTag(ResourceLocation.fromNamespaceAndPath("c", "villager_job_sites"), Registries.ITEM)
                 .addTextureM(modRes("block/oak_fletching_table_front"),
                         EveryCompat.res("block/vanilla_fletching_table_front_m"))
                 .addTextureM(modRes("block/oak_fletching_table_side"),
@@ -242,7 +267,9 @@ public class VariantVanillaBlocksModule extends SimpleModule {
                 )
                 .addTag(BlockTags.MINEABLE_WITH_PICKAXE, Registries.BLOCK)
                 .addTag(modRes("grindstones"), Registries.BLOCK)
+                .addTag(ResourceLocation.fromNamespaceAndPath("c", "villager_job_sites"), Registries.BLOCK)
                 .addTag(modRes("grindstones"), Registries.ITEM)
+                .addTag(ResourceLocation.fromNamespaceAndPath("c", "villager_job_sites"), Registries.ITEM)
                 .addTexture(modRes("block/oak_grindstone_pivot"))
                 .defaultRecipe()
                 .setTabKey(tab)
@@ -257,7 +284,9 @@ public class VariantVanillaBlocksModule extends SimpleModule {
                 )
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(modRes("lecterns"), Registries.BLOCK)
+                .addTag(ResourceLocation.fromNamespaceAndPath("c", "villager_job_sites"), Registries.BLOCK)
                 .addTag(modRes("lecterns"), Registries.ITEM)
+                .addTag(ResourceLocation.fromNamespaceAndPath("c", "villager_job_sites"), Registries.ITEM)
                 .addTextureM(modRes("block/acacia_lectern_base"),
                         EveryCompat.res("block/vanilla_lectern_base_m"))
                 .addTextureM(modRes("block/acacia_lectern_front"),
@@ -278,7 +307,9 @@ public class VariantVanillaBlocksModule extends SimpleModule {
                 )
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(modRes("smithing_tables"), Registries.BLOCK)
+                .addTag(ResourceLocation.fromNamespaceAndPath("c", "villager_job_sites"), Registries.BLOCK)
                 .addTag(modRes("smithing_tables"), Registries.ITEM)
+                .addTag(ResourceLocation.fromNamespaceAndPath("c", "villager_job_sites"), Registries.ITEM)
                 .addTextureM(modRes("block/oak_smithing_table_bottom"),
                         EveryCompat.res("block/vanilla_smithing_table_bottom_m"))
                 .addTextureM(modRes("block/oak_smithing_table_front"),
@@ -298,7 +329,9 @@ public class VariantVanillaBlocksModule extends SimpleModule {
                 )
                 .addTag(BlockTags.MINEABLE_WITH_PICKAXE, Registries.BLOCK)
                 .addTag(modRes("smokers"), Registries.BLOCK)
+                .addTag(ResourceLocation.fromNamespaceAndPath("c", "villager_job_sites"), Registries.BLOCK)
                 .addTag(modRes("smokers"), Registries.ITEM)
+                .addTag(ResourceLocation.fromNamespaceAndPath("c", "villager_job_sites"), Registries.ITEM)
                 .addTextureM(modRes("block/acacia_smoker_front"),
                         EveryCompat.res("block/vanilla_smoker_front_m"))
                 .addTextureM(modRes("block/acacia_smoker_front_on"),
