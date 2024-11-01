@@ -24,15 +24,17 @@ import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.CreativeModeTabs;
+import net.minecraft.world.level.block.Blocks;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Objects;
 
+import static net.mehvahdjukaar.every_compat.EveryCompat.doChildrenExistFor;
 import static net.mehvahdjukaar.every_compat.common_classes.TagUtility.createAndAddCustomTags;
 
-//SUPPORT: v3.0.2+
+//SUPPORT: v3.0.4+
 public class WilderWildModule extends SimpleModule {
 
     public final SimpleEntrySet<WoodType, HollowedLogBlock> hollow_log;
@@ -74,9 +76,9 @@ public class WilderWildModule extends SimpleModule {
 
         stripped_hollow_log = SimpleEntrySet.builder(WoodType.class, "log", "stripped_hollowed",
                         getModBlock("stripped_hollowed_oak_log", HollowedLogBlock.class), () -> WoodTypeRegistry.OAK_TYPE,
-                        w -> new HollowedLogBlock(Utils.copyPropertySafe(Objects.requireNonNull(w.getBlockOfThis("stripped_log"))))
+                        w -> new HollowedLogBlock(Utils.copyPropertySafe((w.getBlockOfThis("stripped_log") != null ) ? Objects.requireNonNull(w.getBlockOfThis("stripped_log")) : Blocks.STRIPPED_OAK_LOG))
                 )
-                .requiresChildren("stripped_log") //REASON: textures
+//                .requiresChildren("stripped_log") //REASON: textures
                 .createPaletteFromChild("stripped_log")
                 //TEXTURES: stripped_log, stripped_log_top
                 .addTexture(modRes("block/stripped_hollowed_oak_log"))
@@ -98,8 +100,13 @@ public class WilderWildModule extends SimpleModule {
                 .addTag(ItemTags.LOGS, Registries.ITEM)
                 .addTag(ItemTags.COMPLETES_FIND_TREE_TUTORIAL, Registries.ITEM)
                 .addRecipe(modRes("stripped_oak_wood_from_hollowed"))
-                //REASON: The top texture is not a standard 16x16. Take a look, you'll see why
-                .addCondition(w -> !w.getId().toString().matches("terrestria:(yucca_palm|sakura)"))
+                .addCondition(w -> {
+                    //REASON: The top texture is not a standard 16x16. Take a look, you'll see why
+                    boolean excludeWoodType = !w.getId().toString().matches("terrestria:(yucca_palm|sakura)");
+                    //REASON: textures
+                    boolean requresChildren = doChildrenExistFor(w, "stripped_log");
+                    return (excludeWoodType & requresChildren);
+                })
                 .build();
         this.addEntry(stripped_hollow_log);
 
@@ -110,20 +117,24 @@ public class WilderWildModule extends SimpleModule {
         super.onModSetup();
 
         hollow_log.blocks.forEach((wood, block) -> {
-            StrippableBlockRegistry.register(block, stripped_hollow_log.blocks.get(wood));
+            if (doChildrenExistFor(wood, stripped_hollow_log)) // For stripping the logs
+                StrippableBlockRegistry.register(block, stripped_hollow_log.blocks.get(wood));
 
             boolean isStem = Utils.getID(wood.log).toString().contains("stem");
             if (isStem) {
                 HollowedLogBlock.registerAxeHollowBehaviorStem(wood.log, hollow_log.blocks.get(wood));
-                HollowedLogBlock.registerAxeHollowBehaviorStem(wood.getBlockOfThis("stripped_log"), stripped_hollow_log.blocks.get(wood));
+                if (doChildrenExistFor(wood, "stripped_log"))
+                    HollowedLogBlock.registerAxeHollowBehaviorStem(wood.getBlockOfThis("stripped_log"), stripped_hollow_log.blocks.get(wood));
             }
             else {
                 HollowedLogBlock.registerAxeHollowBehavior(wood.log, hollow_log.blocks.get(wood));
-                HollowedLogBlock.registerAxeHollowBehavior(wood.getBlockOfThis("stripped_log"), stripped_hollow_log.blocks.get(wood));
-                TermiteManager.Termite.addDegradable(block, stripped_hollow_log.blocks.get(wood));
-                if (wood.getBlockOfThis("wood") != null && wood.getBlockOfThis("stripped_wood") != null)
-                    TermiteManager.Termite.addDegradable(wood.getBlockOfThis("wood"), wood.getBlockOfThis("stripped_wood"));
+                if (doChildrenExistFor(wood, "stripped_log")) {
+                    HollowedLogBlock.registerAxeHollowBehavior(wood.getBlockOfThis("stripped_log"), stripped_hollow_log.blocks.get(wood));
+                    TermiteManager.Termite.addDegradable(block, stripped_hollow_log.blocks.get(wood));
+                }
             }
+            if (doChildrenExistFor(wood,  "wood", "stripped_wood"))
+                TermiteManager.Termite.addDegradable(wood.getBlockOfThis("wood"), wood.getBlockOfThis("stripped_wood"));
         });
     }
 
