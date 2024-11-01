@@ -125,7 +125,7 @@ dependencies {
     modCompileOnly("curse.maven:valhelsia-furniture-694349:5189603") //!! 1.20.1
     modCompileOnly("curse.maven:variant-vanilla-blocks-866509:5703471") //v2.1
     modCompileOnly("curse.maven:villagersplus-fabric-809542:4996993") //!! 1.20.1
-    modCompileOnly("maven.modrinth:wilder-wild:3.0.2-mc1.21.1")
+    modCompileOnly("maven.modrinth:wilder-wild:3.0.4-mc1.21.1")
     modCompileOnly("curse.maven:wooden-hoppers-406021:4796143") //!! 1.20.1
 
     modCompileOnly("curse.maven:regions-unexplored-659110:5151837") //!! 1.20.1
