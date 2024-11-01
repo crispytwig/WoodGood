@@ -209,7 +209,7 @@ public abstract class EveryCompat {
                             true,
                             builder -> builder.icon(() -> ALL_WOODS.get().getDefaultInstance())
                                     .backgroundTexture(CreativeModeTab.createTextureLocation("item_search"))
-                                    .alignedRight()
+                                    //.alignedRight()
                                     .title(Component.translatable("itemGroup.everycomp.everycomp"))
                                     .build()) : null;
 

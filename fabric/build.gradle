@@ -39,19 +39,20 @@ dependencies {
 
     // porting_lib required by fabric & everycomp
     for (String module in port_lib_modules.split(",")) {
-       // modImplementation("io.github.fabricators_of_create.Porting-Lib:$module:$port_lib_version")
+        // modImplementation("io.github.fabricators_of_create.Porting-Lib:$module:$port_lib_version")
     }
 
 //!! MOONLIGHT LIB -----------------------------------------------------------------------------------------------------
 
-        //!! DEFAULT
-    modImplementation("curse.maven:selene-499980:5860046") // v2.15.0
-        //!! LOCAL - only for testing
-//    modImplementation("net.mehvahdjukaar:moonlight-fabric:${moonlight_version}") // LOCAL
+    if (usesMavenLocalML) {
+        modImplementation("net.mehvahdjukaar:moonlight-fabric:${moonlight_version}") // LOCAL
+    } else {
+        modImplementation("curse.maven:selene-499980:5860046") // v2.15.0
+    }
 
 //!!================================================= DEPENDENCIES ================================================== \\
 
-   // modCompileOnly("com.tterrag.registrate_fabric:Registrate:${registrate_fabric_version}")
+    // modCompileOnly("com.tterrag.registrate_fabric:Registrate:${registrate_fabric_version}")
     modCompileOnly("curse.maven:athena-841890:5176880") // Chipped
 //    modRuntimeOnly("curse.maven:cloth-config-348521:4973440") // v11.1.118 | Required by: REI
 //    modRuntimeOnly("curse.maven:architectury-api-419699:5137936") // v9.2.14 | Required by: REI, Garden-Of-The-Dead
@@ -64,7 +65,7 @@ dependencies {
 //    modRuntimeOnly("curse.maven:trinkets-341284:5173501") // Backpacked
 //    modImplementation("net.moddingplayground.frame:frame-fabric:0.22.2+1.19") // is no longer maintained
 
-        //!! Tools
+    //!! Tools
     modRuntimeOnly("curse.maven:emi-580555:5619577")
     modRuntimeOnly("curse.maven:jade-324717:5571122")
 //    modRuntimeOnly("curse.maven:worldedit-225608:5830452") // required loom 1.7.410
@@ -73,14 +74,14 @@ dependencies {
 
     // IMPORTANT: RLM: "REQUIRED LOCAL MOD" - You need to get the mod and put it in ~/fabric/run/mods/....
 
-        //!! LOCAL
+    //!! LOCAL
 //     modImplementation("net.mehvahdjukaar:supplementaries-fabric:${project.supplementaries_version}")
     modCompileOnly("net.stehschnitzel.shutter:shutter-2.0.2-1.20.1")
     modCompileOnly("com.mrcrayfish.furniture.refurbished:refurbished_furniture-fabric-1.20.1-1.0.0-beta.4")
     modCompileOnly("com.arcanc.bc:Beautiful-Campfires-fabric-1.20.1-1.0.3")
     modCompileOnly("net.darktree.redbits:redbits-1.20.1-1.16.1")
 
-        //!! MACAW's
+    //!! MACAW's
     modCompileOnly("curse.maven:macaws-bridges-351725:5465222")
     modCompileOnly("curse.maven:macaws-doors-378646:5439190")
     modCompileOnly("curse.maven:macaws-fences-and-walls-453925:5442197")
@@ -92,7 +93,7 @@ dependencies {
     modCompileOnly("curse.maven:macaws-furniture-359540:5589849")
     modCompileOnly("curse.maven:macaws-stairs-1119394:5802484")
 
-        //!! OTHERS
+    //!! OTHERS
     modCompileOnly("curse.maven:another-furniture-610492:4815126") //!! 1.20.1
     modCompileOnly("curse.maven:beautify-refabricated-809311:5405529") //!! 1.20.1
     modCompileOnly("curse.maven:bewitchment-394915:5205373") //!! 1.20.1

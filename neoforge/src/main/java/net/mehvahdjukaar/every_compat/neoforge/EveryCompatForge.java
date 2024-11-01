@@ -48,6 +48,8 @@ import net.mehvahdjukaar.every_compat.modules.neoforge.xerca.XercaModule;
 import net.mehvahdjukaar.every_compat.modules.stylish_stiles.StylishStilesModule;
 
 import net.mehvahdjukaar.moonlight.api.platform.PlatHelper;
+import net.mehvahdjukaar.moonlight.api.platform.RegHelper;
+import net.mehvahdjukaar.moonlight.api.platform.neoforge.RegHelperImpl;
 import net.neoforged.bus.api.EventPriority;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -66,7 +68,7 @@ public class EveryCompatForge extends EveryCompat {
     private static WeakReference<IEventBus> BUS = new WeakReference<>(null);
 
     public EveryCompatForge(IEventBus bus) {
-        RegHelper.startRegistering(bus);
+        RegHelper.startRegisteringFor(bus);
         BUS = new WeakReference<>(bus);
         this.commonInit();
 
@@ -150,7 +152,6 @@ public class EveryCompatForge extends EveryCompat {
     @SubscribeEvent(priority = EventPriority.LOWEST)
     public void itemTooltipEvent(ItemTooltipEvent event) {
         EveryCompatClient.onItemTooltip(event.getItemStack(), event.getContext(), event.getFlags(), event.getToolTip());
-
     }
 
     /*

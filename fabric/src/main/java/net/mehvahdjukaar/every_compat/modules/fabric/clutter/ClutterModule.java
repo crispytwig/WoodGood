@@ -100,6 +100,7 @@ public class ClutterModule extends SimpleModule {
                 .build();
         this.addEntry(tables);
 
+
         stripped_tables = SimpleEntrySet.builder(WoodType.class, "table", "stripped",
                         getModBlock("stripped_oak_table"), () -> WoodTypeRegistry.OAK_TYPE,
                         w -> new CompatTableBlock(Utils.copyPropertySafe(w.planks))
