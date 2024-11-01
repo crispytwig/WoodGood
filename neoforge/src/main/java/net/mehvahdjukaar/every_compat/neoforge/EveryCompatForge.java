@@ -66,6 +66,7 @@ public class EveryCompatForge extends EveryCompat {
     private static WeakReference<IEventBus> BUS = new WeakReference<>(null);
 
     public EveryCompatForge(IEventBus bus) {
+        RegHelper.startRegistering(bus);
         BUS = new WeakReference<>(bus);
         this.commonInit();
 
