@@ -48,6 +48,8 @@ public class WilderWildModule extends SimpleModule {
                         getModBlock("hollowed_oak_log", HollowedLogBlock.class), () -> WoodTypeRegistry.OAK_TYPE,
                         w -> new HollowedLogBlock(Utils.copyPropertySafe(w.log))
                 )
+                //REASON: textures
+                .requiresChildren("stripped_log")
                 .createPaletteFromChild("log")
                 .addTexture(modRes("block/hollowed_oak_log"))
                 //TEXTURES: stripped_hollowed_log, log_top
@@ -69,13 +71,7 @@ public class WilderWildModule extends SimpleModule {
                 .addTag(modRes("splits_coconut"), Registries.BLOCK)
                 .addRecipe(modRes("oak_wood_from_hollowed"))
                 //REASON: The top texture is not a standard 16x16. Take a look, you'll see why
-                .addCondition(w -> {
-                    //REASON: The top texture is not a standard 16x16. Take a look, you'll see why
-                    boolean excludeWoodType = !w.getId().toString().matches("terrestria:(yucca_palm|sakura)");
-                    //REASON: textures
-                    boolean requresChildren = doChildrenExistFor(w, "stripped_log");
-                    return (excludeWoodType & requresChildren);
-                })
+                .addCondition(w -> !w.getId().toString().matches("terrestria:(yucca_palm|sakura)"))
                 .build();
         this.addEntry(hollow_log);
 
@@ -83,6 +79,8 @@ public class WilderWildModule extends SimpleModule {
                         getModBlock("stripped_hollowed_oak_log", HollowedLogBlock.class), () -> WoodTypeRegistry.OAK_TYPE,
                         w -> new HollowedLogBlock(Utils.copyPropertySafe((w.getBlockOfThis("stripped_log") != null ) ? Objects.requireNonNull(w.getBlockOfThis("stripped_log")) : Blocks.STRIPPED_OAK_LOG))
                 )
+                //REASON: textures
+                .requiresChildren("stripped_log")
                 .createPaletteFromChild("stripped_log")
                 //TEXTURES: stripped_log, stripped_log_top
                 .addTexture(modRes("block/stripped_hollowed_oak_log"))
@@ -104,13 +102,8 @@ public class WilderWildModule extends SimpleModule {
                 .addTag(ItemTags.LOGS, Registries.ITEM)
                 .addTag(ItemTags.COMPLETES_FIND_TREE_TUTORIAL, Registries.ITEM)
                 .addRecipe(modRes("stripped_oak_wood_from_hollowed"))
-                .addCondition(w -> {
-                    //REASON: The top texture is not a standard 16x16. Take a look, you'll see why
-                    boolean excludeWoodType = !w.getId().toString().matches("terrestria:(yucca_palm|sakura)");
-                    //REASON: textures
-                    boolean requresChildren = doChildrenExistFor(w, "stripped_log");
-                    return (excludeWoodType & requresChildren);
-                })
+                //REASON: The top texture is not a standard 16x16. Take a look, you'll see why
+                .addCondition(w -> !w.getId().toString().matches("terrestria:(yucca_palm|sakura)"))
                 .build();
         this.addEntry(stripped_hollow_log);
 
