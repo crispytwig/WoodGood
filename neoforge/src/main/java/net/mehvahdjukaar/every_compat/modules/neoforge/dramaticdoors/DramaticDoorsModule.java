@@ -47,7 +47,6 @@ public class DramaticDoorsModule extends SimpleModule {
                 .copyParentDrop()
                 .defaultRecipe()
                 .build();
-
         this.addEntry(tallDoors);
 
         shortDoors = SimpleEntrySet.builder(WoodType.class, "door", "short",
@@ -66,7 +65,6 @@ public class DramaticDoorsModule extends SimpleModule {
                 .copyParentDrop()
                 .defaultRecipe()
                 .build();
-
         this.addEntry(shortDoors);
     }
 
