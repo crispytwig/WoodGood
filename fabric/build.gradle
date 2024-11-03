@@ -36,6 +36,12 @@ dependencies {
     modImplementation("com.terraformersmc:modmenu:11.0.3")
     modImplementation("dev.onyxstudios.cardinal-components-api:cardinal-components-base:6.1.1")
     modImplementation("dev.onyxstudios.cardinal-components-api:cardinal-components-entity:6.1.1")
+    // so stupid stuff requird by GlitchCore
+    modImplementation('net.jodah:typetools:0.6.3')
+    modImplementation('com.electronwill.night-config:core:3.8.1')
+    modImplementation('com.electronwill.night-config:toml:3.8.1')
+
+
 
     // porting_lib required by fabric & everycomp
     for (String module in port_lib_modules.split(",")) {
@@ -59,7 +65,9 @@ dependencies {
     modCompileOnly("curse.maven:framework-549225:5680025") // v0.7.7 | Refurbished Furniture, Mighty Mail, Backpacked
     modCompileOnly("curse.maven:quad-932715:5146132") // More Crafting Tables
     modCompileOnly("curse.maven:resourceful-lib-570073:5659872") //v2.1.29 | Chipped, Handcrafted, Cozy
-    //modRuntimeOnly("curse.maven:terrablender-fabric-565956:5849391") // v4.1.0.4 | Regions-Unexplored
+    modRuntimeOnly("curse.maven:terrablender-fabric-565956:5864141") // v4.1.0.5 | Regions-Unexplored, Biomes-O'-Plenty
+    modRuntimeOnly("curse.maven:glitchcore-955399:5660741") // v2.1.0.0 | Biomes-O'-Plenty
+//    modRuntimeOnly("curse.maven:forge-config-api-port-fabric-547434:5772128") // v21.1.1 | Regions Unexplored
     modCompileOnly("maven.modrinth:frozenlib:1.9-mc1.21.1") // Wilder-Wild
     modCompileOnly("curse.maven:valhelsia-core-416935:5376599") // Valhelsia-Furniture
 //    modRuntimeOnly("curse.maven:trinkets-341284:5173501") // Backpacked
@@ -119,6 +127,7 @@ dependencies {
     modCompileOnly("curse.maven:mighty-mail-fabric-904097:4750271") //!! 1.20.1
     modCompileOnly("curse.maven:missing-wilds-622590:5053651") //!! 1.20.1
     modCompileOnly("curse.maven:more-crafting-tables-lieonlion-913586:5104629") //!! 1.20.1
+    modImplementation("curse.maven:storage-drawers-223852:5840296") //WIP
     modCompileOnly("maven.modrinth:stylish-stiles:zLlRqz68") //!! 1.20.1
     modCompileOnly("curse.maven:table-top-craft-fabric-729535:5319819") //RLM: exp4j //!! 1.20.1
     modCompileOnly("curse.maven:the-twilight-forest-unofficial-1111023:5791503") // Use RLM //!! 1.20.1
@@ -129,7 +138,7 @@ dependencies {
     modCompileOnly("maven.modrinth:wilder-wild:3.0.4-mc1.21.1")
     modCompileOnly("curse.maven:wooden-hoppers-406021:4796143") //!! 1.20.1
 
-    modCompileOnly("curse.maven:regions-unexplored-659110:5151837") //!! 1.20.1
+    modCompileOnly("curse.maven:regions-unexplored-659110:5579923")
 
     // ======================================== DISABLED FOR A REASON =============================================== \\
 //    modCompileOnly("curse.maven:the-twilight-forest-227639:4389094") // Not available & Currently "The Twilight Forest Unofficial" is available
@@ -137,11 +146,10 @@ dependencies {
 
 //!!=============================================== FOR TESTING ===================================================== \\
 
+    modRuntimeOnly("curse.maven:biomes-o-plenty-220318:5855569")
 //    modRuntimeOnly("curse.maven:gardens-of-the-dead-683174:4784268")
-    modRuntimeOnly("curse.maven:terrestria-323974:5799166")
+//    modRuntimeOnly("curse.maven:terrestria-323974:5799166")
 
-    // Dependencies
-//    modRuntimeOnly("curse.maven:forge-config-api-port-fabric-547434:4583000") // Required: unknown
 }
 
 
