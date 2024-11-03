@@ -50,7 +50,7 @@ public class StorageDrawersModule extends SimpleModule {
 
         FULL_DRAWERS_1 = SimpleEntrySet.builder(WoodType.class, "full_drawers_1",
                         ModBlocks.OAK_FULL_DRAWERS_1, () -> WoodTypeRegistry.OAK_TYPE,
-                        w -> new BlockStandardDrawers(1, false, Utils.copyPropertySafe(ModBlocks.OAK_FULL_DRAWERS_2.get()))
+                        w -> new BlockStandardDrawers(1, false, Utils.copyPropertySafe(ModBlocks.OAK_FULL_DRAWERS_1.get()))
                 )
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(modRes("drawers"), Registries.BLOCK)
