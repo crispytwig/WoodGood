@@ -53,7 +53,9 @@ public class FriendsAndFoesModule extends SimpleModule {
 
     }
 
-    private Supplier<PoiType> compatBeeHivePOI = RegHelper.register(EveryCompat.res("faf_beehive"),
+    protected final ResourceLocation POI_ID = EveryCompat.res("faf_beehive");
+
+    private Supplier<PoiType> compatBeeHivePOI = RegHelper.register(POI_ID,
             () -> new PoiType(getBeehives(), 1, 1), Registry.POINT_OF_INTEREST_TYPE);
 
 
@@ -67,10 +69,16 @@ public class FriendsAndFoesModule extends SimpleModule {
     public void addDynamicServerResources(ServerDynamicResourcesHandler handler, ResourceManager manager) {
         super.addDynamicServerResources(handler, manager);
 
-        SimpleTagBuilder tb = SimpleTagBuilder.of(PoiTypeTags.BEE_HOME);
+        SimpleTagBuilder bee_hive = SimpleTagBuilder.of(PoiTypeTags.BEE_HOME);
 
-        tb.add(EveryCompat.res("faf_beehive"));
+        bee_hive.add(POI_ID);
 
-        handler.dynamicPack.addTag(tb, Registry.POINT_OF_INTEREST_TYPE_REGISTRY);
+        handler.dynamicPack.addTag(bee_hive, Registry.POINT_OF_INTEREST_TYPE_REGISTRY);
+
+        SimpleTagBuilder acquirable_job_site = SimpleTagBuilder.of(PoiTypeTags.ACQUIRABLE_JOB_SITE);
+
+        acquirable_job_site.add(POI_ID);
+
+        handler.dynamicPack.addTag(acquirable_job_site, Registry.POINT_OF_INTEREST_TYPE_REGISTRY);
     }
 }
