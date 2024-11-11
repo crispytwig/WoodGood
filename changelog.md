@@ -1,7 +1,12 @@
 ### UPDATED:
-- **Regions Unexplored** (FABRIC): Updated for 1.21
+- **Regions Unexplored** (FABRIC): For 1.21
+- **Macaw's Furniture** (COMMON): For 1.21
 - **ZH_CN**: Credited to ChuijkYahus
 - **Friends And Foes** (COMMON): Fixed Beehives not getting recognized by villagers - Credited to _VoidLeech_
+- **More Crafting Table (LIEONLION)** (COMMON): Fixed the crash related to #666
+- **Chipped** (COMMON): Fixed the recipes not working related to #668
+- **More Chest Variants (LieOnLion)** (COMMON): Changed shortenedID to `lolmcv`
+  - <span style="color: red">WARNING:</span> Backup your world if you have **More Chest Variants (LieOnLion)** installed
 
 #### LEGENDS:
 - (COMMON): NEOFORGE & FABRIC 
