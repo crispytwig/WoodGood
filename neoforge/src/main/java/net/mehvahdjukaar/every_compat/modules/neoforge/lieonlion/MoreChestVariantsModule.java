@@ -45,7 +45,7 @@ public class MoreChestVariantsModule extends SimpleModule {
     public final SimpleEntrySet<WoodType, Block> trappedChests;
 
     public MoreChestVariantsModule(String modID) {
-        super(modID, "mcv");
+        super(modID, "lolmcv");
 
         chests = SimpleEntrySet.builder(WoodType.class, "chest",
                         getModBlock("oak_chest"), () -> WoodTypeRegistry.OAK_TYPE,
