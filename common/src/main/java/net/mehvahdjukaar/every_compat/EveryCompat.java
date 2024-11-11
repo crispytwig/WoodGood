@@ -291,19 +291,21 @@ public abstract class EveryCompat {
                 }
             }
             for (var e : typeToEntrySet.values()) {
-                event.add(tab, e.toArray(ItemLike[]::new));
+                LinkedHashSet<ItemLike> list  = new LinkedHashSet<>(e);
+                event.add(tab, list.toArray(ItemLike[]::new));
             }
         } else {
             forAllModules(m -> m.registerItemsToExistingTabs(event));
         }
     }
 
-    public static boolean doChildrenExistFor(WoodType w, String ... blockTypes) {
+    public static boolean doChildrenExistFor(WoodType w, String... blockTypes) {
         for (String type : blockTypes) {
             if (w.getBlockOfThis(type) == null) return false;
         }
         return true;
     }
+
     public static boolean doChildrenExistFor(WoodType w, SimpleEntrySet<WoodType, ?> blockType) {
         return (blockType.blocks.get(w) != null);
     }
