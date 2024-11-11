@@ -211,12 +211,16 @@ public abstract class AbstractSimpleEntrySet<T extends BlockType, B extends Bloc
             Class<T> typeClass = this.getTypeClass();
             for (var e : items.entrySet()) {
                 var item = e.getValue();
-                event.addAfter(tab, s -> {
-                    T type = reg.getBlockTypeOf(s.getItem());
-                    if (type == null) return false;
-                    return type.getClass() == typeClass
-                            && Objects.equals(type.getChildKey(s.getItem()), childKey);
-                }, item);
+                try {
+                    event.addAfter(tab, s -> {
+                        T type = reg.getBlockTypeOf(s.getItem());
+                        if (type == null) return false;
+                        return type.getClass() == typeClass
+                                && Objects.equals(type.getChildKey(s.getItem()), childKey);
+                    }, item);
+                }catch (Exception exception){
+                    //hack to prevent duplicates... improve items to tab event to provide item list
+                }
             }
         }
     }
