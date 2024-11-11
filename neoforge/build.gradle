@@ -172,7 +172,7 @@ dependencies {
     modCompileOnly("curse.maven:buildersaddition-389697:5544431")
     modCompileOnly("maven.modrinth:building-but-better:zGMhmLYb") // v1.1.1 | MidnightLib //!! 1.20.1
     modCompileOnly("curse.maven:camp-chair-531744:4579679") //!! 1.20.1
-    modCompileOnly("curse.maven:chipped-456956:4634856") // v3.0.1 //!! 1.20.1
+    modCompileOnly("curse.maven:chipped-456956:5813118")
     modCompileOnly("curse.maven:create-328085:5689514") //WIP --- STONE TESTING //!! 1.20.1
     modCompileOnly("curse.maven:dawn-of-time-312359:5651249") //!! 1.20.1
     modCompileOnly("curse.maven:decorative-blocks-362528:3941638") //!! 1.20.1

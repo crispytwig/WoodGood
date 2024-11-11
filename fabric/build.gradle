@@ -108,7 +108,7 @@ dependencies {
     modCompileOnly("curse.maven:building-but-better-989479:5362379") //!! 1.20.1
     modCompileOnly("curse.maven:backpacked-352835:5401968") //!! 1.20.1
     modCompileOnly("curse.maven:camp-chair-531744:4579676") //!! 1.20.1
-    modCompileOnly("curse.maven:chipped-456956:4634858") // v3.0.1 //!! 1.20.1
+    modCompileOnly("curse.maven:chipped-456956:5813118")
     modCompileOnly("curse.maven:clutter-826060:5776595") //RML: Geckolib //!! 1.20.1
     modCompileOnly("curse.maven:create-fabric-624165:5168511") //!! 1.20.1
     modCompileOnly("curse.maven:dawn-of-time-312359:5651253") //!! 1.20.1
@@ -127,7 +127,7 @@ dependencies {
     modCompileOnly("curse.maven:mighty-mail-fabric-904097:4750271") //!! 1.20.1
     modCompileOnly("curse.maven:missing-wilds-622590:5053651") //!! 1.20.1
     modCompileOnly("curse.maven:more-crafting-tables-lieonlion-913586:5104629") //!! 1.20.1
-    modCompileOnly("curse.maven:storage-drawers-223852:5840296") //WIP
+    modImplementation("curse.maven:storage-drawers-223852:5840296") //WIP
     modCompileOnly("maven.modrinth:stylish-stiles:zLlRqz68") //!! 1.20.1
     modCompileOnly("curse.maven:table-top-craft-fabric-729535:5319819") //RLM: exp4j //!! 1.20.1
     modCompileOnly("curse.maven:twigs-496913:4603805") //!! 1.20.1
