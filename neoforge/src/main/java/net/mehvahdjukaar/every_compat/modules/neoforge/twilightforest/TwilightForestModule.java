@@ -39,7 +39,6 @@ public class TwilightForestModule extends SimpleModule {
         super(modId, "tf");
         var tab = modRes("blocks");
 
-        //TODO: check face culling
         banisters = SimpleEntrySet.builder(WoodType.class, "banister",
                         TFBlocks.OAK_BANISTER, () -> WoodTypeRegistry.OAK_TYPE,
                         w -> new BanisterBlock(Utils.copyPropertySafe(w.planks).noOcclusion())
@@ -117,7 +116,7 @@ public class TwilightForestModule extends SimpleModule {
     }
 
     @Override
-    public void registerBlockColors(ClientHelper.BlockColorEvent event) {
+    public void registerBlockColors(ClientHelper.@NotNull BlockColorEvent event) {
         event.register(
                 (s, l, pos, i) -> s.getValue(ClimbableHollowLogBlock.VARIANT) != HollowLogVariants.Climbable.VINE ? -1 :
                         l != null && pos != null ?

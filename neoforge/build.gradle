@@ -172,7 +172,7 @@ dependencies {
     modCompileOnly("curse.maven:buildersaddition-389697:5544431")
     modCompileOnly("maven.modrinth:building-but-better:zGMhmLYb") // v1.1.1 | MidnightLib //!! 1.20.1
     modCompileOnly("curse.maven:camp-chair-531744:4579679") //!! 1.20.1
-    modCompileOnly("curse.maven:chipped-456956:4634856") // v3.0.1 //!! 1.20.1
+    modCompileOnly("curse.maven:chipped-456956:5813118")
     modCompileOnly("curse.maven:create-328085:5689514") //WIP --- STONE TESTING //!! 1.20.1
     modCompileOnly("curse.maven:dawn-of-time-312359:5651249") //!! 1.20.1
     modCompileOnly("curse.maven:decorative-blocks-362528:3941638") //!! 1.20.1
@@ -191,9 +191,9 @@ dependencies {
     modCompileOnly("curse.maven:lightmans-currency-472521:5763615") //!! 1.20.1
     modCompileOnly("curse.maven:mighty-mail-902986:4750272") //!! 1.20.1
     modCompileOnly("curse.maven:missing-wilds-622590:5569350")
-    modCompileOnly("curse.maven:more-chest-variants-lieonlion-858032:5334619") //!! 1.20.1
-    modCompileOnly("curse.maven:more-crafting-tables-lieonlion-913586:5330971") //!! 1.20.1
-    modCompileOnly("curse.maven:more-crafting-tables-for-forge-417365:4786212") //!! 1.20.1
+    modCompileOnly("curse.maven:more-chest-variants-lieonlion-858032:5334619") //CHESTS //!! 1.20.1
+    modCompileOnly("curse.maven:more-crafting-tables-lieonlion-913586:5473305") //CRAFTING_TABLES
+    modCompileOnly("curse.maven:more-crafting-tables-for-forge-417365:4786212") //CRAFTING_TABLES for FORGE //!! 1.20.1
     modCompileOnly("curse.maven:mosaic-carpentry-690226:4068673") //!! 1.20.1
     modCompileOnly("curse.maven:mrcrayfish-furniture-mod-55438:4602980") //!! 1.20.1
     modCompileOnly("curse.maven:oreberries-replanted-454062:5817304")

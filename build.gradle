@@ -289,7 +289,7 @@ allprojects {
 }
 
 ext {
-    usesMavenLocalML = true;// System.getenv('IS_MY_PC') == 'true' why isnt this working?
+    usesMavenLocalML = false;// System.getenv('IS_MY_PC') == 'true' why isnt this working?
 
     replaceProperties = [
             minecraft_version      : minecraft_version,
