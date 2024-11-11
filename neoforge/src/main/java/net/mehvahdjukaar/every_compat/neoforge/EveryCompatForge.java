@@ -23,7 +23,6 @@ import net.mehvahdjukaar.every_compat.modules.neoforge.infinitybuttons.InfinityB
 import net.mehvahdjukaar.every_compat.modules.neoforge.just_a_raft.JustARaftModule;
 import net.mehvahdjukaar.every_compat.modules.neoforge.lauchs.LauchsShuttersModule;
 import net.mehvahdjukaar.every_compat.modules.neoforge.lieonlion.MoreChestVariantsModule;
-import net.mehvahdjukaar.every_compat.modules.neoforge.lieonlion.MoreCraftingTablesModule;
 import net.mehvahdjukaar.every_compat.modules.neoforge.lightmans_currency.LightmansCurrencyModule;
 import net.mehvahdjukaar.every_compat.modules.neoforge.mcaw.*;
 import net.mehvahdjukaar.every_compat.modules.neoforge.missing_wilds.MissingWildModule;
@@ -49,7 +48,6 @@ import net.mehvahdjukaar.every_compat.modules.stylish_stiles.StylishStilesModule
 
 import net.mehvahdjukaar.moonlight.api.platform.PlatHelper;
 import net.mehvahdjukaar.moonlight.api.platform.RegHelper;
-import net.mehvahdjukaar.moonlight.api.platform.neoforge.RegHelperImpl;
 import net.neoforged.bus.api.EventPriority;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -115,7 +113,6 @@ public class EveryCompatForge extends EveryCompat {
         if (PlatHelper.isModLoaded("mcwdoors")) {
             addModule("dramaticdoors", () -> DramaticDoorsMacawModule::new);
         }
-        addModule("lolmct", () -> MoreCraftingTablesModule::new);
 
         // ========================================= Macaw's ======================================================== \\
         addModule("mcwbridges", () -> MacawBridgesModule::new);

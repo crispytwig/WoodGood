@@ -19,11 +19,9 @@ import net.mehvahdjukaar.every_compat.modules.fabric.dramatic_doors.DramaticDoor
 import net.mehvahdjukaar.every_compat.modules.fabric.farmersdelight.FarmersDelightModuleOld;
 import net.mehvahdjukaar.every_compat.modules.fabric.infinitybuttons.InfinityButtonsModule;
 import net.mehvahdjukaar.every_compat.modules.fabric.mcaw.*;
-import net.mehvahdjukaar.every_compat.modules.fabric.lieonlion.MoreCraftingTablesModule;
 import net.mehvahdjukaar.every_compat.modules.fabric.red_bits.RedBitsModule;
 import net.mehvahdjukaar.every_compat.modules.fabric.regions_unexplored.RegionsUnexploredModule;
 import net.mehvahdjukaar.every_compat.modules.fabric.storagedrawers.StorageDrawersModule;
-import net.mehvahdjukaar.every_compat.modules.fabric.twilightforest.TwilightForestModule;
 import net.mehvahdjukaar.every_compat.modules.fabric.variants.VariantVanillaBlocksModule;
 import net.mehvahdjukaar.every_compat.modules.fabric.wilder_wild.WilderWildModule;
 import net.mehvahdjukaar.every_compat.modules.fabric.wooden_hoppers.WoodenHoppersModule;
@@ -59,7 +57,6 @@ public class EveryCompatFabric extends EveryCompat implements ModInitializer {
         addModule("exlineawnings", () -> AwningModule::new);
         addModule("infinitybuttons", () -> InfinityButtonsModule::new);
         addModule("lightmanscurrency", () -> LightmansCurrencyModule::new);
-        addModule("lolmct", () -> MoreCraftingTablesModule::new);
         addModule("mighty_mail", () -> MightyMailModule::new);
         addModule("missingwilds", () -> MissingWildModule::new);
         addModule("redbits", () -> RedBitsModule::new);
