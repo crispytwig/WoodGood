@@ -53,7 +53,7 @@ dependencies {
     if (usesMavenLocalML) {
         modImplementation("net.mehvahdjukaar:moonlight-fabric:${moonlight_version}") // LOCAL
     } else {
-        modImplementation("curse.maven:selene-499980:5866519") // v2.15.4 (BETA)
+        modImplementation("curse.maven:selene-499980:5890786") // v2.16.0
     }
 
 //!!================================================= DEPENDENCIES ================================================== \\
@@ -74,7 +74,7 @@ dependencies {
 //    modImplementation("net.moddingplayground.frame:frame-fabric:0.22.2+1.19") // is no longer maintained
 
     //!! Tools
-    modRuntimeOnly("curse.maven:emi-580555:5619577")
+    modRuntimeOnly("curse.maven:emi-580555:5872512") // v1.1.18
     modRuntimeOnly("curse.maven:jade-324717:5571122")
 //    modRuntimeOnly("curse.maven:worldedit-225608:5830452") // required loom 1.7.410
 
