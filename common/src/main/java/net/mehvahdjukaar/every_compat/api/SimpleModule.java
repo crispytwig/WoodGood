@@ -14,6 +14,7 @@ import net.mehvahdjukaar.moonlight.api.set.leaves.LeavesType;
 import net.mehvahdjukaar.moonlight.api.set.wood.WoodType;
 import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -185,7 +186,7 @@ public class SimpleModule extends CompatModule {
         for (EntrySet<?> entrySet : entries.values()) {
             if (entrySet.getTypeClass().isAssignableFrom(type.getClass())) {
                 var itemOfType = ((EntrySet<T>) entrySet).getItemForECTab(type);
-                if (itemOfType != null) l.add(itemOfType);
+                if (itemOfType != null && itemOfType != Items.AIR) l.add(itemOfType);
             }
         }
         return l;

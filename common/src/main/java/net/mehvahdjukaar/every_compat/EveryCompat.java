@@ -47,6 +47,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -296,6 +297,9 @@ public abstract class EveryCompat {
             }
             for (var e : typeToEntrySet.values()) {
                 LinkedHashSet<ItemLike> list  = new LinkedHashSet<>(e);
+                if(list.contains(Items.AIR) || list.isEmpty() || list.size() != e.size()){
+                    continue;
+                }
                 event.add(tab, list.toArray(ItemLike[]::new));
             }
         } else {

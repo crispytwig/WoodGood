@@ -190,7 +190,7 @@ dependencies {
     modCompileOnly("curse.maven:just-a-raft-mod-274350:5777239") //!! 1.20.1
     modCompileOnly("curse.maven:lightmans-currency-472521:5763615") //!! 1.20.1
     modCompileOnly("curse.maven:mighty-mail-902986:4750272") //!! 1.20.1
-    modCompileOnly("curse.maven:missing-wilds-622590:5569350")
+    modImplementation("curse.maven:missing-wilds-622590:5569350")
     modCompileOnly("curse.maven:more-chest-variants-lieonlion-858032:5334619") //CHESTS //!! 1.20.1
     modCompileOnly("curse.maven:more-crafting-tables-lieonlion-913586:5473305") //CRAFTING_TABLES
     modCompileOnly("curse.maven:more-crafting-tables-for-forge-417365:4786212") //CRAFTING_TABLES for FORGE //!! 1.20.1
@@ -206,7 +206,7 @@ dependencies {
     modCompileOnly("curse.maven:table-top-craft-467136:5318681") //!! 1.20.1
     modCompileOnly("curse.maven:timber-frames-606011:5372390") //!! 1.20.1
     modCompileOnly("curse.maven:the-graveyard-forge-531188:4025847") //!! 1.20.1
-    modCompileOnly("curse.maven:the-twilight-forest-227639:5759335")
+    modImplementation("curse.maven:the-twilight-forest-227639:5759335")
     modCompileOnly("curse.maven:tropicraft-254794:5658664")
     modCompileOnly("curse.maven:twigs-496913:4605097") //!! 1.20.1
     modCompileOnly("curse.maven:valhelsia-furniture-694349:5189602") //!! 1.20.1
@@ -235,7 +235,7 @@ dependencies {
 //    modRuntimeOnly("curse.maven:strata-forge-edition-387296:4989643") // STONE-TYPES //!! 1.20.1
 //    modRuntimeOnly("curse.maven:endless-biomes-667688:5109705") //!! 1.20.1
 //    modRuntimeOnly("curse.maven:blue-skies-312918:5010316") // structure-gel-api //!! 1.20.1
-//    modRuntimeOnly("curse.maven:biomes-o-plenty-220318:5645384") // Terrablender, GlitchCore
+     modRuntimeOnly("curse.maven:biomes-o-plenty-220318:5645384") // Terrablender, GlitchCore
 //    modRuntimeOnly("curse.maven:upgrade-aquatic-326895:5296565") // Blueprint //!! 1.20.1
 //    modRuntimeOnly("curse.maven:autumnity-365045:5292346") // Blueprint //!! 1.20.1
 //    modRuntimeOnly("curse.maven:the-outer-end-430404:5043937") // Blueprint //!! 1.20.1
