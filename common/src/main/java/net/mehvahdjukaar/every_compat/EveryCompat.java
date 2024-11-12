@@ -9,7 +9,6 @@ import net.mehvahdjukaar.every_compat.configs.ModConfigs;
 import net.mehvahdjukaar.every_compat.configs.ModEntriesConfigs;
 import net.mehvahdjukaar.every_compat.dynamicpack.ServerDynamicResourcesHandler;
 import net.mehvahdjukaar.every_compat.misc.AllWoodItem;
-
 import net.mehvahdjukaar.every_compat.modules.another_furniture.AnotherFurnitureModule;
 import net.mehvahdjukaar.every_compat.modules.beautiful_campfires.BeautifulCampfiresModule;
 import net.mehvahdjukaar.every_compat.modules.camp_chair.CampChairModule;
@@ -30,7 +29,6 @@ import net.mehvahdjukaar.every_compat.modules.table_top_craft.TableTopCraftModul
 import net.mehvahdjukaar.every_compat.modules.twigs.TwigsModule;
 import net.mehvahdjukaar.every_compat.modules.valhelsia_furniture.ValhelsiaFurnitureModule;
 import net.mehvahdjukaar.every_compat.modules.villagers_plus.VillagersPlusModule;
-
 import net.mehvahdjukaar.every_compat.type.StoneType;
 import net.mehvahdjukaar.moonlight.api.misc.RegSupplier;
 import net.mehvahdjukaar.moonlight.api.misc.Registrator;
@@ -296,7 +294,8 @@ public abstract class EveryCompat {
                 }
             }
             for (var e : typeToEntrySet.values()) {
-                LinkedHashSet<ItemLike> list  = new LinkedHashSet<>(e);
+                if (e.isEmpty()) continue;
+                LinkedHashSet<ItemLike> list = new LinkedHashSet<>(e);
                 if(list.contains(Items.AIR) || list.isEmpty() || list.size() != e.size()){
                     continue;
                 }
