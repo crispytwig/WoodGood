@@ -90,7 +90,6 @@ public abstract class EveryCompat {
 
     protected void commonInit() {
 
-
         ModConfigs.init();
         ECNetworking.init();
 
@@ -296,7 +295,7 @@ public abstract class EveryCompat {
             for (var e : typeToEntrySet.values()) {
                 if (e.isEmpty()) continue;
                 LinkedHashSet<ItemLike> list = new LinkedHashSet<>(e);
-                if(list.contains(Items.AIR) || list.isEmpty() || list.size() != e.size()){
+                if (list.contains(Items.AIR) || list.isEmpty() || list.size() != e.size()) {
                     continue;
                 }
                 event.add(tab, list.toArray(ItemLike[]::new));
