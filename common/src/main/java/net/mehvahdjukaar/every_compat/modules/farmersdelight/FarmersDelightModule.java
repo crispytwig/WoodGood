@@ -1,6 +1,5 @@
 package net.mehvahdjukaar.every_compat.modules.farmersdelight;
 
-import com.google.common.base.Suppliers;
 import com.google.gson.JsonObject;
 import net.mehvahdjukaar.every_compat.EveryCompat;
 import net.mehvahdjukaar.every_compat.api.SimpleEntrySet;
@@ -14,7 +13,6 @@ import net.mehvahdjukaar.moonlight.api.set.wood.WoodType;
 import net.mehvahdjukaar.moonlight.api.set.wood.WoodTypeRegistry;
 import net.mehvahdjukaar.moonlight.api.util.Utils;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.tags.BlockTags;
@@ -25,8 +23,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Objects;
 
-// SUPPORT: v1.2.4+
-// SUPPORT: FABRIC-v2.0.5+
+// SUPPORT: v1.2.5+
+// SUPPORT: FABRIC-v2.2.2+
 public class FarmersDelightModule extends SimpleModule {
 
     public final SimpleEntrySet<WoodType, Block> cabinets;
