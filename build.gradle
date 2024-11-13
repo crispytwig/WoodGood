@@ -143,7 +143,6 @@ subprojects {
                         optionalDependency("quark")
                         optionalDependency("regions-unexplored")
 //                        optionalDependency("the-twilight-forest") //NOT AVAILABLE
-                        optionalDependency("the-twilight-forest-unofficial")
                         optionalDependency("table-top-craft-fabric")
                         optionalDependency("twigs")
                         optionalDependency("valhelsia-furniture")

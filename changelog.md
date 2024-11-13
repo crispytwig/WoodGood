@@ -7,6 +7,9 @@
 - **Chipped** (COMMON): Fixed the recipes not working related to #668
 - **More Chest Variants (LieOnLion)** (COMMON): Changed shortenedID to `lolmcv`
   - <span style="color: red">WARNING:</span> Backup your world if you have **More Chest Variants (LieOnLion)** installed
+- **NOTES**: the crash when opening the inventory is fixed in **Moonlight Lib v2.16.2** related to 
+  - [Farmer's Delight](https://github.com/MehVahdJukaar/WoodGood/issues/680) (FORGE) 
+  - [THe Twilight Forest](https://github.com/MehVahdJukaar/WoodGood/issues/667) (FORGE)
 
 #### LEGENDS:
 - (COMMON): NEOFORGE & FABRIC 
