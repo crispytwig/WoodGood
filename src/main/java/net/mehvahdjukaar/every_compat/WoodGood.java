@@ -25,6 +25,7 @@ import net.mehvahdjukaar.every_compat.modules.exnihilo.ExNihiloSequentiaModule;
 import net.mehvahdjukaar.every_compat.modules.farmersdelight.FarmersDelightModule;
 import net.mehvahdjukaar.every_compat.modules.infinitybuttons.InfinityButtonsModule;
 import net.mehvahdjukaar.every_compat.modules.iron_age_furniture.IronAgeFurnitureModule;
+import net.mehvahdjukaar.every_compat.modules.lightmans_currency.LightmansCurrencyModule;
 import net.mehvahdjukaar.every_compat.modules.mcaw.*;
 import net.mehvahdjukaar.every_compat.modules.missing_wilds.MissingWildModule;
 import net.mehvahdjukaar.every_compat.modules.mrcrayfish_furniture.MrCrayfishFurnitureModule;
@@ -109,7 +110,7 @@ public class WoodGood {
 
     public WoodGood() {
 
-// ================================================== ADD COMPAT MODS =============================================== \\
+//!! ================================================== ADD COMPAT MODS ============================================= \\
         addOtherCompatMod("compatoplenty", "biomesoplenty", List.of("twigs", "farmersdelight", "quark"));
         addOtherCompatMod("compat_makeover", "biomemakeover", List.of("habitat", "farmersdelight", "quark", "decorative_blocks"));
         addOtherCompatMod("decorative_compat", "biomesoplenty", List.of("decorative_blocks"));
@@ -120,12 +121,14 @@ public class WoodGood {
         addOtherCompatMod("mcwfencesbyg", "byg", List.of("mcwfences"));
         addOtherCompatMod("macawsroofsbop", "biomesoplenty", List.of("mcwroofs"));
         addOtherCompatMod("macawsroofsbyg", "byg", List.of("mcwroofs"));
-        addOtherCompatMod("storagedrawersunlimited", "biomesoplenty", List.of("storagedrawers"));
 
-        //TODO: add folwering azalea special textures, fix vertical planks not generating & add leaves to it. same for quark
-        //also fix that one crash that idk what was about
+        addOtherCompatMod("morestoragedrawers", "ars_nouveau", List.of("storagedrawers"));
+        addOtherCompatMod("morestoragedrawers", "botania", List.of("storagedrawers"));
+        addOtherCompatMod("morestoragedrawers", "naturesaura", List.of("storagedrawers"));
+        addOtherCompatMod("morestoragedrawers", "biomesoplenty", List.of("storagedrawers"));
+        addOtherCompatMod("morestoragedrawers", "byg", List.of("storagedrawers"));
 
-// ================================================== ADD MODULES =================================================== \\
+//!! ================================================== ADD MODULES ================================================= \\
         addModule("mcwlights", () -> MacawLightsModule::new);
         addModule("mcwdoors", () -> MacawDoorsModule::new);
         addModule("mcwfurnitures", () -> MacawFurnitureModule::new);
@@ -168,7 +171,7 @@ public class WoodGood {
         addModule("productivebees", () -> ProductiveBeesModule::new);
         addModule("ironagefurniture", () -> IronAgeFurnitureModule::new);
         addModule("marketcrates", () -> MarketCratesModule::new);
-        addModule("storagedrawers", () -> StorageDrawersModule::new); //Improperly rendering items
+        addModule("storagedrawers", () -> StorageDrawersModule::new);
         addModule("stylishstiles", () -> StylishStilesModule::new);
         addModule("corail_pillar", () -> PillarModule::new);
         addModule("corail_woodcutter", () -> WoodcutterModule::new);
@@ -181,14 +184,13 @@ public class WoodGood {
         addModule("absentbydesign", () -> AbsentByDesignModule::new);
 
         // ============================================= NOT ADDED ================================================== \\
-//        addModule("justaraft", () -> JustARaftModule::new);
 //        addModule("projectbrazier", () -> ProjectBrazierModule::new);
 
         // ======================================= DISABLED FOR A REASON ============================================ \\
 //        addModule("graveyard", () -> GraveyardModule::new);
 
 
-// ================================================ OTHERS ========================================================== \\
+//!! ================================================ OTHERS ======================================================== \\
         forAllModules(m -> WoodGood.LOGGER.info("Loaded {}", m.toString()));
 
         BlockSetManager.addBlockSetRegistrationCallback(this::registerWoodStuff, Block.class, WoodType.class);
