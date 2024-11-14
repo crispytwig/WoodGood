@@ -13,7 +13,6 @@ import net.mehvahdjukaar.every_compat.api.SimpleModule;
 import net.mehvahdjukaar.every_compat.dynamicpack.ClientDynamicResourcesHandler;
 import net.mehvahdjukaar.selene.block_set.wood.WoodType;
 import net.mehvahdjukaar.selene.client.asset_generators.textures.Palette;
-import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Registry;
 import net.minecraft.server.packs.resources.ResourceManager;
@@ -26,6 +25,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Collection;
 
 //SUPPORT: v10.3.0+
+@SuppressWarnings("deprecation")
 public class StorageDrawersModule extends SimpleModule {
 
     public final SimpleEntrySet<WoodType, BlockStandardDrawers> FULL_DRAWERS_1;
@@ -212,13 +212,14 @@ public class StorageDrawersModule extends SimpleModule {
     @Override
     @SuppressWarnings({"unchecked", "ConstantConditions"})
     public void registerEntityRenderers(EntityRenderersEvent.RegisterRenderers event) {
-        event.registerBlockEntityRenderer((BlockEntityType<CompatStandardDrawersEntity1>) (FULL_DRAWERS_1.getTileHolder().tile), CompatTileEntityDrawersRenderer::new);
-        event.registerBlockEntityRenderer((BlockEntityType<CompatStandardDrawersEntity2>) (FULL_DRAWERS_2.getTileHolder().tile), CompatTileEntityDrawersRenderer::new);
-        event.registerBlockEntityRenderer((BlockEntityType<CompatStandardDrawersEntity4>) (FULL_DRAWERS_4.getTileHolder().tile), CompatTileEntityDrawersRenderer::new);
-        event.registerBlockEntityRenderer((BlockEntityType<CompatHalfDrawersEntity1>) (HALF_DRAWERS_1.getTileHolder().tile), CompatTileEntityDrawersRenderer::new);
-        event.registerBlockEntityRenderer((BlockEntityType<CompatHalfDrawersEntity2>) (HALF_DRAWERS_2.getTileHolder().tile), CompatTileEntityDrawersRenderer::new);
-        event.registerBlockEntityRenderer((BlockEntityType<CompatHalfDrawersEntity4>) (HALF_DRAWERS_4.getTileHolder().tile), CompatTileEntityDrawersRenderer::new);
+        event.registerBlockEntityRenderer((BlockEntityType<CompatStandardDrawersEntity1>) (FULL_DRAWERS_1.getTileHolder().tile), BlockEntityDrawersRenderer::new);
+        event.registerBlockEntityRenderer((BlockEntityType<CompatStandardDrawersEntity2>) (FULL_DRAWERS_2.getTileHolder().tile), BlockEntityDrawersRenderer::new);
+        event.registerBlockEntityRenderer((BlockEntityType<CompatStandardDrawersEntity4>) (FULL_DRAWERS_4.getTileHolder().tile), BlockEntityDrawersRenderer::new);
+        event.registerBlockEntityRenderer((BlockEntityType<CompatHalfDrawersEntity1>) (HALF_DRAWERS_1.getTileHolder().tile), BlockEntityDrawersRenderer::new);
+        event.registerBlockEntityRenderer((BlockEntityType<CompatHalfDrawersEntity2>) (HALF_DRAWERS_2.getTileHolder().tile), BlockEntityDrawersRenderer::new);
+        event.registerBlockEntityRenderer((BlockEntityType<CompatHalfDrawersEntity4>) (HALF_DRAWERS_4.getTileHolder().tile), BlockEntityDrawersRenderer::new);
     }
+
 // BLOCK
     private class CompatStandardDrawers extends BlockStandardDrawers {
         public CompatStandardDrawers(int drawerCount, boolean halfDepth, Properties properties) {
@@ -323,11 +324,5 @@ public class StorageDrawersModule extends SimpleModule {
         }
     }
 
-// RENDERER
-    static class CompatTileEntityDrawersRenderer extends BlockEntityDrawersRenderer {
-        CompatTileEntityDrawersRenderer(BlockEntityRendererProvider.Context context) {
-            super(context);
-        }
-    }
 
 }
