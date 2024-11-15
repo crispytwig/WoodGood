@@ -245,7 +245,7 @@ public class SimpleEntrySet<T extends BlockType, B extends Block> extends Abstra
            for(var e :  blocks.entrySet()){
                var w = e.getKey();
                var v = e.getValue();
-               EveryCompatClient.registerRenderType(v,w, renderType));
+               EveryCompatClient.registerRenderType(v, w, renderType);
            }
         }
     }
