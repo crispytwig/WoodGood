@@ -1,9 +1,6 @@
 package net.mehvahdjukaar.every_compat.modules.mrcrayfish;
 
 import com.mrcrayfish.backpacked.block.ShelfBlock;
-import com.mrcrayfish.backpacked.core.ModBlockEntities;
-import com.mrcrayfish.backpacked.core.ModBlocks;
-import com.mrcrayfish.backpacked.core.ModCreativeTabs;
 import net.mehvahdjukaar.every_compat.api.RenderLayer;
 import net.mehvahdjukaar.every_compat.api.SimpleEntrySet;
 import net.mehvahdjukaar.every_compat.api.SimpleModule;
@@ -23,13 +20,14 @@ public class BackpackedModule extends SimpleModule {
         super(modId, "bp");
 
         shelves = SimpleEntrySet.builder(WoodType.class, "backpack_shelf",
-                        ModBlocks.OAK_BACKPACK_SHELF::get, () -> WoodTypeRegistry.OAK_TYPE,
-                        w -> new ShelfBlock(Utils.copyPropertySafe(w.planks)))
-                .requiresChildren("stripped_log")
+                        getModBlock("oak_backpack_shelf"), () -> WoodTypeRegistry.OAK_TYPE,
+                        w -> new ShelfBlock(Utils.copyPropertySafe(w.planks))
+                )
+                .addTile(getModTile("shelf"))
+                .requiresChildren("stripped_log") //REASON: textures
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
-                .setTab(ModCreativeTabs.MAIN::get)
+                .setTabKey(modRes("creative_tab"))
                 .addRecipe(modRes("oak_backpack_shelf"))
-                .addTile(ModBlockEntities.SHELF::get)
                 .setRenderType(RenderLayer.CUTOUT)
                 .build();
         this.addEntry(shelves);
