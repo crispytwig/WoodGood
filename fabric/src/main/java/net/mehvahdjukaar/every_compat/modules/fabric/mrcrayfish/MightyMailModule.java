@@ -2,7 +2,6 @@ package net.mehvahdjukaar.every_compat.modules.fabric.mrcrayfish;
 
 import com.mrcrayfish.mightymail.block.MailboxBlock;
 import com.mrcrayfish.mightymail.core.ModBlockEntities;
-import com.mrcrayfish.mightymail.core.ModCreativeTabs;
 import net.mehvahdjukaar.every_compat.EveryCompat;
 import net.mehvahdjukaar.every_compat.api.RenderLayer;
 import net.mehvahdjukaar.every_compat.api.SimpleEntrySet;
