@@ -102,7 +102,7 @@ dependencies {
     if (usesMavenLocalML) {
         modImplementation("net.mehvahdjukaar:moonlight-neoforge:${moonlight_version}")
     } else {
-        modImplementation("curse.maven:selene-499980:5898740") // v2.16.3
+        modImplementation("curse.maven:selene-499980:5909308") // v2.17.4
     }
 
 //!!================================================= DEPENDENCIES ================================================== \\
@@ -119,7 +119,7 @@ dependencies {
     modCompileOnly("curse.maven:zeta-968868:5078215") // Quark
     modCompileOnly("curse.maven:blueprint-382216:5292242") // The-Outer-End, Woodworks, Boatload //!! 1.20.1
     modCompileOnly("curse.maven:valhelsia-core-416935:5526890") // v1.1.3 | Valhelsia Structure, Valhelsia Furniture
-    modCompileOnly("curse.maven:framework-549225:5811599") // v0.9.3 | Refurbished Furniture, Mighty Mail, Backpacked
+    modRuntimeOnly("curse.maven:framework-549225:5811599") // v0.9.3 | Refurbished Furniture, Mighty Mail, Backpacked
     modCompileOnly("curse.maven:quad-932715:5692947") // v1.2.8 | More Chest Variants, More Crafting Table
     modCompileOnly("curse.maven:titanium-287342:5726400") // Functional-Storage
 //    modImplementation("curse.maven:supermartijn642s-core-lib-454372:5713682") // v1.1.17i | Rechiseled

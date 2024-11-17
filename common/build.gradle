@@ -17,7 +17,7 @@ dependencies {
     if (usesMavenLocalML) {
         modImplementation("net.mehvahdjukaar:moonlight:${moonlight_version}")
     } else {
-        modImplementation("curse.maven:selene-499980:5898739") // v2.16.3
+        modImplementation("curse.maven:selene-499980:5909309") // v2.17.4
     }
 
 //!!============================================== DEPENDENCIES ========================================================
