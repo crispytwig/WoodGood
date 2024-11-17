@@ -2,6 +2,8 @@ package net.mehvahdjukaar.every_compat.modules.mrcrayfish;
 
 import com.mrcrayfish.furniture.refurbished.block.*;
 import com.mrcrayfish.furniture.refurbished.client.renderer.blockentity.CeilingFanBlockEntityRenderer;
+import com.mrcrayfish.furniture.refurbished.crafting.StackedIngredient;
+import com.mrcrayfish.furniture.refurbished.crafting.WorkbenchContructingRecipe;
 import com.mrcrayfish.furniture.refurbished.item.MailboxItem;
 import net.mehvahdjukaar.every_compat.EveryCompat;
 import net.mehvahdjukaar.every_compat.api.RenderLayer;
@@ -11,6 +13,7 @@ import net.mehvahdjukaar.every_compat.dynamicpack.ClientDynamicResourcesHandler;
 import net.mehvahdjukaar.every_compat.misc.SpriteHelper;
 import net.mehvahdjukaar.moonlight.api.client.util.RenderUtil;
 import net.mehvahdjukaar.moonlight.api.platform.ClientHelper;
+import net.mehvahdjukaar.moonlight.api.resources.RecipeTemplate;
 import net.mehvahdjukaar.moonlight.api.resources.ResType;
 import net.mehvahdjukaar.moonlight.api.resources.StaticResource;
 import net.mehvahdjukaar.moonlight.api.set.leaves.LeavesType;
@@ -18,14 +21,25 @@ import net.mehvahdjukaar.moonlight.api.set.leaves.LeavesTypeRegistry;
 import net.mehvahdjukaar.moonlight.api.set.wood.WoodType;
 import net.mehvahdjukaar.moonlight.api.set.wood.WoodTypeRegistry;
 import net.minecraft.client.Minecraft;
+import net.minecraft.core.NonNullList;
+import net.minecraft.core.RegistryAccess;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
+import org.jetbrains.annotations.NotNull;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.BiFunction;
+import java.util.function.UnaryOperator;
 
 //SUPPORT: v1.0.8+
 public class RefurbishedFurnitureModule extends SimpleModule {
@@ -475,4 +489,34 @@ public class RefurbishedFurnitureModule extends SimpleModule {
             event.register(EveryCompat.res("extra/" + w.getAppendableId() + "_light_ceiling_fan_blade"));
         }));
     }
+
+    @Override
+    public void onModSetup() {
+        super.onModSetup();
+
+        RecipeTemplate.register(WorkbenchContructingRecipe.class, (old, typeChanger) -> {
+            List<StackedIngredient> newList = convertStackedIngredients(old.getMaterials(), typeChanger);
+            ItemStack originalResult = old.getResultItem(RegistryAccess.EMPTY);
+            ItemStack newResult = typeChanger.apply(originalResult);
+            if (newResult == null) {
+                throw new UnsupportedOperationException("Failed to convert recipe result");
+            } else {
+                NonNullList<StackedIngredient> ingredients = NonNullList.of(StackedIngredient.EMPTY, newList.toArray(StackedIngredient[]::new));
+                return new WorkbenchContructingRecipe(ingredients, newResult, old.showNotification());
+            }
+        });
+    }
+
+
+    private static <R extends Recipe<?>> @NotNull List<StackedIngredient> convertStackedIngredients(NonNullList<StackedIngredient> or, UnaryOperator<ItemStack> typeChanger) {
+        List<StackedIngredient> newList = new ArrayList<>(or);
+        for (int i = 0; i < newList.size(); i++) {
+            StackedIngredient si = or.get(i);
+            if (si.ingredient().isEmpty()) continue;
+            ItemStack intItem = typeChanger.apply(si.ingredient().getItems()[0]);
+            if (intItem != null) newList.set(i, StackedIngredient.of(Ingredient.of(intItem), si.count()));
+        }
+        return newList;
+    }
+
 }
