@@ -197,7 +197,7 @@ dependencies {
     compileOnly fg.deobf("curse.maven:twigs-496913:3968055")
     compileOnly fg.deobf("curse.maven:valhelsia-structures-347488:3708292")
     compileOnly fg.deobf("curse.maven:workshop-for-handsome-adventurer-875843:4688655")
-    compileOnly fg.deobf("curse.maven:dramatic-doors-380617:4511658")
+    compileOnly fg.deobf("curse.maven:dramatic-doors-380617:4695684")
     compileOnly fg.deobf("curse.maven:corail-pillar-266228:3672409")
     compileOnly fg.deobf("curse.maven:corail-woodcutter-331983:4442684")
     compileOnly fg.deobf("curse.maven:decoration-delight-687475:4689698")
