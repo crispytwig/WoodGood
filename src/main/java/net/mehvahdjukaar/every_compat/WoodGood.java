@@ -14,6 +14,7 @@ import net.mehvahdjukaar.every_compat.modules.absent_by_design.AbsentByDesignMod
 import net.mehvahdjukaar.every_compat.modules.another_furniture.AnotherFurnitureModule;
 import net.mehvahdjukaar.every_compat.modules.architect_palette.ArchitectsPaletteModule;
 import net.mehvahdjukaar.every_compat.modules.backpacked.BackpackedModule;
+import net.mehvahdjukaar.every_compat.modules.beautify_docorate.BeautifyDecorateModule;
 import net.mehvahdjukaar.every_compat.modules.builders_delight.BuildersDelightModule;
 import net.mehvahdjukaar.every_compat.modules.camp_chair.CampChairModule;
 import net.mehvahdjukaar.every_compat.modules.chipped.ChippedModule;
@@ -183,6 +184,7 @@ public class WoodGood {
         addModule("table_top_craft", () -> TableTopCraftModule::new);
         addModule("absentbydesign", () -> AbsentByDesignModule::new);
         addModule("oreberriesreplanted", () -> OreberriesReplantedModule::new);
+        addModule("beautify", () -> BeautifyDecorateModule::new);
 
         // ============================================= NOT ADDED ================================================== \\
 //        addModule("projectbrazier", () -> ProjectBrazierModule::new);

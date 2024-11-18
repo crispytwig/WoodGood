@@ -212,6 +212,7 @@ dependencies {
     compileOnly fg.deobf("curse.maven:storage-drawers-223852:5636643")
     compileOnly fg.deobf("curse.maven:table-top-craft-467136:5699783")
     compileOnly fg.deobf("curse.maven:oreberries-replanted-454062:4614488")
+    compileOnly fg.deobf("curse.maven:beautify-decorate-633252:4036342")
 
         // LOCAL
     compileOnly fg.deobf(getModVersion("ironagefurniture-1.18.2-0.2.0.10.jar"))
@@ -223,8 +224,6 @@ dependencies {
 
     //=========================================== TODO: NOT ADDED YET =============================================== \\
 //    compileOnly fg.deobf("curse.maven:malum-484064:4631612")
-//    implementation fg.deobf("curse.maven:just-a-raft-mod-274350:3765601")
-//    implementation fg.deobf("curse.maven:i-like-wood-324164:3726545")
 //    implementation fg.deobf("curse.maven:floor-mats-413140:3671760")
 
 //!!================================================ FOR TESTING ==================================================== \\

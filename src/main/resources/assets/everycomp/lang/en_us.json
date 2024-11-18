@@ -628,5 +628,9 @@
   "block_type.absentbydesign.wall_stripped_log": "Stripped %s Wall",
   "block_type.absentbydesign.wall_planks": "%s Wall",
 
-  "block_type.oreberriesreplanted.vat": "%s Vat"
+  "block_type.oreberriesreplanted.vat": "%s Vat",
+
+  "block_type.beautify.blinds": "%s Blinds",
+  "block_type.beautify.trellis": "%s Lattice",
+  "block_type.beautify.picture_frame": "%s Picture Frame"
 }
