@@ -14,7 +14,6 @@ import net.mehvahdjukaar.selene.block_set.wood.WoodTypeRegistry;
 import net.mehvahdjukaar.selene.client.asset_generators.textures.Palette;
 import net.mehvahdjukaar.selene.client.asset_generators.textures.TextureImage;
 import net.mehvahdjukaar.selene.client.asset_generators.textures.SpriteUtils;
-import net.mehvahdjukaar.selene.util.Utils;
 import net.mehvahdjukaar.selene.resourcepack.RPUtils;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.core.Registry;
@@ -23,6 +22,7 @@ import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.block.Block;
 
+//SUPPORT: v2.3.1_4-FINAL
 public class DramaticDoorsMacawModule extends SimpleModule {
 
     public final SimpleEntrySet<WoodType, Block> tallBarkGlassDoors;
@@ -394,6 +394,7 @@ public class DramaticDoorsMacawModule extends SimpleModule {
     }
 
     @Override
+    @SuppressWarnings("DataFlowIssue")
     public void addDynamicClientResources(ClientDynamicResourcesHandler handler, ResourceManager manager) {
         super.addDynamicClientResources(handler, manager);
 
