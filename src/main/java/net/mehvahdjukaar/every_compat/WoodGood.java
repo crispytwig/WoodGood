@@ -25,10 +25,10 @@ import net.mehvahdjukaar.every_compat.modules.exnihilo.ExNihiloSequentiaModule;
 import net.mehvahdjukaar.every_compat.modules.farmersdelight.FarmersDelightModule;
 import net.mehvahdjukaar.every_compat.modules.infinitybuttons.InfinityButtonsModule;
 import net.mehvahdjukaar.every_compat.modules.iron_age_furniture.IronAgeFurnitureModule;
-import net.mehvahdjukaar.every_compat.modules.lightmans_currency.LightmansCurrencyModule;
 import net.mehvahdjukaar.every_compat.modules.mcaw.*;
 import net.mehvahdjukaar.every_compat.modules.missing_wilds.MissingWildModule;
 import net.mehvahdjukaar.every_compat.modules.mrcrayfish_furniture.MrCrayfishFurnitureModule;
+import net.mehvahdjukaar.every_compat.modules.oreberries_replanted.OreberriesReplantedModule;
 import net.mehvahdjukaar.every_compat.modules.quark.QuarkModule;
 import net.mehvahdjukaar.every_compat.modules.storage_drawers.StorageDrawersModule;
 import net.mehvahdjukaar.every_compat.modules.stylish_stiles.StylishStilesModule;
@@ -182,6 +182,7 @@ public class WoodGood {
         addModule("chipped", () -> ChippedModule::new);
         addModule("table_top_craft", () -> TableTopCraftModule::new);
         addModule("absentbydesign", () -> AbsentByDesignModule::new);
+        addModule("oreberriesreplanted", () -> OreberriesReplantedModule::new);
 
         // ============================================= NOT ADDED ================================================== \\
 //        addModule("projectbrazier", () -> ProjectBrazierModule::new);
