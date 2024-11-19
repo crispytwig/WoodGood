@@ -171,7 +171,7 @@ dependencies {
     compileOnly fg.deobf("curse.maven:macaws-bridges-351725:5240511") // v3.0.0
     compileOnly fg.deobf("curse.maven:macaws-doors-378646:5439214") // v1.1.1
     compileOnly fg.deobf("curse.maven:macaws-fences-and-walls-453925:5442210") // v1.1.2
-    compileOnly fg.deobf("curse.maven:macaws-lights-and-lamps-502372:4618176") // v1.0.6
+    compileOnly fg.deobf("curse.maven:macaws-lights-and-lamps-502372:5450319") // v1.1.0
     compileOnly fg.deobf("curse.maven:macaws-paths-and-pavings-629153:4585113") // v1.0.3
     compileOnly fg.deobf("curse.maven:macaws-trapdoors-400933:4841544") // v1.1.2
     compileOnly fg.deobf("curse.maven:macaws-windows-363569:4961135") // v2.2.1
