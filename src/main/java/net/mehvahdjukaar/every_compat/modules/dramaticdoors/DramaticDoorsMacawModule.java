@@ -332,8 +332,8 @@ public class DramaticDoorsMacawModule extends SimpleModule {
         tallSwampDoors = SimpleEntrySet.builder(WoodType.class, "swamp_door", "tall_macaw",
                         () -> getModBlock("tall_macaw_oak_swamp_door"), () -> WoodType.OAK_WOOD_TYPE,
                         w -> new TallDoorBlock(BlockInit.OAK_SWAMP_DOOR.get()))
-                .addTextureM(WoodGood.res("block/macaw/tall_oak_swamp_door_lower"), WoodGood.res("block/ddm/tall_oak_swamp_door_lower_m"))
-                .addTextureM(WoodGood.res("block/macaw/tall_oak_swamp_door_middle"), WoodGood.res("block/ddm/tall_oak_swamp_door_middle_m"))
+                .addTextureM(modRes("block/macaw/tall_oak_swamp_door_lower"), WoodGood.res("block/ddm/tall_oak_swamp_door_lower_m"))
+                .addTextureM(modRes("block/macaw/tall_oak_swamp_door_middle"), WoodGood.res("block/ddm/tall_oak_swamp_door_middle_m"))
                 .addTextureM(modRes("block/macaw/tall_oak_swamp_door_upper"), WoodGood.res("block/ddm/tall_oak_swamp_door_upper_m"))
                 .addTextureM(modRes("item/macaw/tall_oak_swamp_door"), WoodGood.res("item/ddm/tall_oak_swamp_door_m"))
                 .addModelTransform(m -> m.replaceGenericType("oak", "item/macaw"))
