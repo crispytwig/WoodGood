@@ -213,6 +213,7 @@ dependencies {
     compileOnly fg.deobf("curse.maven:table-top-craft-467136:5699783")
     compileOnly fg.deobf("curse.maven:oreberries-replanted-454062:4614488")
     compileOnly fg.deobf("curse.maven:beautify-decorate-633252:4036342")
+    compileOnly fg.deobf("curse.maven:villagersplus-forge-817272:4418851")
 
         // LOCAL
     compileOnly fg.deobf(getModVersion("ironagefurniture-1.18.2-0.2.0.10.jar"))

@@ -46,6 +46,7 @@ import net.mehvahdjukaar.every_compat.modules.market_crates.MarketCratesModule;
 import net.mehvahdjukaar.every_compat.modules.productive_bees.ProductiveBeesModule;
 import net.mehvahdjukaar.every_compat.modules.corail.PillarModule;
 import net.mehvahdjukaar.every_compat.modules.corail.WoodcutterModule;
+import net.mehvahdjukaar.every_compat.modules.villagers_plus.VillagersPlusModule;
 import net.mehvahdjukaar.every_compat.modules.xerca.XercaModule;
 import net.mehvahdjukaar.every_compat.modules.abnormal.WoodworksModule;
 
@@ -185,6 +186,7 @@ public class WoodGood {
         addModule("absentbydesign", () -> AbsentByDesignModule::new);
         addModule("oreberriesreplanted", () -> OreberriesReplantedModule::new);
         addModule("beautify", () -> BeautifyDecorateModule::new);
+        addModule("villagersplus", () -> VillagersPlusModule::new);
 
         // ============================================= NOT ADDED ================================================== \\
 //        addModule("projectbrazier", () -> ProjectBrazierModule::new);
