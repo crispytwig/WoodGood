@@ -21,6 +21,8 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Material;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.registries.IForgeRegistry;
 
@@ -51,6 +53,7 @@ public class OreberriesReplantedModule extends SimpleModule {
     }
 
     @Override
+    @OnlyIn(Dist.CLIENT)
     @SuppressWarnings({"unchecked", "DataFlowIssue"})
     public void registerEntityRenderers(EntityRenderersEvent.RegisterRenderers event) {
         super.registerEntityRenderers(event);

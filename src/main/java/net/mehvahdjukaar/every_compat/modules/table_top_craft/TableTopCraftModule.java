@@ -18,6 +18,8 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Material;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import org.jetbrains.annotations.NotNull;
 
@@ -55,10 +57,11 @@ public class TableTopCraftModule extends SimpleModule {
     }
 
     @Override
+    @OnlyIn(Dist.CLIENT)
     @SuppressWarnings({"unchecked", "DataFlowIssue"})
     public void registerEntityRenderers(EntityRenderersEvent.RegisterRenderers event) {
         super.registerEntityRenderers(event);
-        event.registerBlockEntityRenderer((BlockEntityType<? extends ChessTileEntity>) CHESS_BOARDS.getTileHolder().get(),
+        event.registerBlockEntityRenderer((BlockEntityType<ChessTileEntity>) CHESS_BOARDS.getTileHolder().get(),
                 ChessTileEntityRenderer::new);
     }
 

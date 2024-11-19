@@ -20,12 +20,15 @@ import net.minecraft.world.level.block.DoublePlantBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import net.minecraft.world.phys.Vec3;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.model.data.EmptyModelData;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
 import java.util.Random;
 
+@OnlyIn(Dist.CLIENT)
 public class CompatTubBlockEntityRenderer implements BlockEntityRenderer<VillagersPlusModule.CompatTubBlockEntity> {
     private final BlockRenderDispatcher manager;
 
