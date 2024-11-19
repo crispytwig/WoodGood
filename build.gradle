@@ -379,6 +379,10 @@ publishMods {
         optional("woodworks")
         optional("workshop-for-handsome-adventurer")
         optional("xercamod")
+        optional("villagersplus-forge")
+        optional("beautify-decorate")
+        optional("oreberries-replanted")
+        optional("absent-by-design")
     }
 
     modrinth {
