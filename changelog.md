@@ -1,7 +1,8 @@
 ### UPDATED:
-- **Refurbished Furniture (MrCrayFish)** (COMMON): Fixed the recipes not being generated
-- **Backpacked (MrCrayFish)** (COMMON): Updated for 1.21.1
-- **Furnish** (COMMON): Updated for 1.21.1
+- **StorageDrawers** (NF): Added additional tags to drawers - @taguima
+  - (F): Added additional tags to drawers - @xelbayria
+- **OTHERS**: (COMMON): Renamed BYG to BIOMESWEVEGONE - @taguima 
+
 
 #### LEGENDS:
 - (COMMON): NEOFORGE & FABRIC 
