@@ -21,8 +21,11 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
@@ -30,7 +33,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.Collection;
 
-
+//SUPPORT: v13.8.3
 public class StorageDrawersModule extends SimpleModule {
 
     public final SimpleEntrySet<WoodType, BlockStandardDrawers> FULL_DRAWERS_1;
@@ -47,21 +50,21 @@ public class StorageDrawersModule extends SimpleModule {
 
         FULL_DRAWERS_1 = SimpleEntrySet.builder(WoodType.class, "full_drawers_1",
                         ModBlocks.OAK_FULL_DRAWERS_1, () -> WoodTypeRegistry.OAK_TYPE,
-                        w -> new CompatStandardDrawers(1, false, Utils.copyPropertySafe(ModBlocks.OAK_FULL_DRAWERS_1.get())))
+                        w -> new BlockStandardDrawers(1, false, copyWoodenDrawerBlockProperties())
+                )
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(modRes("drawers"), Registries.BLOCK)
-                .addTag(modRes("drawers"), Registries.ITEM)
                 .addTag(modRes("full_drawers"),Registries.BLOCK)
+                .addTag(modRes("drawers"), Registries.ITEM)
                 .addTag(modRes("full_drawers"),Registries.ITEM)
                 .setTabKey(tab)
                 .defaultRecipe()
-                .addTile(CompatStandardDrawersEntity1::new)
+                .addTile(getModTile("standard_drawers_1"))
                 .createPaletteFromOak(this::drawersPalette)
                 .addTexture(modRes("block/drawers_oak_front_1"))
                 .addTexture(modRes("block/drawers_oak_side"))
                 .addTexture(modRes("block/drawers_oak_sort"))
                 .addTexture(modRes("block/drawers_oak_trim"))
-                .addModelTransform(m -> m.replaceGenericType("oak", "blocks"))
                 .build();
         this.addEntry(FULL_DRAWERS_1);
 
@@ -70,8 +73,8 @@ public class StorageDrawersModule extends SimpleModule {
                         w -> new CompatStandardDrawers(2, false, Utils.copyPropertySafe(ModBlocks.OAK_FULL_DRAWERS_2.get())))
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(modRes("drawers"), Registries.BLOCK)
-                .addTag(modRes("drawers"), Registries.ITEM)
                 .addTag(modRes("full_drawers"),Registries.BLOCK)
+                .addTag(modRes("drawers"), Registries.ITEM)
                 .addTag(modRes("full_drawers"),Registries.ITEM)
                 .setTabKey(tab)
                 .defaultRecipe()
@@ -81,7 +84,6 @@ public class StorageDrawersModule extends SimpleModule {
                 .addTexture(modRes("block/drawers_oak_side"))
                 .addTexture(modRes("block/drawers_oak_sort"))
                 .addTexture(modRes("block/drawers_oak_trim"))
-                .addModelTransform(m -> m.replaceGenericType("oak", "blocks"))
                 .build();
         this.addEntry(FULL_DRAWERS_2);
 
@@ -90,8 +92,8 @@ public class StorageDrawersModule extends SimpleModule {
                         w -> new CompatStandardDrawers(4, false, Utils.copyPropertySafe(ModBlocks.OAK_FULL_DRAWERS_4.get())))
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(modRes("drawers"), Registries.BLOCK)
-                .addTag(modRes("drawers"), Registries.ITEM)
                 .addTag(modRes("full_drawers"),Registries.BLOCK)
+                .addTag(modRes("drawers"), Registries.ITEM)
                 .addTag(modRes("full_drawers"),Registries.ITEM)
                 .setTabKey(tab)
                 .defaultRecipe()
@@ -101,7 +103,6 @@ public class StorageDrawersModule extends SimpleModule {
                 .addTexture(modRes("block/drawers_oak_side"))
                 .addTexture(modRes("block/drawers_oak_sort"))
                 .addTexture(modRes("block/drawers_oak_trim"))
-                .addModelTransform(m -> m.replaceGenericType("oak", "blocks"))
                 .build();
 
         this.addEntry(FULL_DRAWERS_4);
@@ -111,8 +112,8 @@ public class StorageDrawersModule extends SimpleModule {
                         w -> new CompatStandardDrawers(1, true, Utils.copyPropertySafe(ModBlocks.OAK_HALF_DRAWERS_1.get())))
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(modRes("drawers"), Registries.BLOCK)
-                .addTag(modRes("drawers"), Registries.ITEM)
                 .addTag(modRes("half_drawers"),Registries.BLOCK)
+                .addTag(modRes("drawers"), Registries.ITEM)
                 .addTag(modRes("half_drawers"),Registries.ITEM)
                 .setTabKey(tab)
                 .defaultRecipe()
@@ -124,7 +125,6 @@ public class StorageDrawersModule extends SimpleModule {
                 .addTexture(modRes("block/drawers_oak_side_v"))
                 .addTexture(modRes("block/drawers_oak_sort"))
                 .addTexture(modRes("block/drawers_oak_trim"))
-                .addModelTransform(m -> m.replaceGenericType("oak", "blocks"))
                 .build();
         this.addEntry(HALF_DRAWERS_1);
 
@@ -133,8 +133,8 @@ public class StorageDrawersModule extends SimpleModule {
                         w -> new CompatStandardDrawers(2, true, Utils.copyPropertySafe(ModBlocks.OAK_HALF_DRAWERS_2.get())))
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(modRes("drawers"), Registries.BLOCK)
-                .addTag(modRes("drawers"), Registries.ITEM)
                 .addTag(modRes("half_drawers"),Registries.BLOCK)
+                .addTag(modRes("drawers"), Registries.ITEM)
                 .addTag(modRes("half_drawers"),Registries.ITEM)
                 .setTabKey(tab)
                 .defaultRecipe()
@@ -146,7 +146,6 @@ public class StorageDrawersModule extends SimpleModule {
                 .addTexture(modRes("block/drawers_oak_side_v"))
                 .addTexture(modRes("block/drawers_oak_sort"))
                 .addTexture(modRes("block/drawers_oak_trim"))
-                .addModelTransform(m -> m.replaceGenericType("oak", "blocks"))
                 .build();
         this.addEntry(HALF_DRAWERS_2);
 
@@ -155,8 +154,8 @@ public class StorageDrawersModule extends SimpleModule {
                         w -> new CompatStandardDrawers(4, true, Utils.copyPropertySafe(ModBlocks.OAK_HALF_DRAWERS_4.get())))
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(modRes("drawers"), Registries.BLOCK)
-                .addTag(modRes("drawers"), Registries.ITEM)
                 .addTag(modRes("half_drawers"),Registries.BLOCK)
+                .addTag(modRes("drawers"), Registries.ITEM)
                 .addTag(modRes("half_drawers"),Registries.ITEM)
                 .setTabKey(tab)
                 .defaultRecipe()
@@ -168,7 +167,6 @@ public class StorageDrawersModule extends SimpleModule {
                 .addTexture(modRes("block/drawers_oak_side_v"))
                 .addTexture(modRes("block/drawers_oak_sort"))
                 .addTexture(modRes("block/drawers_oak_trim"))
-                .addModelTransform(m -> m.replaceGenericType("oak", "blocks"))
                 .build();
         this.addEntry(HALF_DRAWERS_4);
 
@@ -182,15 +180,25 @@ public class StorageDrawersModule extends SimpleModule {
                 .defaultRecipe()
                 .createPaletteFromOak(this::trimPalette)
                 .addTexture(modRes("block/drawers_oak_trim"))
-                .addModelTransform(m -> m.replaceGenericType("oak", "blocks"))
                 .build();
         this.addEntry(TRIMS);
+    }
+
+    static BlockBehaviour.Properties copyWoodenDrawerBlockProperties() {
+        return  BlockBehaviour.Properties.of().sound(SoundType.WOOD)
+                .strength(3.0F, 4.0F)
+                .isSuffocating(StorageDrawersModule::predFalse)
+                .isRedstoneConductor(StorageDrawersModule::predFalse);
+    }
+
+    private static boolean predFalse(BlockState blockState, BlockGetter blockGetter, BlockPos blockPos) {
+        return false;
     }
 
     @Override
     public void addDynamicClientResources(ClientDynamicResourcesHandler handler, ResourceManager manager) {
         super.addDynamicClientResources(handler, manager);
-        initDrawerClientData(FULL_DRAWERS_1.blocks.values(), FULL_DRAWERS_1.getBaseBlock());
+//        initDrawerClientData(FULL_DRAWERS_1.blocks.values(), FULL_DRAWERS_1.getBaseBlock());
         initDrawerClientData(FULL_DRAWERS_2.blocks.values(), FULL_DRAWERS_2.getBaseBlock());
         initDrawerClientData(FULL_DRAWERS_4.blocks.values(), FULL_DRAWERS_4.getBaseBlock());
         initDrawerClientData(HALF_DRAWERS_1.blocks.values(), HALF_DRAWERS_1.getBaseBlock());
