@@ -1,9 +1,8 @@
 package net.mehvahdjukaar.every_compat.modules.fabric.storagedrawers;
 
 import com.jaquadro.minecraft.storagedrawers.ModConstants;
-import com.jaquadro.minecraft.storagedrawers.block.BlockDrawers;
-import com.jaquadro.minecraft.storagedrawers.block.BlockStandardDrawers;
-import com.jaquadro.minecraft.storagedrawers.block.BlockTrim;
+import com.jaquadro.minecraft.storagedrawers.block.*;
+import com.jaquadro.minecraft.storagedrawers.block.framed.BlockFramedStandardDrawers;
 import com.jaquadro.minecraft.storagedrawers.block.tile.BlockEntityDrawers;
 import com.jaquadro.minecraft.storagedrawers.block.tile.BlockEntityDrawersStandard;
 import com.jaquadro.minecraft.storagedrawers.client.renderer.BlockEntityDrawersRenderer;
@@ -24,6 +23,7 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -32,6 +32,9 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Objects;
+import java.util.function.Supplier;
+import java.util.stream.Stream;
 
 
 public class StorageDrawersModule extends SimpleModule {
@@ -236,6 +239,12 @@ public class StorageDrawersModule extends SimpleModule {
         HALF_DRAWERS_4.registerTileRenderer(event, BlockEntityDrawersRenderer::new);
     }
 
+    @Override
+    public void onClientSetup() {
+        super.onClientSetup();
+        ModDrawersGeometry.loadGeometryData(this);
+    }
+
     private class CompatStandardDrawers extends BlockStandardDrawers {
         public CompatStandardDrawers(int drawerCount, boolean halfDepth, BlockBehaviour.Properties properties) {
             super(drawerCount, halfDepth, properties);
@@ -331,5 +340,32 @@ public class StorageDrawersModule extends SimpleModule {
             return HALF_DRAWERS_4.getTile();
         }
 
+    }
+
+
+
+    private <B extends Block> Stream<B> getBlocksOfType(Class<B> blockClass) {
+        Stream<Block> allBlocks = this.getEntries().stream().map(e-> ((SimpleEntrySet<?, B>) e)
+                .blocks.values()).flatMap(Collection::stream);
+        Objects.requireNonNull(blockClass);
+        allBlocks = allBlocks.filter(blockClass::isInstance);
+        Objects.requireNonNull(blockClass);
+        return allBlocks.map(blockClass::cast);
+    }
+
+    public <BD extends BlockDrawers> Stream<BD> getDrawersOfType(Class<BD> drawerClass) {
+        return getBlocksOfType(drawerClass);
+    }
+
+    public <BD extends BlockDrawers> Stream<BD> getDrawersOfTypeAndSize(Class<BD> drawerClass, int size) {
+        return getDrawersOfType(drawerClass).filter((blockDrawers) -> {
+            return blockDrawers.getDrawerCount() == size;
+        });
+    }
+
+    public <BD extends BlockDrawers> Stream<BD> getDrawersOfTypeAndSizeAndDepth(Class<BD> drawerClass, int size, boolean halfDepth) {
+        return getDrawersOfTypeAndSize(drawerClass, size).filter((blockDrawers) -> {
+            return blockDrawers.isHalfDepth() == halfDepth;
+        });
     }
 }
