@@ -102,7 +102,7 @@ dependencies {
     if (usesMavenLocalML) {
         modImplementation("net.mehvahdjukaar:moonlight-neoforge:${moonlight_version}")
     } else {
-        modImplementation("curse.maven:selene-499980:5898740") // v2.16.3
+        modImplementation("curse.maven:selene-499980:5909308") // v2.17.4
     }
 
 //!!================================================= DEPENDENCIES ================================================== \\
@@ -119,7 +119,7 @@ dependencies {
     modCompileOnly("curse.maven:zeta-968868:5078215") // Quark
     modCompileOnly("curse.maven:blueprint-382216:5292242") // The-Outer-End, Woodworks, Boatload //!! 1.20.1
     modCompileOnly("curse.maven:valhelsia-core-416935:5526890") // v1.1.3 | Valhelsia Structure, Valhelsia Furniture
-    modCompileOnly("curse.maven:framework-549225:5811599") // v0.9.3 | Refurbished Furniture, Mighty Mail, Backpacked
+    modRuntimeOnly("curse.maven:framework-549225:5811599") // v0.9.3 | Refurbished Furniture, Mighty Mail, Backpacked
     modCompileOnly("curse.maven:quad-932715:5692947") // v1.2.8 | More Chest Variants, More Crafting Table
     modCompileOnly("curse.maven:titanium-287342:5726400") // Functional-Storage
 //    modImplementation("curse.maven:supermartijn642s-core-lib-454372:5713682") // v1.1.17i | Rechiseled
@@ -182,7 +182,7 @@ dependencies {
     modCompileOnly("curse.maven:exlines-bark-carpets-527296:4094399") //!! 1.20.1
     modCompileOnly("curse.maven:farmersdelight-398521:5878217")
     modCompileOnly("curse.maven:functional-storage-556861:5853986")
-    modCompileOnly("curse.maven:furnish-547069:4821511") //!! 1.20.1
+    modCompileOnly("curse.maven:furnish-547069:4821511") //!! 1.20.1 -> 1.21.1 Cannot remap access widener from namespace 'mojang'. Expected: 'intermediary'
     modCompileOnly("curse.maven:friends-and-foes-forge-602059:4712044") //!! 1.20.1
     modCompileOnly("curse.maven:handcrafted-538214:5617252")
     modCompileOnly("curse.maven:infinity-buttons-661902:4716983") //!! 1.20.1
@@ -200,7 +200,7 @@ dependencies {
     modCompileOnly("curse.maven:productivebees-377897:5304827") //v12.5.1 | WIP //!! 1.20.1
     modCompileOnly("curse.maven:quark-243121:5093415") //!! 1.20.1
     modCompileOnly("curse.maven:refurbished-furniture-897116:5893840")
-    modCompileOnly("curse.maven:storage-drawers-223852:5840297")
+    modCompileOnly("curse.maven:storage-drawers-223852:5890187")
     modCompileOnly("maven.modrinth:stylish-stiles:l9FFA4BK") //!! 1.20.1
     modCompileOnly("curse.maven:table-top-craft-467136:5318681") //!! 1.20.1
     modCompileOnly("curse.maven:timber-frames-606011:5372390") //!! 1.20.1

@@ -2,7 +2,6 @@ package net.mehvahdjukaar.every_compat.modules.neoforge.mrcrayfish_furniture;
 
 import com.mrcrayfish.mightymail.block.MailboxBlock;
 import com.mrcrayfish.mightymail.core.ModBlockEntities;
-import com.mrcrayfish.mightymail.core.ModCreativeTabs;
 import net.mehvahdjukaar.every_compat.EveryCompat;
 import net.mehvahdjukaar.every_compat.api.RenderLayer;
 import net.mehvahdjukaar.every_compat.api.SimpleEntrySet;
@@ -28,7 +27,7 @@ public class MightyMailModule extends SimpleModule {
                         w -> new MailboxBlock(Utils.copyPropertySafe(w.planks)
                                 .strength(3.5F).sound(SoundType.WOOD).ignitedByLava()))
                 .setTabKey(modRes("creative_tab"))
-                .addTile(ModBlockEntities.MAIL_BOX::get)
+                .addTile(getModTile("mail_box"))
                 .addTextureM(modRes("block/oak_mail_box"),
                         EveryCompat.res("block/mm/oak_mail_box_m"))
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)

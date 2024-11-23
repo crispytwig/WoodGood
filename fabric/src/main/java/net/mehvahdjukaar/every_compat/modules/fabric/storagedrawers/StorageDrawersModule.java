@@ -36,7 +36,7 @@ import java.util.Objects;
 import java.util.function.Supplier;
 import java.util.stream.Stream;
 
-
+//SUPPORT: v13.8.3
 public class StorageDrawersModule extends SimpleModule {
 
     public final SimpleEntrySet<WoodType, BlockStandardDrawers> FULL_DRAWERS_1;
@@ -58,6 +58,8 @@ public class StorageDrawersModule extends SimpleModule {
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(modRes("drawers"), Registries.BLOCK)
                 .addTag(modRes("full_drawers"), Registries.BLOCK)
+                .addTag(modRes("full_drawers"), Registries.BLOCK)
+                .addTag(modRes("full_drawers"), Registries.ITEM)
                 .addTag(modRes("drawers"), Registries.ITEM)
                 .addTag(modRes("full_drawers"), Registries.ITEM)
                 .setTabKey(tab)
@@ -68,7 +70,6 @@ public class StorageDrawersModule extends SimpleModule {
                 .addTexture(modRes("block/drawers_oak_side"))
                 .addTexture(modRes("block/drawers_oak_sort"))
                 .addTexture(modRes("block/drawers_oak_trim"))
-                .addModelTransform(m -> m.replaceGenericType("oak", "blocks"))
                 .build();
         this.addEntry(FULL_DRAWERS_1);
 
@@ -77,7 +78,9 @@ public class StorageDrawersModule extends SimpleModule {
                         w -> new CompatStandardDrawers(2, false, Utils.copyPropertySafe(ModBlocks.OAK_FULL_DRAWERS_2.get())))
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(modRes("drawers"), Registries.BLOCK)
+                .addTag(modRes("full_drawers"), Registries.BLOCK)
                 .addTag(modRes("drawers"), Registries.ITEM)
+                .addTag(modRes("full_drawers"), Registries.ITEM)
                 .setTabKey(tab)
                 .defaultRecipe()
                 .addTile(CompatStandardDrawersEntity2::new)
@@ -86,7 +89,6 @@ public class StorageDrawersModule extends SimpleModule {
                 .addTexture(modRes("block/drawers_oak_side"))
                 .addTexture(modRes("block/drawers_oak_sort"))
                 .addTexture(modRes("block/drawers_oak_trim"))
-                .addModelTransform(m -> m.replaceGenericType("oak", "blocks"))
                 .build();
         this.addEntry(FULL_DRAWERS_2);
 
@@ -95,7 +97,9 @@ public class StorageDrawersModule extends SimpleModule {
                         w -> new CompatStandardDrawers(4, false, Utils.copyPropertySafe(ModBlocks.OAK_FULL_DRAWERS_4.get())))
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(modRes("drawers"), Registries.BLOCK)
+                .addTag(modRes("full_drawers"), Registries.BLOCK)
                 .addTag(modRes("drawers"), Registries.ITEM)
+                .addTag(modRes("full_drawers"), Registries.ITEM)
                 .setTabKey(tab)
                 .defaultRecipe()
                 .addTile(CompatStandardDrawersEntity4::new)
@@ -104,7 +108,6 @@ public class StorageDrawersModule extends SimpleModule {
                 .addTexture(modRes("block/drawers_oak_side"))
                 .addTexture(modRes("block/drawers_oak_sort"))
                 .addTexture(modRes("block/drawers_oak_trim"))
-                .addModelTransform(m -> m.replaceGenericType("oak", "blocks"))
                 .build();
 
         this.addEntry(FULL_DRAWERS_4);
@@ -114,7 +117,9 @@ public class StorageDrawersModule extends SimpleModule {
                         w -> new CompatStandardDrawers(1, true, Utils.copyPropertySafe(ModBlocks.OAK_HALF_DRAWERS_1.get())))
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(modRes("drawers"), Registries.BLOCK)
+                .addTag(modRes("half_drawers"), Registries.BLOCK)
                 .addTag(modRes("drawers"), Registries.ITEM)
+                .addTag(modRes("half_drawers"), Registries.ITEM)
                 .setTabKey(tab)
                 .defaultRecipe()
                 .addTile(CompatHalfDrawersEntity1::new)
@@ -125,7 +130,6 @@ public class StorageDrawersModule extends SimpleModule {
                 .addTexture(modRes("block/drawers_oak_side_v"))
                 .addTexture(modRes("block/drawers_oak_sort"))
                 .addTexture(modRes("block/drawers_oak_trim"))
-                .addModelTransform(m -> m.replaceGenericType("oak", "blocks"))
                 .build();
         this.addEntry(HALF_DRAWERS_1);
 
@@ -134,7 +138,9 @@ public class StorageDrawersModule extends SimpleModule {
                         w -> new CompatStandardDrawers(2, true, Utils.copyPropertySafe(ModBlocks.OAK_HALF_DRAWERS_2.get())))
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(modRes("drawers"), Registries.BLOCK)
+                .addTag(modRes("half_drawers"), Registries.BLOCK)
                 .addTag(modRes("drawers"), Registries.ITEM)
+                .addTag(modRes("half_drawers"), Registries.ITEM)
                 .setTabKey(tab)
                 .defaultRecipe()
                 .addTile(CompatHalfDrawersEntity2::new)
@@ -145,7 +151,6 @@ public class StorageDrawersModule extends SimpleModule {
                 .addTexture(modRes("block/drawers_oak_side_v"))
                 .addTexture(modRes("block/drawers_oak_sort"))
                 .addTexture(modRes("block/drawers_oak_trim"))
-                .addModelTransform(m -> m.replaceGenericType("oak", "blocks"))
                 .build();
         this.addEntry(HALF_DRAWERS_2);
 
@@ -154,7 +159,9 @@ public class StorageDrawersModule extends SimpleModule {
                         w -> new CompatStandardDrawers(4, true, Utils.copyPropertySafe(ModBlocks.OAK_HALF_DRAWERS_4.get())))
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(modRes("drawers"), Registries.BLOCK)
+                .addTag(modRes("half_drawers"), Registries.BLOCK)
                 .addTag(modRes("drawers"), Registries.ITEM)
+                .addTag(modRes("half_drawers"), Registries.ITEM)
                 .setTabKey(tab)
                 .defaultRecipe()
                 .addTile(CompatHalfDrawersEntity4::new)
@@ -165,7 +172,6 @@ public class StorageDrawersModule extends SimpleModule {
                 .addTexture(modRes("block/drawers_oak_side_v"))
                 .addTexture(modRes("block/drawers_oak_sort"))
                 .addTexture(modRes("block/drawers_oak_trim"))
-                .addModelTransform(m -> m.replaceGenericType("oak", "blocks"))
                 .build();
         this.addEntry(HALF_DRAWERS_4);
 
@@ -177,7 +183,6 @@ public class StorageDrawersModule extends SimpleModule {
                 .defaultRecipe()
                 .createPaletteFromOak(this::trimPalette)
                 .addTexture(modRes("block/drawers_oak_trim"))
-                .addModelTransform(m -> m.replaceGenericType("oak", "blocks"))
                 .build();
         this.addEntry(TRIMS);
     }
@@ -231,7 +236,7 @@ public class StorageDrawersModule extends SimpleModule {
     @Override
     @Environment(EnvType.CLIENT)
     public void registerBlockEntityRenderers(ClientHelper.BlockEntityRendererEvent event) {
-//        FULL_DRAWERS_1.registerTileRenderer(event, BlockEntityDrawersRenderer::new);
+        FULL_DRAWERS_1.registerTileRenderer(event, BlockEntityDrawersRenderer::new);
         FULL_DRAWERS_2.registerTileRenderer(event, BlockEntityDrawersRenderer::new);
         FULL_DRAWERS_4.registerTileRenderer(event, BlockEntityDrawersRenderer::new);
         HALF_DRAWERS_1.registerTileRenderer(event, BlockEntityDrawersRenderer::new);

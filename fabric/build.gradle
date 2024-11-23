@@ -53,7 +53,7 @@ dependencies {
     if (usesMavenLocalML) {
         modImplementation("net.mehvahdjukaar:moonlight-fabric:${moonlight_version}") // LOCAL
     } else {
-        modImplementation("curse.maven:selene-499980:5898739") // v2.16.3
+        modImplementation("curse.maven:selene-499980:5909309") // v2.17.4
     }
 
 //!!================================================= DEPENDENCIES ================================================== \\
@@ -118,7 +118,7 @@ dependencies {
     modCompileOnly("curse.maven:farmers-delight-fabric-482834:4939709") // legacy //!! 1.20.1
     modCompileOnly("curse.maven:farmers-delight-refabricated-993166:5887378")
     modCompileOnly("curse.maven:friends-and-foes-551364:4968876") //!! 1.20.1
-    modCompileOnly("curse.maven:furnish-547069:4821516") //!! 1.20.1
+    modCompileOnly("curse.maven:furnish-547069:5683297")
     modCompileOnly("curse.maven:handcrafted-538214:5617253")
     modCompileOnly("curse.maven:hearth-and-home-849364:4828281") //!! 1.20.1
     modCompileOnly("curse.maven:infinity-buttons-661902:4716987") //!! 1.20.1
@@ -127,7 +127,7 @@ dependencies {
     modCompileOnly("curse.maven:missing-wilds-622590:5053651") //!! 1.20.1
     modCompileOnly("curse.maven:more-crafting-tables-lieonlion-913586:5473304")
     modCompileOnly("curse.maven:refurbished-furniture-897116:5893821")
-    modCompileOnly("curse.maven:storage-drawers-223852:5840296") //WIP
+    modCompileOnly("curse.maven:storage-drawers-223852:5890178") //WIP
     modCompileOnly("maven.modrinth:stylish-stiles:zLlRqz68") //!! 1.20.1
     modCompileOnly("curse.maven:table-top-craft-fabric-729535:5319819") //RLM: exp4j //!! 1.20.1
     modCompileOnly("curse.maven:twigs-496913:4603805") //!! 1.20.1

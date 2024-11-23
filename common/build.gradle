@@ -17,7 +17,7 @@ dependencies {
     if (usesMavenLocalML) {
         modImplementation("net.mehvahdjukaar:moonlight:${moonlight_version}")
     } else {
-        modImplementation("curse.maven:selene-499980:5898739") // v2.16.3
+        modImplementation("curse.maven:selene-499980:5909309") // v2.17.4
     }
 
 //!!============================================== DEPENDENCIES ========================================================
@@ -46,7 +46,7 @@ dependencies {
     modCompileOnly("curse.maven:exlines-bark-carpets-527296:4661550") //!! 1.20.1
     modCompileOnly("curse.maven:farmersdelight-398521:5878217")
     modCompileOnly("curse.maven:friends-and-foes-551364:4639311") //!! 1.20.1
-    modCompileOnly("curse.maven:furnish-547069:4821511") //!! 1.20.1
+    modCompileOnly("curse.maven:furnish-547069:5683297")
     modCompileOnly("curse.maven:handcrafted-538214:5617253")
     modCompileOnly("curse.maven:hearth-and-home-849364:4828281") //!! 1.20.1
     modCompileOnly("curse.maven:more-crafting-tables-lieonlion-913586:5473304")
