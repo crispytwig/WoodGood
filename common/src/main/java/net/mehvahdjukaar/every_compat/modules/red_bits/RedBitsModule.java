@@ -1,4 +1,4 @@
-package net.mehvahdjukaar.every_compat.modules.fabric.red_bits;
+package net.mehvahdjukaar.every_compat.modules.red_bits;
 
 import net.darktree.redbits.RedBits;
 import net.darktree.redbits.blocks.LargeButtonBlock;
@@ -17,6 +17,7 @@ import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.minecraft.world.level.material.PushReaction;
 
 //SUPPORT v1.16.1+
+//NOTE: Could be supported in NEOFORGE via Sinytra Connector
 public class RedBitsModule extends SimpleModule {
 
     public final SimpleEntrySet<WoodType, Block> large_buttons;

@@ -1,4 +1,4 @@
-package net.mehvahdjukaar.every_compat.modules.fabric.wooden_hoppers;
+package net.mehvahdjukaar.every_compat.modules.wooden_hoppers;
 
 import io.github.haykam821.woodenhoppers.Main;
 import io.github.haykam821.woodenhoppers.block.WoodenHopperBlock;
@@ -15,6 +15,7 @@ import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.level.block.Block;
 
 //SUPPORT: v1.6.0+
+//NOTE: Could be supported in NEOFORGE via Sinytra Connector
 public class WoodenHoppersModule extends SimpleModule {
 
     public final SimpleEntrySet<WoodType, Block> hoppers;

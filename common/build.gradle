@@ -11,6 +11,7 @@ dependencies {
     // We depend on fabric loader here to use the fabric @Environment annotations and get the mixin dependencies
     // Do NOT use other classes from fabric loader
     modImplementation "net.fabricmc:fabric-loader:${rootProject.fabric_loader_version}"
+    modApi "net.fabricmc.fabric-api:fabric-api:${rootProject.fabric_api_version}"
 
 //!! MOONLIGHT LIB -----------------------------------------------------------------------------------------------------
 
@@ -32,6 +33,7 @@ dependencies {
     //!! LOCAL
 //    modCompileOnly("net.stehschnitzel.shutter:shutter-2.0.2-1.20.1")
     modCompileOnly("com.arcanc.bc:Beautiful-Campfires-fabric-1.20.1-1.0.3")
+    modCompileOnly("net.darktree.redbits:redbits-1.20.1-1.16.1") //FABRIC
 
     //!! OTHERS
     modCompileOnly("curse.maven:another-furniture-610492:4815126") //!! 1.20.1
@@ -43,6 +45,7 @@ dependencies {
     modCompileOnly("curse.maven:dawn-of-time-312359:5651253") //!! 1.20.1
     modCompileOnly("curse.maven:decorative-blocks-362528:3941637") //!! 1.20.1
     modCompileOnly("curse.maven:dramatic-doors-380617:5740379")
+    modCompileOnly("curse.maven:exlines-awnings-526698:4668406") //FABRIC //!! 1.20.1
     modCompileOnly("curse.maven:exlines-bark-carpets-527296:4661550") //!! 1.20.1
     modCompileOnly("curse.maven:farmersdelight-398521:5878217")
     modCompileOnly("curse.maven:friends-and-foes-551364:4639311") //!! 1.20.1
@@ -59,6 +62,8 @@ dependencies {
     modCompileOnly("curse.maven:villagersplus-fabric-809542:4996993") //!! 1.20.1
     modCompileOnly("curse.maven:zeta-968868:5078215") //!! 1.20.1
     modCompileOnly("maven.modrinth:stylish-stiles:zLlRqz68") //!! 1.20.1
+    modCompileOnly("maven.modrinth:wilder-wild:3.0.4-mc1.21.1") //FABRIC
+    modCompileOnly("curse.maven:wooden-hoppers-406021:4796143") //FABRIC //!! 1.20.1
 
 }
 

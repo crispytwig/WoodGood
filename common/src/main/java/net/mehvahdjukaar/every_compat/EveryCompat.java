@@ -15,6 +15,7 @@ import net.mehvahdjukaar.every_compat.modules.camp_chair.CampChairModule;
 import net.mehvahdjukaar.every_compat.modules.chipped.ChippedModule;
 import net.mehvahdjukaar.every_compat.modules.dawn_of_time.DawnOfTimeModule;
 import net.mehvahdjukaar.every_compat.modules.decorative_blocks.DecorativeBlocksModule;
+import net.mehvahdjukaar.every_compat.modules.exlines.AwningModule;
 import net.mehvahdjukaar.every_compat.modules.exlines.BarkCarpetsModule;
 import net.mehvahdjukaar.every_compat.modules.farmersdelight.FarmersDelightModule;
 import net.mehvahdjukaar.every_compat.modules.friendsandfoes.FriendsAndFoesModule;
@@ -25,10 +26,13 @@ import net.mehvahdjukaar.every_compat.modules.lieonlion.MoreCraftingTablesModule
 import net.mehvahdjukaar.every_compat.modules.mrcrayfish.BackpackedModule;
 import net.mehvahdjukaar.every_compat.modules.mrcrayfish.RefurbishedFurnitureModule;
 import net.mehvahdjukaar.every_compat.modules.quark.QuarkModule;
+import net.mehvahdjukaar.every_compat.modules.red_bits.RedBitsModule;
 import net.mehvahdjukaar.every_compat.modules.table_top_craft.TableTopCraftModule;
 import net.mehvahdjukaar.every_compat.modules.twigs.TwigsModule;
 import net.mehvahdjukaar.every_compat.modules.valhelsia_furniture.ValhelsiaFurnitureModule;
 import net.mehvahdjukaar.every_compat.modules.villagers_plus.VillagersPlusModule;
+import net.mehvahdjukaar.every_compat.modules.wilder_wild.WilderWildModule;
+import net.mehvahdjukaar.every_compat.modules.wooden_hoppers.WoodenHoppersModule;
 import net.mehvahdjukaar.every_compat.type.StoneType;
 import net.mehvahdjukaar.moonlight.api.misc.RegSupplier;
 import net.mehvahdjukaar.moonlight.api.misc.Registrator;
@@ -131,25 +135,29 @@ public abstract class EveryCompat {
 
 //!!=============================================== Add Modules ==================================================== \\
         addModule("another_furniture", () -> AnotherFurnitureModule::new);
-        addModule("dawnoftimebuilder", () -> DawnOfTimeModule::new);
         addModule("backpacked", () -> BackpackedModule::new);
         addModule("barkcarpets", () -> BarkCarpetsModule::new); // Exline's
         addModule("bc", () -> BeautifulCampfiresModule::new);
         addModule("campchair", () -> CampChairModule::new);
         addModule("chipped", () -> ChippedModule::new);
+        addModule("dawnoftimebuilder", () -> DawnOfTimeModule::new);
         addModule("decorative_blocks", () -> DecorativeBlocksModule::new);
+        addModule("exlineawnings", () -> AwningModule::new); //FABRIC
+        addModule("farmersdelight", () -> FarmersDelightModule::new);
         addModule("friendsandfoes", () -> FriendsAndFoesModule::new);
         addModule("furnish", () -> FurnishModule::new);
+        addModule("handcrafted", () -> HandcraftedModule::new);
         addModule("hearth_and_home", () -> HearthAndHomeModule::new);
         addModule("lolmct", () -> MoreCraftingTablesModule::new);
         addModule("quark", () -> QuarkModule::new);
-        addModule("twigs", () -> TwigsModule::new);
+        addModule("redbits", () -> RedBitsModule::new); //FABRIC
         addModule("refurbished_furniture", () -> RefurbishedFurnitureModule::new);
-        addModule("farmersdelight", () -> FarmersDelightModule::new);
-        addModule("handcrafted", () -> HandcraftedModule::new);
+        addModule("table_top_craft", () -> TableTopCraftModule::new);
+        addModule("twigs", () -> TwigsModule::new);
         addModule("valhelsia_furniture", () -> ValhelsiaFurnitureModule::new);
         addModule("villagersplus", () -> VillagersPlusModule::new);
-        addModule("table_top_craft", () -> TableTopCraftModule::new);
+        addModule("wilderwild", () -> WilderWildModule::new); //FABRIC
+        addModule("woodenhoppers", () -> WoodenHoppersModule::new); //FABRIC
 
 //!!==================================================== OTHERS ===================================================== \\
         forAllModules(m -> EveryCompat.LOGGER.info("Loaded {}", m.toString()));
