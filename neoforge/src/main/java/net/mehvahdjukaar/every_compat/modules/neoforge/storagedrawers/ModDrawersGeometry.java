@@ -1,23 +1,17 @@
-package net.mehvahdjukaar.every_compat.modules.fabric.storagedrawers;
+package net.mehvahdjukaar.every_compat.modules.neoforge.storagedrawers;
 
 import com.jaquadro.minecraft.storagedrawers.ModConstants;
 import com.jaquadro.minecraft.storagedrawers.block.BlockCompDrawers;
 import com.jaquadro.minecraft.storagedrawers.block.BlockDrawers;
-import com.jaquadro.minecraft.storagedrawers.client.model.DrawerModelGeometry;
 import com.jaquadro.minecraft.storagedrawers.core.ModBlocks;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.block.model.BlockModel;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.phys.AABB;
-import org.joml.Vector3f;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.block.model.BlockElement;
 import net.minecraft.client.renderer.block.model.BlockModel;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.resources.Resource;
 import net.minecraft.world.phys.AABB;
 import org.apache.commons.io.IOUtils;
 import org.joml.Vector3f;
+
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Reader;
@@ -85,6 +79,7 @@ public class ModDrawersGeometry {
                 module.getDrawersOfTypeAndSizeAndDepth(BlockCompDrawers.class, 3, true).toArray(BlockDrawers[]::new));
     }
 
+    @SuppressWarnings({"DataFlowIssue"})
     private static void populateGeometryData(ResourceLocation locationIcon,
                                              ResourceLocation locationCount,
                                              ResourceLocation locationInd,
