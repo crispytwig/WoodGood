@@ -1,14 +1,5 @@
 ### UPDATED:
-- **StorageDrawers** 
-  - (NF): Added additional tags to drawers - @taguima for (NF) & @xelbayria for (F)
-  - (COMMON): Fixed the item not being rendered
-- **OTHERS**: (COMMON): 
-  - Renamed BYG to BIOMESWEVEGONE - @taguima 
-  - 4 MODULES are moved to COMMON, so you can use Sinytra Connector to include FABRIC mods in NEOFORGE MINECRAFT
-    - **Wilder Wild**
-    - **Wooden Hopper**
-    - **Red Bits**
-    - **Exline's Awning**
+- **Missing Wilds** (FABRIC): Fixed the crash via [Issue#701](https://github.com/MehVahdJukaar/WoodGood/issues/701)
 
 #### LEGENDS:
 - (COMMON): NEOFORGE & FABRIC 
