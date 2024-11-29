@@ -1,7 +1,6 @@
 package net.mehvahdjukaar.every_compat.modules.neoforge.missing_wilds;
 
 import me.ultrusmods.missingwilds.block.FallenLogBlock;
-import me.ultrusmods.missingwilds.register.MissingWildsBlocks;
 import net.mehvahdjukaar.every_compat.api.RenderLayer;
 import net.mehvahdjukaar.every_compat.api.SimpleEntrySet;
 import net.mehvahdjukaar.every_compat.api.SimpleModule;
