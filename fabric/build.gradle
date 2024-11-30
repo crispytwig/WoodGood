@@ -53,7 +53,7 @@ dependencies {
     if (usesMavenLocalML) {
         modImplementation("net.mehvahdjukaar:moonlight-fabric:${moonlight_version}") // LOCAL
     } else {
-        modImplementation("curse.maven:selene-499980:5909309") // v2.17.4
+        modImplementation("curse.maven:selene-499980:5934586") // v2.17.7
     }
 
 //!!================================================= DEPENDENCIES ================================================== \\
@@ -75,7 +75,7 @@ dependencies {
 
     //!! Tools
     modRuntimeOnly("curse.maven:emi-580555:5872512") // v1.1.18
-    modRuntimeOnly("curse.maven:jade-324717:5571122")
+    modRuntimeOnly("curse.maven:jade-324717:5884237") // v15.8.3
 //    modRuntimeOnly("curse.maven:worldedit-225608:5830452") // required loom 1.7.410
 
 //!!=================================================== IMPORTS ===================================================== \\
@@ -83,10 +83,10 @@ dependencies {
     // IMPORTANT: RLM: "REQUIRED LOCAL MOD" - You need to get the mod and put it in ~/fabric/run/mods/....
 
     //!! LOCAL
-//     modImplementation("net.mehvahdjukaar:supplementaries-fabric:${project.supplementaries_version}")
     modCompileOnly("net.stehschnitzel.shutter:shutter-2.0.2-1.20.1")
     modCompileOnly("com.arcanc.bc:Beautiful-Campfires-fabric-1.20.1-1.0.3")
     modCompileOnly("net.darktree.redbits:redbits-1.20.1-1.16.1")
+//     modImplementation("net.mehvahdjukaar:supplementaries-fabric:${project.supplementaries_version}")
 
     //!! MACAW's
     modCompileOnly("curse.maven:macaws-bridges-351725:5465222")
@@ -127,7 +127,7 @@ dependencies {
     modCompileOnly("curse.maven:missing-wilds-622590:5579073")
     modCompileOnly("curse.maven:more-crafting-tables-lieonlion-913586:5473304")
     modCompileOnly("curse.maven:refurbished-furniture-897116:5893821")
-    modCompileOnly("curse.maven:storage-drawers-223852:5890178") //WIP
+    modCompileOnly("curse.maven:storage-drawers-223852:5890178")
     modCompileOnly("maven.modrinth:stylish-stiles:zLlRqz68") //!! 1.20.1
     modCompileOnly("curse.maven:table-top-craft-fabric-729535:5319819") //RLM: exp4j //!! 1.20.1
     modCompileOnly("curse.maven:twigs-496913:4603805") //!! 1.20.1

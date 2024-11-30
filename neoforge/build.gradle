@@ -102,7 +102,7 @@ dependencies {
     if (usesMavenLocalML) {
         modImplementation("net.mehvahdjukaar:moonlight-neoforge:${moonlight_version}")
     } else {
-        modImplementation("curse.maven:selene-499980:5909308") // v2.17.4
+        modImplementation("curse.maven:selene-499980:5934585") // v2.17.7
     }
 
 //!!================================================= DEPENDENCIES ================================================== \\
@@ -134,7 +134,7 @@ dependencies {
     //!! TOOLS
 //    modRuntimeOnly("curse.maven:jei-238222:5846880")
     modRuntimeOnly("curse.maven:emi-580555:5872513") // v1.1.18
-    modRuntimeOnly("curse.maven:jade-324717:5591256")
+    modRuntimeOnly("curse.maven:jade-324717:5884231") // v15.8.3
     modRuntimeOnly("curse.maven:worldedit-225608:5830452")
     modRuntimeOnly("curse.maven:configured-457570:5873783")
 
