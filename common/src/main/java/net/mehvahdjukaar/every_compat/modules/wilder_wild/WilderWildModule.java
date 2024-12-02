@@ -1,4 +1,4 @@
-package net.mehvahdjukaar.every_compat.modules.fabric.wilder_wild;
+package net.mehvahdjukaar.every_compat.modules.wilder_wild;
 
 import com.google.gson.JsonObject;
 import net.fabricmc.fabric.api.registry.StrippableBlockRegistry;
@@ -35,6 +35,7 @@ import static net.mehvahdjukaar.every_compat.EveryCompat.doChildrenExistFor;
 import static net.mehvahdjukaar.every_compat.common_classes.TagUtility.createAndAddCustomTags;
 
 //SUPPORT: v3.0.4+
+//NOTE: Could be supported in NEOFORGE via Sinytra Connector
 public class WilderWildModule extends SimpleModule {
 
     public final SimpleEntrySet<WoodType, HollowedLogBlock> hollow_log;

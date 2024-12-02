@@ -1,4 +1,4 @@
-package net.mehvahdjukaar.every_compat.modules.fabric.exlines;
+package net.mehvahdjukaar.every_compat.modules.exlines;
 
 import com.exline.exlineawnings.ExlineAwningsMain;
 import com.exline.exlineawnings.block.AwningBlock;
@@ -13,6 +13,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.MapColor;
 
 //SUPPORT: v1.1.8+
+//NOTE: Could be supported in NEOFORGE via Sinytra Connector
 public class AwningModule extends SimpleModule {
 
     public final SimpleEntrySet<WoodType, AwningBlock> awnings;

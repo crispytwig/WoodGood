@@ -9,7 +9,6 @@ import net.mehvahdjukaar.every_compat.api.EveryCompatAPI;
 import net.mehvahdjukaar.every_compat.modules.fabric.beautify_decorate.BeautifyRefabricatedModule;
 import net.mehvahdjukaar.every_compat.modules.fabric.bewitchment.BewitchmentModule;
 import net.mehvahdjukaar.every_compat.modules.fabric.clutter.ClutterModule;
-import net.mehvahdjukaar.every_compat.modules.fabric.exlines.AwningModule;
 import net.mehvahdjukaar.every_compat.modules.fabric.lauchs.LauchsShuttersModule;
 import net.mehvahdjukaar.every_compat.modules.fabric.lightmans_currency.LightmansCurrencyModule;
 import net.mehvahdjukaar.every_compat.modules.fabric.missing_wilds.MissingWildModule;
@@ -19,12 +18,9 @@ import net.mehvahdjukaar.every_compat.modules.fabric.dramatic_doors.DramaticDoor
 import net.mehvahdjukaar.every_compat.modules.fabric.farmersdelight.FarmersDelightModuleOld;
 import net.mehvahdjukaar.every_compat.modules.fabric.infinitybuttons.InfinityButtonsModule;
 import net.mehvahdjukaar.every_compat.modules.fabric.mcaw.*;
-import net.mehvahdjukaar.every_compat.modules.fabric.red_bits.RedBitsModule;
 import net.mehvahdjukaar.every_compat.modules.fabric.regions_unexplored.RegionsUnexploredModule;
 import net.mehvahdjukaar.every_compat.modules.fabric.storagedrawers.StorageDrawersModule;
 import net.mehvahdjukaar.every_compat.modules.fabric.variants.VariantVanillaBlocksModule;
-import net.mehvahdjukaar.every_compat.modules.fabric.wilder_wild.WilderWildModule;
-import net.mehvahdjukaar.every_compat.modules.fabric.wooden_hoppers.WoodenHoppersModule;
 import net.mehvahdjukaar.moonlight.api.platform.PlatHelper;
 
 public class EveryCompatFabric extends EveryCompat implements ModInitializer {
@@ -54,18 +50,14 @@ public class EveryCompatFabric extends EveryCompat implements ModInitializer {
         addModule("clutter", () -> ClutterModule::new);
         addModule("create", () -> CreateModule::new);
         addModule("dramaticdoors", () -> DramaticDoorsModule::new);
-        addModule("exlineawnings", () -> AwningModule::new);
         addModule("infinitybuttons", () -> InfinityButtonsModule::new);
         addModule("lightmanscurrency", () -> LightmansCurrencyModule::new);
         addModule("mighty_mail", () -> MightyMailModule::new);
         addModule("missingwilds", () -> MissingWildModule::new);
-        addModule("redbits", () -> RedBitsModule::new);
         addModule("regions_unexplored", () -> RegionsUnexploredModule::new);
         addModule("shutter", () -> LauchsShuttersModule::new);
         addModule("storagedrawers", () -> StorageDrawersModule::new);
         addModule("variantvanillablocks", () -> VariantVanillaBlocksModule::new);
-        addModule("wilderwild", () -> WilderWildModule::new);
-        addModule("woodenhoppers", () -> WoodenHoppersModule::new);
 //        addModule("twilightforest", () -> TwilightForestModule::new); //!! NOT AVAILABLE
 
 //!!============================================= DISABLED FOR A REASON ============================================= \\

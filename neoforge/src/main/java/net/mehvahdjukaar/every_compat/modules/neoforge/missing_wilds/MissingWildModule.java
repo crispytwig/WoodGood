@@ -1,7 +1,6 @@
 package net.mehvahdjukaar.every_compat.modules.neoforge.missing_wilds;
 
 import me.ultrusmods.missingwilds.block.FallenLogBlock;
-import me.ultrusmods.missingwilds.register.MissingWildsBlocks;
 import net.mehvahdjukaar.every_compat.api.RenderLayer;
 import net.mehvahdjukaar.every_compat.api.SimpleEntrySet;
 import net.mehvahdjukaar.every_compat.api.SimpleModule;
@@ -12,7 +11,7 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
 
-//SUPPORT v1.2.0+
+//SUPPORT v1.3.2+
 public class MissingWildModule extends SimpleModule {
 
     public final SimpleEntrySet<WoodType, Block> fallenLogs;
