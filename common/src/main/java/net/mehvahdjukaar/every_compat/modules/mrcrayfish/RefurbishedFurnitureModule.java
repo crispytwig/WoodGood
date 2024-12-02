@@ -16,6 +16,8 @@ import net.mehvahdjukaar.moonlight.api.platform.ClientHelper;
 import net.mehvahdjukaar.moonlight.api.resources.RecipeTemplate;
 import net.mehvahdjukaar.moonlight.api.resources.ResType;
 import net.mehvahdjukaar.moonlight.api.resources.StaticResource;
+import net.mehvahdjukaar.moonlight.api.resources.recipe.BlockTypeSwapIngredient;
+import net.mehvahdjukaar.moonlight.api.set.BlockType;
 import net.mehvahdjukaar.moonlight.api.set.leaves.LeavesType;
 import net.mehvahdjukaar.moonlight.api.set.leaves.LeavesTypeRegistry;
 import net.mehvahdjukaar.moonlight.api.set.wood.WoodType;
@@ -28,7 +30,6 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
@@ -38,8 +39,6 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.BiFunction;
-import java.util.function.UnaryOperator;
 
 //SUPPORT: v1.0.8+
 public class RefurbishedFurnitureModule extends SimpleModule {
@@ -494,10 +493,10 @@ public class RefurbishedFurnitureModule extends SimpleModule {
     public void onModSetup() {
         super.onModSetup();
 
-        RecipeTemplate.register(WorkbenchContructingRecipe.class, (old, typeChanger) -> {
-            List<StackedIngredient> newList = convertStackedIngredients(old.getMaterials(), typeChanger);
+        RecipeTemplate.register(WorkbenchContructingRecipe.class, (old, from, to) -> {
+            List<StackedIngredient> newList = convertStackedIngredients(old.getMaterials(), from, to);
             ItemStack originalResult = old.getResultItem(RegistryAccess.EMPTY);
-            ItemStack newResult = typeChanger.apply(originalResult);
+            ItemStack newResult = RecipeTemplate.convertItemStack(originalResult, from, to);
             if (newResult == null) {
                 throw new UnsupportedOperationException("Failed to convert recipe result");
             } else {
@@ -508,13 +507,18 @@ public class RefurbishedFurnitureModule extends SimpleModule {
     }
 
 
-    private static <R extends Recipe<?>> @NotNull List<StackedIngredient> convertStackedIngredients(NonNullList<StackedIngredient> or, UnaryOperator<ItemStack> typeChanger) {
+    private static <R extends Recipe<?>, T extends BlockType> @NotNull List<StackedIngredient> convertStackedIngredients(
+            NonNullList<StackedIngredient> or, T from, T to) {
         List<StackedIngredient> newList = new ArrayList<>(or);
         for (int i = 0; i < newList.size(); i++) {
             StackedIngredient si = or.get(i);
-            if (si.ingredient().isEmpty()) continue;
-            ItemStack intItem = typeChanger.apply(si.ingredient().getItems()[0]);
-            if (intItem != null) newList.set(i, StackedIngredient.of(Ingredient.of(intItem), si.count()));
+            if (si.ingredient().isEmpty()) {
+                newList.add(si);
+            } else {
+                newList.add(StackedIngredient.of(
+                        BlockTypeSwapIngredient.create(si.ingredient(), from, to),
+                        si.count()));
+            }
         }
         return newList;
     }
