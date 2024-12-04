@@ -8,7 +8,7 @@ import net.mehvahdjukaar.moonlight.api.platform.configs.ModConfigHolder;
 import java.util.function.Supplier;
 
 //loaded after registry
-public class ModConfigs {
+public class ECConfigs {
 
     public static ModConfigHolder SPEC;
 

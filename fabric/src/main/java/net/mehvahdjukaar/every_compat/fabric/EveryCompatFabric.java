@@ -4,7 +4,7 @@ import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.item.v1.ItemTooltipCallback;
 import net.mehvahdjukaar.every_compat.EveryCompat;
 import net.mehvahdjukaar.every_compat.EveryCompatClient;
-import net.mehvahdjukaar.every_compat.api.CompatModule;
+import net.mehvahdjukaar.every_compat.EveryCompatCommon;
 import net.mehvahdjukaar.every_compat.api.EveryCompatAPI;
 import net.mehvahdjukaar.every_compat.modules.fabric.beautify_decorate.BeautifyRefabricatedModule;
 import net.mehvahdjukaar.every_compat.modules.fabric.bewitchment.BewitchmentModule;
@@ -23,14 +23,22 @@ import net.mehvahdjukaar.every_compat.modules.fabric.storagedrawers.StorageDrawe
 import net.mehvahdjukaar.every_compat.modules.fabric.variants.VariantVanillaBlocksModule;
 import net.mehvahdjukaar.moonlight.api.platform.PlatHelper;
 
-public class EveryCompatFabric extends EveryCompat implements ModInitializer {
+import static net.mehvahdjukaar.every_compat.EveryCompat.addIfLoaded;
+
+public class EveryCompatFabric extends EveryCompatCommon implements ModInitializer {
 
     @Override
     public void onInitialize() {
-        this.commonInit();
+        this.initialize();
 
-        if (PlatHelper.getPhysicalSide().isClient())
+        if (PlatHelper.getPhysicalSide().isClient()) {
             ItemTooltipCallback.EVENT.register(EveryCompatClient::onItemTooltip);
+        }
+    }
+
+    @Override
+    protected void addModules() {
+        super.addModules();
 
 //!!================================================ Macaw's ======================================================== \\
         addIfLoaded("mcwbridges", () -> MacawBridgesModule::new);
@@ -65,9 +73,5 @@ public class EveryCompatFabric extends EveryCompat implements ModInitializer {
 //        addModule("architects_palette", () -> ArchitectsPaletteModule::new); // Not available
 
 //!!==================================================== OTHERS ===================================================== \\
-        forAllModules(CompatModule::onModInit);
-        if (PlatHelper.getPhysicalSide().isClient()) {
-            EveryCompatClient.init();
-        }
     }
 }

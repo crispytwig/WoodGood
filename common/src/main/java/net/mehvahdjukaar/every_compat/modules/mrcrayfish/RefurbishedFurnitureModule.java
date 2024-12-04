@@ -489,6 +489,17 @@ public class RefurbishedFurnitureModule extends SimpleModule {
         }));
     }
 
+    public static BlockBehaviour.Properties addWoodProp(WoodType w, BlockBehaviour.Properties p) {
+        if (w.canBurn()) p.ignitedByLava();
+        p.mapColor(w.planks.defaultMapColor()).sound(w.getSound()).instrument(NoteBlockInstrument.BASS);
+        return p;
+    }
+
+    public static BlockBehaviour.Properties addWoodPropNoFire(WoodType w, BlockBehaviour.Properties p) {
+        p.mapColor(w.planks.defaultMapColor()).sound(w.getSound()).instrument(NoteBlockInstrument.BASS);
+        return p;
+    }
+
     @Override
     public void onModSetup() {
         super.onModSetup();
