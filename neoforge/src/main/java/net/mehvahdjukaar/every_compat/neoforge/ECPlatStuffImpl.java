@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.Optional;
 
 public class ECPlatStuffImpl {
+
     public static List<ItemStack> modifyLoot(ResourceLocation id, List<ItemStack> stacks, LootParams lootContext) {
         ItemStack[] array = stacks.toArray(ItemStack[]::new);
         return CommonHooks.modifyLoot(id, ObjectArrayList.wrap(array),
