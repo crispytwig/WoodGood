@@ -65,8 +65,6 @@ public class EveryCompatFabric extends EveryCompat implements ModInitializer {
 //        addModule("architects_palette", () -> ArchitectsPaletteModule::new); // Not available
 
 //!!==================================================== OTHERS ===================================================== \\
-        if (EveryCompat.OLD_FD) EveryCompatAPI.registerModule(new FarmersDelightModuleOld("farmersdelight"));
-
         forAllModules(CompatModule::onModInit);
         if (PlatHelper.getPhysicalSide().isClient()) {
             EveryCompatClient.init();
