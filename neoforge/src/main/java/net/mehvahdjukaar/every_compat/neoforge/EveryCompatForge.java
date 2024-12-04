@@ -2,10 +2,10 @@ package net.mehvahdjukaar.every_compat.neoforge;
 
 import net.mehvahdjukaar.every_compat.EveryCompat;
 import net.mehvahdjukaar.every_compat.EveryCompatClient;
-import net.mehvahdjukaar.every_compat.api.CompatModule;
-import net.mehvahdjukaar.every_compat.configs.ModConfigs;
-
+import net.mehvahdjukaar.every_compat.EveryCompatCommon;
+import net.mehvahdjukaar.every_compat.configs.ECConfigs;
 import net.mehvahdjukaar.every_compat.modules.farmersdelight.FarmersDelightModule;
+import net.mehvahdjukaar.every_compat.modules.lieonlion.MoreCraftingTablesModule;
 import net.mehvahdjukaar.every_compat.modules.neoforge.abnormal.BoatLoadModule;
 import net.mehvahdjukaar.every_compat.modules.neoforge.abnormal.WoodworksModule;
 import net.mehvahdjukaar.every_compat.modules.neoforge.absent_by_design.AbsentByDesignModule;
@@ -15,6 +15,7 @@ import net.mehvahdjukaar.every_compat.modules.neoforge.builders_delight.Builders
 import net.mehvahdjukaar.every_compat.modules.neoforge.buildersaddition.BuildersAdditionModule;
 import net.mehvahdjukaar.every_compat.modules.neoforge.building_but_better.BuildingButBetterModule;
 import net.mehvahdjukaar.every_compat.modules.neoforge.corail_pillar.CorailPillarModule;
+import net.mehvahdjukaar.every_compat.modules.neoforge.create.CreateModule;
 import net.mehvahdjukaar.every_compat.modules.neoforge.decoration_delight.DecorationDelightModule;
 import net.mehvahdjukaar.every_compat.modules.neoforge.dramaticdoors.DramaticDoorsMacawModule;
 import net.mehvahdjukaar.every_compat.modules.neoforge.dramaticdoors.DramaticDoorsModule;
@@ -30,11 +31,9 @@ import net.mehvahdjukaar.every_compat.modules.neoforge.more_crafting_tables_forg
 import net.mehvahdjukaar.every_compat.modules.neoforge.mosaic_carpentry.MosaicCarpentryModule;
 import net.mehvahdjukaar.every_compat.modules.neoforge.mrcrayfish_furniture.MightyMailModule;
 import net.mehvahdjukaar.every_compat.modules.neoforge.oreberries_replanted.OreberriesReplantedModule;
-import net.mehvahdjukaar.every_compat.modules.neoforge.pokecube.PokecubeAOIModule;
 import net.mehvahdjukaar.every_compat.modules.neoforge.premium_wood.PremiumWoodModule;
 import net.mehvahdjukaar.every_compat.modules.neoforge.redeco.ReDecoModule;
 import net.mehvahdjukaar.every_compat.modules.neoforge.regions_unexplored.RegionsUnexploredModule;
-import net.mehvahdjukaar.every_compat.modules.neoforge.storagedrawers.StorageDrawersModule;
 import net.mehvahdjukaar.every_compat.modules.neoforge.timber_frames.TimberFramesModule;
 import net.mehvahdjukaar.every_compat.modules.neoforge.tropicraft.TropicraftModule;
 import net.mehvahdjukaar.every_compat.modules.neoforge.twilightforest.TwilightForestModule;
@@ -45,7 +44,6 @@ import net.mehvahdjukaar.every_compat.modules.neoforge.woodster.WoodsterModule;
 import net.mehvahdjukaar.every_compat.modules.neoforge.workshop.WorkshopForHandsomeAdventurerModule;
 import net.mehvahdjukaar.every_compat.modules.neoforge.xerca.XercaModule;
 import net.mehvahdjukaar.every_compat.modules.stylish_stiles.StylishStilesModule;
-
 import net.mehvahdjukaar.moonlight.api.platform.PlatHelper;
 import net.mehvahdjukaar.moonlight.api.platform.RegHelper;
 import net.neoforged.bus.api.EventPriority;
@@ -58,19 +56,28 @@ import net.neoforged.neoforge.event.entity.player.PlayerNegotiationEvent;
 
 import java.lang.ref.WeakReference;
 
+import static net.mehvahdjukaar.every_compat.EveryCompat.addIfLoaded;
+
 /**
  * Author: MehVahdJukaar
  */
 @Mod(EveryCompat.MOD_ID)
-public class EveryCompatForge extends EveryCompat {
+public class EveryCompatForge extends EveryCompatCommon {
     private static WeakReference<IEventBus> BUS = new WeakReference<>(null);
 
     public EveryCompatForge(IEventBus bus) {
         RegHelper.startRegisteringFor(bus);
         BUS = new WeakReference<>(bus);
-        this.commonInit();
+        this.initialize();
 
-//!!================================================ Add Modules ==================================================== \\
+        NeoForge.EVENT_BUS.register(this);
+    }
+
+    @Override
+    protected void addModules() {
+        super.addModules();
+
+// ================================================= Add Modules ==================================================== \\
         addIfLoaded("absentbydesign", () -> AbsentByDesignModule::new);
         addIfLoaded("architects_palette", () -> ArchitectsPaletteModule::new);
         addIfLoaded("beautify", () -> BeautifyDecorateModule::new);
@@ -78,8 +85,9 @@ public class EveryCompatForge extends EveryCompat {
         addIfLoaded("buildersaddition", () -> BuildersAdditionModule::new);
         addIfLoaded("bbb", () -> BuildingButBetterModule::new);
         addIfLoaded("buildersdelight", () -> BuildersDelightModule::new);
+        addIfLoaded("cfm", () -> MrCrayfishFurnitureModule::new);
         addIfLoaded("corail_pillar", () -> CorailPillarModule::new);
-//        addModule("create", () -> CreateModule::new); //!! NOT AVAILABLE
+        addIfLoaded("create", () -> CreateModule::new);
         addIfLoaded("decoration_delight", () -> DecorationDelightModule::new);
         addIfLoaded("dramaticdoors", () -> DramaticDoorsModule::new);
         addIfLoaded("farmersdelight", () -> FarmersDelightModule::new);
@@ -93,13 +101,12 @@ public class EveryCompatForge extends EveryCompat {
         addIfLoaded("mosaic_carpentry", () -> MosaicCarpentryModule::new);
         addIfLoaded("oreberriesreplanted", () -> OreberriesReplantedModule::new);
         addIfLoaded("lightmanscurrency", () -> LightmansCurrencyModule::new);
-        addIfLoaded("pokecube_legends", () -> PokecubeAOIModule::new);
+        addIfLoaded("pokecube_legends", () -> PokecubeLegendsModule::new);
         addIfLoaded("premium_wood", () -> PremiumWoodModule::new);
         addIfLoaded("redeco", () -> ReDecoModule::new);
         addIfLoaded("regions_unexplored", () -> RegionsUnexploredModule::new);
         addIfLoaded("shutter", () -> LauchsShuttersModule::new);
         addIfLoaded("stylishstiles", () -> StylishStilesModule::new);
-        addIfLoaded("storagedrawers", () -> StorageDrawersModule::new);
         addIfLoaded("timber_frames", () -> TimberFramesModule::new);
         addIfLoaded("tropicraft", () -> TropicraftModule::new);
         addIfLoaded("twilightforest", () -> TwilightForestModule::new);
@@ -113,6 +120,7 @@ public class EveryCompatForge extends EveryCompat {
         if (PlatHelper.isModLoaded("mcwdoors")) {
             addIfLoaded("dramaticdoors", () -> DramaticDoorsMacawModule::new);
         }
+        addIfLoaded("lolmct", () -> MoreCraftingTablesModule::new);
 
         // ========================================= Macaw's ======================================================== \\
         addIfLoaded("mcwbridges", () -> MacawBridgesModule::new);
@@ -126,59 +134,49 @@ public class EveryCompatForge extends EveryCompat {
         addIfLoaded("mcwwindows", () -> MacawWindowsModule::new);
         addIfLoaded("mcwstairs", () -> MacawStairsModule::new);
 
-//!!============================================= DISABLED FOR A REASON ============================================= \\
+// ============================================== DISABLED FOR A REASON ============================================= \\
+//        addIfLoaded("graveyard", () -> GraveyardModule::new); // Disabled until custom block models work
+//        addIfLoaded("productivebees", () -> ProductiveBeesModule::new); //WIP: class for both beehive have major changes
 
-//        addModule("graveyard", () -> GraveyardModule::new); // Disabled until custom block models work
-//        addModule("productivebees", () -> ProductiveBeesModule::new); //WIP: class for both beehive have major changes
-
-//!!================================================= OTHERS ======================================================== \\
-        NeoForge.EVENT_BUS.register(this);
-
-        forAllModules(CompatModule::onModInit);
-
-        if (PlatHelper.getPhysicalSide().isClient()) {
-            EveryCompatClient.init();
-        }
+// ================================================== OTHERS ======================================================== \
     }
 
     public static IEventBus getModEventBus() {
         return BUS.get();
     }
 
-
     @SubscribeEvent(priority = EventPriority.LOWEST)
     public void itemTooltipEvent(ItemTooltipEvent event) {
         EveryCompatClient.onItemTooltip(event.getItemStack(), event.getContext(), event.getFlags(), event.getToolTip());
     }
-
-    /*
+/*
     @SubscribeEvent
     public void onRemap(MissingMappingsEvent event) {
         for (var mapping : event.getMappings(Registries.BLOCK_ENTITY_TYPE, EveryCompat.MOD_ID)) {
             ResourceLocation key = mapping.getKey();
             String path = key.getPath();
-            for (var m : EveryCompat.ACTIVE_MODULES) {
+            forAllModules(m -> {
                 if (path.startsWith(m.shortenedId() + "_")) {
                     String newPath = path.substring((m.shortenedId() + "_").length());
-                    ResourceLocation newId = ResourceLocation.parse(m.getModId(), newPath);
+                    ResourceLocation newId = new ResourceLocation(m.getModId(), newPath);
                     Optional<BlockEntityType<?>> optional = BuiltInRegistries.BLOCK_ENTITY_TYPE.getOptional(newId);
                     optional.ifPresent(mapping::remap);
-                    break;
                 }
-            }
+            });
         }
     }*/
 
 
     @SubscribeEvent
     public void onPlayerNegotiation(PlayerNegotiationEvent playerNegotiationEvent) {
-        if (ModConfigs.CHECK_PACKET.get()) {
-            //TODO: add back
+        if (ECConfigs.CHECK_PACKET.get()) {
             /*
-            ((ChannelHandlerImpl) ECNetworking.CHANNEL).channel.sendTo(new ECNetworking.S2CModVersionCheckMessage(),
+            ((ChannelHandlerImpl) NetworkHelper.channel.sendTo(new ECNetworking.S2CModVersionCheckMessage(),
                     playerNegotiationEvent.getConnection(),
                     NetworkDirection.LOGIN_TO_CLIENT
-            );*/
+            );
+            */
+            //TODO: add back
         }
     }
 }
