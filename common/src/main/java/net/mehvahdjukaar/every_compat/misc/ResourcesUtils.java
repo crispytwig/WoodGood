@@ -348,10 +348,10 @@ public class ResourcesUtils {
             if (ModEntriesConfigs.isEntryEnabled(w, i)) {
                 try {
                     //check for disabled ones. Will actually crash if its null since vanilla recipe builder expects a non-null one
-                    String id = RecipeBuilder.getDefaultRecipeId(i).toString();
+                    ResourceLocation id = RecipeBuilder.getDefaultRecipeId(i);
                     RecipeHolder<?> newR;
                     if (index != 0) {
-                        id += "_" + index;
+                        id = id.withSuffix("_" + index);
                     }
                     newR = RPUtils.makeSimilarRecipe(template, fromType, w, id);
                     //not even needed
