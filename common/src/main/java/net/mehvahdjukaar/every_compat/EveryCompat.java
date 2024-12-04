@@ -85,7 +85,7 @@ public abstract class EveryCompat {
     public static final Map<Object, CompatModule> ITEMS_TO_MODULES = new Object2ObjectOpenHashMap<>();
 
 
-    private static final UnsafeModuleDisabler MODULE_DISABLER = new UnsafeModuleDisabler();
+    public static final UnsafeModuleDisabler MODULE_DISABLER = new UnsafeModuleDisabler();
 
     public static void forAllModules(Consumer<CompatModule> action) {
         ACTIVE_MODULES.forEach(action);
@@ -183,7 +183,7 @@ public abstract class EveryCompat {
     }
 
     protected void addIfLoaded(String modId, Supplier<Function<String, CompatModule>> moduleFactory) {
-        if (PlatHelper.isModLoaded(modId) && MODULE_DISABLER.isModuleOn(modId)) {
+        if (PlatHelper.isModLoaded(modId)) {
             CompatModule module = moduleFactory.get().apply(modId);
             EveryCompatAPI.registerModule(module);
         }
