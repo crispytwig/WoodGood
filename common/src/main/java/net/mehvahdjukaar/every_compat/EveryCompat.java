@@ -134,30 +134,30 @@ public abstract class EveryCompat {
                 "environmental", "atmospheric", "endergetic", "caves_and_chasms"), List.of("farmersdelight"));
 
 //!!=============================================== Add Modules ==================================================== \\
-        addModule("another_furniture", () -> AnotherFurnitureModule::new);
-        addModule("backpacked", () -> BackpackedModule::new);
-        addModule("barkcarpets", () -> BarkCarpetsModule::new); // Exline's
-        addModule("bc", () -> BeautifulCampfiresModule::new);
-        addModule("campchair", () -> CampChairModule::new);
-        addModule("chipped", () -> ChippedModule::new);
-        addModule("dawnoftimebuilder", () -> DawnOfTimeModule::new);
-        addModule("decorative_blocks", () -> DecorativeBlocksModule::new);
-        addModule("exlineawnings", () -> AwningModule::new); //FABRIC
-        addModule("farmersdelight", () -> FarmersDelightModule::new);
-        addModule("friendsandfoes", () -> FriendsAndFoesModule::new);
-        addModule("furnish", () -> FurnishModule::new);
-        addModule("handcrafted", () -> HandcraftedModule::new);
-        addModule("hearth_and_home", () -> HearthAndHomeModule::new);
-        addModule("lolmct", () -> MoreCraftingTablesModule::new);
-        addModule("quark", () -> QuarkModule::new);
-        addModule("redbits", () -> RedBitsModule::new); //FABRIC
-        addModule("refurbished_furniture", () -> RefurbishedFurnitureModule::new);
-        addModule("table_top_craft", () -> TableTopCraftModule::new);
-        addModule("twigs", () -> TwigsModule::new);
-        addModule("valhelsia_furniture", () -> ValhelsiaFurnitureModule::new);
-        addModule("villagersplus", () -> VillagersPlusModule::new);
-        addModule("wilderwild", () -> WilderWildModule::new); //FABRIC
-        addModule("woodenhoppers", () -> WoodenHoppersModule::new); //FABRIC
+        addIfLoaded("another_furniture", () -> AnotherFurnitureModule::new);
+        addIfLoaded("backpacked", () -> BackpackedModule::new);
+        addIfLoaded("barkcarpets", () -> BarkCarpetsModule::new); // Exline's
+        addIfLoaded("bc", () -> BeautifulCampfiresModule::new);
+        addIfLoaded("campchair", () -> CampChairModule::new);
+        addIfLoaded("chipped", () -> ChippedModule::new);
+        addIfLoaded("dawnoftimebuilder", () -> DawnOfTimeModule::new);
+        addIfLoaded("decorative_blocks", () -> DecorativeBlocksModule::new);
+        addIfLoaded("exlineawnings", () -> AwningModule::new); //FABRIC
+        addIfLoaded("farmersdelight", () -> FarmersDelightModule::new);
+        addIfLoaded("friendsandfoes", () -> FriendsAndFoesModule::new);
+        addIfLoaded("furnish", () -> FurnishModule::new);
+        addIfLoaded("handcrafted", () -> HandcraftedModule::new);
+        addIfLoaded("hearth_and_home", () -> HearthAndHomeModule::new);
+        addIfLoaded("lolmct", () -> MoreCraftingTablesModule::new);
+        addIfLoaded("quark", () -> QuarkModule::new);
+        addIfLoaded("redbits", () -> RedBitsModule::new); //FABRIC
+        addIfLoaded("refurbished_furniture", () -> RefurbishedFurnitureModule::new);
+        addIfLoaded("table_top_craft", () -> TableTopCraftModule::new);
+        addIfLoaded("twigs", () -> TwigsModule::new);
+        addIfLoaded("valhelsia_furniture", () -> ValhelsiaFurnitureModule::new);
+        addIfLoaded("villagersplus", () -> VillagersPlusModule::new);
+        addIfLoaded("wilderwild", () -> WilderWildModule::new); //FABRIC
+        addIfLoaded("woodenhoppers", () -> WoodenHoppersModule::new); //FABRIC
 
 //!!==================================================== OTHERS ===================================================== \\
         forAllModules(m -> EveryCompat.LOGGER.info("Loaded {}", m.toString()));
@@ -184,7 +184,7 @@ public abstract class EveryCompat {
 
     public static boolean OLD_FD = false;
 
-    protected void addModule(String modId, Supplier<Function<String, CompatModule>> moduleFactory) {
+    protected void addIfLoaded(String modId, Supplier<Function<String, CompatModule>> moduleFactory) {
         if (PlatHelper.isModLoaded(modId) && MODULE_DISABLER.isModuleOn(modId)) {
 
             if (modId.equals("farmersdelight")) {
@@ -198,11 +198,7 @@ public abstract class EveryCompat {
             }
 
             CompatModule module = moduleFactory.get().apply(modId);
-
             EveryCompatAPI.registerModule(module);
-
-            DEPENDENCIES.add(modId);
-            DEPENDENCIES.addAll(module.getAlreadySupportedMods());
         }
     }
 

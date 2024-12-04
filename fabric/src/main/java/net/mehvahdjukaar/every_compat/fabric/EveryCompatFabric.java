@@ -33,31 +33,31 @@ public class EveryCompatFabric extends EveryCompat implements ModInitializer {
             ItemTooltipCallback.EVENT.register(EveryCompatClient::onItemTooltip);
 
 //!!================================================ Macaw's ======================================================== \\
-        addModule("mcwbridges", () -> MacawBridgesModule::new);
-        addModule("mcwdoors", () -> MacawDoorsModule::new);
-        addModule("mcwfences", () -> MacawFencesModule::new);
-        addModule("mcwlights", () -> MacawLightsModule::new);
-        addModule("mcwpaths", () -> MacawPathsModule::new);
-        addModule("mcwroofs", () -> MacawRoofsModule::new);
-        addModule("mcwtrpdoors", () -> MacawTrapdoorsModule::new);
-        addModule("mcwwindows", () -> MacawWindowsModule::new);
-        addModule("mcwfurnitures", () -> MacawFurnitureModule::new);
-        addModule("mcwstairs", () -> MacawStairsModule::new);
+        addIfLoaded("mcwbridges", () -> MacawBridgesModule::new);
+        addIfLoaded("mcwdoors", () -> MacawDoorsModule::new);
+        addIfLoaded("mcwfences", () -> MacawFencesModule::new);
+        addIfLoaded("mcwlights", () -> MacawLightsModule::new);
+        addIfLoaded("mcwpaths", () -> MacawPathsModule::new);
+        addIfLoaded("mcwroofs", () -> MacawRoofsModule::new);
+        addIfLoaded("mcwtrpdoors", () -> MacawTrapdoorsModule::new);
+        addIfLoaded("mcwwindows", () -> MacawWindowsModule::new);
+        addIfLoaded("mcwfurnitures", () -> MacawFurnitureModule::new);
+        addIfLoaded("mcwstairs", () -> MacawStairsModule::new);
 
 //!!================================================ Add Modules ==================================================== \\
-        addModule("beautify", () -> BeautifyRefabricatedModule::new);
-        addModule("bewitchment", () -> BewitchmentModule::new);
-        addModule("clutter", () -> ClutterModule::new);
-        addModule("create", () -> CreateModule::new);
-        addModule("dramaticdoors", () -> DramaticDoorsModule::new);
-        addModule("infinitybuttons", () -> InfinityButtonsModule::new);
-        addModule("lightmanscurrency", () -> LightmansCurrencyModule::new);
-        addModule("mighty_mail", () -> MightyMailModule::new);
-        addModule("missingwilds", () -> MissingWildModule::new);
-        addModule("regions_unexplored", () -> RegionsUnexploredModule::new);
-        addModule("shutter", () -> LauchsShuttersModule::new);
-        addModule("storagedrawers", () -> StorageDrawersModule::new);
-        addModule("variantvanillablocks", () -> VariantVanillaBlocksModule::new);
+        addIfLoaded("beautify", () -> BeautifyRefabricatedModule::new);
+        addIfLoaded("bewitchment", () -> BewitchmentModule::new);
+        addIfLoaded("clutter", () -> ClutterModule::new);
+        addIfLoaded("create", () -> CreateModule::new);
+        addIfLoaded("dramaticdoors", () -> DramaticDoorsModule::new);
+        addIfLoaded("infinitybuttons", () -> InfinityButtonsModule::new);
+        addIfLoaded("lightmanscurrency", () -> LightmansCurrencyModule::new);
+        addIfLoaded("mighty_mail", () -> MightyMailModule::new);
+        addIfLoaded("missingwilds", () -> MissingWildModule::new);
+        addIfLoaded("regions_unexplored", () -> RegionsUnexploredModule::new);
+        addIfLoaded("shutter", () -> LauchsShuttersModule::new);
+        addIfLoaded("storagedrawers", () -> StorageDrawersModule::new);
+        addIfLoaded("variantvanillablocks", () -> VariantVanillaBlocksModule::new);
 //        addModule("twilightforest", () -> TwilightForestModule::new); //!! NOT AVAILABLE
 
 //!!============================================= DISABLED FOR A REASON ============================================= \\
