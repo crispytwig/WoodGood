@@ -2,24 +2,20 @@ package net.mehvahdjukaar.every_compat.fabric;
 
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.item.v1.ItemTooltipCallback;
-import net.mehvahdjukaar.every_compat.EveryCompat;
 import net.mehvahdjukaar.every_compat.EveryCompatClient;
 import net.mehvahdjukaar.every_compat.EveryCompatCommon;
-import net.mehvahdjukaar.every_compat.api.EveryCompatAPI;
 import net.mehvahdjukaar.every_compat.modules.fabric.beautify_decorate.BeautifyRefabricatedModule;
 import net.mehvahdjukaar.every_compat.modules.fabric.bewitchment.BewitchmentModule;
 import net.mehvahdjukaar.every_compat.modules.fabric.clutter.ClutterModule;
-import net.mehvahdjukaar.every_compat.modules.fabric.lauchs.LauchsShuttersModule;
-import net.mehvahdjukaar.every_compat.modules.fabric.lightmans_currency.LightmansCurrencyModule;
-import net.mehvahdjukaar.every_compat.modules.fabric.missing_wilds.MissingWildModule;
-import net.mehvahdjukaar.every_compat.modules.fabric.mrcrayfish.MightyMailModule;
 import net.mehvahdjukaar.every_compat.modules.fabric.create.CreateModule;
 import net.mehvahdjukaar.every_compat.modules.fabric.dramatic_doors.DramaticDoorsModule;
-import net.mehvahdjukaar.every_compat.modules.fabric.farmersdelight.FarmersDelightModuleOld;
 import net.mehvahdjukaar.every_compat.modules.fabric.infinitybuttons.InfinityButtonsModule;
+import net.mehvahdjukaar.every_compat.modules.fabric.lauchs.LauchsShuttersModule;
+import net.mehvahdjukaar.every_compat.modules.fabric.lightmans_currency.LightmansCurrencyModule;
 import net.mehvahdjukaar.every_compat.modules.fabric.mcaw.*;
+import net.mehvahdjukaar.every_compat.modules.fabric.missing_wilds.MissingWildModule;
+import net.mehvahdjukaar.every_compat.modules.fabric.mrcrayfish.MightyMailModule;
 import net.mehvahdjukaar.every_compat.modules.fabric.regions_unexplored.RegionsUnexploredModule;
-import net.mehvahdjukaar.every_compat.modules.fabric.storagedrawers.StorageDrawersModule;
 import net.mehvahdjukaar.every_compat.modules.fabric.variants.VariantVanillaBlocksModule;
 import net.mehvahdjukaar.moonlight.api.platform.PlatHelper;
 
@@ -64,14 +60,13 @@ public class EveryCompatFabric extends EveryCompatCommon implements ModInitializ
         addIfLoaded("missingwilds", () -> MissingWildModule::new);
         addIfLoaded("regions_unexplored", () -> RegionsUnexploredModule::new);
         addIfLoaded("shutter", () -> LauchsShuttersModule::new);
-        addIfLoaded("storagedrawers", () -> StorageDrawersModule::new);
         addIfLoaded("variantvanillablocks", () -> VariantVanillaBlocksModule::new);
-//        addModule("twilightforest", () -> TwilightForestModule::new); //!! NOT AVAILABLE
 
 //!!============================================= DISABLED FOR A REASON ============================================= \\
 
-//        addModule("architects_palette", () -> ArchitectsPaletteModule::new); // Not available
+//        addModule("twilightforest", () -> TwilightForestModule::new); //!! NOT AVAILABLE
+//        addModule("architects_palette", () -> ArchitectsPaletteModule::new); //!! NOT AVAILABLE
+//        addModule("twilightforest", () -> TwilightForestModule::new); //!! NOT AVAILABLE
 
-//!!==================================================== OTHERS ===================================================== \\
     }
 }

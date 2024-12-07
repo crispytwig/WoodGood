@@ -4,8 +4,6 @@ import net.mehvahdjukaar.every_compat.EveryCompat;
 import net.mehvahdjukaar.every_compat.EveryCompatClient;
 import net.mehvahdjukaar.every_compat.EveryCompatCommon;
 import net.mehvahdjukaar.every_compat.configs.ECConfigs;
-import net.mehvahdjukaar.every_compat.modules.farmersdelight.FarmersDelightModule;
-import net.mehvahdjukaar.every_compat.modules.lieonlion.MoreCraftingTablesModule;
 import net.mehvahdjukaar.every_compat.modules.neoforge.abnormal.BoatLoadModule;
 import net.mehvahdjukaar.every_compat.modules.neoforge.abnormal.WoodworksModule;
 import net.mehvahdjukaar.every_compat.modules.neoforge.absent_by_design.AbsentByDesignModule;
@@ -31,6 +29,7 @@ import net.mehvahdjukaar.every_compat.modules.neoforge.more_crafting_tables_forg
 import net.mehvahdjukaar.every_compat.modules.neoforge.mosaic_carpentry.MosaicCarpentryModule;
 import net.mehvahdjukaar.every_compat.modules.neoforge.mrcrayfish_furniture.MightyMailModule;
 import net.mehvahdjukaar.every_compat.modules.neoforge.oreberries_replanted.OreberriesReplantedModule;
+import net.mehvahdjukaar.every_compat.modules.neoforge.pokecube.PokecubeAOIModule;
 import net.mehvahdjukaar.every_compat.modules.neoforge.premium_wood.PremiumWoodModule;
 import net.mehvahdjukaar.every_compat.modules.neoforge.redeco.ReDecoModule;
 import net.mehvahdjukaar.every_compat.modules.neoforge.regions_unexplored.RegionsUnexploredModule;
@@ -43,7 +42,6 @@ import net.mehvahdjukaar.every_compat.modules.neoforge.variants.VariantVanillaBl
 import net.mehvahdjukaar.every_compat.modules.neoforge.woodster.WoodsterModule;
 import net.mehvahdjukaar.every_compat.modules.neoforge.workshop.WorkshopForHandsomeAdventurerModule;
 import net.mehvahdjukaar.every_compat.modules.neoforge.xerca.XercaModule;
-import net.mehvahdjukaar.every_compat.modules.stylish_stiles.StylishStilesModule;
 import net.mehvahdjukaar.moonlight.api.platform.PlatHelper;
 import net.mehvahdjukaar.moonlight.api.platform.RegHelper;
 import net.neoforged.bus.api.EventPriority;
@@ -77,7 +75,7 @@ public class EveryCompatForge extends EveryCompatCommon {
     protected void addModules() {
         super.addModules();
 
-// ================================================= Add Modules ==================================================== \\
+//!! ================================================= Add Modules ================================================== \\
         addIfLoaded("absentbydesign", () -> AbsentByDesignModule::new);
         addIfLoaded("architects_palette", () -> ArchitectsPaletteModule::new);
         addIfLoaded("beautify", () -> BeautifyDecorateModule::new);
@@ -85,12 +83,10 @@ public class EveryCompatForge extends EveryCompatCommon {
         addIfLoaded("buildersaddition", () -> BuildersAdditionModule::new);
         addIfLoaded("bbb", () -> BuildingButBetterModule::new);
         addIfLoaded("buildersdelight", () -> BuildersDelightModule::new);
-        addIfLoaded("cfm", () -> MrCrayfishFurnitureModule::new);
         addIfLoaded("corail_pillar", () -> CorailPillarModule::new);
         addIfLoaded("create", () -> CreateModule::new);
         addIfLoaded("decoration_delight", () -> DecorationDelightModule::new);
         addIfLoaded("dramaticdoors", () -> DramaticDoorsModule::new);
-        addIfLoaded("farmersdelight", () -> FarmersDelightModule::new);
         addIfLoaded("functionalstorage", () -> FunctionalStorageModule::new);
         addIfLoaded("infinitybuttons", () -> InfinityButtonsModule::new);
         addIfLoaded("justaraftmod", () -> JustARaftModule::new);
@@ -101,12 +97,11 @@ public class EveryCompatForge extends EveryCompatCommon {
         addIfLoaded("mosaic_carpentry", () -> MosaicCarpentryModule::new);
         addIfLoaded("oreberriesreplanted", () -> OreberriesReplantedModule::new);
         addIfLoaded("lightmanscurrency", () -> LightmansCurrencyModule::new);
-        addIfLoaded("pokecube_legends", () -> PokecubeLegendsModule::new);
+        addIfLoaded("pokecube_legends", () -> PokecubeAOIModule::new);
         addIfLoaded("premium_wood", () -> PremiumWoodModule::new);
         addIfLoaded("redeco", () -> ReDecoModule::new);
         addIfLoaded("regions_unexplored", () -> RegionsUnexploredModule::new);
         addIfLoaded("shutter", () -> LauchsShuttersModule::new);
-        addIfLoaded("stylishstiles", () -> StylishStilesModule::new);
         addIfLoaded("timber_frames", () -> TimberFramesModule::new);
         addIfLoaded("tropicraft", () -> TropicraftModule::new);
         addIfLoaded("twilightforest", () -> TwilightForestModule::new);
@@ -120,9 +115,8 @@ public class EveryCompatForge extends EveryCompatCommon {
         if (PlatHelper.isModLoaded("mcwdoors")) {
             addIfLoaded("dramaticdoors", () -> DramaticDoorsMacawModule::new);
         }
-        addIfLoaded("lolmct", () -> MoreCraftingTablesModule::new);
 
-        // ========================================= Macaw's ======================================================== \\
+// ========================================= Macaw's ======================================================== \\
         addIfLoaded("mcwbridges", () -> MacawBridgesModule::new);
         addIfLoaded("mcwdoors", () -> MacawDoorsModule::new);
         addIfLoaded("mcwfences", () -> MacawFencesModule::new);
@@ -134,11 +128,11 @@ public class EveryCompatForge extends EveryCompatCommon {
         addIfLoaded("mcwwindows", () -> MacawWindowsModule::new);
         addIfLoaded("mcwstairs", () -> MacawStairsModule::new);
 
-// ============================================== DISABLED FOR A REASON ============================================= \\
+//!! ============================================== DISABLED FOR A REASON =========================================== \\
+
 //        addIfLoaded("graveyard", () -> GraveyardModule::new); // Disabled until custom block models work
 //        addIfLoaded("productivebees", () -> ProductiveBeesModule::new); //WIP: class for both beehive have major changes
 
-// ================================================== OTHERS ======================================================== \
     }
 
     public static IEventBus getModEventBus() {
@@ -158,7 +152,7 @@ public class EveryCompatForge extends EveryCompatCommon {
             forAllModules(m -> {
                 if (path.startsWith(m.shortenedId() + "_")) {
                     String newPath = path.substring((m.shortenedId() + "_").length());
-                    ResourceLocation newId = new ResourceLocation(m.getModId(), newPath);
+                    ResourceLocation newId = ResourceLocation.fromNamespaceAndPath(m.getModId(), newPath);
                     Optional<BlockEntityType<?>> optional = BuiltInRegistries.BLOCK_ENTITY_TYPE.getOptional(newId);
                     optional.ifPresent(mapping::remap);
                 }
