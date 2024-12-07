@@ -16,7 +16,6 @@ public class ECRegistry {
 
     }
 
-
     public static final Supplier<AllWoodItem> ALL_WOODS = RegHelper.registerItem(EveryCompat. res("all_woods"), AllWoodItem::new);
 
     @Nullable
@@ -25,7 +24,8 @@ public class ECRegistry {
                     RegHelper.registerCreativeModeTab(EveryCompat.res(EveryCompat.MOD_ID),
                             true,
                             builder -> builder.icon(() -> ALL_WOODS.get().getDefaultInstance())
-                                    .backgroundSuffix("item_search.png")
+                                    .backgroundTexture(CreativeModeTab.createTextureLocation("item_search.png"))
                                     .title(Component.translatable("itemGroup.everycomp.everycomp"))
-                                    .build()) : null;
+                                    .build())
+                    : null;
 }
