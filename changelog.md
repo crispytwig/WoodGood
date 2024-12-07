@@ -1,5 +1,7 @@
 ### UPDATED:
-- **EveryCompat** (COMMON): Major Update to support an addon, **EveryCompat (Stone Zone)**
+- **EveryCompat** (COMMON): 
+  - Major Update to support an addon, **EveryCompat (Stone Zone)**
+  - Fixed [#708](https://github.com/MehVahdJukaar/WoodGood/issues/708) with **Farmer's Delight** due to duplicated codes with `farmersdelight`
 - **Storage Drawers** (COMMON): Corrected the title displaying of FULL DRAWERS (1 to 4) 
 
 
