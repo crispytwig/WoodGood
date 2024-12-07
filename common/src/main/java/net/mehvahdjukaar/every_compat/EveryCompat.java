@@ -84,20 +84,8 @@ public abstract class EveryCompat {
         }
     }
 
-    public static boolean OLD_FD = false;
-
     public static void addIfLoaded(String modId, Supplier<Function<String, CompatModule>> moduleFactory) {
         if (PlatHelper.isModLoaded(modId)) {
-
-            if (modId.equals("farmersdelight")) {
-                try {
-                    Class.forName("vectorwing.farmersdelight.FarmersDelight");
-                } catch (Exception e) {
-                    EveryCompat.LOGGER.error("Farmers Delight Refabricated is not installed. Disabling Farmers Delight Module");
-                    OLD_FD = true;
-                    return;
-                }
-            }
             CompatModule module = moduleFactory.get().apply(modId);
             addModule(module);
         }
@@ -141,8 +129,11 @@ public abstract class EveryCompat {
             EveryCompat.LOGGER.info("Registered {} compat blocks making up {}% of total blocks registered", am, String.format("%.2f", p));
         }
         if (p > 33) {
-            CompatModule bloated = ACTIVE_MODULES.stream()
-                    .max(Comparator.comparing(CompatModule::bloatAmount)).get();
+            CompatModule bloated = null;
+            var bloatedAmount = ACTIVE_MODULES.stream().max(Comparator.comparing(CompatModule::bloatAmount));
+            if (bloatedAmount.isPresent()) {
+                bloated = bloatedAmount.get();
+            }
             EveryCompat.LOGGER.error("Every Compat registered blocks make up more than one third of your registered blocks, taking up memory and load time.");
             EveryCompat.LOGGER.error("You might want to uninstall some mods, biggest offender was {} ({} blocks)", bloated.getModName().toUpperCase(Locale.ROOT), bloated.bloatAmount());
         }
