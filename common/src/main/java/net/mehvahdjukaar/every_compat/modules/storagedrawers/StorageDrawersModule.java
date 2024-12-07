@@ -1,18 +1,20 @@
-package net.mehvahdjukaar.every_compat.modules.neoforge.storagedrawers;
+package net.mehvahdjukaar.every_compat.modules.storagedrawers;
 
-import com.jaquadro.minecraft.storagedrawers.StorageDrawers;
+import com.jaquadro.minecraft.storagedrawers.ModConstants;
 import com.jaquadro.minecraft.storagedrawers.block.BlockDrawers;
 import com.jaquadro.minecraft.storagedrawers.block.BlockStandardDrawers;
 import com.jaquadro.minecraft.storagedrawers.block.BlockTrim;
 import com.jaquadro.minecraft.storagedrawers.core.ModBlocks;
 import net.mehvahdjukaar.every_compat.api.SimpleEntrySet;
 import net.mehvahdjukaar.every_compat.api.SimpleModule;
+import net.mehvahdjukaar.every_compat.dynamicpack.ClientDynamicResourcesHandler;
 import net.mehvahdjukaar.moonlight.api.resources.textures.Palette;
 import net.mehvahdjukaar.moonlight.api.set.wood.WoodType;
 import net.mehvahdjukaar.moonlight.api.set.wood.WoodTypeRegistry;
 import net.mehvahdjukaar.moonlight.api.util.Utils;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.block.Block;
 
@@ -33,17 +35,17 @@ public class StorageDrawersModule extends SimpleModule {
 
     public StorageDrawersModule(String modId) {
         super(modId, "sd");
-        ResourceLocation tab = modRes(StorageDrawers.MOD_ID);
+        ResourceLocation tab = modRes(ModConstants.MOD_ID);
 
         FULL_DRAWERS_1 = SimpleEntrySet.builder(WoodType.class, "full_drawers_1",
-                        ModBlocks.OAK_FULL_DRAWERS_1, () -> WoodTypeRegistry.OAK_TYPE,
+                        getModBlock("oak_full_drawers_1", BlockStandardDrawers.class), () -> WoodTypeRegistry.OAK_TYPE,
                         w -> new BlockStandardDrawers(1, false, Utils.copyPropertySafe(ModBlocks.OAK_FULL_DRAWERS_1.get()))
                 )
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(modRes("drawers"), Registries.BLOCK)
-                .addTag(modRes("full_drawers"),Registries.BLOCK)
+                .addTag(modRes("full_drawers"), Registries.BLOCK)
                 .addTag(modRes("drawers"), Registries.ITEM)
-                .addTag(modRes("full_drawers"),Registries.ITEM)
+                .addTag(modRes("full_drawers"), Registries.ITEM)
                 .setTabKey(tab)
                 .defaultRecipe()
                 .addTile(getModTile("standard_drawers_1"))
@@ -56,14 +58,13 @@ public class StorageDrawersModule extends SimpleModule {
         this.addEntry(FULL_DRAWERS_1);
 
         FULL_DRAWERS_2 = SimpleEntrySet.builder(WoodType.class, "full_drawers_2",
-                        ModBlocks.OAK_FULL_DRAWERS_2, () -> WoodTypeRegistry.OAK_TYPE,
-                        w -> new BlockStandardDrawers(2, false, Utils.copyPropertySafe(ModBlocks.OAK_FULL_DRAWERS_2.get()))
-                )
+                        getModBlock("oak_full_drawers_2", BlockStandardDrawers.class), () -> WoodTypeRegistry.OAK_TYPE,
+                        w -> new BlockStandardDrawers(2, false, Utils.copyPropertySafe(ModBlocks.OAK_FULL_DRAWERS_2.get())))
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(modRes("drawers"), Registries.BLOCK)
-                .addTag(modRes("full_drawers"),Registries.BLOCK)
+                .addTag(modRes("full_drawers"), Registries.BLOCK)
                 .addTag(modRes("drawers"), Registries.ITEM)
-                .addTag(modRes("full_drawers"),Registries.ITEM)
+                .addTag(modRes("full_drawers"), Registries.ITEM)
                 .setTabKey(tab)
                 .defaultRecipe()
                 .addTile(getModTile("standard_drawers_2"))
@@ -76,14 +77,13 @@ public class StorageDrawersModule extends SimpleModule {
         this.addEntry(FULL_DRAWERS_2);
 
         FULL_DRAWERS_4 = SimpleEntrySet.builder(WoodType.class, "full_drawers_4",
-                        ModBlocks.OAK_FULL_DRAWERS_4, () -> WoodTypeRegistry.OAK_TYPE,
-                        w -> new BlockStandardDrawers(4, false, Utils.copyPropertySafe(ModBlocks.OAK_FULL_DRAWERS_4.get()))
-                )
+                        getModBlock("oak_full_drawers_4", BlockStandardDrawers.class), () -> WoodTypeRegistry.OAK_TYPE,
+                        w -> new BlockStandardDrawers(4, false, Utils.copyPropertySafe(ModBlocks.OAK_FULL_DRAWERS_4.get())))
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(modRes("drawers"), Registries.BLOCK)
-                .addTag(modRes("full_drawers"),Registries.BLOCK)
+                .addTag(modRes("full_drawers"), Registries.BLOCK)
                 .addTag(modRes("drawers"), Registries.ITEM)
-                .addTag(modRes("full_drawers"),Registries.ITEM)
+                .addTag(modRes("full_drawers"), Registries.ITEM)
                 .setTabKey(tab)
                 .defaultRecipe()
                 .addTile(getModTile("standard_drawers_4"))
@@ -97,14 +97,13 @@ public class StorageDrawersModule extends SimpleModule {
         this.addEntry(FULL_DRAWERS_4);
 
         HALF_DRAWERS_1 = SimpleEntrySet.builder(WoodType.class, "half_drawers_1",
-                        ModBlocks.OAK_HALF_DRAWERS_1, () -> WoodTypeRegistry.OAK_TYPE,
-                        w -> new BlockStandardDrawers(1, true, Utils.copyPropertySafe(ModBlocks.OAK_HALF_DRAWERS_1.get()))
-                )
+                        getModBlock("oak_half_drawers_1", BlockStandardDrawers.class), () -> WoodTypeRegistry.OAK_TYPE,
+                        w -> new BlockStandardDrawers(1, true, Utils.copyPropertySafe(ModBlocks.OAK_HALF_DRAWERS_1.get())))
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(modRes("drawers"), Registries.BLOCK)
-                .addTag(modRes("half_drawers"),Registries.BLOCK)
+                .addTag(modRes("half_drawers"), Registries.BLOCK)
                 .addTag(modRes("drawers"), Registries.ITEM)
-                .addTag(modRes("half_drawers"),Registries.ITEM)
+                .addTag(modRes("half_drawers"), Registries.ITEM)
                 .setTabKey(tab)
                 .defaultRecipe()
                 .addTile(getModTile("standard_drawers_1"))
@@ -119,14 +118,13 @@ public class StorageDrawersModule extends SimpleModule {
         this.addEntry(HALF_DRAWERS_1);
 
         HALF_DRAWERS_2 = SimpleEntrySet.builder(WoodType.class, "half_drawers_2",
-                        ModBlocks.OAK_HALF_DRAWERS_2, () -> WoodTypeRegistry.OAK_TYPE,
-                        w -> new BlockStandardDrawers(2, true, Utils.copyPropertySafe(ModBlocks.OAK_HALF_DRAWERS_2.get()))
-                )
+                        getModBlock("oak_half_drawers_2", BlockStandardDrawers.class), () -> WoodTypeRegistry.OAK_TYPE,
+                        w -> new BlockStandardDrawers(2, true, Utils.copyPropertySafe(ModBlocks.OAK_HALF_DRAWERS_2.get())))
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(modRes("drawers"), Registries.BLOCK)
-                .addTag(modRes("half_drawers"),Registries.BLOCK)
+                .addTag(modRes("half_drawers"), Registries.BLOCK)
                 .addTag(modRes("drawers"), Registries.ITEM)
-                .addTag(modRes("half_drawers"),Registries.ITEM)
+                .addTag(modRes("half_drawers"), Registries.ITEM)
                 .setTabKey(tab)
                 .defaultRecipe()
                 .addTile(getModTile("standard_drawers_2"))
@@ -141,14 +139,13 @@ public class StorageDrawersModule extends SimpleModule {
         this.addEntry(HALF_DRAWERS_2);
 
         HALF_DRAWERS_4 = SimpleEntrySet.builder(WoodType.class, "half_drawers_4",
-                        ModBlocks.OAK_HALF_DRAWERS_4, () -> WoodTypeRegistry.OAK_TYPE,
-                        w -> new BlockStandardDrawers(4, true, Utils.copyPropertySafe(ModBlocks.OAK_HALF_DRAWERS_4.get()))
-                )
+                        getModBlock("oak_half_drawers_4", BlockStandardDrawers.class), () -> WoodTypeRegistry.OAK_TYPE,
+                        w -> new BlockStandardDrawers(4, true, Utils.copyPropertySafe(ModBlocks.OAK_HALF_DRAWERS_4.get())))
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(modRes("drawers"), Registries.BLOCK)
-                .addTag(modRes("half_drawers"),Registries.BLOCK)
+                .addTag(modRes("half_drawers"), Registries.BLOCK)
                 .addTag(modRes("drawers"), Registries.ITEM)
-                .addTag(modRes("half_drawers"),Registries.ITEM)
+                .addTag(modRes("half_drawers"), Registries.ITEM)
                 .setTabKey(tab)
                 .defaultRecipe()
                 .addTile(getModTile("standard_drawers_4"))
@@ -163,11 +160,9 @@ public class StorageDrawersModule extends SimpleModule {
         this.addEntry(HALF_DRAWERS_4);
 
         TRIMS = SimpleEntrySet.builder(WoodType.class, "trim",
-                        ModBlocks.OAK_TRIM, () -> WoodTypeRegistry.OAK_TYPE,
+                        getModBlock("oak_trim", BlockTrim.class), () -> WoodTypeRegistry.OAK_TYPE,
                         w -> new BlockTrim(Utils.copyPropertySafe(ModBlocks.OAK_TRIM.get())))
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
-                .addTag(modRes("trim"),Registries.BLOCK)
-                .addTag(modRes("trim"),Registries.ITEM)
                 .setTabKey(tab)
                 .defaultRecipe()
                 .createPaletteFromOak(this::trimPalette)
@@ -176,11 +171,6 @@ public class StorageDrawersModule extends SimpleModule {
         this.addEntry(TRIMS);
     }
 
-    @Override
-    public void onClientSetup() {
-        super.onClientSetup();
-        ModDrawersGeometry.loadGeometryData(this);
-    }
 
     private void drawersPalette(Palette p) {
         p.remove(p.getLightest());
@@ -196,8 +186,14 @@ public class StorageDrawersModule extends SimpleModule {
         p.increaseUp();
     }
 
+    @Override
+    public void addDynamicClientResources(ClientDynamicResourcesHandler handler, ResourceManager manager) {
+        super.addDynamicClientResources(handler, manager);
+        ModDrawersGeometry.loadGeometryData(this, manager);
+    }
+
     private <B extends Block> Stream<B> getBlocksOfType(Class<B> blockClass) {
-        Stream<Block> allBlocks = this.getEntries().stream().map(e -> ((SimpleEntrySet<?, B>) e)
+        Stream<Block> allBlocks = this.getEntries().stream().map(e-> ((SimpleEntrySet<?, B>) e)
                 .blocks.values()).flatMap(Collection::stream);
         Objects.requireNonNull(blockClass);
         allBlocks = allBlocks.filter(blockClass::isInstance);
