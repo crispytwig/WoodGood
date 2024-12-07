@@ -43,13 +43,13 @@ public abstract class EveryCompat {
     private static final Set<String> DEPENDENCIES = new HashSet<>();
 
     //these are the names of the block types we add wooden variants for
-    private static final Map<Class<? extends BlockType>, Set<String>> TYPES_TO_CHILD_KEYS = new Object2ObjectOpenHashMap<>();
+    public static final Map<Class<? extends BlockType>, Set<String>> TYPES_TO_CHILD_KEYS = new Object2ObjectOpenHashMap<>();
     private static final Map<Object, CompatModule> ITEMS_TO_MODULES = new Object2ObjectOpenHashMap<>();
     private static final Set<Class<? extends BlockType>> AFFECTED_TYPES = new HashSet<>();
     private static final UnsafeModuleDisabler MODULE_DISABLER = new UnsafeModuleDisabler();
 
     public static ResourceLocation res(String name) {
-        return new ResourceLocation(MOD_ID, name);
+        return ResourceLocation.fromNamespaceAndPath(MOD_ID, name);
     }
 
     public static void forAllModules(Consumer<CompatModule> action) {
