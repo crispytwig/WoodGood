@@ -55,6 +55,7 @@ public class QuarkSimpleEntrySet<T extends BlockType, B extends Block> extends S
         this.zetaModule = Suppliers.memoize(() -> Quark.ZETA.modules.get(m));
     }
 
+
     @Override
     public void generateRecipes(SimpleModule module, DynamicDataPack pack, ResourceManager manager) {
         ZetaModule mod = zetaModule.get();
