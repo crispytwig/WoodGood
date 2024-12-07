@@ -17,7 +17,7 @@ import net.mehvahdjukaar.every_compat.modules.lieonlion.MoreCraftingTablesModule
 import net.mehvahdjukaar.every_compat.modules.mrcrayfish.BackpackedModule;
 import net.mehvahdjukaar.every_compat.modules.mrcrayfish.RefurbishedFurnitureModule;
 import net.mehvahdjukaar.every_compat.modules.quark.QuarkModule;
-//import net.mehvahdjukaar.every_compat.modules.storagedrawers.StorageDrawersModule;
+import net.mehvahdjukaar.every_compat.modules.storagedrawers.StorageDrawersModule;
 import net.mehvahdjukaar.every_compat.modules.stylish_stiles.StylishStilesModule;
 import net.mehvahdjukaar.every_compat.modules.table_top_craft.TableTopCraftModule;
 import net.mehvahdjukaar.every_compat.modules.twigs.TwigsModule;
@@ -84,7 +84,7 @@ public class EveryCompatCommon {
         addIfLoaded("lolmct", () -> MoreCraftingTablesModule::new);
         addIfLoaded("quark", () -> QuarkModule::new);
         addIfLoaded("refurbished_furniture", () -> RefurbishedFurnitureModule::new);
-//        addIfLoaded("storagedrawers", () -> StorageDrawersModule::new);
+        addIfLoaded("storagedrawers", () -> StorageDrawersModule::new);
         addIfLoaded("stylishstiles", () -> StylishStilesModule::new);
         addIfLoaded("table_top_craft", () -> TableTopCraftModule::new);
         addIfLoaded("twigs", () -> TwigsModule::new);
