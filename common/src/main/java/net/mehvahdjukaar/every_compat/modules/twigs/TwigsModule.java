@@ -1,60 +1,24 @@
 package net.mehvahdjukaar.every_compat.modules.twigs;
 
-import com.ninni.twigs.block.ColumnBlock;
 import com.ninni.twigs.block.TableBlock;
 import net.mehvahdjukaar.every_compat.api.RenderLayer;
 import net.mehvahdjukaar.every_compat.api.SimpleEntrySet;
 import net.mehvahdjukaar.every_compat.api.SimpleModule;
 import net.mehvahdjukaar.every_compat.api.TabAddMode;
-import net.mehvahdjukaar.every_compat.type.StoneType;
-import net.mehvahdjukaar.every_compat.type.StoneTypeRegistry;
-import net.mehvahdjukaar.moonlight.api.misc.Registrator;
 import net.mehvahdjukaar.moonlight.api.set.wood.WoodType;
 import net.mehvahdjukaar.moonlight.api.set.wood.WoodTypeRegistry;
 import net.mehvahdjukaar.moonlight.api.util.Utils;
-import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
-import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.StairBlock;
 
-import java.util.Collection;
-
+//SUPPORT: v???
 public class TwigsModule extends SimpleModule {
 
     public final SimpleEntrySet<WoodType, Block> tables;
-    //public final SimpleEntrySet<StoneType, Block> columns;
 
     public TwigsModule(String modId) {
         super(modId, "tw");
-
-        /*
-        //noinspection DataFlowIssue
-        columns = addEntry(SimpleEntrySet.builder(StoneType.class, "column",
-                        getModBlock("stone_column"), () -> StoneTypeRegistry.getValue(ResourceLocation.parse("stone")),
-                        stoneType -> new ColumnBlock(Utils.copyPropertySafe(
-                                        (stoneType.getBlockOfThis("bricks") != null)
-                                        ? stoneType.getBlockOfThis("bricks")
-                                        : Blocks.STONE_BRICKS)
-                                )
-                        )
-                .createPaletteFromChild(
-                        "bricks")
-                .addTexture(modRes("block/stone_column"))
-                .addTexture(modRes("block/stone_column_bottom"))
-                .addTexture(modRes("block/stone_column_tip"))
-                .addTexture(modRes("block/stone_column_top"))
-                .setTabKey(modRes("twig"))
-                .setRenderType(RenderLayer.CUTOUT_MIPPED)
-                .defaultRecipe()
-                .addRecipe(modRes("stone_column_stonecutting"))
-                .build()
-        );
-        */
-
 
         tables = SimpleEntrySet.builder(WoodType.class, "table",
                         getModBlock("oak_table"), () -> WoodTypeRegistry.OAK_TYPE,
@@ -75,8 +39,4 @@ public class TwigsModule extends SimpleModule {
         this.addEntry(tables);
     }
 
-    @Override
-    public void registerStonesBlocks(Registrator<Block> registry, Collection<StoneType> leavesTypes) {
-        super.registerStonesBlocks(registry, leavesTypes);
-    }
 }
