@@ -50,7 +50,7 @@ import java.util.regex.Pattern;
 //contrary to popular belief this class is indeed not simple. Its usage however is
 public abstract class AbstractSimpleEntrySet<T extends BlockType, B extends Block, I extends Item> implements EntrySet<T> {
 
-    protected static final ResourceLocation NO_TAB_MARKER = new ResourceLocation("none");
+    protected static final ResourceLocation NO_TAB_MARKER = ResourceLocation.parse("none");
 
 
     public final Map<T, B> blocks = new HashMap<>();
@@ -149,7 +149,7 @@ public abstract class AbstractSimpleEntrySet<T extends BlockType, B extends Bloc
     public String getEquivalentBlock(CompatModule module, String oldName, String woodFrom) {
         String wood = parseWoodType(oldName);
         if (wood != null) {
-            var w = BlockSetAPI.getBlockSet(this.getTypeClass()).get(new ResourceLocation(woodFrom, wood));
+            var w = BlockSetAPI.getBlockSet(this.getTypeClass()).get(ResourceLocation.fromNamespaceAndPath(woodFrom, wood));
             if (w != null) {
                 return module.shortenedId() + "/" + w.getNamespace() + "/" + oldName;
             }

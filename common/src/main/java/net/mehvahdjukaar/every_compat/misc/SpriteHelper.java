@@ -309,7 +309,7 @@ public class SpriteHelper {
     //for ecologics
     private static void maybeFlowerAzalea(TextureImage image, ResourceManager manager, WoodType woodType) {
         if (woodType.getId().toString().equals("ecologics:flowering_azalea")) {
-            WoodType azalea = WoodTypeRegistry.getValue(new ResourceLocation("ecologics:azalea"));
+            WoodType azalea = WoodTypeRegistry.getValue(ResourceLocation.fromNamespaceAndPath("ecologics","azalea"));
             if (azalea != null) {
                 try (TextureImage mask = TextureImage.open(manager,
                         EveryCompat.res("block/ecologics_overlay"));
@@ -332,7 +332,7 @@ public class SpriteHelper {
     //for Regions-Unexplored's brimwood
     private static void maybeBrimwood(TextureImage image, ResourceManager manager, String path, WoodType woodType) {
         if (woodType.getId().toString().equals("regions_unexplored:brimwood")) {
-            WoodType brimwood = WoodTypeRegistry.getValue(new ResourceLocation("regions_unexplored:brimwood"));
+            WoodType brimwood = WoodTypeRegistry.getValue(ResourceLocation.fromNamespaceAndPath("regions_unexplored","brimwood"));
             if (brimwood != null) {
                 try (TextureImage lavaOverlay = TextureImage.open(manager,
                         EveryCompat.res("block/regions_unexplored/brimwood_planks_lava"));
@@ -435,10 +435,10 @@ public class SpriteHelper {
     //for Advent-Of-Ascension's stranglewood
     private static void maybeStrangewood(TextureImage image, ResourceManager manager, WoodType woodType) {
         if (woodType.getId().toString().equals("aoa3:strangewood")) {
-            WoodType strangewood = WoodTypeRegistry.getValue(new ResourceLocation("aoa3:strangewood"));
+            WoodType strangewood = WoodTypeRegistry.getValue(ResourceLocation.fromNamespaceAndPath("aoa3","strangewood"));
             if (strangewood != null) {
                 try (TextureImage vineOverlay = TextureImage.open(manager,
-                        new ResourceLocation("aoa3:block/stranglewood_log_vine"));
+                        ResourceLocation.fromNamespaceAndPath("aoa3","block/stranglewood_log_vine"));
                      TextureImage logTexture = TextureImage.open(manager,
                              RPUtils.findFirstBlockTextureLocation(manager, strangewood.log, SpriteHelper.LOOKS_LIKE_SIDE_LOG_TEXTURE))) {
 
