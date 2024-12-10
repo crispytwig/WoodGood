@@ -174,6 +174,7 @@ public class MacawFencesModule extends SimpleModule {
                 }))
                 .addTag(BlockTags.MINEABLE_WITH_HOE, Registry.BLOCK_REGISTRY)
                 .addTag(BlockTags.WALLS, Registry.BLOCK_REGISTRY)
+                .addTag(BlockTags.FENCES, Registry.BLOCK_REGISTRY)
                 .addTag(ItemTags.WALLS, Registry.ITEM_REGISTRY)
                 .setTab(() -> tab)
                 .defaultRecipe()
