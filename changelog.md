@@ -1,5 +1,5 @@
 ### UPDATED:
-- **Friends And Foes** (COMMON): Fixed Beehives not getting recongized by villagers - @VoidLeech
+- **Macaw's Fences & Walls** (COMMON): Added _hedges_' missing tags with #minecraft:fences and also fixed [#712](https://github.com/MehVahdJukaar/WoodGood/issues/712)
 
 ### NEW:
 - N/A
