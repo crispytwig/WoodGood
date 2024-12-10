@@ -56,11 +56,16 @@ dependencies {
     modImplementation("dev.onyxstudios.cardinal-components-api:cardinal-components-entity:5.0.2") // Trinkets
     modImplementation("org.reflections:reflections:0.10.2") // Framework(ONLY)
 
-// ============================================= DEPENDENCIES =================================================== \\
+//!! MOONLIGHT LIB -------------------------------------------------------------------------------------------------- \\
+    //!! ~/fabric/mods LOCAL
 //    modImplementation("net.mehvahdjukaar:moonlight:${project.moonlight_version}-fabric") // LOCAL
+
+    //!! MAVEN
     modImplementation("curse.maven:selene-499980:5567103") // v2.3.7
+//    modImplementation("maven.modrinth:moonlight:fabric_${moonlight_version}") // v2.3.7 //!! Don't use it yet
 
 
+//!! =============================================== DEPENDENCIES =================================================== \\
     modImplementation("curse.maven:resourceful-lib-570073:4434137")
 //    modRuntimeOnly("curse.maven:architectury-api-419699:5137941") // v6.6.92
 //    modRuntimeOnly("curse.maven:cloth-config-348521:4973443") // v8.3.115
@@ -71,17 +76,17 @@ dependencies {
     modCompileOnly("maven.modrinth:frozenlib:1.2.7-mc1.19.2") // Wilder-Wild
 //    modRuntimeOnly("curse.maven:nbt-crafting-314633:4104838") // Wilder-Wild
 
-    // ================================================= LOCAL ====================================================== \\
+    //!! ================================================= LOCAL ====================================================== \\
     modCompileOnly("net.darktree.redbits:redbits-1.19.2-1.16.1")
     modCompileOnly("net.frozenblock.wildwilder:wilderwild-1.19.2-2.0.7")
 
-    // TOOLS
+    //!! TOOLS
     modRuntimeOnly("curse.maven:emi-580555:5704394")
 
-// ================================================ IMPORTS ===================================================== \\
+//!! ================================================== IMPORTS ===================================================== \\
     // NOTE: mods with modRunTimeOnly are in compiled in build.gradle (COMMON), modRunTimeOnly is only for testing
 
-        // MACAW's
+        //!! MACAW's
     modCompileOnly("curse.maven:macaws-bridges-351725:5240491")
     modCompileOnly("curse.maven:macaws-doors-378646:4649884")
     modCompileOnly("curse.maven:macaws-fences-and-walls-453925:5442187")
@@ -93,7 +98,7 @@ dependencies {
     modCompileOnly("curse.maven:macaws-windows-363569:4750640")
     modCompileOnly("curse.maven:macaws-stairs-1119394:5802475")
 
-        // OTHERS
+        //!! OTHERS
     modCompileOnly("curse.maven:another-furniture-610492:4032093")
     modCompileOnly("curse.maven:architects-palette-fabric-487364:3845046")
     modCompileOnly("curse.maven:backpacked-fabric-667380:4728984")
@@ -127,9 +132,9 @@ dependencies {
     modCompileOnly("curse.maven:regions-unexplored-659110:4470171") // TerraBlender (FABRIC), Forge-Config-API-Port
 
 
-    // ======================================== DISABLED FOR A REASON =============================================== \\
+    //!! ======================================== DISABLED FOR A REASON =============================================== \\
 
-    // ======================================= TESTING WITH WOOD MODS =============================================== \\
+    //!! ======================================= TESTING WITH WOOD MODS =============================================== \\
 //    modRuntimeOnly("curse.maven:terrestria-323974:4976672")
 }
 
