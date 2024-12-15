@@ -50,6 +50,10 @@ public class SpriteHelper {
         addOptional("minecraft:mushroom_stem", "_side", "minecraft:block/mushroom_stem");
         addOptional("minecraft:mushroom_stem", "_top", "minecraft:block/mushroom_stem");
 
+        // Advent Of Ascension
+        addOptional("aoa3:stranglewood_log", "_side", "aoa3:block/stranglewood_log");
+        addOptional("aoa3:stranglewood_log", "_top", "aoa3:block/stranglewood_log_top");
+
         // My Nether's Delight
         addOptional("mynethersdelight:powdery_block", "_side", "mynethersdelight:block/powdery_block");
         addOptional("mynethersdelight:stripped_powdery_block", "_side", "mynethersdelight:block/stripped_powdery_block");
