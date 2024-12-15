@@ -63,7 +63,7 @@ public class RegionsUnexploredModule extends SimpleModule {
                         l -> new ShrubBlock(BlockBehaviour.Properties.ofFullCopy(RuBlocks.ACACIA_SHRUB.get()))
                 )
                 .addCondition(l -> {
-                    boolean log = l.getWoodType().log != null; //REASON: textures
+                    boolean log = l.getWoodType() != null; //REASON: textures
                     boolean sapling = l.getItemOfThis("sapling") != null; //REASON: recipes
                     return log && sapling;
                 })

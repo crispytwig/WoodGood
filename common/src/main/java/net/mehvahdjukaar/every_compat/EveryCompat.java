@@ -121,24 +121,23 @@ public abstract class EveryCompat {
         }
         //log registered stuff size
         int newSize = BuiltInRegistries.BLOCK.size();
-        int am = newSize - prevRegSize;
-        float p = (am / (float) newSize) * 100f;
+        int myBlocksSize = newSize - prevRegSize;
+        float p = (myBlocksSize / (float) newSize) * 100f;
         if (p > 25) {
-            EveryCompat.LOGGER.warn("Registered {} compat blocks making up {}% of total blocks registered", am, String.format("%.2f", p));
+            EveryCompat.LOGGER.warn("Registered {} compat blocks making up {}% of total blocks registered", myBlocksSize, String.format("%.2f", p));
         } else {
-            EveryCompat.LOGGER.info("Registered {} compat blocks making up {}% of total blocks registered", am, String.format("%.2f", p));
+            EveryCompat.LOGGER.info("Registered {} compat blocks making up {}% of total blocks registered", myBlocksSize, String.format("%.2f", p));
         }
         if (p > 33) {
-            CompatModule bloated = null;
-            var bloatedAmount = ACTIVE_MODULES.stream().max(Comparator.comparing(CompatModule::bloatAmount));
-            if (bloatedAmount.isPresent()) {
-                bloated = bloatedAmount.get();
+            var bloatedMod = ACTIVE_MODULES.stream().max(Comparator.comparing(CompatModule::bloatAmount))
+                    .orElse(null);
+            if (bloatedMod != null) {
+                EveryCompat.LOGGER.error("Every Compat registered blocks make up more than one third of your registered blocks, taking up memory and load time.");
+                EveryCompat.LOGGER.error("You might want to uninstall some mods, biggest offender was {} ({} blocks)", bloatedMod.getModName().toUpperCase(Locale.ROOT), bloatedMod.bloatAmount());
             }
-            EveryCompat.LOGGER.error("Every Compat registered blocks make up more than one third of your registered blocks, taking up memory and load time.");
-            EveryCompat.LOGGER.error("You might want to uninstall some mods, biggest offender was {} ({} blocks)", bloated.getModName().toUpperCase(Locale.ROOT), bloated.bloatAmount());
         }
 
-        if (am == 0) {
+        if (myBlocksSize == 0) {
             EveryCompat.LOGGER.error("EVERY COMPAT REGISTERED 0 BLOCKS! This means that you dont need the mod and should remove it!");
         }
         forAllModules(CompatModule::onModSetup);
