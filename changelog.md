@@ -1,5 +1,5 @@
 ### UPDATED:
-- **Regions Unexplored** (FABRIC): Fixed the crash due to null check
+- **Regions Unexplored** (FB): Fixed the crash due to null check
 - **Every Compat** (COMMON): Improved the logging stuff related to the bloated resources
 
 NOTE: 
@@ -7,5 +7,5 @@ NOTE:
 
 #### LEGENDS:
 - (COMMON): NEOFORGE & FABRIC 
-- (F): FABRIC
+- (FB): FABRIC
 - (NF): NEOFORGE
