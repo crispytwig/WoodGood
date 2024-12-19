@@ -1,6 +1,6 @@
 package net.mehvahdjukaar.every_compat.modules.fabric.twilightforest;
 
-import lilypuree.decorative_blocks.registration.RegistryObject;
+import com.tterrag.registrate.util.entry.RegistryEntry;
 import net.mehvahdjukaar.every_compat.api.RenderLayer;
 import net.mehvahdjukaar.every_compat.api.SimpleEntrySet;
 import net.mehvahdjukaar.every_compat.api.SimpleModule;
@@ -92,7 +92,7 @@ public class TwilightForestModule extends SimpleModule {
 
     }
 
-   static Field portingLibBadAPI = Arrays.stream(RegistryObject.class.getDeclaredFields())
+   static Field portingLibBadAPI = Arrays.stream(RegistryEntry.class.getDeclaredFields())
             .filter(f -> f.getType().equals(Supplier.class)).findFirst().get();
 
 /*    @NotNull
