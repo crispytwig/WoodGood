@@ -254,7 +254,9 @@ allprojects {
         maven {
             url "https://maven.firstdarkdev.xyz/snapshots"
         }
-        maven { url 'https://jitpack.io' }
+//        maven { url 'https://mvn.devos.one/releases/' } // fabricators_of_create
+
+        maven { url = "https://mvn.devos.one/snapshots/" } // registrate_fabric & registrate
 
         maven {
             name = "TerraformersMC"
