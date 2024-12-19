@@ -13,34 +13,38 @@ dependencies {
     modImplementation "net.fabricmc:fabric-loader:${rootProject.fabric_loader_version}"
     modApi "net.fabricmc.fabric-api:fabric-api:${rootProject.fabric_api_version}"
 
-//!! MOONLIGHT LIB -----------------------------------------------------------------------------------------------------
+    //common. Fabric version that works on both
+//!! MOONLIGHT LIB (REQUIRED) --------------------------------------------------------------------------------------- \\
+    String path = System.getenv('REPOS20_1')
 
     if (usesMavenLocalML) {
-        modImplementation("net.mehvahdjukaar:moonlight:${moonlight_testVersion}")
+        //!! ~/forge/mods LOCAL
+        modImplementation("net.mehvahdjukaar:moonlight:${moonlight_testVersion}-fabric")
     } else {
-        modImplementation("maven.modrinth:moonlight:fabric_${moonlight_mavenVersion}")  // v2.17.10
+        //!! Repository LOCAL
+//        modImplementation(files(path  + "\\Moonlight\\fabric\\build\\libs\\moonlight-${moonlight_testVersion}-fabric.jar"))
+        //!! MAVEN
+        modImplementation("maven.modrinth:moonlight:fabric_${moonlight_mavenVersion}")  // v2.17.12
     }
 
 //!!============================================== DEPENDENCIES ========================================================
-
-    //common. Fabric version that works on both
+    //!! REQUIRED - The modules access libaries from below
     modCompileOnly("curse.maven:resourceful-lib-570073:5659872") // v2.1.29
     modCompileOnly("curse.maven:architectury-api-419699:5137936") // v9.2.14
     modCompileOnly("curse.maven:valhelsia-core-416935:5376599") // Valhelsia-Furniture
 
 //!!================================================= IMPORTS ==========================================================
-
-    //!! LOCAL
-//    modCompileOnly("net.stehschnitzel.shutter:shutter-2.0.2-1.20.1")
+    //!! REQUIRED - The modules access libaries from below
+        //!! ~/common/mods LOCAL
     modCompileOnly("com.arcanc.bc:Beautiful-Campfires-fabric-1.20.1-1.0.3")
     modCompileOnly("net.darktree.redbits:redbits-1.20.1-1.16.1") //FABRIC
+//    modCompileOnly("net.stehschnitzel.shutter:shutter-2.0.2-1.20.1")
 
-    //!! OTHERS
+        //!! OTHERS
     modCompileOnly("curse.maven:another-furniture-610492:4815126") //!! 1.20.1
     modCompileOnly("curse.maven:backpacked-352835:5852971") //!! BETA
     modCompileOnly("curse.maven:camp-chair-531744:4579679") //!! 1.20.1
     modCompileOnly("curse.maven:chipped-456956:5813118")
-//    modCompileOnly("curse.maven:cozy-625281:4728202") //!! 1.20.1
     modCompileOnly("curse.maven:create-624165:5168511") //!! 1.20.1
     modCompileOnly("curse.maven:dawn-of-time-312359:5651253") //!! 1.20.1
     modCompileOnly("curse.maven:decorative-blocks-362528:3941637") //!! 1.20.1
