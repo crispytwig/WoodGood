@@ -33,6 +33,7 @@ public class BeautifyRefabricatedModule extends SimpleModule {
                         )
                 )
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
+                .addTag(BlockTags.CLIMBABLE, Registries.BLOCK)
                 .defaultRecipe()
                 .setTabKey(tab)
                 .build();
