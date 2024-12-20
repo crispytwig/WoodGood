@@ -36,6 +36,7 @@ public class BeautifyDecorateModule extends SimpleModule {
                 )
                 //TEXTURES: logs
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
+                .addTag(BlockTags.CLIMBABLE, Registries.BLOCK)
                 .setTabKey(tab)
                 .defaultRecipe()
                 .build();
