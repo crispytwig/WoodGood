@@ -24,7 +24,7 @@ public class ECRegistry {
                     RegHelper.registerCreativeModeTab(EveryCompat.res(EveryCompat.MOD_ID),
                             true,
                             builder -> builder.icon(() -> ALL_WOODS.get().getDefaultInstance())
-                                    .backgroundTexture(CreativeModeTab.createTextureLocation("item_search.png"))
+                                    .backgroundTexture(CreativeModeTab.createTextureLocation("item_search"))
                                     .title(Component.translatable("itemGroup.everycomp.everycomp"))
                                     .build())
                     : null;
