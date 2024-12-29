@@ -23,6 +23,7 @@ import net.mehvahdjukaar.every_compat.modules.table_top_craft.TableTopCraftModul
 import net.mehvahdjukaar.every_compat.modules.twigs.TwigsModule;
 import net.mehvahdjukaar.every_compat.modules.valhelsia_furniture.ValhelsiaFurnitureModule;
 import net.mehvahdjukaar.every_compat.modules.villagers_plus.VillagersPlusModule;
+import net.mehvahdjukaar.every_compat.modules.wilder_wild.WilderWildModule;
 import net.mehvahdjukaar.moonlight.api.platform.PlatHelper;
 
 import java.util.List;
@@ -90,6 +91,7 @@ public class EveryCompatCommon {
         addIfLoaded("twigs", () -> TwigsModule::new);
         addIfLoaded("valhelsia_furniture", () -> ValhelsiaFurnitureModule::new);
         addIfLoaded("villagersplus", () -> VillagersPlusModule::new);
+        addIfLoaded("wilderwild", () -> WilderWildModule::new);
 
 
 //!! =================================================== OTHERS ===================================================== \\
