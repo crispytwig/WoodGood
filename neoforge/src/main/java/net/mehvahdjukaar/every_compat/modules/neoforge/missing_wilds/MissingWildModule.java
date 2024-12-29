@@ -27,6 +27,8 @@ public class MissingWildModule extends SimpleModule {
                 .addTag(modRes("fallen_logs"), Registries.ITEM)
                 .setTabKey(modRes("items"))
                 .defaultRecipe()
+                //REASON: The top texture is not a standard 16x16. Take a look, you'll see why
+                .excludeBlockTypes("terrestria", "(yucca_palm|sakura")
                 .build();
         this.addEntry(fallenLogs);
     }
