@@ -8,7 +8,6 @@ import net.mehvahdjukaar.every_compat.modules.fabric.beautify_decorate.BeautifyR
 import net.mehvahdjukaar.every_compat.modules.fabric.bewitchment.BewitchmentModule;
 import net.mehvahdjukaar.every_compat.modules.fabric.clutter.ClutterModule;
 import net.mehvahdjukaar.every_compat.modules.fabric.create.CreateModule;
-import net.mehvahdjukaar.every_compat.modules.fabric.dramatic_doors.DramaticDoorsModule;
 import net.mehvahdjukaar.every_compat.modules.fabric.infinitybuttons.InfinityButtonsModule;
 import net.mehvahdjukaar.every_compat.modules.fabric.lauchs.LauchsShuttersModule;
 import net.mehvahdjukaar.every_compat.modules.fabric.lightmans_currency.LightmansCurrencyModule;
@@ -53,7 +52,6 @@ public class EveryCompatFabric extends EveryCompatCommon implements ModInitializ
         addIfLoaded("bewitchment", () -> BewitchmentModule::new);
         addIfLoaded("clutter", () -> ClutterModule::new);
         addIfLoaded("create", () -> CreateModule::new);
-        addIfLoaded("dramaticdoors", () -> DramaticDoorsModule::new);
         addIfLoaded("infinitybuttons", () -> InfinityButtonsModule::new);
         addIfLoaded("lightmanscurrency", () -> LightmansCurrencyModule::new);
         addIfLoaded("mighty_mail", () -> MightyMailModule::new);

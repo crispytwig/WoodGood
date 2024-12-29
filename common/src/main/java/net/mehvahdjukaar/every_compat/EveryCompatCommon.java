@@ -7,6 +7,8 @@ import net.mehvahdjukaar.every_compat.modules.camp_chair.CampChairModule;
 import net.mehvahdjukaar.every_compat.modules.chipped.ChippedModule;
 import net.mehvahdjukaar.every_compat.modules.dawn_of_time.DawnOfTimeModule;
 import net.mehvahdjukaar.every_compat.modules.decorative_blocks.DecorativeBlocksModule;
+import net.mehvahdjukaar.every_compat.modules.dramaticdoors.DramaticDoorsMacawModule;
+import net.mehvahdjukaar.every_compat.modules.dramaticdoors.DramaticDoorsModule;
 import net.mehvahdjukaar.every_compat.modules.exlines.BarkCarpetsModule;
 import net.mehvahdjukaar.every_compat.modules.farmersdelight.FarmersDelightModule;
 import net.mehvahdjukaar.every_compat.modules.friendsandfoes.FriendsAndFoesModule;
@@ -77,6 +79,7 @@ public class EveryCompatCommon {
         addIfLoaded("chipped", () -> ChippedModule::new);
         addIfLoaded("dawnoftimebuilder", () -> DawnOfTimeModule::new);
         addIfLoaded("decorative_blocks", () -> DecorativeBlocksModule::new);
+        addIfLoaded("dramaticdoors", () -> DramaticDoorsModule::new);
         addIfLoaded("farmersdelight", () -> FarmersDelightModule::new);
         addIfLoaded("friendsandfoes", () -> FriendsAndFoesModule::new);
         addIfLoaded("furnish", () -> FurnishModule::new);
@@ -92,6 +95,10 @@ public class EveryCompatCommon {
         addIfLoaded("valhelsia_furniture", () -> ValhelsiaFurnitureModule::new);
         addIfLoaded("villagersplus", () -> VillagersPlusModule::new);
         addIfLoaded("wilderwild", () -> WilderWildModule::new);
+
+        if (PlatHelper.isModLoaded("mcwdoors")) {
+            addIfLoaded("dramaticdoors", () -> DramaticDoorsMacawModule::new);
+        }
 
 
 //!! =================================================== OTHERS ===================================================== \\

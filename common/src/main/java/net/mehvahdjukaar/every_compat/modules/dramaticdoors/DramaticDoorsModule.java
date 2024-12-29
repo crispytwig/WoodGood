@@ -1,8 +1,8 @@
-package net.mehvahdjukaar.every_compat.modules.fabric.dramatic_doors;
+package net.mehvahdjukaar.every_compat.modules.dramaticdoors;
 
-import com.fizzware.dramaticdoors.fabric.blocks.ShortDoorBlock;
-import com.fizzware.dramaticdoors.fabric.blocks.TallDoorBlock;
-import com.fizzware.dramaticdoors.fabric.registry.DDCreativeTabs;
+import com.fizzware.dramaticdoors.neoforge.blocks.ShortDoorBlock;
+import com.fizzware.dramaticdoors.neoforge.blocks.TallDoorBlock;
+import com.fizzware.dramaticdoors.neoforge.registry.DDCreativeTabs;
 import net.mehvahdjukaar.every_compat.EveryCompat;
 import net.mehvahdjukaar.every_compat.api.RenderLayer;
 import net.mehvahdjukaar.every_compat.api.SimpleEntrySet;

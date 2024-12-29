@@ -4,6 +4,7 @@ import net.mehvahdjukaar.every_compat.EveryCompat;
 import net.mehvahdjukaar.every_compat.EveryCompatClient;
 import net.mehvahdjukaar.every_compat.EveryCompatCommon;
 import net.mehvahdjukaar.every_compat.configs.ECConfigs;
+
 import net.mehvahdjukaar.every_compat.modules.neoforge.abnormal.BoatLoadModule;
 import net.mehvahdjukaar.every_compat.modules.neoforge.abnormal.WoodworksModule;
 import net.mehvahdjukaar.every_compat.modules.neoforge.absent_by_design.AbsentByDesignModule;
@@ -15,8 +16,6 @@ import net.mehvahdjukaar.every_compat.modules.neoforge.building_but_better.Build
 import net.mehvahdjukaar.every_compat.modules.neoforge.corail_pillar.CorailPillarModule;
 import net.mehvahdjukaar.every_compat.modules.neoforge.create.CreateModule;
 import net.mehvahdjukaar.every_compat.modules.neoforge.decoration_delight.DecorationDelightModule;
-import net.mehvahdjukaar.every_compat.modules.neoforge.dramaticdoors.DramaticDoorsMacawModule;
-import net.mehvahdjukaar.every_compat.modules.neoforge.dramaticdoors.DramaticDoorsModule;
 import net.mehvahdjukaar.every_compat.modules.neoforge.functional_storage.FunctionalStorageModule;
 import net.mehvahdjukaar.every_compat.modules.neoforge.infinitybuttons.InfinityButtonsModule;
 import net.mehvahdjukaar.every_compat.modules.neoforge.just_a_raft.JustARaftModule;
@@ -42,7 +41,7 @@ import net.mehvahdjukaar.every_compat.modules.neoforge.variants.VariantVanillaBl
 import net.mehvahdjukaar.every_compat.modules.neoforge.woodster.WoodsterModule;
 import net.mehvahdjukaar.every_compat.modules.neoforge.workshop.WorkshopForHandsomeAdventurerModule;
 import net.mehvahdjukaar.every_compat.modules.neoforge.xerca.XercaModule;
-import net.mehvahdjukaar.moonlight.api.platform.PlatHelper;
+
 import net.mehvahdjukaar.moonlight.api.platform.RegHelper;
 import net.neoforged.bus.api.EventPriority;
 import net.neoforged.bus.api.IEventBus;
@@ -86,7 +85,6 @@ public class EveryCompatForge extends EveryCompatCommon {
         addIfLoaded("corail_pillar", () -> CorailPillarModule::new);
         addIfLoaded("create", () -> CreateModule::new);
         addIfLoaded("decoration_delight", () -> DecorationDelightModule::new);
-        addIfLoaded("dramaticdoors", () -> DramaticDoorsModule::new);
         addIfLoaded("functionalstorage", () -> FunctionalStorageModule::new);
         addIfLoaded("infinitybuttons", () -> InfinityButtonsModule::new);
         addIfLoaded("justaraftmod", () -> JustARaftModule::new);
@@ -112,9 +110,6 @@ public class EveryCompatForge extends EveryCompatCommon {
         addIfLoaded("woodworks", () -> WoodworksModule::new);
         addIfLoaded("workshop_for_handsome_adventurer", () -> WorkshopForHandsomeAdventurerModule::new);
         addIfLoaded("xercamod", () -> XercaModule::new);
-        if (PlatHelper.isModLoaded("mcwdoors")) {
-            addIfLoaded("dramaticdoors", () -> DramaticDoorsMacawModule::new);
-        }
 
 // ========================================= Macaw's ======================================================== \\
         addIfLoaded("mcwbridges", () -> MacawBridgesModule::new);

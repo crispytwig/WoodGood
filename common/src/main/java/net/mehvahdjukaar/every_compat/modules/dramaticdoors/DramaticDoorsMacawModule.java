@@ -1,4 +1,4 @@
-package net.mehvahdjukaar.every_compat.modules.neoforge.dramaticdoors;
+package net.mehvahdjukaar.every_compat.modules.dramaticdoors;
 
 import com.fizzware.dramaticdoors.neoforge.blocks.TallDoorBlock;
 import com.fizzware.dramaticdoors.neoforge.blocks.TallSlidingDoorBlock;
