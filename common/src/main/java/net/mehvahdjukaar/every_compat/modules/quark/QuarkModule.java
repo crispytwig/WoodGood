@@ -310,16 +310,21 @@ public class QuarkModule extends SimpleModule {
         TRAPPED_CHEST_TILE = trappedChests.getTile(ChestBlockEntity.class);
     }
 
-    @Environment(EnvType.CLIENT)
     @Override
+    @Environment(EnvType.CLIENT)
     public void onClientSetup() {
         super.onClientSetup();
+        QuarkClientModule.initClient(this);
+    }
 
-        for (var b : chests.blocks.values())
-            QuarkClient.ZETA_CLIENT.setBlockEntityWithoutLevelRenderer(b.asItem(), new SimpleWithoutLevelRenderer(CHEST_TILE, b.defaultBlockState()));
-        for (var b : trappedChests.blocks.values())
-            QuarkClient.ZETA_CLIENT.setBlockEntityWithoutLevelRenderer(b.asItem(), new SimpleWithoutLevelRenderer(TRAPPED_CHEST_TILE, b.defaultBlockState()));
-
+    @Environment(EnvType.CLIENT)
+    public static class QuarkClientModule {
+        private static void initClient(QuarkModule module) {
+            for (var b : module.chests.blocks.values())
+                QuarkClient.ZETA_CLIENT.setBlockEntityWithoutLevelRenderer(b.asItem(), new SimpleWithoutLevelRenderer(CHEST_TILE, b.defaultBlockState()));
+            for (var b : module.trappedChests.blocks.values())
+                QuarkClient.ZETA_CLIENT.setBlockEntityWithoutLevelRenderer(b.asItem(), new SimpleWithoutLevelRenderer(TRAPPED_CHEST_TILE, b.defaultBlockState()));
+        }
     }
 
     @Environment(EnvType.CLIENT)
