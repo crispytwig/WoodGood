@@ -364,10 +364,10 @@ public abstract class AbstractSimpleEntrySet<T extends BlockType, B extends Bloc
                 List<Palette> finalTargetPalette = targetPalette;
 
                 //sanity check to verity that palette isn't changed. can be removed
-                int oldSize = finalTargetPalette.get(0).size();
+                int oldSize = finalTargetPalette.getFirst().size();
 
                 for (var re : respriters.entrySet()) {
-                    if (oldSize != finalTargetPalette.get(0).size()) {
+                    if (oldSize != finalTargetPalette.getFirst().size()) {
                         throw new RuntimeException("This should not happen");
                     }
                     ResourceLocation oldTextureId = re.getKey();
