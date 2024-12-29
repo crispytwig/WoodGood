@@ -46,6 +46,7 @@ public class MacawTrapdoorsModule extends SimpleModule {
                         () -> BlockInit.OAK_BARK_TRAPDOOR, () -> WoodTypeRegistry.OAK_TYPE,
                         w -> new TrapDoorBlock(w.toVanillaOrOak().setType(), Utils.copyPropertySafe(w.log).noOcclusion()){}
                 )
+                //TEXTURES: log
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(BlockTags.TRAPDOORS, Registries.BLOCK)
                 .addTag(BlockTags.WOODEN_TRAPDOORS, Registries.BLOCK)
@@ -55,6 +56,8 @@ public class MacawTrapdoorsModule extends SimpleModule {
                 .setTabKey(tab)
                 .setRenderType(RenderLayer.CUTOUT)
                 .defaultRecipe()
+                //REASON: Take a look @ terrestria's logs|stripped_logs' non-standard 16x16 texture, you'll get why
+                .excludeBlockTypes("terrestria", "(yucca_palm|sakura)")
                 .build();
         this.addEntry(BARK_TRAPDOORS);
 
@@ -235,6 +238,8 @@ public class MacawTrapdoorsModule extends SimpleModule {
                         () -> BlockInit.OAK_RANCH_TRAPDOOR, () -> WoodTypeRegistry.OAK_TYPE,
                         w -> new TrapDoorBlock(w.toVanillaOrOak().setType(), Utils.copyPropertySafe(w.log).noOcclusion()){}
                 )
+                .requiresChildren("stripped_log") //REASON: textures
+                //TEXTURES: log, stripped_log
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(BlockTags.TRAPDOORS, Registries.BLOCK)
                 .addTag(BlockTags.WOODEN_TRAPDOORS, Registries.BLOCK)
@@ -244,7 +249,7 @@ public class MacawTrapdoorsModule extends SimpleModule {
                 .setTabKey(tab)
                 .setRenderType(RenderLayer.CUTOUT)
                 .defaultRecipe()
-                //REASON: The top texture is not a standard 16x16. Take a look, you'll see why
+                //REASON: Take a look @ terrestria's logs|stripped_logs' non-standard 16x16 texture, you'll get why
                 .excludeBlockTypes("terrestria", "(yucca_palm|sakura")
                 .build();
         this.addEntry(RANCH_TRAPDOORS);

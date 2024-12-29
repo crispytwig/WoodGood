@@ -71,8 +71,8 @@ public class WilderWildModule extends SimpleModule {
                 .addTag(modRes("hollowed_logs"), Registries.BLOCK)
                 .addTag(modRes("splits_coconut"), Registries.BLOCK)
                 .addRecipe(modRes("oak_wood_from_hollowed"))
-                //REASON: The top texture is not a standard 16x16. Take a look, you'll see why
-                .excludeBlockTypes("terrestria", "(yucca_palm|sakura")
+                //REASON: Take a look @ terrestria's logs|stripped_logs' non-standard 16x16 texture, you'll get why
+                .excludeBlockTypes("terrestria", "(yucca_palm|sakura)")
                 .build();
         this.addEntry(hollow_log);
 
@@ -103,8 +103,8 @@ public class WilderWildModule extends SimpleModule {
                 .addTag(ItemTags.LOGS, Registries.ITEM)
                 .addTag(ItemTags.COMPLETES_FIND_TREE_TUTORIAL, Registries.ITEM)
                 .addRecipe(modRes("stripped_oak_wood_from_hollowed"))
-                //REASON: The top texture is not a standard 16x16. Take a look, you'll see why
-                .excludeBlockTypes("terrestria", "(yucca_palm|sakura")
+                //REASON: Take a look @ terrestria's logs|stripped_logs' non-standard 16x16 texture, you'll get why
+                .excludeBlockTypes("terrestria", "(yucca_palm|sakura)")
                 .build();
         this.addEntry(stripped_hollow_log);
 
