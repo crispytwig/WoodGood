@@ -250,7 +250,7 @@ public class MacawTrapdoorsModule extends SimpleModule {
                 .setRenderType(RenderLayer.CUTOUT)
                 .defaultRecipe()
                 //REASON: Take a look @ terrestria's logs|stripped_logs' non-standard 16x16 texture, you'll get why
-                .excludeBlockTypes("terrestria", "(yucca_palm|sakura")
+                .excludeBlockTypes("terrestria", "(yucca_palm|sakura)")
                 .build();
         this.addEntry(RANCH_TRAPDOORS);
 

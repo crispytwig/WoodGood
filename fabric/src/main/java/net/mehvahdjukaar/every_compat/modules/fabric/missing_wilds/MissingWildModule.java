@@ -29,7 +29,7 @@ public class MissingWildModule extends SimpleModule {
                 .defaultRecipe()
                 .setRenderType(RenderLayer.CUTOUT_MIPPED)
                 //REASON: The top texture is not a standard 16x16. Take a look, you'll see why
-                .excludeBlockTypes("terrestria", "(yucca_palm|sakura")
+                .excludeBlockTypes("terrestria", "(yucca_palm|sakura)")
                 .build();
         this.addEntry(fallenLogs);
     }
