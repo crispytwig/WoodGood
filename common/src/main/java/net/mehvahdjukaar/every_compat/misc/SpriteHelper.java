@@ -50,6 +50,32 @@ public class SpriteHelper {
         addOptional("minecraft:mushroom_stem", "_side", "minecraft:block/mushroom_stem");
         addOptional("minecraft:mushroom_stem", "_top", "minecraft:block/mushroom_stem");
 
+        // Oh The Biomes We've Gone
+            // Leaves
+        addOptional("biomeswevegone:aspen_leaves", "_leaves", "biomeswevegone:block/aspen/leaves");
+        addOptional("biomeswevegone:baobab_leaves", "_leaves", "biomeswevegone:block/baobab/leaves");
+        addOptional("biomeswevegone:blue_enchanted_leaves", "_leaves", "biomeswevegone:block/blue_enchanted/leaves");
+        addOptional("biomeswevegone:cika_leaves", "_leaves", "biomeswevegone:block/cika/leaves");
+        addOptional("biomeswevegone:cypress_leaves", "_leaves", "biomeswevegone:block/cypress/leaves");
+        addOptional("biomeswevegone:ebony_leaves", "_leaves", "biomeswevegone:block/ebony/leaves");
+        addOptional("biomeswevegone:fir_leaves", "_leaves", "biomeswevegone:block/fir/leaves");
+        addOptional("biomeswevegone:green_enchanted_leaves", "_leaves", "biomeswevegone:block/green_enchanted/leaves");
+        addOptional("biomeswevegone:holly_leaves", "_leaves", "biomeswevegone:block/holly/leaves");
+        addOptional("biomeswevegone:ironwood_leaves", "_leaves", "biomeswevegone:block/ironwood/leaves");
+        addOptional("biomeswevegone:jacaranda_leaves", "_leaves", "biomeswevegone:block/jacaranda/leaves");
+        addOptional("biomeswevegone:mahongany_leaves", "_leaves", "biomeswevegone:block/mahongany/leaves");
+        addOptional("biomeswevegone:maple_leaves", "_leaves", "biomeswevegone:block/maple/leaves");
+        addOptional("biomeswevegone:palm_leaves", "_leaves", "biomeswevegone:block/palm/leaves");
+        addOptional("biomeswevegone:palo_verde_leaves", "_leaves", "biomeswevegone:block/palo_verde/leaves");
+        addOptional("biomeswevegone:pine_leaves", "_leaves", "biomeswevegone:block/pine/leaves");
+        addOptional("biomeswevegone:rainbow_eucalyptus_leaves", "_leaves", "biomeswevegone:block/rainbow_eucalyptus/leaves");
+        addOptional("biomeswevegone:redwood_leaves", "_leaves", "biomeswevegone:block/redwood/leaves");
+        addOptional("biomeswevegone:skyris_leaves", "_leaves", "biomeswevegone:block/skyris/leaves");
+        addOptional("biomeswevegone:white_mangrove_leaves", "_leaves", "biomeswevegone:block/white_mangrove/leaves");
+        addOptional("biomeswevegone:willow_leaves", "_leaves", "biomeswevegone:block/willow/leaves");
+        addOptional("biomeswevegone:witch_hazel_leaves", "_leaves", "biomeswevegone:block/witch_hazel/leaves");
+        addOptional("biomeswevegone:zelkova_leaves", "_leaves", "biomeswevegone:block/zelkova/leaves");
+
         // Advent Of Ascension
         addOptional("aoa3:stranglewood_log", "_side", "aoa3:block/stranglewood_log");
         addOptional("aoa3:stranglewood_log", "_top", "aoa3:block/stranglewood_log_top");
@@ -115,7 +141,6 @@ public class SpriteHelper {
         addOptional("feywild:hexen_tree_log", "_side", "feywild:block/hexen_tree_wood");
         addOptional("feywild:hexen_tree_log", "_top", "feywild:block/hexen_tree_log");
 
-
         // Born In Chaos
         addOptional("born_in_chaos_v1:scorched_log", "_side", "born_in_chaos_v1:block/brievno");
         addOptional("born_in_chaos_v1:scorched_log", "_top", "born_in_chaos_v1:block/brievnovierkh1");
@@ -142,7 +167,7 @@ public class SpriteHelper {
         addOptional("nue:stripped_frosted_stem", "_top", "nue:block/strippedfrozenstemtop");
 
         // Fruitful Fun
-        // Leaves
+            // Leaves
         addOptional("fruitfulfun:apple_leaves", "_leaves", "minecraft:block/oak_leaves");
         addOptional("fruitfulfun:cherry_leaves", "_leaves", "fruitfulfun:block/cherry_leaves_2");
         addOptional("fruitfulfun:citron_leaves", "_leaves", "fruitfulfun:block/citron_leaves");
@@ -168,12 +193,12 @@ public class SpriteHelper {
         addOptional("extendedmushrooms:honey_fungus_stem_stripped", "_top", "extendedmushrooms:block/honey_fungus_stem_stripped");
 
         // Let's Do - Vinery
-        // Leaves
+            // Leaves
         addOptional("vinery:apple_leaves", "_leaves", "vinery:block/apple_leaves_0");
         addOptional("vinery:dark_cherry", "_leaves", "vinery:block/dark_cherry_leaves");
 
         // The Twilight Forest
-        // Leaves
+            // Leaves
         addOptional("twilightforest:beanstalk_leaves", "_leaves", "minecraft:block/azalea_leaves");
         addOptional("twilightforest:thorn_leaves", "_leaves", "minecraft:block/oak_leaves");
 
