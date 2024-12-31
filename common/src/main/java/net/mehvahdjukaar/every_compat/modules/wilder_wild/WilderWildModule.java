@@ -11,6 +11,7 @@ import net.mehvahdjukaar.every_compat.api.RenderLayer;
 import net.mehvahdjukaar.every_compat.api.SimpleEntrySet;
 import net.mehvahdjukaar.every_compat.api.SimpleModule;
 import net.mehvahdjukaar.every_compat.dynamicpack.ServerDynamicResourcesHandler;
+import net.mehvahdjukaar.every_compat.misc.SpriteHelper;
 import net.mehvahdjukaar.moonlight.api.resources.RPUtils;
 import net.mehvahdjukaar.moonlight.api.resources.ResType;
 import net.mehvahdjukaar.moonlight.api.set.wood.WoodType;
@@ -49,9 +50,8 @@ public class WilderWildModule extends SimpleModule {
                         getModBlock("hollowed_oak_log", HollowedLogBlock.class), () -> WoodTypeRegistry.OAK_TYPE,
                         w -> new HollowedLogBlock(Utils.copyPropertySafe(w.log))
                 )
-                //REASON: textures
-                .requiresChildren("stripped_log")
-                .createPaletteFromChild("log")
+                .requiresChildren("stripped_log") //REASON: textures
+                .createPaletteFromChild("log", SpriteHelper.LOOKS_LIKE_SIDE_LOG_TEXTURE)
                 .addTexture(modRes("block/hollowed_oak_log"))
                 //TEXTURES: stripped_hollowed_log, log_top
                 .setRenderType(RenderLayer.CUTOUT_MIPPED)
@@ -80,9 +80,8 @@ public class WilderWildModule extends SimpleModule {
                         getModBlock("stripped_hollowed_oak_log", HollowedLogBlock.class), () -> WoodTypeRegistry.OAK_TYPE,
                         w -> new HollowedLogBlock(Utils.copyPropertySafe((w.getBlockOfThis("stripped_log") != null ) ? Objects.requireNonNull(w.getBlockOfThis("stripped_log")) : Blocks.STRIPPED_OAK_LOG))
                 )
-                //REASON: textures
-                .requiresChildren("stripped_log")
-                .createPaletteFromChild("stripped_log")
+                .requiresChildren("stripped_log") //REASON: textures
+                .createPaletteFromChild("stripped_log", SpriteHelper.LOOKS_LIKE_SIDE_LOG_TEXTURE)
                 //TEXTURES: stripped_log, stripped_log_top
                 .addTexture(modRes("block/stripped_hollowed_oak_log"))
                 .setRenderType(RenderLayer.CUTOUT_MIPPED)
