@@ -50,6 +50,45 @@ public class SpriteHelper {
         addOptional("minecraft:mushroom_stem", "_side", "minecraft:block/mushroom_stem");
         addOptional("minecraft:mushroom_stem", "_top", "minecraft:block/mushroom_stem");
 
+        // Cultural Delights
+            // Leaves
+        addOptional("culturaldelights:fruiting_avocado_leaves", "_leaves", "culturaldelights:block/fruiting_avocado_leaves_0");
+
+        // Fruitful Fun
+            // Leaves
+        addOptional("fruitfulfun:apple_leaves", "_leaves", "minecraft:block/oak_leaves");
+
+        // Vinery
+            // Leaves
+        addOptional("vinery:apple_leaves", "_leaves", "vinery:block/apple_leaves_0");
+
+        // Meadow
+            // Leaves
+        addOptional("meadow:pine_leaves", "_leaves", "meadow:block/pine_leaves_1");
+
+        // Autumnity
+            // Leaves
+        addOptional("autumnity:red_maple_leaves", "_leaves", "autumnity:block/maple_leaves");
+        addOptional("autumnity:orange_maple_leaves", "_leaves", "autumnity:block/maple_leaves");
+        addOptional("autumnity:yellow_maple_leaves", "_leaves", "autumnity:block/maple_leaves");
+
+        // Blue Skies
+            // Leaves
+        addOptional("blue_skies:comet_leaves", "_leaves", "blue_skies:block/comet_leaves_grown");
+
+        // Aether Redux
+            // Leaves
+        addOptional("aether_redux:azure_fieldsproot_leaves", "_leaves", "aether_redux:block/natural/fieldsproot_leaves");
+
+        // Integrated Dynamics
+            // Leaves
+        addOptional("integrateddynamics:menril_leaves", "_leaves", "integrateddynamics:block/menril_leaves_fancy");
+
+        // Malum
+            // Leaves
+        addOptional("malum:budding_soulwood_leaves", "_leaves", "malum:block/soulwood_leaves");
+        addOptional("malum:azure_runewood_leaves", "_leaves", "malum:block/runewood_leaves");
+
         // Oh The Biomes We've Gone
             // Leaves
         addOptional("biomeswevegone:aspen_leaves", "_leaves", "biomeswevegone:block/aspen/leaves");
@@ -201,6 +240,7 @@ public class SpriteHelper {
             // Leaves
         addOptional("twilightforest:beanstalk_leaves", "_leaves", "minecraft:block/azalea_leaves");
         addOptional("twilightforest:thorn_leaves", "_leaves", "minecraft:block/oak_leaves");
+        addOptional("twilightforest:dark_leaves", "_leaves", "twilightforest:block/darkwood_leaves");
 
         // Regions Unexplored
         addOptional("regions_unexplored:eucalyptus_log", "_side", EveryCompat.MOD_ID + ":block/regions_unexplored/eucalyptus_log");
@@ -224,6 +264,10 @@ public class SpriteHelper {
         addOptional("endlessbiomes:penumbra_stem", "_top", "endlessbiomes:block/penumbrallogtopnewest");
         addOptional("endlessbiomes:stripped_penumbra_stem", "_side", "endlessbiomes:block/strippedpenumbralogsidenewest");
         addOptional("endlessbiomes:stripped_penumbra_stem", "_top", "endlessbiomes:block/strippedpenumbralogtopnewest");
+            // Leaves
+        addOptional("endlessbiomes:glowing_penumbral_leaves", "_leaves", "endlessbiomes:block/penumbralleavesglowing");
+        addOptional("endlessbiomes:penumbral_leaves", "_leaves", "endlessbiomes:block/penumbralleavesnewest");
+
 
         // Gardens Of The Dead
         addOptional("gardens_of_the_dead:whistlecane", "_side", "gardens_of_the_dead:block/whistlecane_block");
