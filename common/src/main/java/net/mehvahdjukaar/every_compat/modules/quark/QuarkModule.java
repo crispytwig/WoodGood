@@ -279,7 +279,7 @@ public class QuarkModule extends SimpleModule {
                         })
                 .requiresChildren("leaves") // Reason: RECIPES
                 .addModelTransform(m -> m.replaceWithTextureFromChild("minecraft:block/oak_leaves",
-                        "leaves", s -> !s.contains("/snow") && !s.contains("_snow")))
+                        "leaves", SpriteHelper.LOOKS_LIKE_LEAF_TEXTURE))
                 .addTag(modRes("leaf_carpets"), Registries.BLOCK)
                 .addTag(modRes("leaf_carpets"), Registries.ITEM)
                 .setTabKey(CreativeModeTabs.BUILDING_BLOCKS)

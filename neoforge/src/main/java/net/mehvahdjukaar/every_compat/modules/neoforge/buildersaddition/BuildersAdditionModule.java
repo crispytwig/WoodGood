@@ -20,6 +20,7 @@ import github.mrh0.buildersaddition2.blocks.table.TableBlock;
 import net.mehvahdjukaar.every_compat.api.RenderLayer;
 import net.mehvahdjukaar.every_compat.api.SimpleEntrySet;
 import net.mehvahdjukaar.every_compat.api.SimpleModule;
+import net.mehvahdjukaar.every_compat.misc.SpriteHelper;
 import net.mehvahdjukaar.moonlight.api.set.leaves.LeavesType;
 import net.mehvahdjukaar.moonlight.api.set.leaves.LeavesTypeRegistry;
 import net.mehvahdjukaar.moonlight.api.set.wood.WoodType;
@@ -117,7 +118,7 @@ public class BuildersAdditionModule extends SimpleModule {
                 //TEXTURES: leaves
                 .requiresChildren("leaves") // Reason: RECIPES
                 .addModelTransform(m -> m.replaceWithTextureFromChild("minecraft:block/oak_leaves",
-                        "leaves", s -> !s.contains("/snow") && !s.contains("_snow")))
+                        "leaves", SpriteHelper.LOOKS_LIKE_LEAF_TEXTURE))
 //                .addModelTransform(m -> m.replaceLeavesTextures(LeavesTypeRegistry.OAK_TYPE))
                 .addTag(BlockTags.MINEABLE_WITH_HOE, Registries.BLOCK)
                 .addTag(BlockTags.LEAVES, Registries.BLOCK)
