@@ -71,6 +71,7 @@ public class SpriteHelper {
 //        addOptional("endergetic:stripped_poise_stem", "_top", "endergetic:block/poise_stem_stripped_top");
     }
 
+    @SuppressWarnings("deprecation")
     private static void addOptional(String blockId, String textureId, String texturePath) {
         Registry.BLOCK.getOptional(new ResourceLocation(blockId))
                 .ifPresent(b -> TextureCache.registerSpecialTextureForBlock(b, textureId, new ResourceLocation(texturePath)));
