@@ -4,27 +4,32 @@ import com.fizzware.dramaticdoors.fabric.blocks.TallDoorBlock;
 import com.fizzware.dramaticdoors.fabric.blocks.TallSlidingDoorBlock;
 import com.fizzware.dramaticdoors.fabric.blocks.TallStableDoorBlock;
 import com.fizzware.dramaticdoors.fabric.registry.DDCreativeTabs;
+import net.kikoz.mcwdoors.MacawsDoors;
 import net.kikoz.mcwdoors.init.BlockInit;
 import net.mehvahdjukaar.every_compat.EveryCompat;
 import net.mehvahdjukaar.every_compat.api.RenderLayer;
 import net.mehvahdjukaar.every_compat.api.SimpleEntrySet;
 import net.mehvahdjukaar.every_compat.api.SimpleModule;
 import net.mehvahdjukaar.every_compat.dynamicpack.ServerDynamicResourcesHandler;
+import net.mehvahdjukaar.moonlight.api.resources.ResType;
 import net.mehvahdjukaar.moonlight.api.resources.textures.Palette;
 import net.mehvahdjukaar.moonlight.api.set.wood.WoodType;
 import net.mehvahdjukaar.moonlight.api.set.wood.WoodTypeRegistry;
+import net.mehvahdjukaar.moonlight.api.util.Utils;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.block.Block;
 
-//SUPPORT: v3.2.7+
+import java.util.Objects;
+
+//SUPPORT: DramaticDoors v3.2.7+ | Macaw's Door v1.1.1+
 public class DramaticDoorsMacawModule extends SimpleModule {
 
     public final SimpleEntrySet<WoodType, Block> tallBarkGlassDoors;
     public final SimpleEntrySet<WoodType, Block> tallBarnDoors;
-    public final SimpleEntrySet<WoodType, Block> tallBarnGlassedDoors;
+    public final SimpleEntrySet<WoodType, Block> tallBarnGlassDoors;
     public final SimpleEntrySet<WoodType, Block> tallBeachDoors;
     public final SimpleEntrySet<WoodType, Block> tallCottageDoors;
     public final SimpleEntrySet<WoodType, Block> tallClassicDoors;
@@ -37,7 +42,7 @@ public class DramaticDoorsMacawModule extends SimpleModule {
     public final SimpleEntrySet<WoodType, Block> tallShojiDoors;
     public final SimpleEntrySet<WoodType, Block> tallShojiWholeDoors;
     public final SimpleEntrySet<WoodType, Block> tallStableDoors;
-    public final SimpleEntrySet<WoodType, Block> tallStableHorseDoors;
+    public final SimpleEntrySet<WoodType, Block> tallStableHeadDoors;
     public final SimpleEntrySet<WoodType, Block> tallSwampDoors;
     public final SimpleEntrySet<WoodType, Block> tallTropicalDoors;
 
@@ -54,16 +59,22 @@ public class DramaticDoorsMacawModule extends SimpleModule {
                 .addTextureM(modRes("block/macaw/tall_oak_barn_door_upper"), EveryCompat.res("block/ddm/tall_oak_barn_door_upper_m"))
                 .addTextureM(modRes("item/macaw/tall_oak_barn_door"), EveryCompat.res("item/ddm/tall_oak_barn_door_m"))
                 .addModelTransform(m -> m.replaceGenericType("oak", "item/macaw"))
-                .addTag(modRes("tall_wooden_doors"), Registries.BLOCK)
-                .addTag(modRes("tall_wooden_doors"), Registries.ITEM)
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
+                .addTag(modRes("tall_wooden_doors"), Registries.BLOCK)
+                .addTag(modRes("tall_doors"), Registries.BLOCK)
+                .addTag(ResourceLocation.parse("create:brittle"), Registries.BLOCK)
+                .addTag(ResourceLocation.parse("locksmith:lockable"), Registries.BLOCK)
+                .addTag(ResourceLocation.parse("caupona:chimney_ignore"), Registries.BLOCK)
+                .addTag(modRes("tall_doors"), Registries.ITEM)
+                .addTag(modRes("tall_wooden_doors"), Registries.ITEM)
+                .addTag(modRes("categories/tall_macaw_doors"), Registries.ITEM)
                 .setRenderType(RenderLayer.CUTOUT)
                 .setTabKey(tab)
                 .copyParentDrop()
                 .build();
         this.addEntry(tallBarnDoors);
 
-        tallBarnGlassedDoors = SimpleEntrySet.builder(WoodType.class, "barn_glass_door", "tall_macaw",
+        tallBarnGlassDoors = SimpleEntrySet.builder(WoodType.class, "barn_glass_door", "tall_macaw",
                         getModBlock("tall_macaw_oak_barn_glass_door"), () -> WoodTypeRegistry.OAK_TYPE,
                         w -> new TallDoorBlock(w.toVanillaOrOak().setType(), BlockInit.OAK_BARN_GLASS_DOOR)
                 )
@@ -72,14 +83,20 @@ public class DramaticDoorsMacawModule extends SimpleModule {
                 .addTextureM(modRes("block/macaw/tall_oak_barn_glass_door_upper"), EveryCompat.res("block/ddm/tall_oak_barn_glass_door_upper_m"))
                 .addTextureM(modRes("item/macaw/tall_oak_barn_glass_door"), EveryCompat.res("item/ddm/tall_oak_barn_glass_door_m"))
                 .addModelTransform(m -> m.replaceGenericType("oak", "item/macaw"))
-                .addTag(modRes("tall_wooden_doors"), Registries.BLOCK)
-                .addTag(modRes("tall_wooden_doors"), Registries.ITEM)
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
+                .addTag(modRes("tall_wooden_doors"), Registries.BLOCK)
+                .addTag(modRes("tall_doors"), Registries.BLOCK)
+                .addTag(ResourceLocation.parse("create:brittle"), Registries.BLOCK)
+                .addTag(ResourceLocation.parse("locksmith:lockable"), Registries.BLOCK)
+                .addTag(ResourceLocation.parse("caupona:chimney_ignore"), Registries.BLOCK)
+                .addTag(modRes("tall_doors"), Registries.ITEM)
+                .addTag(modRes("tall_wooden_doors"), Registries.ITEM)
+                .addTag(modRes("categories/tall_macaw_doors"), Registries.ITEM)
                 .setRenderType(RenderLayer.CUTOUT)
                 .setTabKey(tab)
                 .copyParentDrop()
                 .build();
-        this.addEntry(tallBarnGlassedDoors);
+        this.addEntry(tallBarnGlassDoors);
 
         tallStableDoors = SimpleEntrySet.builder(WoodType.class, "stable_door", "tall_macaw",
                         getModBlock("tall_macaw_oak_stable_door"), () -> WoodTypeRegistry.OAK_TYPE,
@@ -90,16 +107,22 @@ public class DramaticDoorsMacawModule extends SimpleModule {
                 .addTextureM(modRes("block/macaw/tall_oak_stable_door_upper"), EveryCompat.res("block/ddm/tall_oak_stable_door_upper_m"))
                 .addTextureM(modRes("item/macaw/tall_oak_stable_door"), EveryCompat.res("item/ddm/tall_oak_stable_door_m"))
                 .addModelTransform(m -> m.replaceGenericType("oak", "item/macaw"))
-                .addTag(modRes("tall_wooden_doors"), Registries.BLOCK)
-                .addTag(modRes("tall_wooden_doors"), Registries.ITEM)
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
+                .addTag(modRes("tall_wooden_doors"), Registries.BLOCK)
+                .addTag(modRes("tall_doors"), Registries.BLOCK)
+                .addTag(ResourceLocation.parse("create:brittle"), Registries.BLOCK)
+                .addTag(ResourceLocation.parse("locksmith:lockable"), Registries.BLOCK)
+                .addTag(ResourceLocation.parse("caupona:chimney_ignore"), Registries.BLOCK)
+                .addTag(modRes("tall_doors"), Registries.ITEM)
+                .addTag(modRes("tall_wooden_doors"), Registries.ITEM)
+                .addTag(modRes("categories/tall_macaw_doors"), Registries.ITEM)
                 .setRenderType(RenderLayer.CUTOUT)
                 .setTabKey(tab)
                 .copyParentDrop()
                 .build();
         this.addEntry(tallStableDoors);
 
-        tallStableHorseDoors = SimpleEntrySet.builder(WoodType.class, "stable_head_door", "tall_macaw",
+        tallStableHeadDoors = SimpleEntrySet.builder(WoodType.class, "stable_head_door", "tall_macaw",
                         getModBlock("tall_macaw_oak_stable_head_door"), () -> WoodTypeRegistry.OAK_TYPE,
                         w -> new TallStableDoorBlock(w.toVanillaOrOak().setType(), BlockInit.OAK_STABLE_HEAD_DOOR)
                 )
@@ -108,14 +131,20 @@ public class DramaticDoorsMacawModule extends SimpleModule {
                 .addTextureM(modRes("block/macaw/tall_oak_stable_door_upper"), EveryCompat.res("block/ddm/tall_oak_stable_door_upper_m"))
                 .addTextureM(modRes("item/macaw/tall_oak_stable_head_door"), EveryCompat.res("item/ddm/tall_oak_stable_head_door_m"))
                 .addModelTransform(m -> m.replaceGenericType("oak", "item/macaw"))
-                .addTag(modRes("tall_wooden_doors"), Registries.BLOCK)
-                .addTag(modRes("tall_wooden_doors"), Registries.ITEM)
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
+                .addTag(modRes("tall_wooden_doors"), Registries.BLOCK)
+                .addTag(modRes("tall_doors"), Registries.BLOCK)
+                .addTag(ResourceLocation.parse("create:brittle"), Registries.BLOCK)
+                .addTag(ResourceLocation.parse("locksmith:lockable"), Registries.BLOCK)
+                .addTag(ResourceLocation.parse("caupona:chimney_ignore"), Registries.BLOCK)
+                .addTag(modRes("tall_doors"), Registries.ITEM)
+                .addTag(modRes("tall_wooden_doors"), Registries.ITEM)
+                .addTag(modRes("categories/tall_macaw_doors"), Registries.ITEM)
                 .setRenderType(RenderLayer.CUTOUT)
                 .setTabKey(tab)
                 .copyParentDrop()
                 .build();
-        this.addEntry(tallStableHorseDoors);
+        this.addEntry(tallStableHeadDoors);
 
         tallBarkGlassDoors = SimpleEntrySet.builder(WoodType.class, "bark_glass_door", "tall_macaw",
                         getModBlock("tall_macaw_oak_bark_glass_door"), () -> WoodTypeRegistry.OAK_TYPE,
@@ -123,9 +152,15 @@ public class DramaticDoorsMacawModule extends SimpleModule {
                 )
                 .addTextureM(modRes("item/macaw/tall_oak_bark_glass_door"), EveryCompat.res("item/ddm/tall_oak_bark_glass_door_m"))
                 .addModelTransform(m -> m.replaceGenericType("oak", "item/macaw"))
-                .addTag(modRes("tall_wooden_doors"), Registries.BLOCK)
-                .addTag(modRes("tall_wooden_doors"), Registries.ITEM)
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
+                .addTag(modRes("tall_wooden_doors"), Registries.BLOCK)
+                .addTag(modRes("tall_doors"), Registries.BLOCK)
+                .addTag(ResourceLocation.parse("create:brittle"), Registries.BLOCK)
+                .addTag(ResourceLocation.parse("locksmith:lockable"), Registries.BLOCK)
+                .addTag(ResourceLocation.parse("caupona:chimney_ignore"), Registries.BLOCK)
+                .addTag(modRes("tall_doors"), Registries.ITEM)
+                .addTag(modRes("tall_wooden_doors"), Registries.ITEM)
+                .addTag(modRes("categories/tall_macaw_doors"), Registries.ITEM)
                 .setRenderType(RenderLayer.CUTOUT)
                 .setTabKey(tab)
                 .copyParentDrop()
@@ -141,9 +176,15 @@ public class DramaticDoorsMacawModule extends SimpleModule {
                 .addTextureM(modRes("block/macaw/tall_oak_glass_door_upper"), EveryCompat.res("block/ddm/tall_oak_glass_door_upper_m"))
                 .addTextureM(modRes("item/macaw/tall_oak_glass_door"), EveryCompat.res("item/ddm/tall_oak_glass_door_m"))
                 .addModelTransform(m -> m.replaceGenericType("oak", "item/macaw"))
-                .addTag(modRes("tall_wooden_doors"), Registries.BLOCK)
-                .addTag(modRes("tall_wooden_doors"), Registries.ITEM)
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
+                .addTag(modRes("tall_wooden_doors"), Registries.BLOCK)
+                .addTag(modRes("tall_doors"), Registries.BLOCK)
+                .addTag(ResourceLocation.parse("create:brittle"), Registries.BLOCK)
+                .addTag(ResourceLocation.parse("locksmith:lockable"), Registries.BLOCK)
+                .addTag(ResourceLocation.parse("caupona:chimney_ignore"), Registries.BLOCK)
+                .addTag(modRes("tall_doors"), Registries.ITEM)
+                .addTag(modRes("tall_wooden_doors"), Registries.ITEM)
+                .addTag(modRes("categories/tall_macaw_doors"), Registries.ITEM)
                 .setRenderType(RenderLayer.CUTOUT)
                 .setTabKey(tab)
                 .copyParentDrop()
@@ -159,9 +200,15 @@ public class DramaticDoorsMacawModule extends SimpleModule {
                 .addTextureM(modRes("block/macaw/tall_oak_modern_door_upper"), EveryCompat.res("block/ddm/tall_oak_modern_door_upper_m"))
                 .addTextureM(modRes("item/macaw/tall_oak_modern_door"), EveryCompat.res("item/ddm/tall_oak_modern_door_m"))
                 .addModelTransform(m -> m.replaceGenericType("oak", "item/macaw"))
-                .addTag(modRes("tall_wooden_doors"), Registries.BLOCK)
-                .addTag(modRes("tall_wooden_doors"), Registries.ITEM)
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
+                .addTag(modRes("tall_wooden_doors"), Registries.BLOCK)
+                .addTag(modRes("tall_doors"), Registries.BLOCK)
+                .addTag(ResourceLocation.parse("create:brittle"), Registries.BLOCK)
+                .addTag(ResourceLocation.parse("locksmith:lockable"), Registries.BLOCK)
+                .addTag(ResourceLocation.parse("caupona:chimney_ignore"), Registries.BLOCK)
+                .addTag(modRes("tall_doors"), Registries.ITEM)
+                .addTag(modRes("tall_wooden_doors"), Registries.ITEM)
+                .addTag(modRes("categories/tall_macaw_doors"), Registries.ITEM)
                 .setRenderType(RenderLayer.CUTOUT)
                 .setTabKey(tab)
                 .copyParentDrop()
@@ -177,9 +224,15 @@ public class DramaticDoorsMacawModule extends SimpleModule {
                 .addTextureM(modRes("block/macaw/tall_oak_japanese_door_upper"), EveryCompat.res("block/ddm/tall_oak_japanese_door_upper_m"))
                 .addTextureM(modRes("item/macaw/tall_oak_japanese_door"), EveryCompat.res("item/ddm/tall_oak_japanese_door_m"))
                 .addModelTransform(m -> m.replaceGenericType("oak", "item/macaw"))
-                .addTag(modRes("tall_wooden_doors"), Registries.BLOCK)
-                .addTag(modRes("tall_wooden_doors"), Registries.ITEM)
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
+                .addTag(modRes("tall_wooden_doors"), Registries.BLOCK)
+                .addTag(modRes("tall_doors"), Registries.BLOCK)
+                .addTag(ResourceLocation.parse("create:brittle"), Registries.BLOCK)
+                .addTag(ResourceLocation.parse("locksmith:lockable"), Registries.BLOCK)
+                .addTag(ResourceLocation.parse("caupona:chimney_ignore"), Registries.BLOCK)
+                .addTag(modRes("tall_doors"), Registries.ITEM)
+                .addTag(modRes("tall_wooden_doors"), Registries.ITEM)
+                .addTag(modRes("categories/tall_macaw_doors"), Registries.ITEM)
                 .setRenderType(RenderLayer.CUTOUT)
                 .setTabKey(tab)
                 .copyParentDrop()
@@ -195,9 +248,15 @@ public class DramaticDoorsMacawModule extends SimpleModule {
                 .addTextureM(modRes("block/macaw/tall_oak_japanese2_door_upper"), EveryCompat.res("block/ddm/tall_oak_japanese2_door_upper_m"))
                 .addTextureM(modRes("item/macaw/tall_oak_japanese2_door"), EveryCompat.res("item/ddm/tall_oak_japanese2_door_m"))
                 .addModelTransform(m -> m.replaceGenericType("oak", "item/macaw"))
-                .addTag(modRes("tall_wooden_doors"), Registries.BLOCK)
-                .addTag(modRes("tall_wooden_doors"), Registries.ITEM)
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
+                .addTag(modRes("tall_wooden_doors"), Registries.BLOCK)
+                .addTag(modRes("tall_doors"), Registries.BLOCK)
+                .addTag(ResourceLocation.parse("create:brittle"), Registries.BLOCK)
+                .addTag(ResourceLocation.parse("locksmith:lockable"), Registries.BLOCK)
+                .addTag(ResourceLocation.parse("caupona:chimney_ignore"), Registries.BLOCK)
+                .addTag(modRes("tall_doors"), Registries.ITEM)
+                .addTag(modRes("tall_wooden_doors"), Registries.ITEM)
+                .addTag(modRes("categories/tall_macaw_doors"), Registries.ITEM)
                 .setRenderType(RenderLayer.CUTOUT)
                 .setTabKey(tab)
                 .copyParentDrop()
@@ -213,9 +272,15 @@ public class DramaticDoorsMacawModule extends SimpleModule {
                 .addTextureM(modRes("block/macaw/tall_spruce_classic_door_upper"), EveryCompat.res("block/ddm/tall_oak_classic_door_upper_m"))
                 .addTextureM(modRes("item/macaw/tall_spruce_classic_door"), EveryCompat.res("item/ddm/tall_oak_classic_door_m"))
                 .addModelTransform(m -> m.replaceGenericType("spruce", "item/macaw"))
-                .addTag(modRes("tall_wooden_doors"), Registries.BLOCK)
-                .addTag(modRes("tall_wooden_doors"), Registries.ITEM)
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
+                .addTag(modRes("tall_wooden_doors"), Registries.BLOCK)
+                .addTag(modRes("tall_doors"), Registries.BLOCK)
+                .addTag(ResourceLocation.parse("create:brittle"), Registries.BLOCK)
+                .addTag(ResourceLocation.parse("locksmith:lockable"), Registries.BLOCK)
+                .addTag(ResourceLocation.parse("caupona:chimney_ignore"), Registries.BLOCK)
+                .addTag(modRes("tall_doors"), Registries.ITEM)
+                .addTag(modRes("tall_wooden_doors"), Registries.ITEM)
+                .addTag(modRes("categories/tall_macaw_doors"), Registries.ITEM)
                 .setRenderType(RenderLayer.CUTOUT)
                 .setTabKey(tab)
                 .copyParentDrop()
@@ -231,9 +296,15 @@ public class DramaticDoorsMacawModule extends SimpleModule {
                 .addTextureM(modRes("block/macaw/tall_oak_cottage_door_upper"), EveryCompat.res("block/ddm/tall_oak_cottage_door_upper_m"))
                 .addTextureM(modRes("item/macaw/tall_oak_cottage_door"), EveryCompat.res("item/ddm/tall_oak_cottage_door_m"))
                 .addModelTransform(m -> m.replaceGenericType("oak", "item/macaw"))
-                .addTag(modRes("tall_wooden_doors"), Registries.BLOCK)
-                .addTag(modRes("tall_wooden_doors"), Registries.ITEM)
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
+                .addTag(modRes("tall_wooden_doors"), Registries.BLOCK)
+                .addTag(modRes("tall_doors"), Registries.BLOCK)
+                .addTag(ResourceLocation.parse("create:brittle"), Registries.BLOCK)
+                .addTag(ResourceLocation.parse("locksmith:lockable"), Registries.BLOCK)
+                .addTag(ResourceLocation.parse("caupona:chimney_ignore"), Registries.BLOCK)
+                .addTag(modRes("tall_doors"), Registries.ITEM)
+                .addTag(modRes("tall_wooden_doors"), Registries.ITEM)
+                .addTag(modRes("categories/tall_macaw_doors"), Registries.ITEM)
                 .setRenderType(RenderLayer.CUTOUT)
                 .setTabKey(tab)
                 .copyParentDrop()
@@ -249,9 +320,15 @@ public class DramaticDoorsMacawModule extends SimpleModule {
                 .addTextureM(modRes("block/macaw/tall_oak_paper_door_upper"), EveryCompat.res("block/ddm/tall_oak_paper_door_upper_m"))
                 .addTextureM(modRes("item/macaw/tall_oak_paper_door"), EveryCompat.res("item/ddm/tall_oak_paper_door_m"))
                 .addModelTransform(m -> m.replaceGenericType("oak", "item/macaw"))
-                .addTag(modRes("tall_wooden_doors"), Registries.BLOCK)
-                .addTag(modRes("tall_wooden_doors"), Registries.ITEM)
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
+                .addTag(modRes("tall_wooden_doors"), Registries.BLOCK)
+                .addTag(modRes("tall_doors"), Registries.BLOCK)
+                .addTag(ResourceLocation.parse("create:brittle"), Registries.BLOCK)
+                .addTag(ResourceLocation.parse("locksmith:lockable"), Registries.BLOCK)
+                .addTag(ResourceLocation.parse("caupona:chimney_ignore"), Registries.BLOCK)
+                .addTag(modRes("tall_doors"), Registries.ITEM)
+                .addTag(modRes("tall_wooden_doors"), Registries.ITEM)
+                .addTag(modRes("categories/tall_macaw_doors"), Registries.ITEM)
                 .setRenderType(RenderLayer.CUTOUT)
                 .setTabKey(tab)
                 .copyParentDrop()
@@ -267,9 +344,15 @@ public class DramaticDoorsMacawModule extends SimpleModule {
                 .addTextureM(modRes("block/macaw/tall_oak_beach_door_upper"), EveryCompat.res("block/ddm/tall_oak_beach_door_upper_m"))
                 .addTextureM(modRes("item/macaw/tall_oak_beach_door"), EveryCompat.res("item/ddm/tall_oak_beach_door_m"))
                 .addModelTransform(m -> m.replaceGenericType("oak", "item/macaw"))
-                .addTag(modRes("tall_wooden_doors"), Registries.BLOCK)
-                .addTag(modRes("tall_wooden_doors"), Registries.ITEM)
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
+                .addTag(modRes("tall_wooden_doors"), Registries.BLOCK)
+                .addTag(modRes("tall_doors"), Registries.BLOCK)
+                .addTag(ResourceLocation.parse("create:brittle"), Registries.BLOCK)
+                .addTag(ResourceLocation.parse("locksmith:lockable"), Registries.BLOCK)
+                .addTag(ResourceLocation.parse("caupona:chimney_ignore"), Registries.BLOCK)
+                .addTag(modRes("tall_doors"), Registries.ITEM)
+                .addTag(modRes("tall_wooden_doors"), Registries.ITEM)
+                .addTag(modRes("categories/tall_macaw_doors"), Registries.ITEM)
                 .setRenderType(RenderLayer.CUTOUT)
                 .setTabKey(tab)
                 .copyParentDrop()
@@ -285,9 +368,15 @@ public class DramaticDoorsMacawModule extends SimpleModule {
                 .addTextureM(modRes("block/macaw/tall_oak_tropical_door_upper"), EveryCompat.res("block/ddm/tall_oak_tropical_door_upper_m"))
                 .addTextureM(modRes("item/macaw/tall_oak_tropical_door"), EveryCompat.res("item/ddm/tall_oak_tropical_door_m"))
                 .addModelTransform(m -> m.replaceGenericType("oak", "item/macaw"))
-                .addTag(modRes("tall_wooden_doors"), Registries.BLOCK)
-                .addTag(modRes("tall_wooden_doors"), Registries.ITEM)
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
+                .addTag(modRes("tall_wooden_doors"), Registries.BLOCK)
+                .addTag(modRes("tall_doors"), Registries.BLOCK)
+                .addTag(ResourceLocation.parse("create:brittle"), Registries.BLOCK)
+                .addTag(ResourceLocation.parse("locksmith:lockable"), Registries.BLOCK)
+                .addTag(ResourceLocation.parse("caupona:chimney_ignore"), Registries.BLOCK)
+                .addTag(modRes("tall_doors"), Registries.ITEM)
+                .addTag(modRes("tall_wooden_doors"), Registries.ITEM)
+                .addTag(modRes("categories/tall_macaw_doors"), Registries.ITEM)
                 .setRenderType(RenderLayer.CUTOUT)
                 .setTabKey(tab)
                 .copyParentDrop()
@@ -303,9 +392,15 @@ public class DramaticDoorsMacawModule extends SimpleModule {
                 .addTextureM(modRes("block/macaw/tall_oak_four_panel_door_upper"), EveryCompat.res("block/ddm/tall_oak_four_panel_door_upper_m"))
                 .addTextureM(modRes("item/macaw/tall_oak_four_panel_door"), EveryCompat.res("item/ddm/tall_oak_four_panel_door_m"))
                 .addModelTransform(m -> m.replaceGenericType("oak", "item/macaw"))
-                .addTag(modRes("tall_wooden_doors"), Registries.BLOCK)
-                .addTag(modRes("tall_wooden_doors"), Registries.ITEM)
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
+                .addTag(modRes("tall_wooden_doors"), Registries.BLOCK)
+                .addTag(modRes("tall_doors"), Registries.BLOCK)
+                .addTag(ResourceLocation.parse("create:brittle"), Registries.BLOCK)
+                .addTag(ResourceLocation.parse("locksmith:lockable"), Registries.BLOCK)
+                .addTag(ResourceLocation.parse("caupona:chimney_ignore"), Registries.BLOCK)
+                .addTag(modRes("tall_doors"), Registries.ITEM)
+                .addTag(modRes("tall_wooden_doors"), Registries.ITEM)
+                .addTag(modRes("categories/tall_macaw_doors"), Registries.ITEM)
                 .setRenderType(RenderLayer.CUTOUT)
                 .setTabKey(tab)
                 .copyParentDrop()
@@ -321,9 +416,15 @@ public class DramaticDoorsMacawModule extends SimpleModule {
                 .addTextureM(modRes("block/macaw/tall_oak_swamp_door_upper"), EveryCompat.res("block/ddm/tall_oak_swamp_door_upper_m"))
                 .addTextureM(modRes("item/macaw/tall_oak_swamp_door"), EveryCompat.res("item/ddm/tall_oak_swamp_door_m"))
                 .addModelTransform(m -> m.replaceGenericType("oak", "item/macaw"))
-                .addTag(modRes("tall_wooden_doors"), Registries.BLOCK)
-                .addTag(modRes("tall_wooden_doors"), Registries.ITEM)
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
+                .addTag(modRes("tall_wooden_doors"), Registries.BLOCK)
+                .addTag(modRes("tall_doors"), Registries.BLOCK)
+                .addTag(ResourceLocation.parse("create:brittle"), Registries.BLOCK)
+                .addTag(ResourceLocation.parse("locksmith:lockable"), Registries.BLOCK)
+                .addTag(ResourceLocation.parse("caupona:chimney_ignore"), Registries.BLOCK)
+                .addTag(modRes("tall_doors"), Registries.ITEM)
+                .addTag(modRes("tall_wooden_doors"), Registries.ITEM)
+                .addTag(modRes("categories/tall_macaw_doors"), Registries.ITEM)
                 .createPaletteFromOak(this::swampDoorPalette)
                 .setRenderType(RenderLayer.CUTOUT)
                 .setTabKey(tab)
@@ -340,9 +441,15 @@ public class DramaticDoorsMacawModule extends SimpleModule {
                 .addTextureM(modRes("block/macaw/tall_oak_nether_door_upper"), EveryCompat.res("block/ddm/tall_oak_nether_door_upper_m"))
                 .addTextureM(modRes("item/macaw/tall_oak_nether_door"), EveryCompat.res("item/ddm/tall_oak_nether_door_m"))
                 .addModelTransform(m -> m.replaceGenericType("oak", "item/macaw"))
-                .addTag(modRes("tall_wooden_doors"), Registries.BLOCK)
-                .addTag(modRes("tall_wooden_doors"), Registries.ITEM)
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
+                .addTag(modRes("tall_wooden_doors"), Registries.BLOCK)
+                .addTag(modRes("tall_doors"), Registries.BLOCK)
+                .addTag(ResourceLocation.parse("create:brittle"), Registries.BLOCK)
+                .addTag(ResourceLocation.parse("locksmith:lockable"), Registries.BLOCK)
+                .addTag(ResourceLocation.parse("caupona:chimney_ignore"), Registries.BLOCK)
+                .addTag(modRes("tall_doors"), Registries.ITEM)
+                .addTag(modRes("tall_wooden_doors"), Registries.ITEM)
+                .addTag(modRes("categories/tall_macaw_doors"), Registries.ITEM)
                 .setRenderType(RenderLayer.CUTOUT)
                 .setTabKey(tab)
                 .copyParentDrop()
@@ -358,9 +465,15 @@ public class DramaticDoorsMacawModule extends SimpleModule {
                 .addTextureM(modRes("block/macaw/tall_oak_mystic_door_upper"), EveryCompat.res("block/ddm/tall_oak_mystic_door_upper_m"))
                 .addTextureM(modRes("item/macaw/tall_oak_mystic_door"), EveryCompat.res("item/ddm/tall_oak_mystic_door_m"))
                 .addModelTransform(m -> m.replaceGenericType("oak", "item/macaw"))
-                .addTag(modRes("tall_wooden_doors"), Registries.BLOCK)
-                .addTag(modRes("tall_wooden_doors"), Registries.ITEM)
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
+                .addTag(modRes("tall_wooden_doors"), Registries.BLOCK)
+                .addTag(modRes("tall_doors"), Registries.BLOCK)
+                .addTag(ResourceLocation.parse("create:brittle"), Registries.BLOCK)
+                .addTag(ResourceLocation.parse("locksmith:lockable"), Registries.BLOCK)
+                .addTag(ResourceLocation.parse("caupona:chimney_ignore"), Registries.BLOCK)
+                .addTag(modRes("tall_doors"), Registries.ITEM)
+                .addTag(modRes("tall_wooden_doors"), Registries.ITEM)
+                .addTag(modRes("categories/tall_macaw_doors"), Registries.ITEM)
                 .setRenderType(RenderLayer.CUTOUT)
                 .setTabKey(tab)
                 .copyParentDrop()
@@ -374,10 +487,9 @@ public class DramaticDoorsMacawModule extends SimpleModule {
     }
 
     @Override
+    // RECIPES
     public void addDynamicServerResources(ServerDynamicResourcesHandler handler, ResourceManager manager) {
-        super.addDynamicServerResources(handler, manager);
 
-        // code...
         String recipe = """
                 {
                   "type": "minecraft:crafting_shaped",
@@ -389,7 +501,7 @@ public class DramaticDoorsMacawModule extends SimpleModule {
                   ],
                   "key": {
                     "#": {
-                      "item": "[macawdoors]"
+                      "item": "[mcwdoors]"
                     }
                   },
                   "result": {
@@ -398,5 +510,29 @@ public class DramaticDoorsMacawModule extends SimpleModule {
                   }
                 }
         """;
+
+        for (WoodType woodType : WoodTypeRegistry.getTypes()) {
+            if (woodType.isVanilla()) continue;
+
+            for (var entry : this.getEntries()) {
+                String newRecipe = recipe;
+
+                SimpleEntrySet<?, ?> currentEntry = ((SimpleEntrySet<?, ?>) entry);
+                Block currentDDMdoor = currentEntry.blocks.get(woodType);
+
+                // Macaw's Doors' Entries
+                String childNameMCD =  currentEntry.typeName.replace("tall_macaw_", "");
+                Block currentMCDoor = woodType.getBlockOfThis(MacawsDoors.MOD_ID +":"+ childNameMCD);
+
+                if (Objects.nonNull(currentDDMdoor) && Objects.nonNull(currentMCDoor)) {
+                    newRecipe = newRecipe.replace("[ddm_doors]", Utils.getID(currentDDMdoor).toString())
+                            .replace("[mcwdoors]", Utils.getID(currentMCDoor).toString());
+
+                    ResourceLocation newResLoc =  Utils.getID(currentDDMdoor);
+
+                    handler.dynamicPack.addBytes(newResLoc, newRecipe.getBytes(), ResType.RECIPES);
+                }
+            }
+        }
     }
 }
