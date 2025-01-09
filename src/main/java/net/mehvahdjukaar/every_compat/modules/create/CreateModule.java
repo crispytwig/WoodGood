@@ -24,6 +24,7 @@ import net.minecraftforge.common.util.NonNullFunction;
 
 import java.util.function.Function;
 
+//SUPPORT: v0.5.1 I+
 public class CreateModule extends SimpleModule {
 
     public final SimpleEntrySet<WoodType, Block> WINDOWS;
@@ -44,7 +45,6 @@ public class CreateModule extends SimpleModule {
                 .addTextureM(WoodGood.res("block/palettes/oak_window"), WoodGood.res("block/palettes/oak_window_m"))
                 .addTextureM(WoodGood.res("block/palettes/oak_window_connected"), WoodGood.res("block/palettes/oak_window_connected_m"))
                 .build();
-
         this.addEntry(WINDOWS);
 
 
@@ -56,7 +56,6 @@ public class CreateModule extends SimpleModule {
                 .defaultRecipe()
                 .setRenderType(() -> RenderType::cutout)
                 .build();
-
         this.addEntry(WINDOW_PANES);
 
     }

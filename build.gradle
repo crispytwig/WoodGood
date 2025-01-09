@@ -184,7 +184,7 @@ dependencies {
     compileOnly fg.deobf("curse.maven:architects-palette-433862:4498424")
     compileOnly fg.deobf("curse.maven:backpacked-352835:4480722")
     compileOnly fg.deobf("curse.maven:camp-chair-531744:3548494")
-    compileOnly fg.deobf("curse.maven:create-328085:4625533")
+    compileOnly fg.deobf("curse.maven:create-328085:5797603")
     compileOnly fg.deobf("curse.maven:decorative-blocks-362528:3965454")
     compileOnly fg.deobf("curse.maven:farmers-delight-398521:4636009")
     compileOnly fg.deobf("curse.maven:infinity-buttons-661902:4716908")
