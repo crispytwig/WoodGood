@@ -520,8 +520,9 @@ public class RefurbishedFurnitureModule extends SimpleModule {
 
     private static <R extends Recipe<?>, T extends BlockType> @NotNull List<StackedIngredient> convertStackedIngredients(
             NonNullList<StackedIngredient> or, T from, T to) {
-        List<StackedIngredient> newList = new ArrayList<>(or);
-        for (int i = 0; i < newList.size(); i++) {
+
+        List<StackedIngredient> newList = new ArrayList<>();
+        for (int i = 0; i < or.size(); i++) {
             StackedIngredient si = or.get(i);
             if (si.ingredient().isEmpty()) {
                 newList.add(si);
