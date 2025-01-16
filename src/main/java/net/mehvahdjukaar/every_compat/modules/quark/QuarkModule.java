@@ -23,6 +23,7 @@ import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
@@ -150,8 +151,10 @@ public class QuarkModule extends SimpleModule {
                             return new QuarkBlock(name, m, CreativeModeTab.TAB_BUILDING_BLOCKS, WoodGood.copySafe(w.planks));
                         })
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registry.BLOCK_REGISTRY)
+                .addTag(BlockTags.PLANKS, Registry.BLOCK_REGISTRY)
                 .addTag(modRes("vertical_slab"), Registry.BLOCK_REGISTRY)
                 .addTag(modRes("wooden_vertical_slabs"), Registry.BLOCK_REGISTRY)
+                .addTag(ItemTags.PLANKS, Registry.ITEM_REGISTRY)
                 .addTag(modRes("vertical_slab"), Registry.ITEM_REGISTRY)
                 .setTab(() -> CreativeModeTab.TAB_BUILDING_BLOCKS)
                 .addRecipe(modRes("building/crafting/vertplanks/vertical_oak_planks"))
