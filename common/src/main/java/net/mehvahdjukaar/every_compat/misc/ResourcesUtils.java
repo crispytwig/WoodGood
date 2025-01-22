@@ -286,9 +286,7 @@ public class ResourcesUtils {
     public static <B extends Item, T extends BlockType> void addBlocksRecipes(ResourceManager manager, DynamicDataPack pack,
                                                                               Map<T, B> items, ResourceLocation oakRecipe, T fromType,
                                                                               int index) {
-        Recipe<?> template = RPUtils.readRecipe(manager,
-                ResType.RECIPES.getPath(oakRecipe));
-
+        Recipe<?> template = RPUtils.readRecipe(manager, oakRecipe);
         items.forEach((w, i) -> {
 
             if (ModEntriesConfigs.isEntryEnabled(w, i)) {
