@@ -101,7 +101,7 @@ public class AnotherFurnitureModule extends SimpleModule {
                 .addTexture(modRes("block/shutter/variant_11/oak_middle"))
                 .addTexture(modRes("block/shutter/variant_11/oak_single"))
                 .addTexture(modRes("block/shutter/variant_11/oak_top"))
-//                .createPaletteFromOak(this::shuttersPalette)
+//                .createPaletteFromPlanks(this::shuttersPalette)
                 .build();
 
         this.addEntry(shutters);
