@@ -3,12 +3,15 @@ package net.mehvahdjukaar.every_compat.api;
 import net.mehvahdjukaar.every_compat.EveryCompat;
 import net.mehvahdjukaar.every_compat.dynamicpack.ClientDynamicResourcesHandler;
 import net.mehvahdjukaar.every_compat.dynamicpack.ServerDynamicResourcesHandler;
+import net.mehvahdjukaar.every_compat.misc.HardcodedBlockType;
 import net.mehvahdjukaar.moonlight.api.events.AfterLanguageLoadEvent;
 import net.mehvahdjukaar.moonlight.api.misc.Registrator;
 import net.mehvahdjukaar.moonlight.api.platform.ClientHelper;
 import net.mehvahdjukaar.moonlight.api.platform.PlatHelper;
 import net.mehvahdjukaar.moonlight.api.platform.RegHelper;
 import net.mehvahdjukaar.moonlight.api.set.BlockType;
+import net.mehvahdjukaar.moonlight.api.set.leaves.LeavesType;
+import net.mehvahdjukaar.moonlight.api.set.wood.WoodType;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.resources.ResourceManager;
@@ -184,106 +187,6 @@ public class SimpleModule extends CompatModule {
         return l;
     }
 
-
-    // ugly mess. Too coupled with wood types and too many hardcoded exceptions
-    //TODO: improve
-    public boolean isEntryAlreadyRegistered(String name, BlockType woodType, Registry<?> registry) {
-        //ec:twigs/bop/willow_table
-        name = name.substring(name.lastIndexOf("/") + 1); //gets the base name
-
-        String woodFrom = woodType.getNamespace();
-
-        String n1 = woodFrom + "/" + name; //quark/blossom_chair
-        String n2 = woodFrom + "_" + name; //quark_blossom_chair
-
-        if (this.getAlreadySupportedMods().contains(woodFrom)) return true;
-
-        // Better Nether & Better End have stripped_bark as stripped_wood but bark from Bewitchment caused EC to skip
-        if (woodFrom.matches("betternether|betterend") && shortenedId().equals("bw")) return false;
-
-        // Discarding Dynamic Trees and its addons
-        if (woodFrom.contains("dynamictrees") || woodFrom.contains("dt")) return true;
-
-        // Garden-Of-The-dead's whistle must be skipped for branches from Regions-Unexplored
-        // Nether's Exoticism & Snifferent already has branches, branches from Regions-Unexplored is not needed
-        if ((woodFrom.matches("gardens_of_the_dead|snifferent") ||
-                woodType.getId().toString().equals("nethers_exoticism:jabuticaba")) && name.contains("branch"))
-            return true;
-
-        // Quark & Woodworks have chest & trapped_chest
-        if (woodFrom.equals("quark") && shortenedId().equals("abnww") && name.contains("chest")) return true;
-
-        // Macaw's Fences&Walls or MrCrayFish's Furniture - hedges will be skipped because Quark already has hedges
-        if (woodFrom.equals("quark") && (shortenedId().equals("mcf") || shortenedId().equals("cfm"))) return false;
-
-        // Create's windows will be skipped blc [Let's do] Blooming Nature & Meadow already has windows
-        if ((woodFrom.equals("bloomingnature") || woodFrom.equals("meadow")) && name.contains("window")) return false;
-
-        // ArchitectPalette's boards will be skipped blc Upgrade-Aqautic already has boards but have no recipes &
-        // no item in CreativeMode
-        if (woodFrom.equals("upgrade_aquatic") && (name.equals("driftwood_boards") || name.equals("river_boards")))
-            return false;
-
-        // Similar to above, Architect's Palette - boards will be skipped due to the existing boards in Autumnity
-        if (woodFrom.equals("autumnity") && name.equals("maple_boards")) return false;
-
-        // check if TerraFirmaCraft (tfc) mod exist, then won't discards wood types
-        if (woodFrom.equals("tfc")) return false;
-
-        //discards wood types from this mod
-        if (woodFrom.equals(modId)) return true; //quark, blossom
-
-        if (woodType.getId().toString().equals("ecologics:azalea")) {
-            if (modId.equals("quark")) return false; //ecologics and quark azalea. tbh not sure why needed
-        }
-        if (woodType.getId().toString().equals("twilightforest:mangrove")) {
-            return name.equals("mangrove_chest");//mangrove waaa so much pain
-        }
-
-        if (woodType.getId().toString().equals("architects_palette:twisted")) {
-            return name.equals("vct:twisted_crafting_table");
-        }
-        if (woodType.getId().toString().equals("biomesoplenty:fir")) {
-            return name.equals("vct:fir_crafting_table");
-        }
-        if (woodType.getId().toString().equals("biomesoplenty:jacaranda")) {
-            return name.equals("vct:jacaranda_crafting_table");
-        }
-        if (woodType.getId().toString().equals("biomesoplenty:maple")) {
-            return name.equals("vct:maple_crafting_table");
-        }
-        if (woodType.getId().toString().equals("ecologics:azalea")) {
-            return name.equals("vct:azalea_crafting_table");
-        }
-        if (woodType.getId().toString().equals("ecologics:walnut")) {
-            return name.equals("vct:walnut_crafting_table");
-        }
-
-        if (registry.containsKey(ResourceLocation.fromNamespaceAndPath(modId, name)) || //ones from the mod they are from. usually include vanilla types
-                registry.containsKey(ResourceLocation.fromNamespaceAndPath(modId, n2))) return true;
-        if (this.shortenedId().equals("af")) return false; //hardcoding
-        // if (this.shortenedId().equals("ap")) return false; //hardcoding dont remember why i had this. Incase you want o
-        if (this.shortenedId().equals("vs")) return false; //we always register everything for these
-        if (this.shortenedId().equals("abnww") && woodFrom.equals("architects_palette"))
-            return false; //we always register everything for these
-
-        if (registry.containsKey(ResourceLocation.fromNamespaceAndPath(woodFrom, name))) return true;
-
-        for (var c : EveryCompat.getCompatMods()) {
-            String compatModId = c.modId();  //bopcomp : bop->quark, twigs
-            //if the wood is from the mod this adds compat for && it supports this block type
-            if (c.woodsFrom().contains(woodFrom) && c.blocksFrom().contains(modId)) {
-                if (registry.containsKey(ResourceLocation.fromNamespaceAndPath(compatModId, name))) return true;
-                if (registry.containsKey(ResourceLocation.fromNamespaceAndPath(compatModId, n1))) return true;
-                if (registry.containsKey(ResourceLocation.fromNamespaceAndPath(compatModId, n2))) return true;
-            }
-        }
-        return false;
-    }
-
-    /*
-
-    //TODO: improve
     public boolean isEntryAlreadyRegistered(String blockId, BlockType blockType, Registry<?> registry) {
         //!! NOTE: blockType is either: WoodType, LeavesType, or StoneTYpe
         if (blockType.isVanilla()) return true; // Exclude all of Vanilla Types
@@ -312,24 +215,24 @@ public class SimpleModule extends CompatModule {
         if (blockTypeFrom.equals(modId)) return true; // quark, blossom
 
         // Discards the supportedBlockName being already in the supportedModId & Vanilla blockType
-        if (registry.containsKey(new ResourceLocation(modId, blockName)) ||
-                registry.containsKey(new ResourceLocation(modId, underscoreConvention))) return true;
+        if (registry.containsKey(ResourceLocation.fromNamespaceAndPath(modId, blockName)) ||
+                registry.containsKey(ResourceLocation.fromNamespaceAndPath(modId, underscoreConvention))) return true;
 
 
         // Checking if supportedBlockName exists in the blockTypeFrom
-        if (registry.containsKey(new ResourceLocation(blockTypeFrom, blockName))) return true;
+        if (registry.containsKey(ResourceLocation.fromNamespaceAndPath(blockTypeFrom, blockName))) return true;
 
         for (var c : EveryCompat.getCompatMods()) {
             String compatModId = c.modId();  //bopcomp : bop->quark, twigs
             //if the wood is from the mod this adds compat for && it supports this block type
             if (c.woodsFrom().contains(blockTypeFrom) && c.blocksFrom().contains(modId)) {
-                if (registry.containsKey(new ResourceLocation(compatModId, blockName))) return true;
-                if (registry.containsKey(new ResourceLocation(compatModId, slashConvention))) return true;
-                if (registry.containsKey(new ResourceLocation(compatModId, underscoreConvention))) return true;
+                if (registry.containsKey(ResourceLocation.fromNamespaceAndPath(compatModId, blockName))) return true;
+                if (registry.containsKey(ResourceLocation.fromNamespaceAndPath(compatModId, slashConvention))) return true;
+                if (registry.containsKey(ResourceLocation.fromNamespaceAndPath(compatModId, underscoreConvention))) return true;
             }
         }
         return false;
     }
 
-     */
+
 }
