@@ -96,7 +96,7 @@ dependencies {
     implementation 'org.jetbrains:annotations:22.0.0'
 
 //!! MOONLIGHT LIB (REQUIRED) --------------------------------------------------------------------------------------- \\
-    String path = System.getenv('REPOS20_1')
+    String path = System.getenv('REPOS21_1')
 
     if (usesMavenLocalML) {
         //!! ~/forge/mods LOCAL
@@ -105,7 +105,7 @@ dependencies {
         //!! Repository LOCAL
 //        modImplementation(files(path  + "\\Moonlight\\neoforge\\build\\libs\\moonlight-${moonlight_testVersion}-neoforge.jar"))
         //!! MAVEN
-        modImplementation("maven.modrinth:moonlight:neoforge_${moonlight_mavenVersion}")  // v2.17.12
+        modImplementation("maven.modrinth:moonlight:neoforge_${moonlight_mavenVersion}")  // v2.17.18
     }
 
 //!! ================================================ DEPENDENCIES ================================================== \\
