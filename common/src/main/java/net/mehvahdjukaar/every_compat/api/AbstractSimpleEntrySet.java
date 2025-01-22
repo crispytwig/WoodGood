@@ -3,6 +3,7 @@ package net.mehvahdjukaar.every_compat.api;
 import com.google.common.base.Suppliers;
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Multimap;
+import com.google.gson.JsonObject;
 import com.mojang.datafixers.util.Pair;
 import net.mehvahdjukaar.every_compat.EveryCompat;
 import net.mehvahdjukaar.every_compat.configs.ModEntriesConfigs;
@@ -15,6 +16,7 @@ import net.mehvahdjukaar.moonlight.api.platform.PlatHelper;
 import net.mehvahdjukaar.moonlight.api.platform.RegHelper;
 import net.mehvahdjukaar.moonlight.api.resources.BlockTypeResTransformer;
 import net.mehvahdjukaar.moonlight.api.resources.RPUtils;
+import net.mehvahdjukaar.moonlight.api.resources.ResType;
 import net.mehvahdjukaar.moonlight.api.resources.SimpleTagBuilder;
 import net.mehvahdjukaar.moonlight.api.resources.pack.DynClientResourcesGenerator;
 import net.mehvahdjukaar.moonlight.api.resources.pack.DynamicDataPack;
@@ -31,14 +33,17 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.packs.resources.Resource;
 import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.io.InputStream;
 import java.util.*;
 import java.util.function.BiFunction;
 import java.util.function.Consumer;
@@ -368,7 +373,7 @@ public abstract class AbstractSimpleEntrySet<T extends BlockType, B extends Bloc
                     for (var info : infoPerTextures.get(oldTextureId)) {
                         if (info != null) {
                             if (info.keepNamespace()) newId = oldTextureId.withPath(newPath).toString();
-                            else newId = new ResourceLocation(blockId.getNamespace(), newPath).toString();
+                            else newId = ResourceLocation.fromNamespaceAndPath(blockId.getNamespace(), newPath).toString();
 
                             if (newId.isEmpty()) {
                                 EveryCompat.LOGGER.error("The path of new texture is empty for: {}", info.texture());
