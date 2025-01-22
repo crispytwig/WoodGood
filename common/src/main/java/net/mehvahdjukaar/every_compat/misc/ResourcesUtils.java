@@ -1,9 +1,11 @@
 package net.mehvahdjukaar.every_compat.misc;
 
+import com.google.common.base.Preconditions;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import net.mehvahdjukaar.every_compat.EveryCompat;
 import net.mehvahdjukaar.every_compat.configs.ModEntriesConfigs;
+import net.mehvahdjukaar.moonlight.api.platform.ForgeHelper;
 import net.mehvahdjukaar.moonlight.api.resources.BlockTypeResTransformer;
 import net.mehvahdjukaar.moonlight.api.resources.RPUtils;
 import net.mehvahdjukaar.moonlight.api.resources.ResType;
@@ -11,39 +13,40 @@ import net.mehvahdjukaar.moonlight.api.resources.StaticResource;
 import net.mehvahdjukaar.moonlight.api.resources.pack.DynClientResourcesGenerator;
 import net.mehvahdjukaar.moonlight.api.resources.pack.DynamicDataPack;
 import net.mehvahdjukaar.moonlight.api.resources.pack.DynamicResourcePack;
+import net.mehvahdjukaar.moonlight.api.resources.recipe.IRecipeTemplate;
 import net.mehvahdjukaar.moonlight.api.set.BlockType;
 import net.mehvahdjukaar.moonlight.api.set.leaves.LeavesType;
 import net.mehvahdjukaar.moonlight.api.set.leaves.LeavesTypeRegistry;
 import net.mehvahdjukaar.moonlight.api.set.wood.WoodType;
 import net.mehvahdjukaar.moonlight.api.set.wood.WoodTypeRegistry;
 import net.mehvahdjukaar.moonlight.api.util.Utils;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.RecipeBuilder;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.item.crafting.Recipe;
-import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import java.io.ByteArrayInputStream;
 import java.util.*;
-import java.util.function.Consumer;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
+@SuppressWarnings("unused")
 public class ResourcesUtils {
 
-    public static <B extends Block, T extends BlockType> void addStandardResources(
-            String modId, ResourceManager manager, DynClientResourcesGenerator pack, Map<T, B> blocks, T baseType) {
-        addStandardResources(modId, manager, pack, blocks, baseType, null);
-    }
 
-    public static <B extends Block, T extends BlockType> void addStandardResources(
-            String modId, ResourceManager manager, DynClientResourcesGenerator d,
-            Map<T, B> blocks, T baseType, @Nullable Consumer<BlockTypeResTransformer<T>> extraTransform) {
+    @SuppressWarnings("PointlessBooleanExpression")
+    public static <B extends Block, T extends BlockType> void generateStandardBlockModels(
+            ResourceManager manager, DynClientResourcesGenerator d,
+            Map<T, B> blocks, T baseType,
+            BlockTypeResTransformer<T> modelTransformer,
+            BlockTypeResTransformer<T> blockStateTransformer) {
 
         if (blocks.isEmpty()) return;
 
@@ -51,100 +54,48 @@ public class ResourcesUtils {
         var first = blocks.entrySet().stream().findFirst().get();
         Block oakBlock = BlockType.changeBlockType(first.getValue(), first.getKey(), baseType);
 
-        String baseBlockName = baseType.getTypeName();
-
         if (oakBlock == null) {
-            EveryCompat.LOGGER.error("Failed to generate some assets");
+            EveryCompat.LOGGER.error("Failed to generate some block assets");
             return;
         }
-        ResourceLocation oldBlockId = Utils.getID(oakBlock);
 
-        BlockTypeResTransformer<T> modifier = BlockTypeResTransformer.create(modId, manager);
-        modifier.IDReplaceType(baseBlockName).replaceBlockType(baseBlockName);
-        if (extraTransform != null) extraTransform.accept(modifier); //idk about this
-
-        BlockTypeResTransformer<T> modelModifier = standardModelTransformer(modId, manager, baseType, baseBlockName, extraTransform);
+        ResourceLocation oakId = Utils.getID(oakBlock);
 
         Set<String> modelsLoc = new HashSet<>();
 
-        Item oakItem = oakBlock.asItem();
-
-
-        //!! models/item
-        if (oakItem != Items.AIR) {
-            try {
-                //we cant use this since it might override partent too. Custom textured items need a custom model added manually with addBlockResources
-                // modelModifier.replaceItemType(baseBlockName);
-
-                BlockTypeResTransformer<T> itemModifier = standardModelTransformer(modId, manager, baseType, baseBlockName, extraTransform);
-
-                StaticResource oldItemModel = StaticResource.getOrFail(manager,
-                        ResType.ITEM_MODELS.getPath(Utils.getID(oakItem)));
-
-                JsonObject itemModelContent = RPUtils.deserializeJson(new ByteArrayInputStream(oldItemModel.data));
-                //adds models referenced from here. not recursive
-                modelsLoc.addAll(RPUtils.findAllResourcesInJsonRecursive(itemModelContent, s -> s.equals("model") || s.equals("parent")));
-
-                if (itemModelContent.has("parent")) {
-                    String parent = itemModelContent.get("parent").getAsString();
-                    if (parent.contains("item/generated")) {
-                        itemModifier.replaceItemType(baseBlockName);
-                    }
-                }
-
-                blocks.forEach((blockType, block) -> {
-                    ResourceLocation blockId = Utils.getID(block);
-                    try {
-                        StaticResource newRes = itemModifier.transform(oldItemModel, blockId, blockType);
-                        assert newRes.location != oldItemModel.location : "ids cant be the same";
-                        d.addResourceIfNotPresent(manager, newRes);
-                    } catch (Exception e) {
-                        EveryCompat.LOGGER.error("Failed to add {} item model json file:", block, e);
-                    }
-                });
-            } catch (Exception e) {
-                EveryCompat.LOGGER.error("Could not find item model for {}", oakBlock);
-            }
-        } else {
-            EveryCompat.LOGGER.warn("Found block with no item {}, this could be a bug", oakBlock);
-        }
-
-        //!! blockstate
+        // Blockstate & Models
         try {
-            StaticResource oldBlockstate = StaticResource.getOrFail(manager, ResType.BLOCKSTATES.getPath(oldBlockId));
-            // Blockstate's content
-            JsonElement blockstateContent = RPUtils.deserializeJson(new ByteArrayInputStream(oldBlockstate.data));
+            StaticResource oakBlockstate = StaticResource.getOrFail(manager, ResType.BLOCKSTATES.getPath(oakId));
 
-            modelsLoc.addAll(RPUtils.findAllResourcesInJsonRecursive(blockstateContent, s -> s.equals("model")));
-            List<StaticResource> baseTypeModels = new ArrayList<>();
+            JsonElement insideBlockstates = RPUtils.deserializeJson(new ByteArrayInputStream(oakBlockstate.data));
 
-            for (var m : modelsLoc) {
-                //remove the ones from mc namespace
-                ResourceLocation modelRes = ResourceLocation.parse(m);
-                if (!modelRes.getNamespace().equals("minecraft")) {
-                    StaticResource model = StaticResource.getOrLog(manager, ResType.MODELS.getPath(m));
-                    if (model != null) baseTypeModels.add(model);
-                }
-            }
+            modelsLoc.addAll(RPUtils.findAllResourcesInJsonRecursive(insideBlockstates, s -> s.equals("model")));
+
+            List<StaticResource> oakBlockModels = gatherNonVanillaModels(manager, modelsLoc);
 
             blocks.forEach((blockType, block) -> {
                 ResourceLocation blockId = Utils.getID(block);
                 try {
-                    //noinspection PointlessBooleanExpression
                     if (true || ModEntriesConfigs.isEntryEnabled(blockType, block)) { //generating all the times otherwise we get log spam
                         //creates blockstate
-                        StaticResource newBlockState = modifier.transform(oldBlockstate, blockId, blockType);
-                        assert newBlockState.location != oldBlockstate.location : "ids cant be the same";
+                        StaticResource newBlockState = blockStateTransformer.transform(oakBlockstate, blockId, blockType);
+                        Preconditions.checkArgument(newBlockState.location != oakBlockstate.location,
+                                "ids cant be the same: " + newBlockState.location);
+                        //Adding to the resources
                         d.addResourceIfNotPresent(manager, newBlockState);
 
-                        //creates models/block files
-                        for (StaticResource model : baseTypeModels) {
+                        //creates block model
+                        for (StaticResource model : oakBlockModels) {
                             try {
-                                StaticResource newModel = modelModifier.transform(model, blockId, blockType);
-                                assert newModel.location != model.location : "ids cant be the same";
+                                // Modifying models' contents & path
+                                StaticResource newModel = modelTransformer.transform(model, blockId, blockType);
+
+                                Preconditions.checkArgument(newModel.location != model.location,
+                                        "ids cant be the same: " + newModel.location);
+                                //Adding to the resources
                                 d.addResourceIfNotPresent(manager, newModel);
                             } catch (Exception exception) {
-                                EveryCompat.LOGGER.error("Failed to add {} block model file:", block, exception);
+                                EveryCompat.LOGGER.error("Failed to add {} model json file:", block, exception);
                             }
                         }
                     } else {
@@ -153,7 +104,7 @@ public class ResourcesUtils {
                     }
 
                 } catch (Exception e) {
-                    EveryCompat.LOGGER.error("Failed to add {} blockstate file:", blockId, e);
+                    EveryCompat.LOGGER.error("Failed to add {} blockstate json file:", block, e);
                 }
             });
         } catch (Exception e) {
@@ -162,95 +113,91 @@ public class ResourcesUtils {
 
     }
 
+    private static List<StaticResource> gatherNonVanillaModels(ResourceManager manager, Set<String> modelsLoc) {
+        List<StaticResource> models = new ArrayList<>();
+
+        for (var m : modelsLoc) {
+            //remove the ones from mc namespace
+            ResourceLocation modelRes = new ResourceLocation(m);
+            if (!modelRes.getNamespace().equals("minecraft")) {
+                StaticResource model = StaticResource.getOrLog(manager, ResType.MODELS.getPath(m));
+                if (model != null) models.add(model);
+            }
+        }
+        return models;
+    }
+
 
     //same as above just with just item models. a bunch of copy paste here... ugly
-    public static <I extends Item, T extends BlockType> void addItemModels(
-            String modId, ResourceManager manager, DynClientResourcesGenerator d,
-            Map<T, I> items, T baseType, @Nullable Consumer<BlockTypeResTransformer<T>> extraTransform) {
+    @SuppressWarnings("PointlessBooleanExpression")
+    public static <I extends Item, T extends BlockType> void generateStandardItemModels(
+            ResourceManager manager, DynClientResourcesGenerator d,
+            Map<T, I> items, T baseType, BlockTypeResTransformer<T> itemModelTransformer) {
 
         if (items.isEmpty()) return;
 
         //finds one entry. used so we can grab the oak equivalent
         var first = items.entrySet().stream().findFirst().get();
-        Item baseTypeItem = BlockType.changeItemType(first.getValue(), first.getKey(), baseType);
+        Item oakItem = BlockType.changeItemType(first.getValue(), first.getKey(), baseType);
 
-        String baseItemname = baseType.getTypeName();
-
-        if (baseTypeItem == null) {
-            EveryCompat.LOGGER.error("Failed to modify models/item");
+        if (oakItem == null) {
+            EveryCompat.LOGGER.error("Failed to generate some item assets");
             return;
         }
-        BlockTypeResTransformer<T> modifier = BlockTypeResTransformer.create(modId, manager);
-        modifier.IDReplaceType(baseItemname).replaceBlockType(baseItemname);
-        if (extraTransform != null) extraTransform.accept(modifier); //idk about this
-
-        BlockTypeResTransformer<T> modelModifier = standardModelTransformer(modId, manager, baseType, baseItemname, extraTransform);
+        String baseItemName = baseType.getTypeName();
 
         Set<String> modelsLoc = new HashSet<>();
 
-        //!! models/item
+        //item model
         try {
             //we cant use this since it might override partent too. Custom textured items need a custom model added manually with addBlockResources
             // modelModifier.replaceItemType(baseItemname);
 
-            BlockTypeResTransformer<T> itemModifier = standardModelTransformer(modId, manager, baseType, baseItemname, extraTransform);
+            StaticResource oakItemModel = StaticResource.getOrFail(manager,
+                    ResType.ITEM_MODELS.getPath(Utils.getID(oakItem)));
 
-            StaticResource oldItemModel = StaticResource.getOrFail(manager,
-                    ResType.ITEM_MODELS.getPath(Utils.getID(baseTypeItem)));
-
-            JsonObject json = RPUtils.deserializeJson(new ByteArrayInputStream(oldItemModel.data));
+            JsonObject json = RPUtils.deserializeJson(new ByteArrayInputStream(oakItemModel.data));
             //adds models referenced from here. not recursive
             modelsLoc.addAll(RPUtils.findAllResourcesInJsonRecursive(json, s -> s.equals("model") || s.equals("parent")));
 
             if (json.has("parent")) {
                 String parent = json.get("parent").getAsString();
                 if (parent.contains("item/generated")) {
-                    itemModifier.replaceItemType(baseItemname);
+                    itemModelTransformer.replaceItemType(baseItemName);
                 }
             }
 
             items.forEach((w, b) -> {
                 ResourceLocation id = Utils.getID(b);
                 try {
-                    StaticResource newRes = itemModifier.transform(oldItemModel, id, w);
-                    assert newRes.location != oldItemModel.location : "ids cant be the same";
+                    StaticResource newRes = itemModelTransformer.transform(oakItemModel, id, w);
+                    Preconditions.checkArgument(newRes.location != oakItemModel.location,
+                            "ids cant be the same: " + newRes.location);
                     d.addResourceIfNotPresent(manager, newRes);
                 } catch (Exception e) {
-                    EveryCompat.LOGGER.error("Failed to add {} item model file:", b, e);
+                    EveryCompat.LOGGER.error("Failed to add {} item model json file:", b, e);
                 }
             });
         } catch (Exception e) {
-            EveryCompat.LOGGER.error("Could not find item model of {}", baseTypeItem);
+            EveryCompat.LOGGER.error("Could not find item model for {}", oakItem);
         }
 
 
-        //blockstate
         //models
-        List<StaticResource> oldModels = new ArrayList<>();
+        List<StaticResource> oakItemModels = gatherNonVanillaModels(manager, modelsLoc);
 
-        for (var m : modelsLoc) {
-            ResourceLocation modelRes = ResourceLocation.parse(m);
-            //remove the ones from mc namespace
-            if (!modelRes.getNamespace().equals("minecraft")) {
-                StaticResource model = StaticResource.getOrLog(manager, ResType.MODELS.getPath(m));
-                if (model != null) oldModels.add(model);
-            }
-        }
-
-        items.forEach((blockType, item) -> {
-            ResourceLocation blockId = Utils.getID(item);
-
-            //noinspection PointlessBooleanExpression
-            if (true || ModEntriesConfigs.isEntryEnabled(blockType, item)) { //generating all the times otherwise we get log spam
+        items.forEach((w, b) -> {
+            ResourceLocation id = Utils.getID(b);
+            if (true || ModEntriesConfigs.isEntryEnabled(w, b)) { //generating all the times otherwise we get log spam
 
                 //creates item model
-                for (StaticResource model : oldModels) {
+                for (StaticResource model : oakItemModels) {
                     try {
-                        StaticResource newModel = modelModifier.transform(model, blockId, blockType);
+                        StaticResource newModel = itemModelTransformer.transform(model, id, w);
                         assert newModel.location != model.location : "ids cant be the same";
                         d.addResourceIfNotPresent(manager, newModel);
                     } catch (Exception exception) {
-                        EveryCompat.LOGGER.error("Failed to add {} model json file:", item, exception);
+                        EveryCompat.LOGGER.error("Failed to add {} model json file:", b, exception);
                     }
                 }
             }
@@ -258,39 +205,34 @@ public class ResourcesUtils {
     }
 
     @NotNull
-    public static <T extends BlockType> BlockTypeResTransformer<T> standardModelTransformer(
-            String modId, ResourceManager manager, T baseType, String oldTypeName, @Nullable Consumer<BlockTypeResTransformer<T>> extraTransform) {
-        BlockTypeResTransformer<T> modelModifier = BlockTypeResTransformer.create(modId, manager);
-        if (extraTransform != null) extraTransform.accept(modelModifier);
-        modelModifier.IDReplaceType(oldTypeName);
+    @SuppressWarnings("UnusedReturnValue")
+    public static <T extends BlockType> BlockTypeResTransformer<T> addBuiltinModelTransformer(
+            BlockTypeResTransformer<T> transformer, T baseType) {
+        String oldTypeName = baseType.getTypeName();
+
+        // Modifying models' filename & ResourceLocation
+        transformer.setIDModifier((text, id, w) ->
+                BlockTypeResTransformer.replaceFullGenericType(text, w, id, oldTypeName, null, 2));
+
+        // Modifying the model files' content
         if (baseType instanceof LeavesType leavesType) {
-            SpriteHelper.replaceLeavesTextures(modelModifier, leavesType);
+            transformer.replaceLeavesTextures(leavesType);
             var woodT = leavesType.getWoodType();
             if (woodT != null) {
-                SpriteHelper.replaceWoodTextures(modelModifier, woodT);
+                transformer.replaceWoodTextures(woodT);
             }
         } else if (baseType instanceof WoodType woodType) {
-            SpriteHelper.replaceWoodTextures(modelModifier, woodType);
+            transformer.replaceWoodTextures(woodType);
         }
 
-        modelModifier.replaceGenericType(oldTypeName, "block");
-        //modelModifier.replaceBlockType(oldTypeName);
-        return modelModifier;
+        transformer.replaceGenericType(oldTypeName, "block");
+
+        return transformer;
     }
 
 
     //creates and add new jsons based off the ones at the given resources with the provided modifiers
-    public static <B extends Block, T extends BlockType> void addBlockResources(String modId, ResourceManager manager, DynamicResourcePack pack,
-                                                                                Map<T, B> blocks, String typeName, ResourceLocation... jsonsLocations) {
-        addBlockResources(modId, manager, pack, blocks,
-                BlockTypeResTransformer.<T>create(modId, manager)
-                        .replaceSimpleType(typeName)
-                        .IDReplaceType(typeName),
-                jsonsLocations);
-    }
-
-
-    public static <B extends Block, T extends BlockType> void addBlockResources(String modId, ResourceManager manager, DynamicResourcePack pack,
+    public static <B extends Block, T extends BlockType> void addBlockResources(ResourceManager manager, DynamicResourcePack pack,
                                                                                 Map<T, B> blocks,
                                                                                 BlockTypeResTransformer<T> modifier, ResourceLocation... jsonsLocations) {
         List<StaticResource> original = Arrays.stream(jsonsLocations).map(s -> StaticResource.getOrLog(manager, s)).toList();
@@ -302,7 +244,8 @@ public class ResourcesUtils {
                     try {
                         StaticResource newRes = modifier.transform(res, Utils.getID(value), wood);
 
-                        assert newRes.location != res.location : "ids cant be the same";
+                        Preconditions.checkArgument(newRes.location != res.location,
+                                "ids cant be the same: " + newRes.location);
 
                         pack.addResource(newRes);
                     } catch (Exception e) {
@@ -338,29 +281,35 @@ public class ResourcesUtils {
      */
     public static <B extends Item, T extends BlockType> void addBlocksRecipes(String modId, ResourceManager manager, DynamicDataPack pack,
                                                                               Map<T, B> blocks, String oakRecipe, T fromType) {
-        addBlocksRecipes(manager, pack, blocks, ResourceLocation.fromNamespaceAndPath(modId, oakRecipe), fromType, 0);
+        addBlocksRecipes(manager, pack, blocks, new ResourceLocation(modId, oakRecipe), fromType, 0);
     }
 
+    @SuppressWarnings("removal")
     public static <B extends Item, T extends BlockType> void addBlocksRecipes(ResourceManager manager, DynamicDataPack pack,
                                                                               Map<T, B> items, ResourceLocation oakRecipe, T fromType,
                                                                               int index) {
-        Recipe<?> template = RPUtils.readRecipe(manager, oakRecipe);
+        IRecipeTemplate<?> template = RPUtils.readRecipeAsTemplate(manager,
+                ResType.RECIPES.getPath(oakRecipe));
+
         items.forEach((w, i) -> {
 
             if (ModEntriesConfigs.isEntryEnabled(w, i)) {
                 try {
                     //check for disabled ones. Will actually crash if its null since vanilla recipe builder expects a non-null one
-                    ResourceLocation id = RecipeBuilder.getDefaultRecipeId(i);
-                    RecipeHolder<?> newR;
+                    String id = RecipeBuilder.getDefaultRecipeId(i).toString();
+                    FinishedRecipe newR;
                     if (index != 0) {
-                        id = id.withSuffix("_" + index);
+                        id += "_" + index;
+                        newR = template.createSimilar(fromType, w, w.mainChild().asItem(), id);
+                    } else {
+                        newR = template.createSimilar(fromType, w, w.mainChild().asItem());
                     }
-                    newR = RPUtils.makeSimilarRecipe(template, fromType, w, id);
+                    if (newR == null) return;
                     //not even needed
-                    //newR = ForgeHelper.copyRecipeConditions(template, newR.value());
+                    newR = ForgeHelper.addRecipeConditions(newR, template.getConditions());
                     pack.addRecipe(newR);
                 } catch (Exception e) {
-                    EveryCompat.LOGGER.error("Failed to generate recipe for {}: {}", i, e.getMessage());
+                    EveryCompat.LOGGER.error("Failed to generate recipe @ {} for {}: {}", oakRecipe, i, e.getMessage());
                 }
             }
         });
@@ -392,5 +341,17 @@ public class ResourcesUtils {
             }
         }
         return newIng;
+    }
+
+    protected static final String RES_CHARS = "[a-z,A-Z,\\-,_./]*";
+    protected static final Pattern RES_PATTERN = Pattern.compile("\"(" + RES_CHARS + ":" + RES_CHARS + ")\"");
+
+    public static String convertItemIDinText(String text, BlockType fromType, BlockType toType) {
+        Matcher matcher = RES_PATTERN.matcher(text);
+        return matcher.replaceAll(m -> {
+            var item = BuiltInRegistries.ITEM.getOptional(ResourceLocation.tryParse(m.group(1)));
+            return item.map(value -> "\"" + Utils.getID(BlockType.changeItemType(value, fromType, toType)).toString() + "\"")
+                    .orElseGet(() -> m.group(0));
+        });
     }
 }

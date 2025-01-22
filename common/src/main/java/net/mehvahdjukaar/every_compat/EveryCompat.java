@@ -6,6 +6,7 @@ import net.mehvahdjukaar.every_compat.api.CompatModule;
 import net.mehvahdjukaar.every_compat.api.SimpleEntrySet;
 import net.mehvahdjukaar.every_compat.configs.ECConfigs;
 import net.mehvahdjukaar.every_compat.configs.ModEntriesConfigs;
+import net.mehvahdjukaar.every_compat.dynamicpack.ClientDynamicResourcesHandler;
 import net.mehvahdjukaar.every_compat.dynamicpack.ServerDynamicResourcesHandler;
 import net.mehvahdjukaar.moonlight.api.misc.Registrator;
 import net.mehvahdjukaar.moonlight.api.platform.PlatHelper;
@@ -38,9 +39,10 @@ public abstract class EveryCompat {
     private static final List<CompatMod> COMPAT_MODS = new ArrayList<>();
     // all mod that EC directly or indirectly depends on
     private static final Set<String> DEPENDENCIES = new HashSet<>();
+    private static final Set<String> ADDON_IDS = new HashSet<>();
 
     //these are the names of the block types we add wooden variants for
-    public static final Map<Class<? extends BlockType>, Set<String>> TYPES_TO_CHILD_KEYS = new Object2ObjectOpenHashMap<>();
+    private static final Map<Class<? extends BlockType>, Set<String>> TYPES_TO_CHILD_KEYS = new Object2ObjectOpenHashMap<>();
     private static final Map<Object, CompatModule> ITEMS_TO_MODULES = new Object2ObjectOpenHashMap<>();
     private static final Set<Class<? extends BlockType>> AFFECTED_TYPES = new HashSet<>();
     private static final UnsafeModuleDisabler MODULE_DISABLER = new UnsafeModuleDisabler();
@@ -61,15 +63,27 @@ public abstract class EveryCompat {
         TYPES_TO_CHILD_KEYS.computeIfAbsent(type, t -> new HashSet<>()).add(childId);
     }
 
-    public static void addOtherCompatMod(String modId, String woodFrom, List<String> blocksFrom) {
-        addOtherCompatMod(modId, List.of(woodFrom), blocksFrom);
+    public static Collection<String> getChildKeys(Class<? extends BlockType> type) {
+        return TYPES_TO_CHILD_KEYS.getOrDefault(type, Set.of());
     }
 
-    public static void addOtherCompatMod(String modId, List<String> woodFrom, List<String> blocksFrom) {
-        COMPAT_MODS.add(new CompatMod(modId, woodFrom, blocksFrom));
-        DEPENDENCIES.add(modId);
-        DEPENDENCIES.addAll(woodFrom);
-        DEPENDENCIES.addAll(blocksFrom);
+    public static void addOtherCompatMod(String compatModId, String fromModId, String supportedModId) {
+        addOtherCompatMod(compatModId, List.of(fromModId), List.of(supportedModId));
+    }
+
+    public static void addOtherCompatMod(String compatModId, String fromModId, List<String> supportedModId) {
+        addOtherCompatMod(compatModId, List.of(fromModId), supportedModId);
+    }
+
+    public static void addOtherCompatMod(String compatModId, List<String> fromModId, String supportedModId) {
+        addOtherCompatMod(compatModId, fromModId, List.of(supportedModId));
+    }
+
+    public static void addOtherCompatMod(String compatModId, List<String> fromModId, List<String> supportedModId) {
+        COMPAT_MODS.add(new CompatMod(compatModId, fromModId, supportedModId));
+        DEPENDENCIES.add(compatModId);
+        DEPENDENCIES.addAll(fromModId);
+        DEPENDENCIES.addAll(supportedModId);
     }
 
     public static void addModule(CompatModule module) {
@@ -77,10 +91,18 @@ public abstract class EveryCompat {
             ACTIVE_MODULES.add(module);
             DEPENDENCIES.add(module.getModId());
             DEPENDENCIES.addAll(module.getAlreadySupportedMods());
-            ServerDynamicResourcesHandler.INSTANCE.getPack().addNamespaces(module.getModId());
+
+            ServerDynamicResourcesHandler.INSTANCE.getPack()
+                    .addNamespaces(module.getServerResourcesNamespaces());
+            if (PlatHelper.getPhysicalSide().isClient()) {
+                ClientDynamicResourcesHandler.INSTANCE.getPack()
+                        .addNamespaces(module.getClientResourcesNamespaces());
+            }
+
             for (var t : module.getAffectedTypes()) {
                 addDynamicRegistrationFor(t);
             }
+            ADDON_IDS.add(module.getMyNamespace());
         }
     }
 
@@ -122,24 +144,31 @@ public abstract class EveryCompat {
         //log registered stuff size
         int newSize = BuiltInRegistries.BLOCK.size();
         int myBlocksSize = newSize - prevRegSize;
+
         float p = (myBlocksSize / (float) newSize) * 100f;
+        if (myBlocksSize == 0) {
+            EveryCompat.LOGGER.error("\n\nATTENTION: EVERY COMPAT REGISTERED 0 BLOCKS! No Wood mods (Biomes O' Plenty or others) are installed.\nYou dont need EveryCompat and should remove it.\n");
+            return;
+        }
+
         if (p > 25) {
             EveryCompat.LOGGER.warn("Registered {} compat blocks making up {}% of total blocks registered", myBlocksSize, String.format("%.2f", p));
         } else {
             EveryCompat.LOGGER.info("Registered {} compat blocks making up {}% of total blocks registered", myBlocksSize, String.format("%.2f", p));
         }
         if (p > 33) {
-            var bloatedMod = ACTIVE_MODULES.stream().max(Comparator.comparing(CompatModule::bloatAmount))
-                    .orElse(null);
-            if (bloatedMod != null) {
+            Optional<CompatModule> compatbloated = ACTIVE_MODULES.stream().max(Comparator.comparing(CompatModule::bloatAmount));
+            if (compatbloated.isPresent()) {
+                CompatModule bloated = compatbloated.get();
+                //no freaking clue why this was returned as null once
                 EveryCompat.LOGGER.error("Every Compat registered blocks make up more than one third of your registered blocks, taking up memory and load time.");
-                EveryCompat.LOGGER.error("You might want to uninstall some mods, biggest offender was {} ({} blocks)", bloatedMod.getModName().toUpperCase(Locale.ROOT), bloatedMod.bloatAmount());
+                EveryCompat.LOGGER.error("You might want to uninstall some mods, biggest offender was {} ({} blocks)", bloated.getModName().toUpperCase(Locale.ROOT), bloated.bloatAmount());
+            } else {
+                EveryCompat.LOGGER.error("\n\nATTENION: No supported mods are installed. You don't need Every Compat and should remove it.\n");
             }
         }
 
-        if (myBlocksSize == 0) {
-            EveryCompat.LOGGER.error("EVERY COMPAT REGISTERED 0 BLOCKS! This means that you dont need the mod and should remove it!");
-        }
+
         forAllModules(CompatModule::onModSetup);
 
     }
@@ -172,6 +201,10 @@ public abstract class EveryCompat {
         forAllModules(m -> m.registerEntities(event));
     }
 
+    public static boolean isMyIdOrAddon(String namespace) {
+        return ADDON_IDS.contains(namespace);
+    }
+
 
     public record CompatMod(String modId, List<String> woodsFrom, List<String> blocksFrom) {
     }
@@ -198,6 +231,8 @@ public abstract class EveryCompat {
         }
     }
 
+    //do all childen exist for all wood types for this child type
+    //TODO: you sure this is correct? we arent using this anywhere else. its fine to have stuf generate JUST for the wood types that have the chlidren. imagine adding a mod without "fences" and all your other "fences" reliant blocks from other mod suddenly dont wok anymore
     public static boolean doChildrenExistFor(WoodType w, String... blockTypes) {
         for (String type : blockTypes) {
             if (w.getBlockOfThis(type) == null) return false;

@@ -3,17 +3,19 @@ package net.mehvahdjukaar.every_compat.api;
 import net.mehvahdjukaar.every_compat.EveryCompat;
 import net.mehvahdjukaar.every_compat.dynamicpack.ClientDynamicResourcesHandler;
 import net.mehvahdjukaar.every_compat.dynamicpack.ServerDynamicResourcesHandler;
+import net.mehvahdjukaar.every_compat.misc.HardcodedBlockType;
 import net.mehvahdjukaar.moonlight.api.events.AfterLanguageLoadEvent;
 import net.mehvahdjukaar.moonlight.api.misc.Registrator;
 import net.mehvahdjukaar.moonlight.api.platform.ClientHelper;
 import net.mehvahdjukaar.moonlight.api.platform.PlatHelper;
 import net.mehvahdjukaar.moonlight.api.platform.RegHelper;
 import net.mehvahdjukaar.moonlight.api.set.BlockType;
+import net.mehvahdjukaar.moonlight.api.set.leaves.LeavesType;
+import net.mehvahdjukaar.moonlight.api.set.wood.WoodType;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 
@@ -32,8 +34,13 @@ public class SimpleModule extends CompatModule {
         this.shortId = shortId;
     }
 
-    public ResourceLocation makeRes(String name) {
-        return EveryCompat.res(name);
+    public SimpleModule(String modId, String shortId, String myNamespace) {
+        super(modId, myNamespace);
+        this.shortId = shortId;
+    }
+
+    public ResourceLocation makeMyRes(String name) {
+        return new ResourceLocation(getMyNamespace(), name);
     }
 
     @Override
@@ -93,6 +100,7 @@ public class SimpleModule extends CompatModule {
         }
     }
 
+    @SuppressWarnings("unchecked")
     private <T extends BlockType> void registerBlocksTyped(Registrator<Block> registry,
                                                            Collection<?> types, EntrySet<T> e) {
         e.registerBlocks(this, registry, (Collection<T>) types);
@@ -173,7 +181,7 @@ public class SimpleModule extends CompatModule {
         for (EntrySet<?> entrySet : entries.values()) {
             if (entrySet.getTypeClass().isAssignableFrom(type.getClass())) {
                 var itemOfType = ((EntrySet<T>) entrySet).getItemForECTab(type);
-                if (itemOfType != null && itemOfType != Items.AIR) l.add(itemOfType);
+                if (itemOfType != null) l.add(itemOfType);
             }
         }
         return l;
@@ -276,4 +284,55 @@ public class SimpleModule extends CompatModule {
         return false;
     }
 
+    /*
+
+    //TODO: improve
+    public boolean isEntryAlreadyRegistered(String blockId, BlockType blockType, Registry<?> registry) {
+        //!! NOTE: blockType is either: WoodType, LeavesType, or StoneTYpe
+        if (blockType.isVanilla()) return true; // Exclude all of Vanilla Types
+
+        // blockId: everycomp:twigs/biomesoplenty/willow_table | blockName: willow_table
+        String blockName = blockId.substring(blockId.lastIndexOf("/") + 1);
+
+        String blockTypeFrom = blockType.getNamespace();
+
+        String slashConvention = blockTypeFrom + "/" + blockName; // quark/blossom_chair
+        String underscoreConvention = blockTypeFrom + "_" + blockName; // quark_blossom_chair
+
+        // ugly hardcoded stuff
+        if (blockType instanceof WoodType wt) {
+            Boolean hardcoded = HardcodedBlockType.isWoodBlockAlreadyRegistered(blockName, wt, modId, shortenedId());
+            if (hardcoded != null) return hardcoded;
+        } else if (blockType instanceof LeavesType lt) {
+            Boolean hardcoded = HardcodedBlockType.isLeavesBlockAlreadyRegistered(blockName, lt, modId, shortenedId());
+            if (hardcoded != null) return hardcoded;
+        }
+
+                /// ========== EXCLUDE ========== \\\
+        if (this.getAlreadySupportedMods().contains(blockTypeFrom)) return true;
+
+        // Discard the blocks that are already in the supportedModId from blockTypeFrom
+        if (blockTypeFrom.equals(modId)) return true; // quark, blossom
+
+        // Discards the supportedBlockName being already in the supportedModId & Vanilla blockType
+        if (registry.containsKey(new ResourceLocation(modId, blockName)) ||
+                registry.containsKey(new ResourceLocation(modId, underscoreConvention))) return true;
+
+
+        // Checking if supportedBlockName exists in the blockTypeFrom
+        if (registry.containsKey(new ResourceLocation(blockTypeFrom, blockName))) return true;
+
+        for (var c : EveryCompat.getCompatMods()) {
+            String compatModId = c.modId();  //bopcomp : bop->quark, twigs
+            //if the wood is from the mod this adds compat for && it supports this block type
+            if (c.woodsFrom().contains(blockTypeFrom) && c.blocksFrom().contains(modId)) {
+                if (registry.containsKey(new ResourceLocation(compatModId, blockName))) return true;
+                if (registry.containsKey(new ResourceLocation(compatModId, slashConvention))) return true;
+                if (registry.containsKey(new ResourceLocation(compatModId, underscoreConvention))) return true;
+            }
+        }
+        return false;
+    }
+
+     */
 }

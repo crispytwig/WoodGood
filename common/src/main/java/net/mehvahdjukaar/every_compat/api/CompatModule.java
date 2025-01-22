@@ -4,6 +4,7 @@ import com.google.common.base.Suppliers;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.mehvahdjukaar.every_compat.ECRegistry;
+import net.mehvahdjukaar.every_compat.EveryCompat;
 import net.mehvahdjukaar.every_compat.dynamicpack.ClientDynamicResourcesHandler;
 import net.mehvahdjukaar.every_compat.dynamicpack.ServerDynamicResourcesHandler;
 import net.mehvahdjukaar.moonlight.api.events.AfterLanguageLoadEvent;
@@ -35,13 +36,25 @@ public abstract class CompatModule {
     protected final String modId;
     protected final String modName;
 
-    protected CompatModule(String modId) {
+    //EC or addon namespace
+    private final String myNamespace;
+
+    protected CompatModule(String modId, String myNamespace) {
         this.modId = modId;
         this.modName = PlatHelper.getModName(modId);
+        this.myNamespace = myNamespace;
+    }
+
+    protected CompatModule(String modId) {
+        this(modId, EveryCompat.MOD_ID);
     }
 
     public String getModId() {
         return modId;
+    }
+
+    public String getMyNamespace() {
+        return myNamespace;
     }
 
     // readable name
@@ -164,10 +177,18 @@ public abstract class CompatModule {
     }
 
     // Ec tab
-    public ResourceKey< CreativeModeTab> getDedicatedTab() {
-        return (ResourceKey<CreativeModeTab>) ECRegistry.MOD_TAB.getKey();
+    public ResourceKey<CreativeModeTab> getDedicatedTab() {
+        return ECRegistry.MOD_TAB.getKey();
     }
 
     public abstract Collection<Class<? extends BlockType>> getAffectedTypes();
 
+    //these have to be known in advance
+    public String[] getServerResourcesNamespaces() {
+        return new String[]{modId, myNamespace};
+    }
+
+    public String[] getClientResourcesNamespaces() {
+        return new String[]{myNamespace};
+    }
 }

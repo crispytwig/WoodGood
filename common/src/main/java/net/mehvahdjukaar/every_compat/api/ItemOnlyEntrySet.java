@@ -79,10 +79,10 @@ public class ItemOnlyEntrySet<T extends BlockType, I extends Item> extends Abstr
     @Override
     public void registerItems(SimpleModule module, Registrator<Item> registry) {
         BlockTypeRegistry<T> typeRegistry = BlockSetAPI.getTypeRegistry(this.type);
-        for (T w : typeRegistry.getValues()) {
+        for (T w : Objects.requireNonNull(typeRegistry).getValues()) {
             String name = getItemName(w);
             String fullName = module.shortenedId() + "/" + w.getNamespace() + "/" + name;
-            if (w.isVanilla() || module.isEntryAlreadyRegistered(name, w, BuiltInRegistries.ITEM)) continue;
+            if (module.isEntryAlreadyRegistered(name, w, BuiltInRegistries.ITEM)) continue;
 
             if (condition.test(w)) {
                 I item = itemFactory.apply(w);
@@ -90,7 +90,7 @@ public class ItemOnlyEntrySet<T extends BlockType, I extends Item> extends Abstr
                 if (item != null) {
                     this.items.put(w, item);
 
-                    registry.register(module.makeRes(fullName), item);
+                    registry.register(module.makeMyRes(fullName), item);
                     w.addChild(getChildKey(module), item);
                 }
             }
@@ -112,7 +112,7 @@ public class ItemOnlyEntrySet<T extends BlockType, I extends Item> extends Abstr
         Set<String> alreadySupportedMods = new HashSet<>(module.getAlreadySupportedMods());
         alreadySupportedMods.add(module.modId);
         var possibleNamespaces = alreadySupportedMods.toArray(String[]::new);
-        for (var w : BlockSetAPI.getTypeRegistry(this.getTypeClass()).getValues()) {
+        for (var w : Objects.requireNonNull( BlockSetAPI.getTypeRegistry(this.getTypeClass())).getValues() ) {
             if (!items.containsKey(w)) {
                 String path = getItemName(w);
                 Item item = getOptionalItem(path, w.getNamespace());
@@ -147,7 +147,18 @@ public class ItemOnlyEntrySet<T extends BlockType, I extends Item> extends Abstr
 
     @Override
     public void generateModels(SimpleModule module, DynClientResourcesGenerator handler, ResourceManager manager) {
-        ResourcesUtils.addItemModels(module.getModId(), manager, handler, items, baseType.get(), extraTransform);
+        ResourcesUtils.generateStandardItemModels(manager, handler, items, baseType.get(),
+                makeModelTransformer(module, manager));
+    }
+
+    // items models
+    protected BlockTypeResTransformer<T> makeModelTransformer(SimpleModule module, ResourceManager manager) {
+        BlockTypeResTransformer<T> modelTransformer = BlockTypeResTransformer.create(module.modId, manager);
+        if (extraModelTransform != null) extraModelTransform.accept(modelTransformer);
+
+        ResourcesUtils.addBuiltinModelTransformer(modelTransformer, baseType.get());
+
+        return modelTransformer;
     }
 
     @Override

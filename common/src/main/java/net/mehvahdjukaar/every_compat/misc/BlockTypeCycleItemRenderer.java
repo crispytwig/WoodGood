@@ -84,14 +84,14 @@ public abstract class BlockTypeCycleItemRenderer<T extends BlockType> extends It
         int size = childKeys.size();
         if (size == 0) return Items.BARRIER.getDefaultInstance();
         int time = (int) (Util.getMillis() / 350L);
-        int tm = time % size;
+        int tm = time % (size+1);
         if (tm != lastTime) {
 
             ItemLike v = null;
             do {
                 var l = (this.lastIndex + 1) % size;
                 // this.woodIndex = (this.woodIndex + 1);
-                if (l < lastIndex) this.typeIndex = (this.typeIndex + 1) % moddedTypes.size();
+                if (l < lastIndex || size == 1) this.typeIndex = (this.typeIndex + 1) % moddedTypes.size();
                 this.lastIndex = l;
                 String key = childKeys.get(lastIndex);
                 var vv = moddedTypes.get(typeIndex % moddedTypes.size()).getChild(key);

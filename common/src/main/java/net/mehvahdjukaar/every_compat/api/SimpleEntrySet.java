@@ -4,7 +4,6 @@ import com.google.common.base.Preconditions;
 import com.mojang.datafixers.util.Pair;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.mehvahdjukaar.every_compat.EveryCompat;
 import net.mehvahdjukaar.every_compat.EveryCompatClient;
 import net.mehvahdjukaar.every_compat.misc.ResourcesUtils;
 import net.mehvahdjukaar.moonlight.api.events.AfterLanguageLoadEvent;
@@ -73,7 +72,7 @@ public class SimpleEntrySet<T extends BlockType, B extends Block> extends Abstra
                           @Nullable TriFunction<T, B, Item.Properties, Item> itemFactory,
                           @Nullable SimpleEntrySet.ITileHolder<?> tileFactory,
                           @Nullable Object renderType,
-                          @Nullable BiFunction<T, ResourceManager, Pair<List<Palette>, @Nullable AnimationMetadataSection>> paletteSupplier,
+                          BiFunction<T, ResourceManager, Pair<List<Palette>, @Nullable AnimationMetadataSection>> paletteSupplier,
                           @Nullable Consumer<BlockTypeResTransformer<T>> extraTransform,
                           boolean mergedPalette, boolean copyTint,
                           Predicate<T> condition) {
@@ -122,7 +121,7 @@ public class SimpleEntrySet<T extends BlockType, B extends Block> extends Abstra
         for (T w : types) {
             String name = getBlockName(w);
             String fullName = module.shortenedId() + "/" + w.getNamespace() + "/" + name;
-            if (w.isVanilla() || module.isEntryAlreadyRegistered(name, w, BuiltInRegistries.BLOCK)) continue;
+            if (module.isEntryAlreadyRegistered(name, w, BuiltInRegistries.BLOCK)) continue;
 
             if (condition.test(w)) {
                 B block = blockFactory.apply(w);
@@ -130,7 +129,7 @@ public class SimpleEntrySet<T extends BlockType, B extends Block> extends Abstra
                 if (block != null) {
                     this.blocks.put(w, block);
 
-                    registry.register(module.makeRes(fullName), block);
+                    registry.register(module.makeMyRes(fullName), block);
                     w.addChild(childKey, block);
 
                     if (lootMode == LootTableMode.DROP_SELF && YEET_JSONS) {
@@ -212,7 +211,7 @@ public class SimpleEntrySet<T extends BlockType, B extends Block> extends Abstra
     public void registerTiles(SimpleModule module, Registrator<BlockEntityType<?>> registry) {
         if (tileHolder instanceof NewTileHolder<?> nt) {
             var tile = nt.createInstance(blocks.values().toArray(Block[]::new));
-            registry.register(module.makeRes(module.shortenedId() + "_" + this.getName()), tile);
+            registry.register(module.makeMyRes(module.shortenedId() + "_" + this.getName()), tile);
         }
     }
 
@@ -229,7 +228,8 @@ public class SimpleEntrySet<T extends BlockType, B extends Block> extends Abstra
         for (var e : blocks.entrySet()) {
             var w = e.getKey();
             var v = e.getValue();
-            EveryCompatClient.registerRenderType(v, w, renderType);
+            if (renderType != null || w.toString().equals("rats:pirat"))
+                EveryCompatClient.registerRenderType(v, w, renderType);
         }
     }
 
@@ -237,7 +237,8 @@ public class SimpleEntrySet<T extends BlockType, B extends Block> extends Abstra
     public void generateLootTables(SimpleModule module, DynamicDataPack pack, ResourceManager manager) {
         if (lootMode == LootTableMode.COPY_FROM_PARENT) {
             ResourceLocation reg = Utils.getID(getBaseBlock());
-            ResourcesUtils.addBlockResources(module.getModId(), manager, pack, blocks, baseType.get().getTypeName(),
+            ResourcesUtils.addBlockResources(manager, pack, blocks,
+                    makeLootTableTransformer(module, manager),
                     ResType.BLOCK_LOOT_TABLES.getPath(reg));
 
         } else if (lootMode == LootTableMode.DROP_SELF) {
@@ -250,7 +251,38 @@ public class SimpleEntrySet<T extends BlockType, B extends Block> extends Abstra
 
     @Override
     public void generateModels(SimpleModule module, DynClientResourcesGenerator handler, ResourceManager manager) {
-        ResourcesUtils.addStandardResources(module.getModId(), manager, handler, blocks, baseType.get(), extraTransform);
+        ResourcesUtils.generateStandardBlockModels(manager, handler, blocks, baseType.get(),
+                makeModelTransformer(module, manager), makeBlockStateTransformer(module, manager));
+        ResourcesUtils.generateStandardItemModels(manager, handler, items, baseType.get(),
+                makeModelTransformer(module, manager));
+    }
+
+    // items and blocks
+    protected BlockTypeResTransformer<T> makeModelTransformer(SimpleModule module, ResourceManager manager) {
+        BlockTypeResTransformer<T> modelTransformer = BlockTypeResTransformer.create(module.modId, manager);
+        if (extraModelTransform != null) extraModelTransform.accept(modelTransformer);
+
+        ResourcesUtils.addBuiltinModelTransformer(modelTransformer, baseType.get());
+
+        return modelTransformer;
+    }
+
+    protected BlockTypeResTransformer<T> makeBlockStateTransformer(SimpleModule module, ResourceManager manager) {
+        String baseBlockName = baseType.get().getTypeName();
+        return BlockTypeResTransformer.<T>create(module.modId, manager)
+                .replaceBlockType(baseBlockName)
+                .IDReplaceType(baseBlockName);
+    }
+
+    protected BlockTypeResTransformer<T> makeLootTableTransformer(SimpleModule module, ResourceManager manager) {
+        String oldTypeName = baseType.get().getTypeName();
+        return BlockTypeResTransformer.<T>create(module.modId, manager)
+                // Modifying the JSON filenames & path
+                .setIDModifier((text, blockId, type) ->
+                        BlockTypeResTransformer.replaceFullGenericType(text, type, blockId, oldTypeName, null, 2))
+                // Modifying the JSON files' content
+                .addModifier((text, blockId, type) ->
+                        ResourcesUtils.convertItemIDinText(text, baseType.get(), type));
     }
 
     //ok...
