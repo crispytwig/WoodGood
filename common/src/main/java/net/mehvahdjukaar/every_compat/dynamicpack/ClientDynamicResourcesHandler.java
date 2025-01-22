@@ -13,7 +13,13 @@ import org.apache.logging.log4j.Logger;
 
 public class ClientDynamicResourcesHandler extends DynClientResourcesGenerator {
 
-    public static final ClientDynamicResourcesHandler INSTANCE = new ClientDynamicResourcesHandler();
+    public static ClientDynamicResourcesHandler INSTANCE;
+
+    // classloading bs
+    public static void init(){
+        INSTANCE = new ClientDynamicResourcesHandler();
+        INSTANCE.register();
+    }
 
     private static boolean init = false;
 
