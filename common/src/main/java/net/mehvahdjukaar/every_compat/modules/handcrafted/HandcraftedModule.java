@@ -2,12 +2,10 @@ package net.mehvahdjukaar.every_compat.modules.handcrafted;
 
 import com.google.gson.JsonObject;
 import earth.terrarium.handcrafted.Handcrafted;
-import earth.terrarium.handcrafted.common.blockentities.ContainerBlockEntity;
 import earth.terrarium.handcrafted.common.blocks.*;
 import earth.terrarium.handcrafted.common.blocks.trims.CornerTrimBlock;
 import earth.terrarium.handcrafted.common.blocks.trims.PillarTrimBlock;
 import earth.terrarium.handcrafted.common.registry.ModBlocks;
-import earth.terrarium.handcrafted.common.registry.ModItems;
 import earth.terrarium.handcrafted.common.tags.ModBlockTags;
 import net.mehvahdjukaar.every_compat.EveryCompat;
 import net.mehvahdjukaar.every_compat.api.RenderLayer;
@@ -23,14 +21,13 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.tags.BlockTags;
-import net.minecraft.world.item.*;
+import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.function.Supplier;
 
 //SUPPORT: v4.0.2+
 public class HandcraftedModule extends SimpleModule {
@@ -216,11 +213,6 @@ public class HandcraftedModule extends SimpleModule {
                 .setTabKey(tab)
                 .addCustomItem((w, b, p) -> new BlockItem(b, p))
                 .defaultRecipe()
-                .addModelTransform( // to prevent the changing of "oak_planks"
-                        m -> m.addModifier((s, resLoc, w) -> s.replace(
-                                "\"top\": \"everycomp:block/hc/"+w.getNamespace()+"/counter/top/"+w.getTypeName()+"_planks\"",
-                                "\"top\": \"handcrafted:block/counter/top/oak_planks\""))
-                )
                 .build();
         this.addEntry(counter);
 
@@ -348,19 +340,19 @@ public class HandcraftedModule extends SimpleModule {
         * Correcting the texture for "top" in counters' model to use for counter's top/surface
         * There is no way to prevent oak_planks or dark_oak_planks from being changed to other woodtypes
         */
-        counter.blocks.forEach((w, block) -> {
+        counter.blocks.forEach((woodType, block) -> {
 
             for (int num = 1; num<4; num++) {
 
-                String path = shortenedId() +"/"+ w.getAppendableId() + "_counter_oak_planks_" + num;
-                String darkPath = shortenedId() +"/"+ w.getAppendableId() + "_counter_dark_oak_planks_" + num;
-                ResourceLocation oakModelFile = EveryCompat.res("models/block/" + path + ".json");
-                ResourceLocation darkModelFile = EveryCompat.res("models/block/" + darkPath + ".json");
+                String path = shortenedId() +"/"+ woodType.getAppendableId() + "_counter_"+ woodType.getTypeName() +"_planks_"+ num;
+                String darkPath = shortenedId() +"/"+ woodType.getAppendableId() + "_counter_dark_"+ woodType.getTypeName() +"_planks_"+ num;
+                ResourceLocation oakModelFile = ResType.BLOCK_MODELS.getPath(EveryCompat.res(path));
+                ResourceLocation darkModelFile = ResType.BLOCK_MODELS.getPath(EveryCompat.res(darkPath));
 
                 try (InputStream oakStream = manager.getResource(oakModelFile)
-                        .orElseThrow(FileNotFoundException::new).open();
+                        .orElseThrow(() -> new FileNotFoundException("@ " + oakModelFile)).open();
                      InputStream darkStream = manager.getResource(darkModelFile)
-                        .orElseThrow(FileNotFoundException::new).open()
+                        .orElseThrow(() -> new FileNotFoundException("@ " + darkModelFile)).open()
                 ) {
                     JsonObject oakModel = RPUtils.deserializeJson(oakStream);
                     JsonObject darkModel = RPUtils.deserializeJson(darkStream);
@@ -375,7 +367,7 @@ public class HandcraftedModule extends SimpleModule {
                     handler.dynamicPack.addJson(EveryCompat.res(darkPath), darkModel, ResType.BLOCK_MODELS);
                 }
                 catch (IOException e) {
-                    handler.getLogger().error("Failed to read the model file for: {} : {}", block, e);
+                    handler.getLogger().error("Failed to get the model file for: {} : {}", block, e);
                 }
             }
 
