@@ -6,6 +6,8 @@ import net.mehvahdjukaar.every_compat.misc.SpriteHelper;
 import net.mehvahdjukaar.moonlight.api.events.AfterLanguageLoadEvent;
 import net.mehvahdjukaar.moonlight.api.platform.PlatHelper;
 import net.mehvahdjukaar.moonlight.api.resources.pack.DynClientResourcesGenerator;
+import net.mehvahdjukaar.moonlight.api.resources.pack.DynResourceGenerator;
+import net.mehvahdjukaar.moonlight.api.resources.pack.DynamicResourcePack;
 import net.mehvahdjukaar.moonlight.api.resources.pack.DynamicTexturePack;
 import net.minecraft.server.packs.resources.ResourceManager;
 import org.apache.logging.log4j.Logger;
@@ -13,12 +15,14 @@ import org.apache.logging.log4j.Logger;
 
 public class ClientDynamicResourcesHandler extends DynClientResourcesGenerator {
 
-    public static ClientDynamicResourcesHandler INSTANCE;
+    private static ClientDynamicResourcesHandler INSTANCE;
 
     // classloading bs
-    public static void init(){
-        INSTANCE = new ClientDynamicResourcesHandler();
-        INSTANCE.register();
+    public static ClientDynamicResourcesHandler getInstance() {
+        if (INSTANCE == null) {
+            INSTANCE = new ClientDynamicResourcesHandler();
+        }
+        return INSTANCE;
     }
 
     private static boolean init = false;
@@ -28,6 +32,7 @@ public class ClientDynamicResourcesHandler extends DynClientResourcesGenerator {
         //since we place chests textures in its namespace to use its renderer
         if (PlatHelper.isModLoaded("quark")) getPack().addNamespaces("quark");
     }
+
 
     @Override
     public Logger getLogger() {
