@@ -96,7 +96,7 @@ dependencies {
     implementation 'org.jetbrains:annotations:22.0.0'
 
 //!! MOONLIGHT LIB (REQUIRED) --------------------------------------------------------------------------------------- \\
-    String path = System.getenv('REPOS20_1')
+    String path = System.getenv('REPOS21_1')
 
     if (usesMavenLocalML) {
         //!! ~/forge/mods LOCAL
@@ -105,7 +105,7 @@ dependencies {
         //!! Repository LOCAL
 //        modImplementation(files(path  + "\\Moonlight\\neoforge\\build\\libs\\moonlight-${moonlight_testVersion}-neoforge.jar"))
         //!! MAVEN
-        modImplementation("maven.modrinth:moonlight:neoforge_${moonlight_mavenVersion}")  // v2.17.12
+        modImplementation("maven.modrinth:moonlight:neoforge_${moonlight_mavenVersion}")  // v2.17.18
     }
 
 //!! ================================================ DEPENDENCIES ================================================== \\
@@ -156,7 +156,8 @@ dependencies {
 //    modRuntimeOnly("curse.maven:farmersdelight-398521:5962800")
 //    modRuntimeOnly("curse.maven:furnish-547069:4821511") //!! 1.20.1 -> 1.21.1 Cannot remap access widener from namespace 'mojang'. Expected: 'intermediary'
 //    modRuntimeOnly("curse.maven:friends-and-foes-forge-602059:4712044") //!! 1.20.1
-//    modRuntimeOnly("curse.maven:handcrafted-538214:5617252")
+//    modRuntimeOnly("curse.maven:handcrafted-538214:5617252") // Resourceful-Lib
+//    modRuntimeOnly("curse.maven:refurbished-furniture-897116:5893840")
 //    modRuntimeOnly("maven.modrinth:stylish-stiles:l9FFA4BK") //!! 1.20.1
 //    modRuntimeOnly("curse.maven:storage-drawers-223852:5890187")
 //    modRuntimeOnly("curse.maven:valhelsia-furniture-694349:5189602") //!! 1.20.1
@@ -212,7 +213,6 @@ dependencies {
     modCompileOnly("curse.maven:premium-wood-353515:3905203") //!! 1.20.1
     modCompileOnly("curse.maven:productivebees-377897:5304827") //v12.5.1 | WIP //!! 1.20.1
     modCompileOnly("curse.maven:quark-243121:5093415") //!! 1.20.1
-    modCompileOnly("curse.maven:refurbished-furniture-897116:5893840")
     modCompileOnly("curse.maven:table-top-craft-467136:5318681") //!! 1.20.1
     modCompileOnly("curse.maven:timber-frames-606011:5372390") //!! 1.20.1
     modCompileOnly("curse.maven:the-graveyard-forge-531188:4025847") //!! 1.20.1

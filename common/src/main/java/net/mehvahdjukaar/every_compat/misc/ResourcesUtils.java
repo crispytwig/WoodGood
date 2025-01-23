@@ -5,7 +5,6 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import net.mehvahdjukaar.every_compat.EveryCompat;
 import net.mehvahdjukaar.every_compat.configs.ModEntriesConfigs;
-import net.mehvahdjukaar.moonlight.api.platform.ForgeHelper;
 import net.mehvahdjukaar.moonlight.api.resources.BlockTypeResTransformer;
 import net.mehvahdjukaar.moonlight.api.resources.RPUtils;
 import net.mehvahdjukaar.moonlight.api.resources.ResType;
@@ -13,7 +12,6 @@ import net.mehvahdjukaar.moonlight.api.resources.StaticResource;
 import net.mehvahdjukaar.moonlight.api.resources.pack.DynClientResourcesGenerator;
 import net.mehvahdjukaar.moonlight.api.resources.pack.DynamicDataPack;
 import net.mehvahdjukaar.moonlight.api.resources.pack.DynamicResourcePack;
-import net.mehvahdjukaar.moonlight.api.resources.recipe.IRecipeTemplate;
 import net.mehvahdjukaar.moonlight.api.set.BlockType;
 import net.mehvahdjukaar.moonlight.api.set.leaves.LeavesType;
 import net.mehvahdjukaar.moonlight.api.set.leaves.LeavesTypeRegistry;
@@ -21,13 +19,14 @@ import net.mehvahdjukaar.moonlight.api.set.wood.WoodType;
 import net.mehvahdjukaar.moonlight.api.set.wood.WoodTypeRegistry;
 import net.mehvahdjukaar.moonlight.api.util.Utils;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.RecipeBuilder;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.crafting.Recipe;
+import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import org.jetbrains.annotations.NotNull;
@@ -118,7 +117,7 @@ public class ResourcesUtils {
 
         for (var m : modelsLoc) {
             //remove the ones from mc namespace
-            ResourceLocation modelRes = new ResourceLocation(m);
+            ResourceLocation modelRes = ResourceLocation.parse(m);
             if (!modelRes.getNamespace().equals("minecraft")) {
                 StaticResource model = StaticResource.getOrLog(manager, ResType.MODELS.getPath(m));
                 if (model != null) models.add(model);
@@ -281,32 +280,29 @@ public class ResourcesUtils {
      */
     public static <B extends Item, T extends BlockType> void addBlocksRecipes(String modId, ResourceManager manager, DynamicDataPack pack,
                                                                               Map<T, B> blocks, String oakRecipe, T fromType) {
-        addBlocksRecipes(manager, pack, blocks, new ResourceLocation(modId, oakRecipe), fromType, 0);
+        addBlocksRecipes(manager, pack, blocks, ResourceLocation.fromNamespaceAndPath(modId, oakRecipe), fromType, 0);
     }
 
-    @SuppressWarnings("removal")
     public static <B extends Item, T extends BlockType> void addBlocksRecipes(ResourceManager manager, DynamicDataPack pack,
                                                                               Map<T, B> items, ResourceLocation oakRecipe, T fromType,
                                                                               int index) {
-        IRecipeTemplate<?> template = RPUtils.readRecipeAsTemplate(manager,
-                ResType.RECIPES.getPath(oakRecipe));
-
+        Recipe<?> template = RPUtils.readRecipe(manager, oakRecipe);
         items.forEach((w, i) -> {
 
             if (ModEntriesConfigs.isEntryEnabled(w, i)) {
                 try {
                     //check for disabled ones. Will actually crash if its null since vanilla recipe builder expects a non-null one
-                    String id = RecipeBuilder.getDefaultRecipeId(i).toString();
-                    FinishedRecipe newR;
+                    ResourceLocation id = RecipeBuilder.getDefaultRecipeId(i);
+                    RecipeHolder<?> newR;
                     if (index != 0) {
-                        id += "_" + index;
-                        newR = template.createSimilar(fromType, w, w.mainChild().asItem(), id);
-                    } else {
-                        newR = template.createSimilar(fromType, w, w.mainChild().asItem());
+                        id = id.withSuffix("_" + index);
                     }
-                    if (newR == null) return;
+                    newR = RPUtils.makeSimilarRecipe(template, fromType, w, id);
+
                     //not even needed
-                    newR = ForgeHelper.addRecipeConditions(newR, template.getConditions());
+                    //newR = ForgeHelper.copyRecipeConditions(template, newR.value());
+
+                    // Adding to the resources
                     pack.addRecipe(newR);
                 } catch (Exception e) {
                     EveryCompat.LOGGER.error("Failed to generate recipe @ {} for {}: {}", oakRecipe, i, e.getMessage());

@@ -50,7 +50,7 @@ public class FarmersDelightModule extends SimpleModule {
                 .addTile(getModTile("cabinet"))
                 .setTabKey(modRes( "farmersdelight"))
                 .setTabMode(TabAddMode.AFTER_SAME_TYPE)
-                .createPaletteFromOak(Palette::increaseDown)
+                .createPaletteFromPlanks(Palette::increaseDown)
                 .addTexture(EveryCompat.res("block/oak_cabinet_front"))
                 .addTexture(EveryCompat.res("block/oak_cabinet_side"))
                 .addTexture(EveryCompat.res("block/oak_cabinet_top"))

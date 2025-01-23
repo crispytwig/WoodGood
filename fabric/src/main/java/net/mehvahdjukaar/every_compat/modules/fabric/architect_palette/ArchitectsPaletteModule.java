@@ -44,7 +44,7 @@ public class ArchitectsPaletteModule extends SimpleModule {
                 .defaultRecipe()
                 .copyParentDrop()
                 //.setTabKey(() -> CreativeModeTabs.BUILDING_BLOCKS)
-                .createPaletteFromOak(p -> {
+                .createPaletteFromPlanks(p -> {
 
                     while (p.size() > 7) {
                         p.remove(p.getDarkest());

@@ -73,7 +73,7 @@ public class BuildersDelightModule extends SimpleModule {
                 )
                 .setTabKey(tabMater)
                 .addTextureM(modRes("item/oak_furniture_kit"), EveryCompat.res("item/bdl/furniture_kit_mask"))
-                .createPaletteFromOak(SpriteUtils::extrapolateWoodItemPalette)
+                .createPaletteFromPlanks(SpriteUtils::extrapolateWoodItemPalette)
                 // manual recipe below
                 .build();
         this.addEntry(FURNITURE_KIT);
@@ -87,7 +87,7 @@ public class BuildersDelightModule extends SimpleModule {
                 .addTag(modRes("chair"), Registries.ITEM)
                 .setTabKey(tabDeco)
                 .addTexture(modRes("block/decoration/seating/oak/oak_chair_1"))
-                .createPaletteFromOak(this::lessContrastPalette)
+                .createPaletteFromPlanks(this::lessContrastPalette)
                 .addRecipe(ResourceLocation.tryParse("minecraft:oak_chair_1"))
                 .setRenderType(RenderLayer.CUTOUT_MIPPED)
                 .addCustomItem((woodType, block, properties) -> new BDBlockItem(block, properties, "chair_1"))
@@ -101,7 +101,7 @@ public class BuildersDelightModule extends SimpleModule {
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(modRes("chair"), Registries.ITEM)
                 .addTexture(modRes("block/decoration/seating/oak/oak_chair_2"))
-                .createPaletteFromOak(this::lessContrastPalette)
+                .createPaletteFromPlanks(this::lessContrastPalette)
                 .addRecipe(ResourceLocation.tryParse("minecraft:oak_chair_2"))
                 .setTabKey(tabDeco)
                 .setRenderType(RenderLayer.CUTOUT_MIPPED)
@@ -149,7 +149,7 @@ public class BuildersDelightModule extends SimpleModule {
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .setTabKey(tabBlock)
                 .addTexture(modRes("block/oak_planks_1"))
-                .createPaletteFromOak(this::lessContrastPalette)
+                .createPaletteFromPlanks(this::lessContrastPalette)
                 .addRecipe(modRes("oak_planks_1"))
                 .setRenderType(RenderLayer.SOLID)
                 .addCustomItem((w, b, p) -> new BDBlockItem(b, p, "planks_1"))
@@ -163,7 +163,7 @@ public class BuildersDelightModule extends SimpleModule {
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .setTabKey(tabBlock)
                 .addTexture(modRes("block/oak_planks_2"))
-                .createPaletteFromOak(this::lessContrastPalette)
+                .createPaletteFromPlanks(this::lessContrastPalette)
                 .addRecipe(modRes("oak_planks_2"))
                 .setRenderType(RenderLayer.SOLID)
                 .addCustomItem((w, b, p) -> new BDBlockItem(b, p, "planks_2"))
@@ -177,7 +177,7 @@ public class BuildersDelightModule extends SimpleModule {
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .setTabKey(tabBlock)
                 .addTexture(modRes("block/oak_planks_3"))
-                .createPaletteFromOak(this::lessContrastPalette)
+                .createPaletteFromPlanks(this::lessContrastPalette)
                 .addRecipe(modRes("oak_planks_3"))
                 .setRenderType(RenderLayer.SOLID)
                 .addCustomItem((w, b, p) -> new BDBlockItem(b, p, "planks_3"))
@@ -191,7 +191,7 @@ public class BuildersDelightModule extends SimpleModule {
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .setTabKey(tabBlock)
                 .addTexture(modRes("block/oak_planks_4"))
-                .createPaletteFromOak(this::lessContrastPalette)
+                .createPaletteFromPlanks(this::lessContrastPalette)
                 .addRecipe(modRes("oak_planks_4"))
                 .setRenderType(RenderLayer.SOLID)
                 .addCustomItem((w, b, p) -> new BDBlockItem(b, p, "planks_4"))
@@ -205,7 +205,7 @@ public class BuildersDelightModule extends SimpleModule {
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .setTabKey(tabBlock)
                 .addTexture(modRes("block/oak_planks_5"))
-                .createPaletteFromOak(this::lessContrastPalette)
+                .createPaletteFromPlanks(this::lessContrastPalette)
                 .addRecipe(modRes("oak_planks_5"))
                 .setRenderType(RenderLayer.SOLID)
                 .addCustomItem((w, b, p) -> new BDBlockItem(b, p, "planks_5"))
@@ -219,7 +219,7 @@ public class BuildersDelightModule extends SimpleModule {
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .setTabKey(tabBlock)
                 .addTexture(modRes("block/oak_planks_6"))
-                .createPaletteFromOak(this::lessContrastPalette)
+                .createPaletteFromPlanks(this::lessContrastPalette)
                 .addRecipe(modRes("oak_planks_6"))
                 .setRenderType(RenderLayer.SOLID)
                 .addCustomItem((w, b, p) -> new BDBlockItem(b, p, "planks_6"))
@@ -233,7 +233,7 @@ public class BuildersDelightModule extends SimpleModule {
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .setTabKey(tabBlock)
                 .addTexture(modRes("block/oak_planks_7"))
-                .createPaletteFromOak(this::lessContrastPalette)
+                .createPaletteFromPlanks(this::lessContrastPalette)
                 .addRecipe(modRes("oak_planks_7"))
                 .setRenderType(RenderLayer.SOLID)
                 .addCustomItem((w, b, p) -> new BDBlockItem(b, p, "planks_7"))
@@ -450,7 +450,7 @@ public class BuildersDelightModule extends SimpleModule {
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .setTabKey(tabBlock)
                 .addTexture(modRes("block/oak_frame_1"))
-                .createPaletteFromOak(this::lessContrastPalette)
+                .createPaletteFromPlanks(this::lessContrastPalette)
                 // custom recipe below
                 .setRenderType(RenderLayer.SOLID)
                 .build();
@@ -465,7 +465,7 @@ public class BuildersDelightModule extends SimpleModule {
                 .addTag(modRes("frame"), Registries.ITEM)
                 .setTabKey(tabBlock)
                 .addTexture(modRes("block/oak_frame_2"))
-                .createPaletteFromOak(this::lessContrastPalette)
+                .createPaletteFromPlanks(this::lessContrastPalette)
                 // ChiselRecipe
                 .setRenderType(RenderLayer.SOLID)
                 .build();
@@ -480,7 +480,7 @@ public class BuildersDelightModule extends SimpleModule {
                 .addTag(modRes("frame"), Registries.ITEM)
                 .setTabKey(tabBlock)
                 .addTexture(modRes("block/oak_frame_3"))
-                .createPaletteFromOak(this::lessContrastPalette)
+                .createPaletteFromPlanks(this::lessContrastPalette)
                 // ChiselRecipe
                 .setRenderType(RenderLayer.SOLID)
                 .build();
@@ -495,7 +495,7 @@ public class BuildersDelightModule extends SimpleModule {
                 .addTag(modRes("frame"), Registries.ITEM)
                 .setTabKey(tabBlock)
                 .addTexture(modRes("block/oak_frame_4"))
-                .createPaletteFromOak(this::lessContrastPalette)
+                .createPaletteFromPlanks(this::lessContrastPalette)
                 // ChiselRecipe
                 .setRenderType(RenderLayer.SOLID)
                 .build();
@@ -510,7 +510,7 @@ public class BuildersDelightModule extends SimpleModule {
                 .addTag(modRes("frame"), Registries.ITEM)
                 .setTabKey(tabBlock)
                 .addTexture(modRes("block/oak_frame_5"))
-                .createPaletteFromOak(this::lessContrastPalette)
+                .createPaletteFromPlanks(this::lessContrastPalette)
                 // ChiselRecipe
                 .setRenderType(RenderLayer.SOLID)
                 .build();
@@ -525,7 +525,7 @@ public class BuildersDelightModule extends SimpleModule {
                 .addTag(modRes("frame"), Registries.ITEM)
                 .setTabKey(tabBlock)
                 .addTexture(modRes("block/oak_frame_6"))
-                .createPaletteFromOak(this::lessContrastPalette)
+                .createPaletteFromPlanks(this::lessContrastPalette)
                 // ChiselRecipe
                 .setRenderType(RenderLayer.SOLID)
                 .build();
@@ -540,7 +540,7 @@ public class BuildersDelightModule extends SimpleModule {
                 .addTag(modRes("frame"), Registries.ITEM)
                 .setTabKey(tabBlock)
                 .addTexture(modRes("block/oak_frame_7"))
-                .createPaletteFromOak(this::lessContrastPalette)
+                .createPaletteFromPlanks(this::lessContrastPalette)
                 // ChiselRecipe
                 .setRenderType(RenderLayer.SOLID)
                 .build();
@@ -555,7 +555,7 @@ public class BuildersDelightModule extends SimpleModule {
                 .addTag(modRes("frame"), Registries.ITEM)
                 .setTabKey(tabBlock)
                 .addTexture(modRes("block/oak_frame_8"))
-                .createPaletteFromOak(this::lessContrastPalette)
+                .createPaletteFromPlanks(this::lessContrastPalette)
                 // ChiselRecipe
                 .setRenderType(RenderLayer.SOLID)
                 .build();
@@ -570,7 +570,7 @@ public class BuildersDelightModule extends SimpleModule {
                 .addCustomItem((w, b, p) -> new BDBlockItem(b, p, "glass_1"))
                 .addTag(Tags.Blocks.GLASS_BLOCKStries.BLOCK)
                 .setTabKey(tabBlock)
-                .createPaletteFromOak(this::lessContrastPalette)
+                .createPaletteFromPlanks(this::lessContrastPalette)
                 .addTextureM(modRes("block/oak_glass_1"), EveryCompat.res("block/bdl/oak_glass_x_l_mask"))
                 // custom recipe below
                 .setRenderType(RenderLayer.CUTOUT_MIPPED)
@@ -584,7 +584,7 @@ public class BuildersDelightModule extends SimpleModule {
                 .addCustomItem((w, b, p) -> new BDBlockItem(b, p, "glass_2"))
                 .addTag(Tags.Blocks.GLASS_BLOCKStries.BLOCK)
                 .setTabKey(tabBlock)
-                .createPaletteFromOak(this::lessContrastPalette)
+                .createPaletteFromPlanks(this::lessContrastPalette)
                 .addTextureM(modRes("block/oak_glass_2"), EveryCompat.res("block/bdl/oak_glass_2_mask"))
                 .addTextureM(modRes("block/oak_glass_2_top"), EveryCompat.res("block/bdl/oak_glass_x_l_mask"))
                 // ChiselRecipe
@@ -599,7 +599,7 @@ public class BuildersDelightModule extends SimpleModule {
                 .addCustomItem((w, b, p) -> new BDBlockItem(b, p, "glass_3"))
                 .addTag(Tags.Blocks.GLASS_BLOCKStries.BLOCK)
                 .setTabKey(tabBlock)
-                .createPaletteFromOak(this::lessContrastPalette)
+                .createPaletteFromPlanks(this::lessContrastPalette)
                 .addTexture(modRes("block/oak_glass_3"))
                 .addTexture(modRes("block/oak_glass_3_top"))
                 // ChiselRecipe
@@ -614,7 +614,7 @@ public class BuildersDelightModule extends SimpleModule {
                 .addCustomItem((w, b, p) -> new BDBlockItem(b, p, "glass_4"))
                 .addTag(Tags.Blocks.GLASS_BLOCKStries.BLOCK)
                 .setTabKey(tabBlock)
-                .createPaletteFromOak(this::lessContrastPalette)
+                .createPaletteFromPlanks(this::lessContrastPalette)
                 .addTextureM(modRes("block/oak_glass_4"), EveryCompat.res("block/bdl/oak_glass_4_mask"))
                 // ChiselRecipe
                 .setRenderType(RenderLayer.CUTOUT_MIPPED)
@@ -628,7 +628,7 @@ public class BuildersDelightModule extends SimpleModule {
                 .addCustomItem((w, b, p) -> new BDBlockItem(b, p, "glass_5"))
                 .addTag(Tags.Blocks.GLASS_BLOCKStries.BLOCK)
                 .setTabKey(tabBlock)
-                .createPaletteFromOak(this::lessContrastPalette)
+                .createPaletteFromPlanks(this::lessContrastPalette)
                 .addTextureM(modRes("block/oak_glass_5"), EveryCompat.res("block/bdl/oak_glass_5_mask"))
                 .addTextureM(modRes("block/oak_glass_5_top"), EveryCompat.res("block/bdl/oak_glass_x_s_mask"))
                 // ChiselRecipe
@@ -643,7 +643,7 @@ public class BuildersDelightModule extends SimpleModule {
                 .addCustomItem((w, b, p) -> new BDBlockItem(b, p, "glass_6"))
                 .addTag(Tags.Blocks.GLASS_BLOCKStries.BLOCK)
                 .setTabKey(tabBlock)
-                .createPaletteFromOak(this::lessContrastPalette)
+                .createPaletteFromPlanks(this::lessContrastPalette)
                 .addTextureM(modRes("block/oak_glass_6"), EveryCompat.res("block/bdl/oak_glass_x_s_mask"))
                 .addTextureM(modRes("block/oak_glass_6_top"), EveryCompat.res("block/bdl/oak_glass_x_s_mask"))
                 // ChiselRecipe
@@ -658,7 +658,7 @@ public class BuildersDelightModule extends SimpleModule {
                 .addCustomItem((w, b, p) -> new BDBlockItem(b, p, "glass_7"))
                 .addTag(Tags.Blocks.GLASS_BLOCKStries.BLOCK)
                 .setTabKey(tabBlock)
-                .createPaletteFromOak(this::lessContrastPalette)
+                .createPaletteFromPlanks(this::lessContrastPalette)
                 .addTextureM(modRes("block/oak_glass_7"), EveryCompat.res("block/bdl/oak_glass_x_s_mask"))
                 .addTextureM(modRes("block/oak_glass_7_top"), EveryCompat.res("block/bdl/oak_glass_x_s_mask"))
                 // ChiselRecipe
@@ -673,7 +673,7 @@ public class BuildersDelightModule extends SimpleModule {
                 .addCustomItem((w, b, p) -> new BDBlockItem(b, p, "glass_8"))
                 .addTag(Tags.Blocks.GLASS_BLOCKS, Registries.BLOCK)
                 .setTabKey(tabBlock)
-                .createPaletteFromOak(this::lessContrastPalette)
+                .createPaletteFromPlanks(this::lessContrastPalette)
                 .addTextureM(modRes("block/oak_glass_8"), EveryCompat.res("block/bdl/oak_glass_x_s_mask"))
                 // ChiselRecipe
                 .setRenderType(RenderLayer.TRANSLUCENT)

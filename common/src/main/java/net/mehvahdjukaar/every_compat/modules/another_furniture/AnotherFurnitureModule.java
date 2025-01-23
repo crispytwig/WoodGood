@@ -101,7 +101,7 @@ public class AnotherFurnitureModule extends SimpleModule {
                 .addTexture(modRes("block/shutter/variant_11/oak_middle"))
                 .addTexture(modRes("block/shutter/variant_11/oak_single"))
                 .addTexture(modRes("block/shutter/variant_11/oak_top"))
-//                .createPaletteFromOak(this::shuttersPalette)
+//                .createPaletteFromPlanks(this::shuttersPalette)
                 .build();
 
         this.addEntry(shutters);
@@ -116,7 +116,7 @@ public class AnotherFurnitureModule extends SimpleModule {
                 .setTabKey(tabKey)
                 .setRenderType(RenderLayer.CUTOUT_MIPPED)
                 .useMergedPalette()
-                .createPaletteFromOak(palette -> palette.remove(palette.getDarkest()))
+                .createPaletteFromPlanks(palette -> palette.remove(palette.getDarkest()))
                 .addTexture(modRes("block/table/oak_bottom"))
                 .addTexture(modRes("block/table/oak_sides"))
                 .addTexture(modRes("block/table/oak_supports"))

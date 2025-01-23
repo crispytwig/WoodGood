@@ -179,7 +179,7 @@ public class ChippedModule extends SimpleModule {
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(BlockTags.PLANKS, Registries.BLOCK)
                 .addTag(ItemTags.PLANKS, Registries.ITEM)
-                .createPaletteFromOak(this::dullPalette)
+                .createPaletteFromPlanks(this::dullPalette)
                 .setTabKey(tab)
                 .build();
         this.addEntry(mosaicPlanks);
@@ -195,7 +195,7 @@ public class ChippedModule extends SimpleModule {
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(BlockTags.PLANKS, Registries.BLOCK)
                 .addTag(ItemTags.PLANKS, Registries.ITEM)
-                .createPaletteFromOak(this::panelPalette)
+                .createPaletteFromPlanks(this::panelPalette)
                 .setTabKey(tab)
                 .build();
         this.addEntry(panelPlanks);
@@ -218,7 +218,7 @@ public class ChippedModule extends SimpleModule {
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(BlockTags.PLANKS, Registries.BLOCK)
                 .addTag(ItemTags.PLANKS, Registries.ITEM)
-                .createPaletteFromOak(this::darkerPalette)
+                .createPaletteFromPlanks(this::darkerPalette)
                 .setTabKey(tab)
                 .build();
         this.addEntry(basketWovenPlanks);
@@ -230,7 +230,7 @@ public class ChippedModule extends SimpleModule {
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(BlockTags.PLANKS, Registries.BLOCK)
                 .addTag(ItemTags.PLANKS, Registries.ITEM)
-                .createPaletteFromOak(this::darkerPalette)
+                .createPaletteFromPlanks(this::darkerPalette)
                 .setTabKey(tab)
                 .build();
         this.addEntry(boxedPlanks);
@@ -242,7 +242,7 @@ public class ChippedModule extends SimpleModule {
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(BlockTags.PLANKS, Registries.BLOCK)
                 .addTag(ItemTags.PLANKS, Registries.ITEM)
-                .createPaletteFromOak(this::dullerPalette)
+                .createPaletteFromPlanks(this::dullerPalette)
                 .setTabKey(tab)
                 .build();
         this.addEntry(brickBondPlanks);
@@ -254,7 +254,7 @@ public class ChippedModule extends SimpleModule {
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(BlockTags.PLANKS, Registries.BLOCK)
                 .addTag(ItemTags.PLANKS, Registries.ITEM)
-                .createPaletteFromOak(this::darkerPalette)
+                .createPaletteFromPlanks(this::darkerPalette)
                 .setTabKey(tab)
                 .build();
         this.addEntry(brickyPlanks);
@@ -270,7 +270,7 @@ public class ChippedModule extends SimpleModule {
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(BlockTags.PLANKS, Registries.BLOCK)
                 .addTag(ItemTags.PLANKS, Registries.ITEM)
-                .createPaletteFromOak(this::darkerPalette)
+                .createPaletteFromPlanks(this::darkerPalette)
                 .setTabKey(tab)
                 .build();
         this.addEntry(corneredPlanks);
@@ -286,7 +286,7 @@ public class ChippedModule extends SimpleModule {
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(BlockTags.PLANKS, Registries.BLOCK)
                 .addTag(ItemTags.PLANKS, Registries.ITEM)
-                .createPaletteFromOak(this::dullerPalette)
+                .createPaletteFromPlanks(this::dullerPalette)
                 .setTabKey(tab)
                 .build();
         this.addEntry(cratedPlanks);
@@ -320,7 +320,7 @@ public class ChippedModule extends SimpleModule {
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(BlockTags.PLANKS, Registries.BLOCK)
                 .addTag(ItemTags.PLANKS, Registries.ITEM)
-                .createPaletteFromOak(this::darkerPalette)
+                .createPaletteFromPlanks(this::darkerPalette)
                 .setTabKey(tab)
                 .build();
         this.addEntry(detailedPlanks);
@@ -332,7 +332,7 @@ public class ChippedModule extends SimpleModule {
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(BlockTags.PLANKS, Registries.BLOCK)
                 .addTag(ItemTags.PLANKS, Registries.ITEM)
-                .createPaletteFromOak(this::darkerPalette)
+                .createPaletteFromPlanks(this::darkerPalette)
                 .setTabKey(tab)
                 .build();
         this.addEntry(diagonalPlanks);
@@ -355,7 +355,7 @@ public class ChippedModule extends SimpleModule {
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(BlockTags.PLANKS, Registries.BLOCK)
                 .addTag(ItemTags.PLANKS, Registries.ITEM)
-                .createPaletteFromOak(this::darkestPalette)
+                .createPaletteFromPlanks(this::darkestPalette)
                 .setTabKey(tab)
                 .build();
         this.addEntry(doubleHerringbonePlanks);
@@ -371,7 +371,7 @@ public class ChippedModule extends SimpleModule {
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(BlockTags.PLANKS, Registries.BLOCK)
                 .addTag(ItemTags.PLANKS, Registries.ITEM)
-                .createPaletteFromOak(this::dullerPalette)
+                .createPaletteFromPlanks(this::dullerPalette)
                 .setTabKey(tab)
                 .build();
         this.addEntry(enclosedPlanks);
@@ -383,7 +383,7 @@ public class ChippedModule extends SimpleModule {
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(BlockTags.PLANKS, Registries.BLOCK)
                 .addTag(ItemTags.PLANKS, Registries.ITEM)
-                .createPaletteFromOak(this::dullPalette)
+                .createPaletteFromPlanks(this::dullPalette)
                 .setTabKey(tab)
                 .build();
         this.addEntry(finePlanks);
@@ -395,7 +395,7 @@ public class ChippedModule extends SimpleModule {
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(BlockTags.PLANKS, Registries.BLOCK)
                 .addTag(ItemTags.PLANKS, Registries.ITEM)
-                .createPaletteFromOak(this::dullPalette)
+                .createPaletteFromPlanks(this::dullPalette)
                 .setTabKey(tab)
                 .build();
         this.addEntry(fineVerticalPlanks);
@@ -411,7 +411,7 @@ public class ChippedModule extends SimpleModule {
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(BlockTags.PLANKS, Registries.BLOCK)
                 .addTag(ItemTags.PLANKS, Registries.ITEM)
-                .createPaletteFromOak(this::darkerPalette)
+                .createPaletteFromPlanks(this::darkerPalette)
                 .setTabKey(tab)
                 .build();
         this.addEntry(framedPlanks);
@@ -423,7 +423,7 @@ public class ChippedModule extends SimpleModule {
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(BlockTags.PLANKS, Registries.BLOCK)
                 .addTag(ItemTags.PLANKS, Registries.ITEM)
-                .createPaletteFromOak(this::darkestPalette)
+                .createPaletteFromPlanks(this::darkestPalette)
                 .setTabKey(tab)
                 .build();
         this.addEntry(herringbonePlanks);
@@ -435,7 +435,7 @@ public class ChippedModule extends SimpleModule {
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(BlockTags.PLANKS, Registries.BLOCK)
                 .addTag(ItemTags.PLANKS, Registries.ITEM)
-                .createPaletteFromOak(this::darkerPalette)
+                .createPaletteFromPlanks(this::darkerPalette)
                 .setTabKey(tab)
                 .build();
         this.addEntry(hewnPlanks);
@@ -447,7 +447,7 @@ public class ChippedModule extends SimpleModule {
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(BlockTags.PLANKS, Registries.BLOCK)
                 .addTag(ItemTags.PLANKS, Registries.ITEM)
-                .createPaletteFromOak(this::darkerPalette)
+                .createPaletteFromPlanks(this::darkerPalette)
                 .setTabKey(tab)
                 .build();
         this.addEntry(lacedPlanks);
@@ -459,7 +459,7 @@ public class ChippedModule extends SimpleModule {
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(BlockTags.PLANKS, Registries.BLOCK)
                 .addTag(ItemTags.PLANKS, Registries.ITEM)
-                .createPaletteFromOak(this::darkerPalette)
+                .createPaletteFromPlanks(this::darkerPalette)
                 .setTabKey(tab)
                 .build();
         this.addEntry(nailedPlanks);
@@ -475,7 +475,7 @@ public class ChippedModule extends SimpleModule {
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(BlockTags.PLANKS, Registries.BLOCK)
                 .addTag(ItemTags.PLANKS, Registries.ITEM)
-                .createPaletteFromOak(this::darkPalette)
+                .createPaletteFromPlanks(this::darkPalette)
                 .setTabKey(tab)
                 .build();
         this.addEntry(naturalPlanks);
@@ -491,7 +491,7 @@ public class ChippedModule extends SimpleModule {
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(BlockTags.PLANKS, Registries.BLOCK)
                 .addTag(ItemTags.PLANKS, Registries.ITEM)
-                .createPaletteFromOak(this::dullPalette)
+                .createPaletteFromPlanks(this::dullPalette)
                 .setTabKey(tab)
                 .build();
         this.addEntry(peggedPlanks);
@@ -503,7 +503,7 @@ public class ChippedModule extends SimpleModule {
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(BlockTags.PLANKS, Registries.BLOCK)
                 .addTag(ItemTags.PLANKS, Registries.ITEM)
-                .createPaletteFromOak(this::dullerPalette)
+                .createPaletteFromPlanks(this::dullerPalette)
                 .setTabKey(tab)
                 .build();
         this.addEntry(polishedPlanks);
@@ -526,7 +526,7 @@ public class ChippedModule extends SimpleModule {
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(BlockTags.PLANKS, Registries.BLOCK)
                 .addTag(ItemTags.PLANKS, Registries.ITEM)
-                .createPaletteFromOak(this::darkerPalette)
+                .createPaletteFromPlanks(this::darkerPalette)
                 .setTabKey(tab)
                 .build();
         this.addEntry(shiftedPlanks);
@@ -538,7 +538,7 @@ public class ChippedModule extends SimpleModule {
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(BlockTags.PLANKS, Registries.BLOCK)
                 .addTag(ItemTags.PLANKS, Registries.ITEM)
-                .createPaletteFromOak(this::darkestPalette)
+                .createPaletteFromPlanks(this::darkestPalette)
                 .setTabKey(tab)
                 .build();
         this.addEntry(slantedPlanks);
@@ -550,7 +550,7 @@ public class ChippedModule extends SimpleModule {
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(BlockTags.PLANKS, Registries.BLOCK)
                 .addTag(ItemTags.PLANKS, Registries.ITEM)
-                .createPaletteFromOak(this::darkerPalette)
+                .createPaletteFromPlanks(this::darkerPalette)
                 .setTabKey(tab)
                 .build();
         this.addEntry(smoothPlanks);
@@ -562,7 +562,7 @@ public class ChippedModule extends SimpleModule {
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(BlockTags.PLANKS, Registries.BLOCK)
                 .addTag(ItemTags.PLANKS, Registries.ITEM)
-                .createPaletteFromOak(this::darkerPalette)
+                .createPaletteFromPlanks(this::darkerPalette)
                 .setTabKey(tab)
                 .build();
         this.addEntry(stackedPlanks);
@@ -574,7 +574,7 @@ public class ChippedModule extends SimpleModule {
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(BlockTags.PLANKS, Registries.BLOCK)
                 .addTag(ItemTags.PLANKS, Registries.ITEM)
-                .createPaletteFromOak(this::darkerPalette)
+                .createPaletteFromPlanks(this::darkerPalette)
                 .setTabKey(tab)
                 .build();
         this.addEntry(thinPlanks);
@@ -586,7 +586,7 @@ public class ChippedModule extends SimpleModule {
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(BlockTags.PLANKS, Registries.BLOCK)
                 .addTag(ItemTags.PLANKS, Registries.ITEM)
-                .createPaletteFromOak(this::darkerPalette)
+                .createPaletteFromPlanks(this::darkerPalette)
                 .setTabKey(tab)
                 .build();
         this.addEntry(tiledPlanks);
@@ -598,7 +598,7 @@ public class ChippedModule extends SimpleModule {
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(BlockTags.PLANKS, Registries.BLOCK)
                 .addTag(ItemTags.PLANKS, Registries.ITEM)
-                .createPaletteFromOak(this::darkerPalette)
+                .createPaletteFromPlanks(this::darkerPalette)
                 .setTabKey(tab)
                 .build();
         this.addEntry(versaillesPlanks);
@@ -636,7 +636,7 @@ public class ChippedModule extends SimpleModule {
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(BlockTags.PLANKS, Registries.BLOCK)
                 .addTag(ItemTags.PLANKS, Registries.ITEM)
-                .createPaletteFromOak(this::darkPalette)
+                .createPaletteFromPlanks(this::darkPalette)
                 .setTabKey(tab)
                 .build();
         this.addEntry(whirlwindPlanks);
@@ -648,7 +648,7 @@ public class ChippedModule extends SimpleModule {
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(BlockTags.PLANKS, Registries.BLOCK)
                 .addTag(ItemTags.PLANKS, Registries.ITEM)
-                .createPaletteFromOak(this::darkerPalette)
+                .createPaletteFromPlanks(this::darkerPalette)
                 .setTabKey(tab)
                 .build();
         this.addEntry(wickeredPlanks);
@@ -663,7 +663,7 @@ public class ChippedModule extends SimpleModule {
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(modRes("barrel"), Registries.BLOCK)
                 .addTag(modRes("barrel"), Registries.ITEM)
-                .createPaletteFromOak(this::darkerPalette)
+                .createPaletteFromPlanks(this::darkerPalette)
                 .setTabKey(tab)
                 .build();
         this.addEntry(barrel);
@@ -676,7 +676,7 @@ public class ChippedModule extends SimpleModule {
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(modRes("barrel"), Registries.BLOCK)
                 .addTag(modRes("barrel"), Registries.ITEM)
-                .createPaletteFromOak(this::darkPalette)
+                .createPaletteFromPlanks(this::darkPalette)
                 .setTabKey(tab)
                 .build();
         this.addEntry(crate);
@@ -689,7 +689,7 @@ public class ChippedModule extends SimpleModule {
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(modRes("barrel"), Registries.BLOCK)
                 .addTag(modRes("barrel"), Registries.ITEM)
-                .createPaletteFromOak(this::darkPalette)
+                .createPaletteFromPlanks(this::darkPalette)
                 .setTabKey(tab)
                 .build();
         this.addEntry(reinforcedCrate);
@@ -743,7 +743,7 @@ public class ChippedModule extends SimpleModule {
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(BlockTags.WOODEN_DOORS, Registries.BLOCK)
                 .addTag(ItemTags.WOODEN_DOORS, Registries.ITEM)
-                .createPaletteFromOak(this::darkPalette)
+                .createPaletteFromPlanks(this::darkPalette)
                 .setRenderType(RenderLayer.CUTOUT)
                 .setTabKey(tab)
                 .noDrops()
@@ -762,7 +762,7 @@ public class ChippedModule extends SimpleModule {
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(BlockTags.WOODEN_DOORS, Registries.BLOCK)
                 .addTag(ItemTags.WOODEN_DOORS, Registries.ITEM)
-                .createPaletteFromOak(this::darkPalette)
+                .createPaletteFromPlanks(this::darkPalette)
                 .setRenderType(RenderLayer.CUTOUT)
                 .setTabKey(tab)
                 .noDrops()
@@ -781,7 +781,7 @@ public class ChippedModule extends SimpleModule {
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(BlockTags.WOODEN_DOORS, Registries.BLOCK)
                 .addTag(ItemTags.WOODEN_DOORS, Registries.ITEM)
-                .createPaletteFromOak(this::darkPalette)
+                .createPaletteFromPlanks(this::darkPalette)
                 .setRenderType(RenderLayer.CUTOUT)
                 .setTabKey(tab)
                 .noDrops()
@@ -800,7 +800,7 @@ public class ChippedModule extends SimpleModule {
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(BlockTags.WOODEN_DOORS, Registries.BLOCK)
                 .addTag(ItemTags.WOODEN_DOORS, Registries.ITEM)
-                .createPaletteFromOak(this::darkPalette)
+                .createPaletteFromPlanks(this::darkPalette)
                 .setRenderType(RenderLayer.CUTOUT)
                 .setTabKey(tab)
                 .noDrops()
@@ -837,7 +837,7 @@ public class ChippedModule extends SimpleModule {
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(BlockTags.WOODEN_DOORS, Registries.BLOCK)
                 .addTag(ItemTags.WOODEN_DOORS, Registries.ITEM)
-                .createPaletteFromOak(this::darkPalette)
+                .createPaletteFromPlanks(this::darkPalette)
                 .setRenderType(RenderLayer.CUTOUT)
                 .setTabKey(tab)
                 .noDrops()
@@ -874,7 +874,7 @@ public class ChippedModule extends SimpleModule {
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(BlockTags.WOODEN_DOORS, Registries.BLOCK)
                 .addTag(ItemTags.WOODEN_DOORS, Registries.ITEM)
-                .createPaletteFromOak(this::darkPalette)
+                .createPaletteFromPlanks(this::darkPalette)
                 .setRenderType(RenderLayer.CUTOUT)
                 .setTabKey(tab)
                 .noDrops()
@@ -893,7 +893,7 @@ public class ChippedModule extends SimpleModule {
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(BlockTags.WOODEN_DOORS, Registries.BLOCK)
                 .addTag(ItemTags.WOODEN_DOORS, Registries.ITEM)
-                .createPaletteFromOak(this::darkPalette)
+                .createPaletteFromPlanks(this::darkPalette)
                 .setRenderType(RenderLayer.CUTOUT)
                 .setTabKey(tab)
                 .noDrops()
@@ -912,7 +912,7 @@ public class ChippedModule extends SimpleModule {
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(BlockTags.WOODEN_DOORS, Registries.BLOCK)
                 .addTag(ItemTags.WOODEN_DOORS, Registries.ITEM)
-                .createPaletteFromOak(this::darkPalette)
+                .createPaletteFromPlanks(this::darkPalette)
                 .setRenderType(RenderLayer.CUTOUT)
                 .setTabKey(tab)
                 .noDrops()
@@ -931,7 +931,7 @@ public class ChippedModule extends SimpleModule {
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(BlockTags.WOODEN_DOORS, Registries.BLOCK)
                 .addTag(ItemTags.WOODEN_DOORS, Registries.ITEM)
-                .createPaletteFromOak(this::darkPalette)
+                .createPaletteFromPlanks(this::darkPalette)
                 .setRenderType(RenderLayer.CUTOUT)
                 .setTabKey(tab)
                 .noDrops()
@@ -950,7 +950,7 @@ public class ChippedModule extends SimpleModule {
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(BlockTags.WOODEN_DOORS, Registries.BLOCK)
                 .addTag(ItemTags.WOODEN_DOORS, Registries.ITEM)
-                .createPaletteFromOak(this::darkPalette)
+                .createPaletteFromPlanks(this::darkPalette)
                 .setRenderType(RenderLayer.CUTOUT)
                 .setTabKey(tab)
                 .noDrops()
@@ -969,7 +969,7 @@ public class ChippedModule extends SimpleModule {
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(BlockTags.WOODEN_DOORS, Registries.BLOCK)
                 .addTag(ItemTags.WOODEN_DOORS, Registries.ITEM)
-                .createPaletteFromOak(this::darkPalette)
+                .createPaletteFromPlanks(this::darkPalette)
                 .setRenderType(RenderLayer.CUTOUT)
                 .setTabKey(tab)
                 .noDrops()
@@ -988,7 +988,7 @@ public class ChippedModule extends SimpleModule {
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(BlockTags.WOODEN_DOORS, Registries.BLOCK)
                 .addTag(ItemTags.WOODEN_DOORS, Registries.ITEM)
-                .createPaletteFromOak(this::darkPalette)
+                .createPaletteFromPlanks(this::darkPalette)
                 .setRenderType(RenderLayer.CUTOUT)
                 .setTabKey(tab)
                 .noDrops()
@@ -1007,7 +1007,7 @@ public class ChippedModule extends SimpleModule {
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(BlockTags.WOODEN_DOORS, Registries.BLOCK)
                 .addTag(ItemTags.WOODEN_DOORS, Registries.ITEM)
-                .createPaletteFromOak(this::darkerPalette)
+                .createPaletteFromPlanks(this::darkerPalette)
                 .setRenderType(RenderLayer.CUTOUT)
                 .setTabKey(tab)
                 .noDrops()
@@ -1026,7 +1026,7 @@ public class ChippedModule extends SimpleModule {
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(BlockTags.WOODEN_DOORS, Registries.BLOCK)
                 .addTag(ItemTags.WOODEN_DOORS, Registries.ITEM)
-                .createPaletteFromOak(this::darkPalette)
+                .createPaletteFromPlanks(this::darkPalette)
                 .setRenderType(RenderLayer.CUTOUT)
                 .setTabKey(tab)
                 .noDrops()
@@ -1045,7 +1045,7 @@ public class ChippedModule extends SimpleModule {
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(BlockTags.WOODEN_DOORS, Registries.BLOCK)
                 .addTag(ItemTags.WOODEN_DOORS, Registries.ITEM)
-                .createPaletteFromOak(this::darkPalette)
+                .createPaletteFromPlanks(this::darkPalette)
                 .setRenderType(RenderLayer.CUTOUT)
                 .setTabKey(tab)
                 .noDrops()
@@ -1064,7 +1064,7 @@ public class ChippedModule extends SimpleModule {
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(BlockTags.WOODEN_DOORS, Registries.BLOCK)
                 .addTag(ItemTags.WOODEN_DOORS, Registries.ITEM)
-                .createPaletteFromOak(this::darkPalette)
+                .createPaletteFromPlanks(this::darkPalette)
                 .setRenderType(RenderLayer.CUTOUT)
                 .setTabKey(tab)
                 .noDrops()
@@ -1184,7 +1184,7 @@ public class ChippedModule extends SimpleModule {
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(BlockTags.WOODEN_TRAPDOORS, Registries.BLOCK)
                 .addTag(ItemTags.WOODEN_TRAPDOORS, Registries.ITEM)
-                .createPaletteFromOak(this::darkPalette)
+                .createPaletteFromPlanks(this::darkPalette)
                 .setRenderType(RenderLayer.CUTOUT)
                 .setTabKey(tab)
                 .build();
@@ -1211,7 +1211,7 @@ public class ChippedModule extends SimpleModule {
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(BlockTags.WOODEN_TRAPDOORS, Registries.BLOCK)
                 .addTag(ItemTags.WOODEN_TRAPDOORS, Registries.ITEM)
-                .createPaletteFromOak(this::darkPalette)
+                .createPaletteFromPlanks(this::darkPalette)
                 .setRenderType(RenderLayer.CUTOUT)
                 .setTabKey(tab)
                 .build();
