@@ -46,7 +46,7 @@ dependencies {
 
     if (usesMavenLocalML) {
         //!! ~/forge/mods LOCAL
-        modImplementation("net.mehvahdjukaar:moonlight:${moonlight_testVersion}-fabric")
+        modImplementation("net.mehvahdjukaar:moonlight-fabric:${moonlight_testVersion}")
     } else {
         //!! Repository LOCAL
 //        modImplementation(files(path  + "\\Moonlight\\fabric\\build\\libs\\moonlight-${moonlight_testVersion}-fabric.jar"))
