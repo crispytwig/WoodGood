@@ -1,1 +1,7 @@
-uff.. fixed yet another server only issue that was happening on some modules
+### UPDATED:
+- N/A
+
+#### LEGENDS:
+- (COMMON): NEOFORGE & FABRIC
+- (FB): FABRIC
+- (NF): NEOFORGE
