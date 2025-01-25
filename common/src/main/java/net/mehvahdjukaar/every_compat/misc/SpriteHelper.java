@@ -54,14 +54,6 @@ public class SpriteHelper {
             // Leaves
         addOptional("culturaldelights:fruiting_avocado_leaves", "_leaves", "culturaldelights:block/fruiting_avocado_leaves_0");
 
-        // Fruitful Fun
-            // Leaves
-        addOptional("fruitfulfun:apple_leaves", "_leaves", "minecraft:block/oak_leaves");
-
-        // Vinery
-            // Leaves
-        addOptional("vinery:apple_leaves", "_leaves", "vinery:block/apple_leaves_0");
-
         // Meadow
             // Leaves
         addOptional("meadow:pine_leaves", "_leaves", "meadow:block/pine_leaves_1");
