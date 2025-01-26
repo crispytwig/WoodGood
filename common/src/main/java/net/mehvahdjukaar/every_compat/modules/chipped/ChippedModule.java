@@ -690,6 +690,7 @@ public class ChippedModule extends SimpleModule {
                 .addTag(modRes("barrel"), Registries.BLOCK)
                 .addTag(modRes("barrel"), Registries.ITEM)
                 .createPaletteFromPlanks(this::darkPalette)
+                .addTile(() -> BlockEntityType.BARREL)
                 .setTabKey(tab)
                 .build();
         this.addEntry(reinforcedCrate);
