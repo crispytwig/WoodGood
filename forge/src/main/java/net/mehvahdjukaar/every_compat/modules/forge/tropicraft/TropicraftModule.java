@@ -34,19 +34,12 @@ public class TropicraftModule extends SimpleModule {
                         getModBlock("mangrove_boardwalk"), () -> WoodTypeRegistry.getValue(new ResourceLocation("mangrove")),
                         w -> new BoardwalkBlock(BlockBehaviour.Properties.of().noOcclusion())
                 )
-                //TEXTURE: using planks
+                //TEXTURE: planks
                 //REASON: tropicraft has its own planks texture for mangrove, Below is use mod's planks texture
-                .addModelTransform(m -> m.addModifier((s, resLoc, woodType) -> {
-                    if (woodType.getNamespace().equals("tfc"))
-                        return s.replace("\"tropicraft:block/mangrove_planks\"",
-                                "\"tfc:block/wood/planks/" + woodType.getTypeName() + "\"");
-
-                    return s.replace("\"tropicraft:block/mangrove_planks\"",
-                            "\"" + woodType.getNamespace() + ":block/" + woodType.getTypeName() + "_planks\"");
-                        }
-                ))
+                .addModelTransform(m -> m.replaceWithTextureFromChild("tropicraft:block/mangrove_planks",
+                        "planks"))
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
-                .setTab(getModTab("tropicraft"))
+                .setTabKey(modRes("tropicraft"))
                 .build();
         this.addEntry(boardwalks);
 
@@ -55,8 +48,6 @@ public class TropicraftModule extends SimpleModule {
     @Override
     // RECIPES
     public void addDynamicServerResources(ServerDynamicResourcesHandler handler, ResourceManager manager) {
-        super.addDynamicServerResources(handler, manager);
-
         ResourceLocation recipePath = modRes("mangrove_boardwalk");
 
         boardwalks.blocks.forEach((wood, block) -> {
@@ -78,7 +69,7 @@ public class TropicraftModule extends SimpleModule {
                 handler.dynamicPack.addJson(EveryCompat.res(newPath), recipe, ResType.RECIPES);
 
             } catch (IOException e) {
-                handler.getLogger().error("Failed to generate the boardwalk recipe");
+                handler.getLogger().error("Failed to generate the boardwalk recipe: ", e);
             }
         });
     }
