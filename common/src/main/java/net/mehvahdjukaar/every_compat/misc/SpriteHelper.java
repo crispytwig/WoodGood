@@ -44,6 +44,83 @@ public class SpriteHelper {
         addOptional("minecraft:mushroom_stem", "_side", "minecraft:block/mushroom_stem");
         addOptional("minecraft:mushroom_stem", "_top", "minecraft:block/mushroom_stem");
 
+        // Cultural Delights
+            // Leaves
+        addOptional("culturaldelights:fruiting_avocado_leaves", "_leaves", "culturaldelights:block/fruiting_avocado_leaves_0");
+
+        // Meadow
+            // Leaves
+        addOptional("meadow:pine_leaves", "_leaves", "meadow:block/pine_leaves_1");
+
+        // Autumnity
+            // Leaves
+        addOptional("autumnity:red_maple_leaves", "_leaves", "autumnity:block/maple_leaves");
+        addOptional("autumnity:orange_maple_leaves", "_leaves", "autumnity:block/maple_leaves");
+        addOptional("autumnity:yellow_maple_leaves", "_leaves", "autumnity:block/maple_leaves");
+
+        // Blue Skies
+            // Leaves
+        addOptional("blue_skies:comet_leaves", "_leaves", "blue_skies:block/comet_leaves_grown");
+
+        // Aether Redux
+            // Leaves
+        addOptional("aether_redux:azure_fieldsproot_leaves", "_leaves", "aether_redux:block/natural/fieldsproot_leaves");
+
+        // Integrated Dynamics
+            // Leaves
+        addOptional("integrateddynamics:menril_leaves", "_leaves", "integrateddynamics:block/menril_leaves_fancy");
+
+        // Malum
+            // Leaves
+        addOptional("malum:budding_soulwood_leaves", "_leaves", "malum:block/soulwood_leaves");
+        addOptional("malum:azure_runewood_leaves", "_leaves", "malum:block/runewood_leaves");
+
+        // Oh The Biomes We've Gone
+            // Leaves
+        addOptional("biomeswevegone:aspen_leaves", "_leaves", "biomeswevegone:block/aspen/leaves");
+        addOptional("biomeswevegone:baobab_leaves", "_leaves", "biomeswevegone:block/baobab/leaves");
+        addOptional("biomeswevegone:blue_enchanted_leaves", "_leaves", "biomeswevegone:block/blue_enchanted/leaves");
+        addOptional("biomeswevegone:cika_leaves", "_leaves", "biomeswevegone:block/cika/leaves");
+        addOptional("biomeswevegone:cypress_leaves", "_leaves", "biomeswevegone:block/cypress/leaves");
+        addOptional("biomeswevegone:ebony_leaves", "_leaves", "biomeswevegone:block/ebony/leaves");
+        addOptional("biomeswevegone:fir_leaves", "_leaves", "biomeswevegone:block/fir/leaves");
+        addOptional("biomeswevegone:green_enchanted_leaves", "_leaves", "biomeswevegone:block/green_enchanted/leaves");
+        addOptional("biomeswevegone:holly_leaves", "_leaves", "biomeswevegone:block/holly/leaves");
+        addOptional("biomeswevegone:ironwood_leaves", "_leaves", "biomeswevegone:block/ironwood/leaves");
+        addOptional("biomeswevegone:jacaranda_leaves", "_leaves", "biomeswevegone:block/jacaranda/leaves");
+        addOptional("biomeswevegone:mahongany_leaves", "_leaves", "biomeswevegone:block/mahongany/leaves");
+        addOptional("biomeswevegone:maple_leaves", "_leaves", "biomeswevegone:block/maple/leaves");
+        addOptional("biomeswevegone:palm_leaves", "_leaves", "biomeswevegone:block/palm/leaves");
+        addOptional("biomeswevegone:palo_verde_leaves", "_leaves", "biomeswevegone:block/palo_verde/leaves");
+        addOptional("biomeswevegone:pine_leaves", "_leaves", "biomeswevegone:block/pine/leaves");
+        addOptional("biomeswevegone:rainbow_eucalyptus_leaves", "_leaves", "biomeswevegone:block/rainbow_eucalyptus/leaves");
+        addOptional("biomeswevegone:redwood_leaves", "_leaves", "biomeswevegone:block/redwood/leaves");
+        addOptional("biomeswevegone:skyris_leaves", "_leaves", "biomeswevegone:block/skyris/leaves");
+        addOptional("biomeswevegone:white_mangrove_leaves", "_leaves", "biomeswevegone:block/white_mangrove/leaves");
+        addOptional("biomeswevegone:willow_leaves", "_leaves", "biomeswevegone:block/willow/leaves");
+        addOptional("biomeswevegone:witch_hazel_leaves", "_leaves", "biomeswevegone:block/witch_hazel/leaves");
+        addOptional("biomeswevegone:zelkova_leaves", "_leaves", "biomeswevegone:block/zelkova/leaves");
+
+        // Eternal Tales
+        addOptional("eternal_tales:khagris_log", "_side", "eternal_tales:block/khagris_log_new");
+        addOptional("eternal_tales:khagris_log", "_top", "eternal_tales:block/edemlogtop");
+        addOptional("eternal_tales:stripped_khagris_log", "_side", "eternal_tales:block/khagris_log_stripped_new");
+        addOptional("eternal_tales:stripped_khagris_log", "_top", "eternal_tales:block/khagris_log_stripped_top_new");
+        addOptional("eternal_tales:purgatorium_log", "_side", "eternal_tales:block/purgatorium_log_new");
+        addOptional("eternal_tales:purgatorium_log", "_top", "eternal_tales:block/purglogtop");
+        addOptional("eternal_tales:purgatorium_stripped_log", "_side", "eternal_tales:block/purgatorium_stripped_log_new"); //TODO: Add to Moonlight
+        addOptional("eternal_tales:purgatorium_stripped_log", "_top", "eternal_tales:block/purgatorium_log_stripped_top_new");
+        addOptional("eternal_tales:petrified_log", "_side", "eternal_tales:block/petrifiedlogside");
+        addOptional("eternal_tales:petrified_log", "_top", "eternal_tales:block/petrifiedlogtop");
+        addOptional("eternal_tales:stripped_petrified_log", "_side", "eternal_tales:block/petrifiedlogsidestripped");
+        addOptional("eternal_tales:stripped_petrified_log", "_top", "eternal_tales:block/petrifiedlogstrippedtop");
+        addOptional("eternal_tales:mandarin_orange_log", "_side", "eternal_tales:block/mandarinlog");
+        addOptional("eternal_tales:mandarin_orange_log", "_top", "eternal_tales:block/mandarinlogtop");
+        addOptional("eternal_tales:comets_log", "_side", "eternal_tales:block/comets_log_new");
+        addOptional("eternal_tales:comets_log", "_top", "eternal_tales:block/cometswoodtop");
+        addOptional("eternal_tales:striped_comets_log", "_side", "eternal_tales:block/comets_log_stripped_new"); //TODO: add to Moonlight
+        addOptional("eternal_tales:striped_comets_log", "_top", "eternal_tales:block/comets_log_stripped_top_new");
+
         // Biomes O' Plenty
             // Leaves
         addOptional("biomesoplenty:null_leaves", "_leaves", "biomesoplenty:block/null_overlay");
