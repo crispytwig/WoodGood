@@ -38,6 +38,9 @@ public class HardcodedBlockType {
 
 
             /// ========== INCLUDE ========== \\\
+        // Refurbished-Furniture's oak_table wasn't generated due to Dawn-Of-Time's waxed_oak_table
+        if (isWoodRegistryOf("", "rfm", "", "dawnoftimebuilder:waxed_oak", "")) return false;
+
         // Minecraft has "mangrove" that caused the generation of blocks with The-Twilight-Forest's mangrove to be skipped.
         if (isWoodRegistryOf("", "", "", "twilightforest:mangrove", "")) return false;
 
