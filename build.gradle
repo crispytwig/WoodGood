@@ -251,6 +251,8 @@ allprojects {
             allowInsecureProtocol = true
         }
 
+        maven { url = "https://maven.teamresourceful.com/repository/maven-public/" } // Chipped
+
         maven {
             url "https://maven.firstdarkdev.xyz/snapshots"
         }
