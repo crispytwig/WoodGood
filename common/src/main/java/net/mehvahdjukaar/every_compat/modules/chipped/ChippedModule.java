@@ -9,6 +9,7 @@ import net.mehvahdjukaar.moonlight.api.resources.ResType;
 import net.mehvahdjukaar.moonlight.api.resources.SimpleTagBuilder;
 import net.mehvahdjukaar.moonlight.api.resources.pack.DynamicDataPack;
 import net.mehvahdjukaar.moonlight.api.resources.textures.Palette;
+import net.mehvahdjukaar.moonlight.api.resources.textures.PaletteColor;
 import net.mehvahdjukaar.moonlight.api.set.wood.WoodType;
 import net.mehvahdjukaar.moonlight.api.set.wood.WoodTypeRegistry;
 import net.mehvahdjukaar.moonlight.api.util.Utils;
@@ -354,7 +355,7 @@ public class ChippedModule extends SimpleModule {
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(BlockTags.PLANKS, Registries.BLOCK)
                 .addTag(ItemTags.PLANKS, Registries.ITEM)
-                .createPaletteFromPlanks(this::darkestPalette)
+                .createPaletteFromPlanks(this::matchSizeAndModifyLuminance)
                 .setTabKey(tab)
                 .build();
         this.addEntry(doubleHerringbonePlanks);
@@ -422,7 +423,7 @@ public class ChippedModule extends SimpleModule {
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(BlockTags.PLANKS, Registries.BLOCK)
                 .addTag(ItemTags.PLANKS, Registries.ITEM)
-                .createPaletteFromPlanks(this::darkestPalette)
+                .createPaletteFromPlanks(this::matchSizeAndModifyLuminance)
                 .setTabKey(tab)
                 .build();
         this.addEntry(herringbonePlanks);
@@ -502,7 +503,14 @@ public class ChippedModule extends SimpleModule {
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(BlockTags.PLANKS, Registries.BLOCK)
                 .addTag(ItemTags.PLANKS, Registries.ITEM)
-                .createPaletteFromPlanks(this::dullerPalette)
+                .createPaletteFromPlanks(p -> {
+                    p.reduceDown();
+                    PaletteColor darker = p.getDarkest(); // 2nd darkest after 1st darkest
+                    p.reduceDown();
+                    p.matchLuminanceStep(0.030F);
+                    p.matchSize(11);
+                    p.add(darker);
+                })
                 .setTabKey(tab)
                 .build();
         this.addEntry(polishedPlanks);
@@ -537,7 +545,7 @@ public class ChippedModule extends SimpleModule {
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(BlockTags.PLANKS, Registries.BLOCK)
                 .addTag(ItemTags.PLANKS, Registries.ITEM)
-                .createPaletteFromPlanks(this::darkestPalette)
+                .createPaletteFromPlanks(this::matchSizeAndModifyLuminance)
                 .setTabKey(tab)
                 .build();
         this.addEntry(slantedPlanks);
@@ -702,9 +710,7 @@ public class ChippedModule extends SimpleModule {
                 )
                 .addTextureM(modRes("block/oak_door/barred_oak_door_bottom"), EveryCompat.res("block/ch/doors/barred_oak_door_bottom_m"))
                 .addTextureM(modRes("block/oak_door/barred_oak_door_top"), EveryCompat.res("block/ch/doors/barred_oak_door_top_m"))
-                .addTextureM(EveryCompat.res("item/ch/doors/barred_oak_door"), EveryCompat.res("item/ch/doors/barred_oak_door_m"))
-                .addModelTransform(m -> m.replaceString("chipped:item/oak_door", "chipped:item/ch/doors")
-                        .replaceGenericType("oak", "item/ch/doors"))
+                .addTextureM(modRes("item/oak_door/barred_oak_door"), EveryCompat.res("item/ch/doors/barred_oak_door_m"))
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(BlockTags.WOODEN_DOORS, Registries.BLOCK)
                 .addTag(ItemTags.WOODEN_DOORS, Registries.ITEM)
@@ -720,9 +726,7 @@ public class ChippedModule extends SimpleModule {
                 )
                 .addTextureM(modRes("block/oak_door/beach_oak_door_bottom"), EveryCompat.res("block/ch/doors/beach_oak_door_bottom_m"))
                 .addTextureM(modRes("block/oak_door/beach_oak_door_top"), EveryCompat.res("block/ch/doors/beach_oak_door_top_m"))
-                .addTextureM(EveryCompat.res("item/ch/doors/beach_oak_door"), EveryCompat.res("item/ch/doors/beach_oak_door_m"))
-                .addModelTransform(m -> m.replaceString("chipped:item/oak_door", "chipped:item/ch/doors")
-                        .replaceGenericType("oak", "item/ch/doors"))
+                .addTextureM(modRes("item/oak_door/beach_oak_door"), EveryCompat.res("item/ch/doors/beach_oak_door_m"))
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(BlockTags.WOODEN_DOORS, Registries.BLOCK)
                 .addTag(ItemTags.WOODEN_DOORS, Registries.ITEM)
@@ -738,9 +742,7 @@ public class ChippedModule extends SimpleModule {
                 )
                 .addTextureM(modRes("block/oak_door/boarded_oak_door_bottom"), EveryCompat.res("block/ch/doors/boarded_oak_door_bottom_m"))
                 .addTextureM(modRes("block/oak_door/boarded_oak_door_top"), EveryCompat.res("block/ch/doors/boarded_oak_door_top_m"))
-                .addTextureM(EveryCompat.res("item/ch/doors/boarded_oak_door"), EveryCompat.res("item/ch/doors/boarded_oak_door_m"))
-                .addModelTransform(m -> m.replaceString("chipped:item/oak_door", "chipped:item/ch/doors")
-                        .replaceGenericType("oak", "item/ch/doors"))
+                .addTextureM(modRes("item/oak_door/boarded_oak_door"), EveryCompat.res("item/ch/doors/boarded_oak_door_m"))
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(BlockTags.WOODEN_DOORS, Registries.BLOCK)
                 .addTag(ItemTags.WOODEN_DOORS, Registries.ITEM)
@@ -757,9 +759,7 @@ public class ChippedModule extends SimpleModule {
                 )
                 .addTextureM(modRes("block/oak_door/dual_paneled_oak_door_bottom"), EveryCompat.res("block/ch/doors/dual_paneled_oak_door_bottom_m"))
                 .addTextureM(modRes("block/oak_door/dual_paneled_oak_door_top"), EveryCompat.res("block/ch/doors/dual_paneled_oak_door_top_m"))
-                .addTextureM(EveryCompat.res("item/ch/doors/dual_paneled_oak_door"), EveryCompat.res("item/ch/doors/dual_paneled_oak_door_m"))
-                .addModelTransform(m -> m.replaceString("chipped:item/oak_door", "chipped:item/ch/doors")
-                        .replaceGenericType("oak", "item/ch/doors"))
+                .addTextureM(modRes("item/oak_door/dual_paneled_oak_door"), EveryCompat.res("item/ch/doors/dual_paneled_oak_door_m"))
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(BlockTags.WOODEN_DOORS, Registries.BLOCK)
                 .addTag(ItemTags.WOODEN_DOORS, Registries.ITEM)
@@ -776,9 +776,7 @@ public class ChippedModule extends SimpleModule {
                 )
                 .addTextureM(modRes("block/oak_door/fortified_oak_door_bottom"), EveryCompat.res("block/ch/doors/fortified_oak_door_bottom_m"))
                 .addTextureM(modRes("block/oak_door/fortified_oak_door_top"), EveryCompat.res("block/ch/doors/fortified_oak_door_top_m"))
-                .addTextureM(EveryCompat.res("item/ch/doors/fortified_oak_door"), EveryCompat.res("item/ch/doors/fortified_oak_door_m"))
-                .addModelTransform(m -> m.replaceString("chipped:item/oak_door", "chipped:item/ch/doors")
-                        .replaceGenericType("oak", "item/ch/doors"))
+                .addTextureM(modRes("item/oak_door/fortified_oak_door"), EveryCompat.res("item/ch/doors/fortified_oak_door_m"))
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(BlockTags.WOODEN_DOORS, Registries.BLOCK)
                 .addTag(ItemTags.WOODEN_DOORS, Registries.ITEM)
@@ -795,9 +793,7 @@ public class ChippedModule extends SimpleModule {
                 )
                 .addTextureM(modRes("block/oak_door/gated_oak_door_bottom"), EveryCompat.res("block/ch/doors/gated_oak_door_bottom_m"))
                 .addTextureM(modRes("block/oak_door/gated_oak_door_top"), EveryCompat.res("block/ch/doors/gated_oak_door_top_m"))
-                .addTextureM(EveryCompat.res("item/ch/doors/gated_oak_door"), EveryCompat.res("item/ch/doors/gated_oak_door_m"))
-                .addModelTransform(m -> m.replaceString("chipped:item/oak_door", "chipped:item/ch/doors")
-                        .replaceGenericType("oak", "item/ch/doors"))
+                .addTextureM(modRes("item/oak_door/gated_oak_door"), EveryCompat.res("item/ch/doors/gated_oak_door_m"))
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(BlockTags.WOODEN_DOORS, Registries.BLOCK)
                 .addTag(ItemTags.WOODEN_DOORS, Registries.ITEM)
@@ -814,9 +810,7 @@ public class ChippedModule extends SimpleModule {
                 )
                 .addTextureM(modRes("block/oak_door/glass_oak_door_bottom"), EveryCompat.res("block/ch/doors/glass_oak_door_bottom_m"))
                 .addTextureM(modRes("block/oak_door/glass_oak_door_top"), EveryCompat.res("block/ch/doors/glass_oak_door_top_m"))
-                .addTextureM(EveryCompat.res("item/ch/doors/glass_oak_door"), EveryCompat.res("item/ch/doors/glass_oak_door_m"))
-                .addModelTransform(m -> m.replaceString("chipped:item/oak_door", "chipped:item/ch/doors")
-                        .replaceGenericType("oak", "item/ch/doors"))
+                .addTextureM(modRes("item/oak_door/glass_oak_door"), EveryCompat.res("item/ch/doors/glass_oak_door_m"))
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(BlockTags.WOODEN_DOORS, Registries.BLOCK)
                 .addTag(ItemTags.WOODEN_DOORS, Registries.ITEM)
@@ -832,9 +826,7 @@ public class ChippedModule extends SimpleModule {
                 )
                 .addTextureM(modRes("block/oak_door/heavy_oak_door_bottom"), EveryCompat.res("block/ch/doors/heavy_oak_door_bottom_m"))
                 .addTextureM(modRes("block/oak_door/heavy_oak_door_top"), EveryCompat.res("block/ch/doors/heavy_oak_door_top_m"))
-                .addTextureM(EveryCompat.res("item/ch/doors/heavy_oak_door"), EveryCompat.res("item/ch/doors/heavy_oak_door_m"))
-                .addModelTransform(m -> m.replaceString("chipped:item/oak_door", "chipped:item/ch/doors")
-                        .replaceGenericType("oak", "item/ch/doors"))
+                .addTextureM(modRes("item/oak_door/heavy_oak_door"), EveryCompat.res("item/ch/doors/heavy_oak_door_m"))
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(BlockTags.WOODEN_DOORS, Registries.BLOCK)
                 .addTag(ItemTags.WOODEN_DOORS, Registries.ITEM)
@@ -851,9 +843,7 @@ public class ChippedModule extends SimpleModule {
                 )
                 .addTextureM(modRes("block/oak_door/overgrown_oak_door_bottom"), EveryCompat.res("block/ch/doors/overgrown_oak_door_bottom_m"))
                 .addTextureM(modRes("block/oak_door/overgrown_oak_door_top"), EveryCompat.res("block/ch/doors/overgrown_oak_door_top_m"))
-                .addTextureM(EveryCompat.res("item/ch/doors/overgrown_oak_door"), EveryCompat.res("item/ch/doors/overgrown_oak_door_m"))
-                .addModelTransform(m -> m.replaceString("chipped:item/oak_door", "chipped:item/ch/doors")
-                        .replaceGenericType("oak", "item/ch/doors"))
+                .addTextureM(modRes("item/oak_door/overgrown_oak_door"), EveryCompat.res("item/ch/doors/overgrown_oak_door_m"))
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(BlockTags.WOODEN_DOORS, Registries.BLOCK)
                 .addTag(ItemTags.WOODEN_DOORS, Registries.ITEM)
@@ -869,9 +859,7 @@ public class ChippedModule extends SimpleModule {
                 )
                 .addTextureM(modRes("block/oak_door/paneled_oak_door_bottom"), EveryCompat.res("block/ch/doors/paneled_oak_door_bottom_m"))
                 .addTextureM(modRes("block/oak_door/paneled_oak_door_top"), EveryCompat.res("block/ch/doors/paneled_oak_door_top_m"))
-                .addTextureM(EveryCompat.res("item/ch/doors/paneled_oak_door"), EveryCompat.res("item/ch/doors/paneled_oak_door_m"))
-                .addModelTransform(m -> m.replaceString("chipped:item/oak_door", "chipped:item/ch/doors")
-                        .replaceGenericType("oak", "item/ch/doors"))
+                .addTextureM(modRes("item/oak_door/paneled_oak_door"), EveryCompat.res("item/ch/doors/paneled_oak_door_m"))
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(BlockTags.WOODEN_DOORS, Registries.BLOCK)
                 .addTag(ItemTags.WOODEN_DOORS, Registries.ITEM)
@@ -888,9 +876,7 @@ public class ChippedModule extends SimpleModule {
                 )
                 .addTextureM(modRes("block/oak_door/paper_oak_door_bottom"), EveryCompat.res("block/ch/doors/paper_oak_door_bottom_m"))
                 .addTextureM(modRes("block/oak_door/paper_oak_door_top"), EveryCompat.res("block/ch/doors/paper_oak_door_top_m"))
-                .addTextureM(EveryCompat.res("item/ch/doors/paper_oak_door"), EveryCompat.res("item/ch/doors/paper_oak_door_m"))
-                .addModelTransform(m -> m.replaceString("chipped:item/oak_door", "chipped:item/ch/doors")
-                        .replaceGenericType("oak", "item/ch/doors"))
+                .addTextureM(modRes("item/oak_door/paper_oak_door"), EveryCompat.res("item/ch/doors/paper_oak_door_m"))
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(BlockTags.WOODEN_DOORS, Registries.BLOCK)
                 .addTag(ItemTags.WOODEN_DOORS, Registries.ITEM)
@@ -907,9 +893,7 @@ public class ChippedModule extends SimpleModule {
                 )
                 .addTextureM(modRes("block/oak_door/pressed_oak_door_bottom"), EveryCompat.res("block/ch/doors/pressed_oak_door_bottom_m"))
                 .addTextureM(modRes("block/oak_door/pressed_oak_door_top"), EveryCompat.res("block/ch/doors/pressed_oak_door_top_m"))
-                .addTextureM(EveryCompat.res("item/ch/doors/pressed_oak_door"), EveryCompat.res("item/ch/doors/pressed_oak_door_m"))
-                .addModelTransform(m -> m.replaceString("chipped:item/oak_door", "chipped:item/ch/doors")
-                        .replaceGenericType("oak", "item/ch/doors"))
+                .addTextureM(modRes("item/oak_door/pressed_oak_door"), EveryCompat.res("item/ch/doors/pressed_oak_door_m"))
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(BlockTags.WOODEN_DOORS, Registries.BLOCK)
                 .addTag(ItemTags.WOODEN_DOORS, Registries.ITEM)
@@ -926,9 +910,7 @@ public class ChippedModule extends SimpleModule {
                 )
                 .addTextureM(modRes("block/oak_door/screen_oak_door_bottom"), EveryCompat.res("block/ch/doors/screen_oak_door_bottom_m"))
                 .addTextureM(modRes("block/oak_door/screen_oak_door_top"), EveryCompat.res("block/ch/doors/screen_oak_door_top_m"))
-                .addTextureM(EveryCompat.res("item/ch/doors/screen_oak_door"), EveryCompat.res("item/ch/doors/screen_oak_door_m"))
-                .addModelTransform(m -> m.replaceString("chipped:item/oak_door", "chipped:item/ch/doors")
-                        .replaceGenericType("oak", "item/ch/doors"))
+                .addTextureM(modRes("item/oak_door/screen_oak_door"), EveryCompat.res("item/ch/doors/screen_oak_door_m"))
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(BlockTags.WOODEN_DOORS, Registries.BLOCK)
                 .addTag(ItemTags.WOODEN_DOORS, Registries.ITEM)
@@ -945,9 +927,7 @@ public class ChippedModule extends SimpleModule {
                 )
                 .addTextureM(modRes("block/oak_door/secret_oak_door_bottom"), EveryCompat.res("block/ch/doors/secret_oak_door_bottom_m"))
                 .addTextureM(modRes("block/oak_door/secret_oak_door_top"), EveryCompat.res("block/ch/doors/secret_oak_door_top_m"))
-                .addTextureM(EveryCompat.res("item/ch/doors/secret_oak_door"), EveryCompat.res("item/ch/doors/secret_oak_door_m"))
-                .addModelTransform(m -> m.replaceString("chipped:item/oak_door", "chipped:item/ch/doors")
-                        .replaceGenericType("oak", "item/ch/doors"))
+                .addTextureM(modRes("item/oak_door/secret_oak_door"), EveryCompat.res("item/ch/doors/secret_oak_door_m"))
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(BlockTags.WOODEN_DOORS, Registries.BLOCK)
                 .addTag(ItemTags.WOODEN_DOORS, Registries.ITEM)
@@ -964,9 +944,7 @@ public class ChippedModule extends SimpleModule {
                 )
                 .addTexture(modRes("block/oak_door/shack_oak_door_bottom"))
                 .addTextureM(modRes("block/oak_door/shack_oak_door_top"), EveryCompat.res("block/ch/doors/shack_oak_door_top_m"))
-                .addTextureM(EveryCompat.res("item/ch/doors/shack_oak_door"), EveryCompat.res("item/ch/doors/shack_oak_door_m"))
-                .addModelTransform(m -> m.replaceString("chipped:item/oak_door", "chipped:item/ch/doors")
-                        .replaceGenericType("oak", "item/ch/doors"))
+                .addTextureM(modRes("item/oak_door/shack_oak_door"), EveryCompat.res("item/ch/doors/shack_oak_door_m"))
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(BlockTags.WOODEN_DOORS, Registries.BLOCK)
                 .addTag(ItemTags.WOODEN_DOORS, Registries.ITEM)
@@ -983,9 +961,7 @@ public class ChippedModule extends SimpleModule {
                 )
                 .addTextureM(modRes("block/oak_door/sliding_oak_door_bottom"), EveryCompat.res("block/ch/doors/sliding_oak_door_bottom_m"))
                 .addTextureM(modRes("block/oak_door/sliding_oak_door_top"), EveryCompat.res("block/ch/doors/sliding_oak_door_top_m"))
-                .addTextureM(EveryCompat.res("item/ch/doors/sliding_oak_door"), EveryCompat.res("item/ch/doors/sliding_oak_door_m"))
-                .addModelTransform(m -> m.replaceString("chipped:item/oak_door", "chipped:item/ch/doors")
-                        .replaceGenericType("oak", "item/ch/doors"))
+                .addTextureM(modRes("item/oak_door/sliding_oak_door"), EveryCompat.res("item/ch/doors/sliding_oak_door_m"))
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(BlockTags.WOODEN_DOORS, Registries.BLOCK)
                 .addTag(ItemTags.WOODEN_DOORS, Registries.ITEM)
@@ -1002,9 +978,7 @@ public class ChippedModule extends SimpleModule {
                 )
                 .addTextureM(modRes("block/oak_door/supported_oak_door_bottom"), EveryCompat.res("block/ch/doors/supported_oak_door_bottom_m"))
                 .addTextureM(modRes("block/oak_door/supported_oak_door_top"), EveryCompat.res("block/ch/doors/supported_oak_door_top_m"))
-                .addTextureM(EveryCompat.res("item/ch/doors/supported_oak_door"), EveryCompat.res("item/ch/doors/supported_oak_door_m"))
-                .addModelTransform(m -> m.replaceString("chipped:item/oak_door", "chipped:item/ch/doors")
-                        .replaceGenericType("oak", "item/ch/doors"))
+                .addTextureM(modRes("item/oak_door/supported_oak_door"), EveryCompat.res("item/ch/doors/supported_oak_door_m"))
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(BlockTags.WOODEN_DOORS, Registries.BLOCK)
                 .addTag(ItemTags.WOODEN_DOORS, Registries.ITEM)
@@ -1021,9 +995,7 @@ public class ChippedModule extends SimpleModule {
                 )
                 .addTextureM(EveryCompat.res("block/oak_door/tile_windowed_oak_door_bottom"), EveryCompat.res("block/ch/doors/tile_windowed_oak_door_bottom_m"))
                 .addTextureM(EveryCompat.res("block/oak_door/tile_windowed_oak_door_top"), EveryCompat.res("block/ch/doors/tile_windowed_oak_door_top_m"))
-                .addTextureM(EveryCompat.res("item/ch/doors/tile_windowed_oak_door"), EveryCompat.res("item/ch/doors/tile_windowed_oak_door_m"))
-                .addModelTransform(m -> m.replaceString("chipped:item/oak_door", "chipped:item/ch/doors")
-                        .replaceGenericType("oak", "item/ch/doors"))
+                .addTextureM(modRes("item/oak_door/tile_windowed_oak_door"), EveryCompat.res("item/ch/doors/tile_windowed_oak_door_m"))
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(BlockTags.WOODEN_DOORS, Registries.BLOCK)
                 .addTag(ItemTags.WOODEN_DOORS, Registries.ITEM)
@@ -1040,9 +1012,7 @@ public class ChippedModule extends SimpleModule {
                 )
                 .addTextureM(modRes("block/oak_door/tiled_oak_door_bottom"), EveryCompat.res("block/ch/doors/tiled_oak_door_bottom_m"))
                 .addTextureM(modRes("block/oak_door/tiled_oak_door_top"), EveryCompat.res("block/ch/doors/tiled_oak_door_top_m"))
-                .addTextureM(EveryCompat.res("item/ch/doors/tiled_oak_door"), EveryCompat.res("item/ch/doors/tiled_oak_door_m"))
-                .addModelTransform(m -> m.replaceString("chipped:item/oak_door", "chipped:item/ch/doors")
-                        .replaceGenericType("oak", "item/ch/doors"))
+                .addTextureM(modRes("item/oak_door/tiled_oak_door"), EveryCompat.res("item/ch/doors/tiled_oak_door_m"))
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(BlockTags.WOODEN_DOORS, Registries.BLOCK)
                 .addTag(ItemTags.WOODEN_DOORS, Registries.ITEM)
@@ -1059,9 +1029,7 @@ public class ChippedModule extends SimpleModule {
                 )
                 .addTextureM(modRes("block/oak_door/windowed_oak_door_bottom"), EveryCompat.res("block/ch/doors/windowed_oak_door_bottom_m"))
                 .addTextureM(modRes("block/oak_door/windowed_oak_door_top"), EveryCompat.res("block/ch/doors/windowed_oak_door_top_m"))
-                .addTextureM(EveryCompat.res("item/ch/doors/windowed_oak_door"), EveryCompat.res("item/ch/doors/windowed_oak_door_m"))
-                .addModelTransform(m -> m.replaceString("chipped:item/oak_door", "chipped:item/ch/doors")
-                        .replaceGenericType("oak", "item/ch/doors"))
+                .addTextureM(modRes("item/oak_door/windowed_oak_door"), EveryCompat.res("item/ch/doors/windowed_oak_door_m"))
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(BlockTags.WOODEN_DOORS, Registries.BLOCK)
                 .addTag(ItemTags.WOODEN_DOORS, Registries.ITEM)
@@ -1896,15 +1864,21 @@ public class ChippedModule extends SimpleModule {
 
     // TYPE: methods
     private void dullPalette(Palette p) {
-        p.increaseInner();
-        p.remove(p.getLightest());
-        p.remove(p.getDarkest());
-        p.remove(p.getDarkest());
-        p.remove(p.getDarkest());
+        int leftover = p.size() - 3;
+
+        if (leftover > 6) {
+            p.increaseInner();
+            p.remove(p.getLightest());
+            p.remove(p.getDarkest());
+            p.remove(p.getDarkest());
+            p.remove(p.getDarkest());
+        }
     }
 
     private void dullerPalette(Palette p) {
-        if (p.size() > 6) {
+        int leftover = p.size() - 4;
+
+        if (leftover > 6) {
             p.remove(p.getLightest());
             p.remove(p.getLightest());
             p.remove(p.getDarkest());
@@ -1912,15 +1886,9 @@ public class ChippedModule extends SimpleModule {
         }
     }
 
-    private void lightPalette(Palette p) {
-        p.remove(p.getDarkest());
-        p.remove(p.getDarkest());
-    }
-
-    private void lighterPalette(Palette p) {
-        p.remove(p.getLightest());
-        p.remove(p.getDarkest());
-        p.remove(p.getDarkest());
+    private void matchSizeAndModifyLuminance(Palette p) {
+        p.changeSizeMatchingLuminanceSpan(0.3F);
+        p.matchSize(15);
     }
 
     private void darkerPalette(Palette p) {
@@ -1932,12 +1900,6 @@ public class ChippedModule extends SimpleModule {
         p.increaseInner();
         p.increaseInner();
         p.increaseInner();
-        p.remove(p.getLightest());
-        p.remove(p.getLightest());
-        p.remove(p.getDarkest());
-    }
-
-    private void darkestPalette(Palette p) {
         p.remove(p.getLightest());
         p.remove(p.getLightest());
         p.remove(p.getDarkest());
