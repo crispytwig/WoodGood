@@ -18,23 +18,23 @@ dependencies {
     String path = System.getenv('REPOS21_1')
 
     if (usesMavenLocalML) {
-        //!! ~/forge/mods LOCAL
+        //- ~/forge/mods LOCAL
         modImplementation("net.mehvahdjukaar:moonlight-fabric:${moonlight_testVersion}")
     } else {
-        //!! Repository LOCAL
+        //- Repository LOCAL
 //        modImplementation(files(path  + "\\Moonlight\\fabric\\build\\libs\\moonlight-${moonlight_testVersion}-fabric.jar"))
-        //!! MAVEN
-        modImplementation("maven.modrinth:moonlight:fabric_${moonlight_mavenVersion}")  // v2.17.18
+        //+ MAVEN
+        modImplementation("maven.modrinth:moonlight:fabric_${moonlight_mavenVersion}")  // v2.17.20
     }
 
-//!!============================================== DEPENDENCIES ========================================================
-    //!! REQUIRED - The modules access libaries from below
+//!! ============================================= DEPENDENCIES ========================================================
+    //+ REQUIRED - The modules access libaries from below
     modCompileOnly("curse.maven:resourceful-lib-570073:5659872") // v2.1.29
     modCompileOnly("curse.maven:architectury-api-419699:5137936") // v9.2.14
     modCompileOnly("curse.maven:valhelsia-core-416935:5376599") // Valhelsia-Furniture
 
-//!!================================================= IMPORTS ==========================================================
-    //!! REQUIRED - The modules access libaries from below
+//!! ================================================ IMPORTS ==========================================================
+    //+ REQUIRED - The modules access libaries from below
         //!! ~/common/mods LOCAL
     modCompileOnly("com.arcanc.bc:Beautiful-Campfires-fabric-1.20.1-1.0.3")
     modCompileOnly("net.darktree.redbits:redbits-1.20.1-1.16.1") //FABRIC
