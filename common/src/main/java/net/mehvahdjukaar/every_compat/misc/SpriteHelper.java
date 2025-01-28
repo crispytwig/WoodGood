@@ -107,9 +107,71 @@ public class SpriteHelper {
         addOptional("biomeswevegone:witch_hazel_leaves", "_leaves", "biomeswevegone:block/witch_hazel/leaves");
         addOptional("biomeswevegone:zelkova_leaves", "_leaves", "biomeswevegone:block/zelkova/leaves");
 
+        // Eternal Tales
+        addOptional("eternal_tales:khagris_log", "_side", "eternal_tales:block/khagris_log_new");
+        addOptional("eternal_tales:khagris_log", "_top", "eternal_tales:block/edemlogtop");
+        addOptional("eternal_tales:stripped_khagris_log", "_side", "eternal_tales:block/khagris_log_stripped_new");
+        addOptional("eternal_tales:stripped_khagris_log", "_top", "eternal_tales:block/khagris_log_stripped_top_new");
+        addOptional("eternal_tales:purgatorium_log", "_side", "eternal_tales:block/purgatorium_log_new");
+        addOptional("eternal_tales:purgatorium_log", "_top", "eternal_tales:block/purglogtop");
+        addOptional("eternal_tales:purgatorium_stripped_log", "_side", "eternal_tales:block/purgatorium_stripped_log_new"); //TODO: Add to Moonlight
+        addOptional("eternal_tales:purgatorium_stripped_log", "_top", "eternal_tales:block/purgatorium_log_stripped_top_new");
+        addOptional("eternal_tales:petrified_log", "_side", "eternal_tales:block/petrifiedlogside");
+        addOptional("eternal_tales:petrified_log", "_top", "eternal_tales:block/petrifiedlogtop");
+        addOptional("eternal_tales:stripped_petrified_log", "_side", "eternal_tales:block/petrifiedlogsidestripped");
+        addOptional("eternal_tales:stripped_petrified_log", "_top", "eternal_tales:block/petrifiedlogstrippedtop");
+        addOptional("eternal_tales:mandarin_orange_log", "_side", "eternal_tales:block/mandarinlog");
+        addOptional("eternal_tales:mandarin_orange_log", "_top", "eternal_tales:block/mandarinlogtop");
+        addOptional("eternal_tales:comets_log", "_side", "eternal_tales:block/comets_log_new");
+        addOptional("eternal_tales:comets_log", "_top", "eternal_tales:block/cometswoodtop");
+        addOptional("eternal_tales:striped_comets_log", "_side", "eternal_tales:block/comets_log_stripped_new"); //TODO: add to Moonlight
+        addOptional("eternal_tales:striped_comets_log", "_top", "eternal_tales:block/comets_log_stripped_top_new");
+
+        // Biomes O' Plenty
+            // Leaves
+        addOptional("biomesoplenty:null_leaves", "_leaves", "biomesoplenty:block/null_overlay");
+
+        // Environmental
+        addOptional("environmental:pink_wisteria_leaves", "_leaves", "environmental:block/pink_wisteria_leaves");
+        addOptional("environmental:blue_wisteria_leaves", "_leaves", "environmental:block/blue_wisteria_leaves");
+        addOptional("environmental:purple_wisteria_leaves", "_leaves", "environmental:block/purple_wisteria_leaves");
+        addOptional("environmental:white_wisteria_leaves", "_leaves", "environmental:block/white_wisteria_leaves");
+
+        // Dawn Of The Time: Builder Edition
+            //REASON: the planks is actually being treated as a log instead of a planks
+        addOptional("dawnoftimebuilder:waxed_oak_planks", "_side", "dawnoftimebuilder:block/waxed_oak_planks");
+        addOptional("dawnoftimebuilder:waxed_oak_planks", "_top", "dawnoftimebuilder:block/waxed_oak_planks");
+        addOptional("dawnoftimebuilder:charred_spruce_planks", "_side", "dawnoftimebuilder:block/charred_spruce_planks");
+        addOptional("dawnoftimebuilder:charred_spruce_planks", "_top", "dawnoftimebuilder:block/charred_spruce_planks");
+
+        // Shadowlands
+        addOptional("shadowlands:vellium_log", "_side", "shadowlands:block/velliumlogside");
+        addOptional("shadowlands:vellium_log", "_top", "shadowlands:block/log");
+        addOptional("shadowlands:vellium_planks", "_all", "shadowlands:block/velliumplanks");
+            // Leaves
+        addOptional("shadowlands:vellium_leaves", "_top", "shadowlands:block/velliumleaves");
+
+        // The Midnight
+        addOptional("midnight:bogshroom_stem", "_side", "midnight:block/bogshroom_cap");
+        addOptional("midnight:bogshroom_stem", "_top", "midnight:block/bogshroom_cap");
+        addOptional("midnight:moonshroom_stem", "_side", "midnight:block/moonshroom_cap");
+        addOptional("midnight:moonshroom_stem", "_top", "midnight:block/moonshroom_cap");
+        addOptional("midnight:nightshroom_stem", "_side", "midnight:block/nightshroom_cap");
+        addOptional("midnight:nightshroom_stem", "_top", "midnight:block/nightshroom_cap");
+        addOptional("midnight:viridshroom_stem", "_side", "midnight:block/viridshroom_cap");
+        addOptional("midnight:viridshroom_stem", "_top", "midnight:block/viridshroom_cap");
+        addOptional("midnight:dewshroom_stem", "_side", "midnight:block/dewshroom_cap");
+        addOptional("midnight:dewshroom_stem", "_top", "midnight:block/dewshroom_cap");
+
         // Advent Of Ascension
         addOptional("aoa3:stranglewood_log", "_side", "aoa3:block/stranglewood_log");
         addOptional("aoa3:stranglewood_log", "_top", "aoa3:block/stranglewood_log_top");
+
+        // Better End
+        addOptional("betterend:lucernia_leaves", "_leaves", "betterend:block/lucernia_leaves_1");
+
+        // Better Nether
+        addOptional("betternether:nether_mushroom", "_side", "betternether:block/nether_mushroom_stem_side");
 
         // My Nether's Delight
         addOptional("mynethersdelight:powdery_block", "_side", "mynethersdelight:block/powdery_block");
@@ -130,6 +192,8 @@ public class SpriteHelper {
         // Ad Astra
         addOptional("ad_astra:strophar_stem", "_side", "ad_astra:block/strophar_stem");
         addOptional("ad_astra:strophar_stem", "_top", "ad_astra:block/strophar_stem");
+        addOptional("ad_astra:aeronos_stem", "_side", "ad_astra:block/aeronos_stem");
+        addOptional("ad_astra:aeronos_stem", "_top", "ad_astra:block/aeronos_stem");
 
         // Terrestria
         addOptional("terrestria:sakura_log", "_top", "terrestria:block/sakura_log_section");
@@ -271,12 +335,16 @@ public class SpriteHelper {
         addOptional("cataclysm:chorus_stem", "_side", "cataclysm:block/chorus_stem");
         addOptional("cataclysm:chorus_stem", "_top", "cataclysm:block/chorus_stem");
 
-        // PFW Aesthetic Gems
-        addOptional("pfw_aesthetic_gems:ice_blue_topaz_log", "_side", "pfw_aesthetic_gems:block/ice_blue_topaz_log_round");
-        addOptional("pfw_aesthetic_gems:ice_blue_topaz_stripped_log", "_side", "pfw_aesthetic_gems:block/ice_blue_topaz_stripped_log_round");
+        // PFW Aesthetic Gems - Idk what happened because I disabled this and the texture files couldn't be found. Below is required to fix the missing textures
+        addOptional("pfw_aesthetic_gems:ice_blue_topaz_log", "_side", "pfw_aesthetic_gems:block/ice_blue_topaz_log");
+        addOptional("pfw_aesthetic_gems:ice_blue_topaz_log", "_top", "pfw_aesthetic_gems:block/ice_blue_topaz_log_top");
+        addOptional("pfw_aesthetic_gems:ice_blue_topaz_stripped_log", "_side", "pfw_aesthetic_gems:block/ice_blue_topaz_stripped_log");
+        addOptional("pfw_aesthetic_gems:ice_blue_topaz_stripped_log", "_top", "pfw_aesthetic_gems:block/ice_blue_topaz_stripped_log_top");
 
-        addOptional("pfw_aesthetic_gems:pink_topaz_log", "_side", "pfw_aesthetic_gems:block/pink_topaz_log_round");
-        addOptional("pfw_aesthetic_gems:pink_topaz_stripped_log", "_side", "pfw_aesthetic_gems:block/pink_topaz_stripped_log_round");
+        addOptional("pfw_aesthetic_gems:pink_topaz_log", "_side", "pfw_aesthetic_gems:block/pink_topaz_log");
+        addOptional("pfw_aesthetic_gems:pink_topaz_log", "_top", "pfw_aesthetic_gems:block/pink_topaz_log_top");
+        addOptional("pfw_aesthetic_gems:pink_topaz_stripped_log", "_side", "pfw_aesthetic_gems:block/pink_topaz_stripped_log");
+        addOptional("pfw_aesthetic_gems:pink_topaz_stripped_log", "_top", "pfw_aesthetic_gems:block/pink_topaz_stripped_log_top");
 
     }
 
