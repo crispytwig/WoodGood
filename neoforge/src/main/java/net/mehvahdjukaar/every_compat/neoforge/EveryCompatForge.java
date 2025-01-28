@@ -28,7 +28,8 @@ import net.mehvahdjukaar.every_compat.modules.neoforge.mcaw.*;
 import net.mehvahdjukaar.every_compat.modules.neoforge.missing_wilds.MissingWildModule;
 import net.mehvahdjukaar.every_compat.modules.neoforge.more_crafting_tables_forge.MoreCraftingTablesForForgeModule;
 import net.mehvahdjukaar.every_compat.modules.neoforge.mosaic_carpentry.MosaicCarpentryModule;
-import net.mehvahdjukaar.every_compat.modules.neoforge.mrcrayfish_furniture.MightyMailModule;
+import net.mehvahdjukaar.every_compat.modules.neoforge.mrcrayfish.MightyMailModule;
+import net.mehvahdjukaar.every_compat.modules.neoforge.mrcrayfish.RefurbishedFurnitureModule;
 import net.mehvahdjukaar.every_compat.modules.neoforge.oreberries_replanted.OreberriesReplantedModule;
 import net.mehvahdjukaar.every_compat.modules.neoforge.pokecube.PokecubeAOIModule;
 import net.mehvahdjukaar.every_compat.modules.neoforge.premium_wood.PremiumWoodModule;
@@ -102,6 +103,7 @@ public class EveryCompatForge extends EveryCompatCommon {
         addIfLoaded("pokecube_legends", () -> PokecubeAOIModule::new);
         addIfLoaded("premium_wood", () -> PremiumWoodModule::new);
         addIfLoaded("redeco", () -> ReDecoModule::new);
+        addIfLoaded("refurbished_furniture", () -> RefurbishedFurnitureModule::new);
         addIfLoaded("regions_unexplored", () -> RegionsUnexploredModule::new);
         addIfLoaded("shutter", () -> LauchsShuttersModule::new);
         addIfLoaded("timber_frames", () -> TimberFramesModule::new);

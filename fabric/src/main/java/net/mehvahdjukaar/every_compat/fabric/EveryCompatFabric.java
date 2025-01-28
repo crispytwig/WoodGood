@@ -16,6 +16,7 @@ import net.mehvahdjukaar.every_compat.modules.fabric.lightmans_currency.Lightman
 import net.mehvahdjukaar.every_compat.modules.fabric.mcaw.*;
 import net.mehvahdjukaar.every_compat.modules.fabric.missing_wilds.MissingWildModule;
 import net.mehvahdjukaar.every_compat.modules.fabric.mrcrayfish.MightyMailModule;
+import net.mehvahdjukaar.every_compat.modules.fabric.mrcrayfish.RefurbishedFurnitureModule;
 import net.mehvahdjukaar.every_compat.modules.fabric.regions_unexplored.RegionsUnexploredModule;
 import net.mehvahdjukaar.every_compat.modules.fabric.variants.VariantVanillaBlocksModule;
 import net.mehvahdjukaar.moonlight.api.platform.PlatHelper;
@@ -62,7 +63,7 @@ public class EveryCompatFabric extends EveryCompatCommon implements ModInitializ
         addIfLoaded("regions_unexplored", () -> RegionsUnexploredModule::new);
         addIfLoaded("shutter", () -> LauchsShuttersModule::new);
         addIfLoaded("variantvanillablocks", () -> VariantVanillaBlocksModule::new);
-
+        addIfLoaded("refurbished_furniture", () -> RefurbishedFurnitureModule::new);
         if (PlatHelper.isModLoaded("mcwdoors")) {
             addIfLoaded("dramaticdoors", () -> DramaticDoorsMacawModule::new);
         }

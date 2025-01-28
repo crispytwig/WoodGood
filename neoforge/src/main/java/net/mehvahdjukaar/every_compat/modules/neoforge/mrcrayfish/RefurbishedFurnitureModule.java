@@ -1,4 +1,4 @@
-package net.mehvahdjukaar.every_compat.modules.mrcrayfish;
+package net.mehvahdjukaar.every_compat.modules.neoforge.mrcrayfish;
 
 import com.mrcrayfish.furniture.refurbished.block.*;
 import com.mrcrayfish.furniture.refurbished.client.renderer.blockentity.CeilingFanBlockEntityRenderer;
@@ -41,6 +41,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 //SUPPORT: v1.0.8+
+//+ IMPORTANT:
+// Creating/loading a world where a crash happened is due to Line 509.
+// The reason is unknown. Separated into 2 FORGE/FABRIC folders fixed the problem for now.
 public class RefurbishedFurnitureModule extends SimpleModule {
 
     public final SimpleEntrySet<WoodType, Block> chairs;
@@ -522,8 +525,7 @@ public class RefurbishedFurnitureModule extends SimpleModule {
             NonNullList<StackedIngredient> or, T from, T to) {
 
         List<StackedIngredient> newList = new ArrayList<>();
-        for (int i = 0; i < or.size(); i++) {
-            StackedIngredient si = or.get(i);
+        for (StackedIngredient si : or) {
             if (si.ingredient().isEmpty()) {
                 newList.add(si);
             } else {
