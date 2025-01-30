@@ -17,6 +17,7 @@ import net.mehvahdjukaar.moonlight.api.resources.textures.TextureImage;
 import net.mehvahdjukaar.moonlight.api.set.BlockType;
 import net.mehvahdjukaar.moonlight.api.set.wood.WoodType;
 import net.mehvahdjukaar.moonlight.api.set.wood.WoodTypeRegistry;
+import net.mehvahdjukaar.moonlight.core.misc.McMetaFile;
 import net.minecraft.client.resources.metadata.animation.AnimationMetadataSection;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
@@ -108,12 +109,12 @@ public class DecorativeBlocksModule extends SimpleModule {
 
     }
 
-    public Pair<List<Palette>, AnimationMetadataSection> makeDBPalette(WoodType woodType, ResourceManager manager) {
+    public Pair<List<Palette>, McMetaFile> makeDBPalette(WoodType woodType, ResourceManager manager) {
         try (TextureImage plankTexture = TextureImage.open(manager,
                 RPUtils.findFirstBlockTextureLocation(manager, woodType.planks))) {
 
             List<Palette> targetPalette = SpriteUtils.extrapolateSignBlockPalette(plankTexture);
-            return Pair.of(targetPalette, plankTexture.getMetadata());
+            return Pair.of(targetPalette, plankTexture.getMcMeta());
         } catch (Exception e) {
             return null;
         }

@@ -46,10 +46,10 @@ dependencies {
 //    modImplementation(files(path  + "\\Moonlight\\fabric\\build\\libs\\moonlight-${moonlight_testVersion}-fabric.jar"))
 
     //- ~/fabric/mods LOCAL
-//    modImplementation("net.mehvahdjukaar:moonlight-fabric:${moonlight_testVersion}")
+    modImplementation("net.mehvahdjukaar:moonlight-fabric:${moonlight_testVersion}")
 
     //+ MAVEN
-    modImplementation("maven.modrinth:moonlight:fabric_${moonlight_mavenVersion}") // v2.13.55
+    //modImplementation("maven.modrinth:moonlight-fabric:${moonlight_mavenVersion}") // v2.13.55
 
 //!! Supplementaries ================================================================================================ \\
 

@@ -29,6 +29,7 @@ import net.mehvahdjukaar.moonlight.api.set.wood.WoodType;
 import net.mehvahdjukaar.moonlight.api.set.wood.WoodTypeRegistry;
 import net.mehvahdjukaar.moonlight.api.util.Utils;
 import net.mehvahdjukaar.moonlight.api.util.math.colors.HCLColor;
+import net.mehvahdjukaar.moonlight.core.misc.McMetaFile;
 import net.minecraft.client.resources.metadata.animation.AnimationMetadataSection;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
@@ -359,7 +360,7 @@ public class QuarkModule extends SimpleModule {
         event.register(TRAPPED_CHEST_TILE, context -> new VariantChestRenderer(context, true));
     }
 
-    private Pair<List<Palette>, AnimationMetadataSection> bookshelfPalette(BlockType w, ResourceManager m) {
+    private Pair<List<Palette>, McMetaFile> bookshelfPalette(BlockType w, ResourceManager m) {
         try (TextureImage plankTexture = TextureImage.open(m,
                 RPUtils.findFirstBlockTextureLocation(m, ((WoodType) w).planks))) {
 
@@ -372,7 +373,7 @@ public class QuarkModule extends SimpleModule {
                 p.increaseDown();
                 p.remove(l0);
             });
-            return Pair.of(targetPalette, plankTexture.getMetadata());
+            return Pair.of(targetPalette, plankTexture.getMcMeta());
         } catch (Exception e) {
             throw new RuntimeException(String.format("Failed to generate palette for %s : %s", w, e));
         }
@@ -413,7 +414,7 @@ public class QuarkModule extends SimpleModule {
                         RPUtils.findFirstBlockTextureLocation(manager, wood.planks))) {
 
                     List<Palette> targetPalette = Palette.fromAnimatedImage(plankTexture);
-                    AnimationMetadataSection meta = plankTexture.getMetadata();
+                    var meta = plankTexture.getMcMeta();
 
                     List<Palette> overlayPalette = new ArrayList<>();
                     for (var p : targetPalette) {
@@ -464,7 +465,7 @@ public class QuarkModule extends SimpleModule {
 
     private void createChestTextures(ClientDynamicResourcesHandler handler, TextureImage trappedOverlay,
                                      Respriter respriterLeft, Respriter respriterLeftO,
-                                     AnimationMetadataSection baseMeta, List<Palette> basePalette,
+                                     McMetaFile baseMeta, List<Palette> basePalette,
                                      List<Palette> overlayPalette, ResourceLocation res, ResourceLocation trappedRes,
                                      WoodType wood) {
 

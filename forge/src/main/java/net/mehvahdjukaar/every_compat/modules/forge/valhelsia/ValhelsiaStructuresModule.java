@@ -262,7 +262,7 @@ public class ValhelsiaStructuresModule extends SimpleModule {
 
 // Side texture ================================================================================================
             {
-                AnimationMetadataSection metaSide = logSide_texture.getMetadata();
+                var metaSide = logSide_texture.getMcMeta();
                 List<Palette> targetSide = Palette.fromAnimatedImage(logSide_texture);
 
                 Respriter respriterSide = Respriter.of(TextureSide);
@@ -276,7 +276,7 @@ public class ValhelsiaStructuresModule extends SimpleModule {
 
 // Top texture =================================================================================================
             {
-                AnimationMetadataSection metaTop = logTop_texture.getMetadata();
+                var metaTop = logTop_texture.getMcMeta();
 
                 List<Palette> targetTopInner = Palette.fromAnimatedImage(logTop_texture, logOuterMask, 0);
                 List<Palette> targetTopOuter = Palette.fromAnimatedImage(logTop_texture, logInnerMask, 0);
