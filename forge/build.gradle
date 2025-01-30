@@ -106,15 +106,15 @@ dependencies {
     annotationProcessor 'net.fabricmc:sponge-mixin:0.12.5+mixin.0.8.5'
 
 //!! MOONLIGHT LIB (REQUIRED) --------------------------------------------------------------------------------------- \\
-    //!! Repository LOCAL
+    //- Repository LOCAL
     String path = System.getenv('REPOS20_1')
 //    modImplementation(files(path  + "\\Moonlight\\forge\\build\\libs\\moonlight-${moonlight_testVersion}-forge.jar"))
 
-    //!! ~/forge/mods LOCAL
+    //- ~/forge/mods LOCAL
 //    modImplementation("net.mehvahdjukaar:moonlight:${moonlight_testVersion}-forge")
 
-    //!! MAVEN
-    modImplementation("maven.modrinth:moonlight:forge_${moonlight_mavenVersion}") // v2.13.47
+    //+ MAVEN
+    modImplementation("maven.modrinth:moonlight:forge_${moonlight_mavenVersion}") // v2.13.55
 
 //!! TOOLS ========================================================================================================== \\
     modRuntimeOnly("curse.maven:worldedit-225608:4586218")
@@ -125,7 +125,10 @@ dependencies {
 //    modRuntimeOnly("curse.maven:jei-238222:5718385")
 
 //!! ================================================ DEPENDENCIES ================================================== \\
-    //!! ONLY FOR TESTING - can be commented out or enabled
+    //- ONLY FOR TESTING - can be commented out or enabled
+    modRuntimeOnly("curse.maven:terrablender-563928:5378180") // v3.0.1.7 | BOP, Regions-Unexplored
+    modRuntimeOnly("curse.maven:glitchcore-955399:5787839") // v0.0.1.1 | BOP
+//    modRuntimeOnly("curse.maven:aeroblender-879879:4789008") // Aether
 //    modRuntimeOnly("curse.maven:cloth-config-348521:4973441") // v11.1.118 | REI
 //    modRuntimeOnly("curse.maven:architectury-api-419699:5137938") // v9.2.14 | REI, Furnish
 //    modRuntimeOnly("curse.maven:resourceful-lib-570073:5659871")  // v2.1.29 | Chipped, Handcrafted, Cozy
@@ -140,13 +143,13 @@ dependencies {
 //    modRuntimeOnly("curse.maven:structure-gel-api-378802:5188368") // Blue-Skies
 //    modRuntimeOnly("curse.maven:patchouli-306770:4636277") // v81 | TFC, Timber-Frames
 
-            //!! Different MAVENS
+            //- Different MAVENS
 //    modRuntimeOnly("maven.modrinth:midnightlib:1.4.2-forge") // Building-But-Better
-//    modRuntimeOnly("com.tterrag.registrate:Registrate:${registrate_version}") // Create, The-Twilight-Forest
+//    modRuntimeOnly("com.tterrag.registrate:Registrate:${registrate_version}") // Create, The-Twilight-Forest, Tropicraft
 //    modRuntimeOnly("com.jozufozu.flywheel:flywheel-forge-${flywheel_version}") // Create
 
-    //!! REQUIRED - The modules access libraries from below - ONLY IN FORGE
-    modCompileOnly("curse.maven:athena-841890:5176879") // Chipped
+    //+ REQUIRED - The modules access libraries from below - ONLY IN FORGE
+//    modImplementation("curse.maven:athena-841890:5176879") // Chipped
     modCompileOnly("curse.maven:autoreglib-250363:3857246")
     modCompileOnly("curse.maven:blueprint-382216:5292242") // The-Outer-End, Woodworks, Boatload
     modCompileOnly("curse.maven:valhelsia-core-416935:5189548") // Valhelsia Structure, Valhelsia Furniture
@@ -155,18 +158,12 @@ dependencies {
     modCompileOnly("curse.maven:titanium-287342:5468426") // v3.8.32 | Functional-Storage
     modCompileOnly("curse.maven:zeta-968868:5597406") // v1.0-24 | Quark
 
-            // REQUIRED - but ONLY FOR TESTING
-    modRuntimeOnly("curse.maven:terrablender-563928:5378180") // v3.0.1.7 | BOP, Regions-Unexplored
-    modRuntimeOnly("curse.maven:glitchcore-955399:5787839") // v0.0.1.1 | BOP
-//    modRuntimeOnly("curse.maven:aeroblender-879879:4789008") // Aether
-
-
 //!! ================================================== IMPORTS ===================================================== \\
-    //!! ONLY FOR TESTING - can be commented out or enabled
+    //- ONLY FOR TESTING - can be commented out or enabled
 //    modRuntimeOnly("curse.maven:another-furniture-610492:4034009") //WARNING: v2.1.2-1.19.2 -> 1.20.1: Cannot remap access widener from namespace 'srg'. Expected: 'intermediary'
 //    modRuntimeOnly("curse.maven:backpacked-352835:5401965")
 //    modRuntimeOnly("curse.maven:camp-chair-531744:4579679")
-//    modRuntimeOnly("curse.maven:chipped-456956:4634856") // v3.0.1
+//    modRuntimeOnly("curse.maven:chipped-456956:4634856") // v3.0.1 | Athena, Resourceful-Lib, Bytecodecs
 //    modRuntimeOnly("curse.maven:dawn-of-time-312359:5651249")
 //    modRuntimeOnly("curse.maven:decorative-blocks-362528:3941638")
 //    modRuntimeOnly("curse.maven:exlines-bark-carpets-527296:4094399")
@@ -182,20 +179,20 @@ dependencies {
 //    modRuntimeOnly("curse.maven:villagersplus-forge-817272:4996995")
 //    modRuntimeOnly("curse.maven:create-328085:5689514") // Registrate, Flywheel
 
-            //!! OTHER MAVENs
+            //- OTHER MAVENs
 //    modRuntimeOnly("maven.modrinth:stylish-stiles:l9FFA4BK")
+//    modImplementation("com.teamresourceful.bytecodecs:bytecodecs-1.0.2") // Chipped
 
-    //!! REQUIRED - The modules access libraries from below - ONLY IN FORGE
+    //+ REQUIRED - The modules access libraries from below - ONLY IN FORGE
         // ~/forge/mods LOCAL
     modCompileOnly("com.stal111.valhelsia_structures:valhelsia_structures-forge-1.20.1-1.1.0")
     modCompileOnly("net.stehschnitzel.shutter:shutters-2.0.2-1.20.1")
     modCompileOnly("com.mrcrayfish.furniture.refurbished:refurbished_furniture-forge-1.20.1-1.0.0-beta.4")
     modCompileOnly("com.tynoxs.buildersdelight:BuildersDelight-1.20.1-v.1.3")
     modCompileOnly("com.arcanc.bc:Beautiful-Campfires-forge-1.20.1-1.0.2")
-//    modImplementation("com.teamresourceful.bytecodecs:bytecodecs-1.0.2") // Chipped
 
         // MACAW's
-    modImplementation("curse.maven:macaws-bridges-351725:5240521")
+    modCompileOnly("curse.maven:macaws-bridges-351725:5240521")
     modCompileOnly("curse.maven:macaws-doors-378646:4649910")
     modCompileOnly("curse.maven:macaws-fences-and-walls-453925:5442217")
     modCompileOnly("curse.maven:macaws-furniture-359540:4726300")
@@ -235,7 +232,7 @@ dependencies {
     modCompileOnly("curse.maven:the-graveyard-forge-531188:4025847")
     modCompileOnly("curse.maven:the-twilight-forest-227639:5468648")
     modCompileOnly("curse.maven:timber-frames-606011:5372390")
-    modCompileOnly("curse.maven:tropicraft-254794:4811116")
+    modCompileOnly("curse.maven:tropicraft-254794:4811116") // Registrate
     modCompileOnly("curse.maven:variant-crafting-tables-565095:4585921")
     modCompileOnly("curse.maven:variant-vanilla-blocks-866509:4997060") //v1.3.6
     modCompileOnly("curse.maven:quark-243121:5093415")
@@ -244,7 +241,7 @@ dependencies {
     modCompileOnly("curse.maven:workshop-for-handsome-adventurer-875843:5713529")
     modCompileOnly("curse.maven:xercamod-341575:4667995")
 
-            //!! OTHER MAVENS
+            // OTHER MAVENS
     modCompileOnly("maven.modrinth:building-but-better:1.20.1-1.1.1") // MidnightLib
 
     // ======================================== DISABLED FOR A REASON =============================================== \\

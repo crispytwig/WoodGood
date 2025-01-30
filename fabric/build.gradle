@@ -41,19 +41,19 @@ dependencies {
     }
 
 //!! MOONLIGHT LIB (REQUIRED) --------------------------------------------------------------------------------------- \\
-    //!! Repository LOCAL
+    //- Repository LOCAL
     String path = System.getenv('REPOS20_1')
 //    modImplementation(files(path  + "\\Moonlight\\fabric\\build\\libs\\moonlight-${moonlight_testVersion}-fabric.jar"))
 
-    //!! ~/fabric/mods LOCAL
+    //- ~/fabric/mods LOCAL
 //    modImplementation("net.mehvahdjukaar:moonlight-fabric:${moonlight_testVersion}")
 
-    //!! MAVEN
-    modImplementation("maven.modrinth:moonlight:fabric_${moonlight_mavenVersion}") // v2.13.47
+    //+ MAVEN
+    modImplementation("maven.modrinth:moonlight:fabric_${moonlight_mavenVersion}") // v2.13.55
 
 //!! Supplementaries ================================================================================================ \\
 
-    //!! ~/fabric/mods LOCAL
+    //- ~/fabric/mods LOCAL
 //     modImplementation("net.mehvahdjukaar:supplementaries-fabric:${project.supplementaries_version}")
 
 //!! TOOLS ========================================================================================================== \\
@@ -61,7 +61,9 @@ dependencies {
 //    modRuntimeOnly("curse.maven:jade-324717:5666690")
 
 //!! ================================================ DEPENDENCIES ================================================== \\
-    //!! ONLY FOR TESTING - can be commented out or enabled
+    //- ONLY FOR TESTING - can be commented out or enabled
+    modRuntimeOnly("curse.maven:terrablender-fabric-565956:5378181") // v3.0.1.7 | BOP, Regions-Unexplored
+    modRuntimeOnly("curse.maven:glitchcore-955399:5787838") // v0.0.1.1 | BOP
 //    modRuntimeOnly("curse.maven:cloth-config-348521:4973440") // v11.1.118 | REI
 //    modRuntimeOnly("curse.maven:architectury-api-419699:5137936") // v9.2.14 | REI, Garden-Of-The-Dead
 //    modRuntimeOnly("curse.maven:trinkets-341284:5173501") // Backpacked
@@ -69,23 +71,19 @@ dependencies {
 //    modRuntimeOnly("curse.maven:athena-841890:5176880") // Chipped
 //    modRuntimeOnly("curse.maven:resourceful-lib-570073:5659872") //v2.1.29 | Chipped, Handcrafted, Cozy
 
-            //!! OTHER MAVENs
+            //- OTHER MAVENsj
 //    modRuntimeOnly("com.tterrag.registrate_fabric:Registrate:${registrate_fabric_version}")
 //    modRuntimeOnly("com.jozufozu.flywheel:flywheel-forge-${flywheel_version}") // Create
 
-    //!! REQUIRED - The modules access libraries from below - ONLY IN fABRIC
+    //+ REQUIRED - The modules access libraries from below - ONLY IN fABRIC
     modCompileOnly("curse.maven:framework-549225:5680025") // v0.7.7 | Refurbished Furniture, Mighty Mail, Backpacked
     modCompileOnly("curse.maven:quad-932715:5146132") // More Crafting Tables
     modCompileOnly("maven.modrinth:frozenlib:1.7.4-mc1.20.1") // Wilder-Wild
     modCompileOnly("curse.maven:valhelsia-core-416935:5376599") // Valhelsia-Furniture
 
-    // REQUIRED - but ONLY FOR TESTING
-    modRuntimeOnly("curse.maven:terrablender-fabric-565956:5378181") // v3.0.1.7 | BOP, Regions-Unexplored
-    modRuntimeOnly("curse.maven:glitchcore-955399:5787838") // v0.0.1.1 | BOP
-
     // IMPORTANT: RLM: "REQUIRED LOCAL MOD" - You need to get the mod and put it in ~/fabric/run/mods/....
 //!! ================================================== IMPORTS ===================================================== \\
-    //!! ONLY FOR TESTING - can be commented out or enabled
+    //- ONLY FOR TESTING - can be commented out or enabled
 //    modRuntimeOnly("curse.maven:another-furniture-610492:4815126") //
 //    modRuntimeOnly("curse.maven:backpacked-352835:5401968")
 //    modRuntimeOnly("curse.maven:building-but-better-989479:5362379") // has a built-in module
@@ -107,7 +105,7 @@ dependencies {
 //    modRuntimeOnly("curse.maven:valhelsia-furniture-694349:5189603")
 //    modRuntimeOnly("maven.modrinth:stylish-stiles:zLlRqz68")
 
-    //!! REQUIRED - The modules access libaries from below - ONLY IN FABRIC
+    //+ REQUIRED - The modules access libaries from below - ONLY IN FABRIC
         // ~/fabric/mods LOCAL
     modCompileOnly("net.stehschnitzel.shutter:shutter-2.0.2-1.20.1")
     modCompileOnly("com.mrcrayfish.furniture.refurbished:refurbished_furniture-fabric-1.20.1-1.0.0-beta.4")
