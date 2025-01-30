@@ -66,17 +66,8 @@ public class HardcodedBlockType {
         //ecologics and quark azalea. tbh not sure why needed
         if (isWoodRegistryOf("quark", "", "", "ecologics:azalea", "")) return false;
 
-        // what's the reason for below? | hardcoding
-        if (isWoodRegistryOf("", "af", "", "", "")) return false;
-
-        // Valhelsia Structure's blocks must be not be discarded
-        if (isWoodRegistryOf("", "vs", "", "", "")) return false;
-
         // we always register everything for these (mehvahdjukaar)
         if (isWoodRegistryOf("", "abnww", "architects_palette", "", "")) return false;
-
-        // if (this.shortenedId().equals("ap")) return false; //hardcoding dont remember why i had this. Incase you want o
-        if (isWoodRegistryOf("", "ap", "", "", "")) return false;
 
         return null;
     }
