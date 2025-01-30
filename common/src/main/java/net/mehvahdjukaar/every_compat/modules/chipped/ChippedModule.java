@@ -9,6 +9,7 @@ import net.mehvahdjukaar.moonlight.api.resources.ResType;
 import net.mehvahdjukaar.moonlight.api.resources.SimpleTagBuilder;
 import net.mehvahdjukaar.moonlight.api.resources.pack.DynamicDataPack;
 import net.mehvahdjukaar.moonlight.api.resources.textures.Palette;
+import net.mehvahdjukaar.moonlight.api.resources.textures.PaletteColor;
 import net.mehvahdjukaar.moonlight.api.set.wood.WoodType;
 import net.mehvahdjukaar.moonlight.api.set.wood.WoodTypeRegistry;
 import net.mehvahdjukaar.moonlight.api.util.Utils;
@@ -353,7 +354,7 @@ public class ChippedModule extends SimpleModule {
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(BlockTags.PLANKS, Registries.BLOCK)
                 .addTag(ItemTags.PLANKS, Registries.ITEM)
-                .createPaletteFromPlanks(p -> p.matchSize(15, 0.4F))
+                .createPaletteFromPlanks(this::matchSizeAndModifyLuminance)
                 .setTabKey(tab)
                 .build();
         this.addEntry(doubleHerringbonePlanks);
@@ -421,7 +422,7 @@ public class ChippedModule extends SimpleModule {
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(BlockTags.PLANKS, Registries.BLOCK)
                 .addTag(ItemTags.PLANKS, Registries.ITEM)
-                .createPaletteFromPlanks(p -> p.matchSize(15, 0.4F))
+                .createPaletteFromPlanks(this::matchSizeAndModifyLuminance)
                 .setTabKey(tab)
                 .build();
         this.addEntry(herringbonePlanks);
@@ -501,7 +502,23 @@ public class ChippedModule extends SimpleModule {
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(BlockTags.PLANKS, Registries.BLOCK)
                 .addTag(ItemTags.PLANKS, Registries.ITEM)
-                .createPaletteFromPlanks(this::dullerPalette)
+                .createPaletteFromPlanks(p -> {
+                    p.reduceDown();
+                    PaletteColor darker = p.getDarkest(); // 2nd darkest after 1st darkest
+                    p.reduceDown();
+                    p.matchLuminanceStep(0.03F);
+                    if (p.size() < 11) {
+                        while (p.size() <= 11) {
+                            p.increaseInner();
+                        }
+                    }
+                    else {
+                        while (p.size() >= 11) {
+                            p.reduce();
+                        }
+                    }
+                    p.add(darker);
+                })
                 .setTabKey(tab)
                 .build();
         this.addEntry(polishedPlanks);
@@ -536,7 +553,7 @@ public class ChippedModule extends SimpleModule {
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(BlockTags.PLANKS, Registries.BLOCK)
                 .addTag(ItemTags.PLANKS, Registries.ITEM)
-                .createPaletteFromPlanks(p -> p.matchSize(15, 0.4F))
+                .createPaletteFromPlanks(this::matchSizeAndModifyLuminance)
                 .setTabKey(tab)
                 .build();
         this.addEntry(slantedPlanks);
@@ -1870,15 +1887,11 @@ public class ChippedModule extends SimpleModule {
         }
     }
 
-    private void lightPalette(Palette p) {
-        p.remove(p.getDarkest());
-        p.remove(p.getDarkest());
-    }
-
-    private void lighterPalette(Palette p) {
-        p.remove(p.getLightest());
-        p.remove(p.getDarkest());
-        p.remove(p.getDarkest());
+    private void matchSizeAndModifyLuminance(Palette p) {
+        p.remove(p.getDarkest(2));
+        p.remove(p.getDarkest(2));
+        p.remove(p.getDarkest(2));
+        p.changeSizeMatchingLuminanceSpan(0.25F);
     }
 
     private void darkerPalette(Palette p) {
@@ -1893,15 +1906,6 @@ public class ChippedModule extends SimpleModule {
         p.remove(p.getLightest());
         p.remove(p.getLightest());
         p.remove(p.getDarkest());
-    }
-
-    private void darkestPalette(Palette p) {
-        int leftover = p.size() - 4;
-        if (leftover > 6) {
-            p.remove(p.getLightest());
-            p.remove(p.getLightest());
-            p.remove(p.getDarkest());
-        }
     }
 
     private void panelPalette(Palette p) {
