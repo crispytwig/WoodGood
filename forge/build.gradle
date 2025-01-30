@@ -232,7 +232,7 @@ dependencies {
     modCompileOnly("curse.maven:the-twilight-forest-227639:5468648")
     modCompileOnly("curse.maven:timber-frames-606011:5372390")
     modCompileOnly("curse.maven:tropicraft-254794:4811116") // Registrate
-    modCompileOnly("curse.maven:valhelsia-structures-347488:5195707") // Valhelsia-Core
+    modImplementation("curse.maven:valhelsia-structures-347488:5195707") // Valhelsia-Core
     modCompileOnly("curse.maven:variant-crafting-tables-565095:4585921")
     modCompileOnly("curse.maven:variant-vanilla-blocks-866509:4997060") //v1.3.6
     modCompileOnly("curse.maven:quark-243121:5093415")
