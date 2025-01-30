@@ -128,6 +128,7 @@ dependencies {
     //- ONLY FOR TESTING - can be commented out or enabled
     modRuntimeOnly("curse.maven:terrablender-563928:5378180") // v3.0.1.7 | BOP, Regions-Unexplored
     modRuntimeOnly("curse.maven:glitchcore-955399:5787839") // v0.0.1.1 | BOP
+    modRuntimeOnly("curse.maven:athena-841890:5176879") // Chipped
 //    modRuntimeOnly("curse.maven:aeroblender-879879:4789008") // Aether
 //    modRuntimeOnly("curse.maven:cloth-config-348521:4973441") // v11.1.118 | REI
 //    modRuntimeOnly("curse.maven:architectury-api-419699:5137938") // v9.2.14 | REI, Furnish
@@ -149,10 +150,9 @@ dependencies {
 //    modRuntimeOnly("com.jozufozu.flywheel:flywheel-forge-${flywheel_version}") // Create
 
     //+ REQUIRED - The modules access libraries from below - ONLY IN FORGE
-//    modImplementation("curse.maven:athena-841890:5176879") // Chipped
     modCompileOnly("curse.maven:autoreglib-250363:3857246")
-    modCompileOnly("curse.maven:blueprint-382216:5292242") // The-Outer-End, Woodworks, Boatload
-    modCompileOnly("curse.maven:valhelsia-core-416935:5189548") // Valhelsia Structure, Valhelsia Furniture
+    modImplementation("curse.maven:blueprint-382216:5292242") // The-Outer-End, Woodworks, Boatload, Sully Mod
+    modImplementation("curse.maven:valhelsia-core-416935:5189548") // Valhelsia Structure, Valhelsia Furniture
     modCompileOnly("curse.maven:framework-549225:5680064") // v0.7.7 | Refurbished Furniture, Mighty Mail, Backpacked
     modCompileOnly("curse.maven:quad-932715:5340148") // More Chest Variants, More Crafting Table
     modCompileOnly("curse.maven:titanium-287342:5468426") // v3.8.32 | Functional-Storage
@@ -173,7 +173,7 @@ dependencies {
 //    modRuntimeOnly("curse.maven:friends-and-foes-forge-602059:4712044")
 //    modRuntimeOnly("curse.maven:missing-wilds-forge-634277:5053677")
 //    modRuntimeOnly("curse.maven:storage-drawers-223852:5915486")
-//    modRuntimeOnly("curse.maven:valhelsia-furniture-694349:5189602")
+//    modRuntimeOnly("curse.maven:valhelsia-furniture-694349:5189602") // Valhelsia-Core
 //    modRuntimeOnly("curse.maven:table-top-craft-467136:5318681")
 //    modRuntimeOnly("curse.maven:twigs-496913:4605097")
 //    modRuntimeOnly("curse.maven:villagersplus-forge-817272:4996995")
@@ -185,7 +185,7 @@ dependencies {
 
     //+ REQUIRED - The modules access libraries from below - ONLY IN FORGE
         // ~/forge/mods LOCAL
-    modCompileOnly("com.stal111.valhelsia_structures:valhelsia_structures-forge-1.20.1-1.1.0")
+    modImplementation("com.stal111.valhelsia_structures:valhelsia_structures-forge-1.20.1-1.1.0") // Valhelsia-Core
     modCompileOnly("net.stehschnitzel.shutter:shutters-2.0.2-1.20.1")
     modCompileOnly("com.mrcrayfish.furniture.refurbished:refurbished_furniture-forge-1.20.1-1.0.0-beta.4")
     modCompileOnly("com.tynoxs.buildersdelight:BuildersDelight-1.20.1-v.1.3")
@@ -259,7 +259,7 @@ dependencies {
 
 //    modRuntimeOnly("curse.maven:endless-biomes-667688:5109705")`
 //    modRuntimeOnly("curse.maven:blue-skies-312918:5010316") // structure-gel-api
-    modRuntimeOnly("curse.maven:biomes-o-plenty-220318:5773031") // Terrablender, Glitchcore
+//    modRuntimeOnly("curse.maven:biomes-o-plenty-220318:5773031") // Terrablender, Glitchcore
 //    modRuntimeOnly("curse.maven:upgrade-aquatic-326895:5296565") // Blueprint
 //    modRuntimeOnly("curse.maven:autumnity-365045:5292346") // Blueprint
 //    modRuntimeOnly("curse.maven:the-outer-end-430404:5043937") // Blueprint
@@ -269,6 +269,7 @@ dependencies {
 //    modRuntimeOnly("curse.maven:aether-255308:5889509") // Curios
 //    modRuntimeOnly("curse.maven:ancient-aether-886751:6013933") // Aether
 //    modRuntimeOnly("curse.maven:pfw-aesthetic-gems-906404:6023817")
+    modRuntimeOnly("curse.maven:sullys-mod-386534:6005769") // Blueprint
 
 //    modRuntimeOnly("curse.maven:terrafirmacraft-302973:4862659") // patchouli
 
