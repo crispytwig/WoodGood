@@ -18,7 +18,6 @@ import net.mehvahdjukaar.moonlight.api.resources.textures.TextureImage;
 import net.mehvahdjukaar.moonlight.api.set.wood.WoodType;
 import net.mehvahdjukaar.moonlight.api.set.wood.WoodTypeRegistry;
 import net.mehvahdjukaar.moonlight.api.util.Utils;
-import net.minecraft.client.resources.metadata.animation.AnimationMetadataSection;
 import net.minecraft.core.Direction;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
@@ -40,7 +39,6 @@ import java.util.List;
 import java.util.Objects;
 
 //SUPPORT: v1.1.2+
-@SuppressWarnings("removal")
 public class ValhelsiaStructuresModule extends SimpleModule {
 
     public final SimpleEntrySet<WoodType, Block> strippedPosts;
@@ -165,6 +163,7 @@ public class ValhelsiaStructuresModule extends SimpleModule {
     public void addDynamicClientResources(ClientDynamicResourcesHandler handler, ResourceManager manager) {
         super.addDynamicClientResources(handler, manager);
         try {
+            // oak_posts's TEXTURES ------------------------------------------------------------------------------------
             posts.blocks.forEach((w, block) -> {
                 ResourceLocation id = Utils.getID(block);
 
@@ -190,6 +189,7 @@ public class ValhelsiaStructuresModule extends SimpleModule {
 
             });
 
+            // stripped_oak_posts' TEXTURES ----------------------------------------------------------------------------
             strippedPosts.blocks.forEach((w, block) -> {
                 ResourceLocation id = Utils.getID(block);
 
@@ -218,7 +218,7 @@ public class ValhelsiaStructuresModule extends SimpleModule {
             handler.getLogger().error("Could not generate any Table block texture : ", ex);
         }
 
-        // bundled_<type>_posts
+        // bundled_<type>_posts' TEXTURES ------------------------------------------------------------------------------
         try (TextureImage BPTopInnerMask = TextureImage.open(manager,
                       EveryCompat.res("block/vs/bundledposts_top_inner_m"));
              TextureImage BPTopOuterMask = TextureImage.open(manager,
@@ -334,7 +334,6 @@ public class ValhelsiaStructuresModule extends SimpleModule {
 
     @SuppressWarnings("deprecation")
     public static class CompatPostBlock extends PostBlock {
-//        public final ResourceLocation blockId;
         public final WoodType woodType;
 
         public CompatPostBlock(Properties properties, WoodType woodType) {
