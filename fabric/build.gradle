@@ -67,13 +67,14 @@ dependencies {
 //    modRuntimeOnly("curse.maven:cloth-config-348521:4973440") // v11.1.118 | REI
 //    modRuntimeOnly("curse.maven:architectury-api-419699:5137936") // v9.2.14 | REI, Garden-Of-The-Dead
 //    modRuntimeOnly("curse.maven:trinkets-341284:5173501") // Backpacked
-//    modRuntimeOnly("curse.maven:forge-config-api-port-fabric-547434:4583000") // v8.0.1 | Regions-Unexplored
-//    modRuntimeOnly("curse.maven:athena-841890:5176880") // Chipped
-//    modRuntimeOnly("curse.maven:resourceful-lib-570073:5659872") //v2.1.29 | Chipped, Handcrafted, Cozy
+    modRuntimeOnly("curse.maven:forge-config-api-port-fabric-547434:4583000") // v8.0.1 | Regions-Unexplored, Chipped
+    modRuntimeOnly("curse.maven:athena-841890:5176880") // Chipped
+    modRuntimeOnly("curse.maven:resourceful-lib-570073:5659872") //v2.1.29 | Chipped, Handcrafted, Cozy
 
             //- OTHER MAVENsj
 //    modRuntimeOnly("com.tterrag.registrate_fabric:Registrate:${registrate_fabric_version}")
 //    modRuntimeOnly("com.jozufozu.flywheel:flywheel-forge-${flywheel_version}") // Create
+    modRuntimeOnly("com.github.quiqueck:WunderLib:1.1.5") // BCLib
 
     //+ REQUIRED - The modules access libraries from below - ONLY IN fABRIC
     modCompileOnly("curse.maven:framework-549225:5680025") // v0.7.7 | Refurbished Furniture, Mighty Mail, Backpacked
@@ -88,7 +89,7 @@ dependencies {
 //    modRuntimeOnly("curse.maven:backpacked-352835:5401968")
 //    modRuntimeOnly("curse.maven:building-but-better-989479:5362379") // has a built-in module
 //    modRuntimeOnly("curse.maven:camp-chair-531744:4579676")
-//    modRuntimeOnly("curse.maven:chipped-456956:4634858") // v3.0.1
+    modRuntimeOnly("curse.maven:chipped-456956:4634858") // v3.0.1 | Athena, Resourceful-Lib, Forge-Config-Api-Port
 //    modRuntimeOnly("curse.maven:dawn-of-time-312359:5651253")
 //    modRuntimeOnly("curse.maven:decorative-blocks-362528:3941637")
 //    modRuntimeOnly("curse.maven:exlines-bark-carpets-527296:4062547")
@@ -142,7 +143,7 @@ dependencies {
     modCompileOnly("maven.modrinth:wilder-wild:3.0.7-mc1.20.1")
     modCompileOnly("curse.maven:wooden-hoppers-406021:4796143")
 
-    modImplementation("curse.maven:regions-unexplored-659110:5558172") // Forge-Config-Api-Port
+    modCompileOnly("curse.maven:regions-unexplored-659110:5558172") // Forge-Config-Api-Port
 
     // ======================================== DISABLED FOR A REASON =============================================== \\
 
@@ -152,7 +153,6 @@ dependencies {
 
 //    modRuntimeOnly("curse.maven:gardens-of-the-dead-683174:4784268")
 
-        //!! Dependencies
 }
 
 

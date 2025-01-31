@@ -148,6 +148,7 @@ dependencies {
 //    modRuntimeOnly("maven.modrinth:midnightlib:1.4.2-forge") // Building-But-Better
 //    modRuntimeOnly("com.tterrag.registrate:Registrate:${registrate_version}") // Create, The-Twilight-Forest, Tropicraft
 //    modRuntimeOnly("com.jozufozu.flywheel:flywheel-forge-${flywheel_version}") // Create
+//    modRuntimeOnly("com.teamresourceful.bytecodecs:bytecodecs-1.0.2") // Chipped
 
     //+ REQUIRED - The modules access libraries from below - ONLY IN FORGE
     modCompileOnly("curse.maven:autoreglib-250363:3857246")
@@ -181,7 +182,6 @@ dependencies {
 
             //- OTHER MAVENs
 //    modRuntimeOnly("maven.modrinth:stylish-stiles:l9FFA4BK")
-//    modRuntimeOnly("com.teamresourceful.bytecodecs:bytecodecs-1.0.2") // Chipped
 
     //+ REQUIRED - The modules access libraries from below - ONLY IN FORGE
         // ~/forge/mods LOCAL
