@@ -1963,32 +1963,32 @@ public class ChippedModule extends SimpleModule {
     private void addChippedRecipe(DynamicDataPack pack, String identifier, String workStation) {
         JsonArray jsonArray = new JsonArray();
 
-        for (var w : WoodTypeRegistry.getTypes()) {
-            if (w.isVanilla()) continue;
+        for (var woodType : WoodTypeRegistry.getTypes()) {
+            if (woodType.isVanilla()) continue;
             boolean hasSomething = false;
             SimpleTagBuilder tagBuilder = SimpleTagBuilder.of(EveryCompat.res(
-                    shortenedId() + "/" + w.getAppendableId() + "_" + identifier));
+                    shortenedId() + "/" + woodType.getAppendableId() + "_" + identifier));
 
-            for (var e : this.getEntries()) {
-                String name = e.getName();
+            for (var entry : this.getEntries()) {
+                String name = entry.getName();
                 if (name.matches(".*(_" + identifier + "|" + identifier + "_).*")) {
                     if (identifier.equals("door") && name.matches(".*(_trapdoor|trapdoor_).*")) continue;
                     if (identifier.equals("log") && name.matches(".*(_stripped_log|stripped_).*")) continue;
-                    Item b = ((SimpleEntrySet<?, ?>) e).items.get(w);
-                    if (b != null) {
+                    Item item = ((SimpleEntrySet<?, ?>) entry).items.get(woodType);
+                    if (item != null) {
                         hasSomething = true;
-                        tagBuilder.addEntry(b);
+                        tagBuilder.addEntry(item);
                     }
                 }
             }
 
             // Checking for Child of wood type exist
-            if (w.getChild(identifier) != null) {
+            if (woodType.getChild(identifier) != null) {
                 switch (identifier) { // Adds normal or modded blockType
-                    case "planks" -> tagBuilder.addEntry(w.planks);
-                    case "door" -> tagBuilder.addEntry(w.getChild("door"));
-                    case "trapdoor" -> tagBuilder.addEntry(w.getChild("trapdoor"));
-                    case "log" -> tagBuilder.addEntry(w.log);
+                    case "planks" -> tagBuilder.addEntry(woodType.planks);
+                    case "door" -> tagBuilder.addEntry(woodType.getChild("door"));
+                    case "trapdoor" -> tagBuilder.addEntry(woodType.getChild("trapdoor"));
+                    case "log" -> tagBuilder.addEntry(woodType.log);
                 }
             }
 
