@@ -506,7 +506,10 @@ public class ChippedModule extends SimpleModule {
                     p.reduceDown();
                     PaletteColor darker = p.getDarkest(); // 2nd darkest after 1st darkest
                     p.reduceDown();
-                    p.matchLuminanceStep(0.03F);
+                    p.reduceDown();
+                    PaletteColor dark = p.getDarkest();
+                    p.reduceDown();
+                    p.reduceUp();
                     if (p.size() < 11) {
                         while (p.size() <= 11) {
                             p.increaseInner();
@@ -517,6 +520,7 @@ public class ChippedModule extends SimpleModule {
                             p.reduce();
                         }
                     }
+                    p.add(dark);
                     p.add(darker);
                 })
                 .setTabKey(tab)
@@ -1888,9 +1892,6 @@ public class ChippedModule extends SimpleModule {
     }
 
     private void matchSizeAndModifyLuminance(Palette p) {
-        p.remove(p.getDarkest(2));
-        p.remove(p.getDarkest(2));
-        p.remove(p.getDarkest(2));
         p.changeSizeMatchingLuminanceSpan(0.25F);
     }
 
@@ -1900,6 +1901,11 @@ public class ChippedModule extends SimpleModule {
     }
 
     private void darkPalette(Palette p) {
+        if (p.size() > 25) {
+            while (p.size() > 6) {
+                p.reduce();
+            }
+        }
         p.increaseInner();
         p.increaseInner();
         p.increaseInner();
