@@ -30,11 +30,12 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.phys.BlockHitResult;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.HashMap;
 import java.util.function.ToIntFunction;
 
-//SUPPORT: v0.5.11+
+//SUPPORT: v0.6.0+
 public class ClutterModule extends SimpleModule {
 
     public final SimpleEntrySet<WoodType, Block> wall_bookshelves;
@@ -68,7 +69,7 @@ public class ClutterModule extends SimpleModule {
                         )
                 )
                 .addTile(() -> ModBlockEntities.WALL_BOOKSHELF)
-                //TEXTURES: Using planks
+                //TEXTURES: planks
                 .addTag(ModBlockTags.FLAMMABLE, Registries.BLOCK)
                 .addTag(ModBlockTags.BOOKSHELVES, Registries.BLOCK)
                 .addTag(BlockTags.ENCHANTMENT_POWER_PROVIDER, Registries.BLOCK)
@@ -84,7 +85,7 @@ public class ClutterModule extends SimpleModule {
                         w -> new WindowSillBlock(Utils.copyPropertySafe(w.planks))
                 )
                 .setRenderType(RenderLayer.CUTOUT)
-                //TEXTURES: Using planks
+                //TEXTURES: planks
                 .addTag(ModBlockTags.FLAMMABLE, Registries.BLOCK)
                 .addTag(ModBlockTags.WINDOW_SILLS, Registries.BLOCK)
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
@@ -97,7 +98,7 @@ public class ClutterModule extends SimpleModule {
                         getModBlock("oak_table"), () -> WoodTypeRegistry.OAK_TYPE,
                         w -> new CompatTableBlock(Utils.copyPropertySafe(w.planks))
                 )
-                //TEXTURES: Using log & planks
+                //TEXTURES: log & planks
                 .addTag(ModBlockTags.FLAMMABLE, Registries.BLOCK)
                 .addTag(ModBlockTags.TABLES, Registries.BLOCK)
                 .addTag(ModBlockTags.STRIPPABLE_TABLES, Registries.BLOCK)
@@ -114,7 +115,7 @@ public class ClutterModule extends SimpleModule {
                         w -> new CompatTableBlock(Utils.copyPropertySafe(w.planks))
                 )
                 .requiresChildren("stripped_log") //REASON: recipes & textures
-                //TEXTURES: Using stripped_log & planks
+                //TEXTURES: stripped_log & planks
                 .addTag(ModBlockTags.FLAMMABLE, Registries.BLOCK)
                 .addTag(ModBlockTags.TABLES, Registries.BLOCK)
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
@@ -130,7 +131,7 @@ public class ClutterModule extends SimpleModule {
                         getModBlock("oak_chair"), () -> WoodTypeRegistry.OAK_TYPE,
                         w -> new CompatChairBlock(Utils.copyPropertySafe(w.planks))
                 )
-                //TEXTURES: Using log & planks
+                //TEXTURES: log & planks
                 .addTag(ModBlockTags.FLAMMABLE, Registries.BLOCK)
                 .addTag(ModBlockTags.STRIPPABLE_CHAIRS, Registries.BLOCK)
                 .addTag(ModBlockTags.WOODEN_CHAIRS, Registries.BLOCK)
@@ -147,7 +148,7 @@ public class ClutterModule extends SimpleModule {
                         w -> new CompatChairBlock(Utils.copyPropertySafe(w.planks))
                 )
                 .requiresChildren("stripped_log") //REASON: recipes & textures
-                //TEXTURES: Using stripped_log & planks
+                //TEXTURES: stripped_log & planks
                 .addTag(ModBlockTags.FLAMMABLE, Registries.BLOCK)
                 .addTag(ModBlockTags.WOODEN_CHAIRS, Registries.BLOCK)
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
@@ -164,7 +165,7 @@ public class ClutterModule extends SimpleModule {
                         w -> new CupboardBlock(FabricBlockSettings.copyOf(w.planks).nonOpaque())
                 )
                 .addTile(() -> ModBlockEntities.CUPBOARD)
-                //TEXTURES: Using planks
+                //TEXTURES: planks
                 .addTag(ModBlockTags.FLAMMABLE, Registries.BLOCK)
                 .addTag(ModBlockTags.CUPBOARDS, Registries.BLOCK)
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
@@ -194,7 +195,7 @@ public class ClutterModule extends SimpleModule {
                         w -> new ShelfBlock(FabricBlockSettings.copyOf(w.planks).nonOpaque())
                 )
                 .addTile(() -> ModBlockEntities.SHELF)
-                //TEXTURES: Using log & planks
+                //TEXTURES: log & planks
                 .addTag(ModBlockTags.SHELVES, Registries.BLOCK)
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .setTabKey(tab)
@@ -210,7 +211,7 @@ public class ClutterModule extends SimpleModule {
                                 .luminance(TrellisBlock.createLightLevelFromLitBlockState()))
                 )
                 .setRenderType(RenderLayer.CUTOUT_MIPPED)
-                //TEXTURES: Using log
+                //TEXTURES: log
                 .addTag(ModBlockTags.FLAMMABLE, Registries.BLOCK)
                 .addTag(ModBlockTags.TRELLISES, Registries.BLOCK)
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
@@ -225,7 +226,7 @@ public class ClutterModule extends SimpleModule {
                         getModBlock("oak_bench"), () -> WoodTypeRegistry.OAK_TYPE,
                         w -> new CompatBenchBlock(Utils.copyPropertySafe(w.planks))
                 )
-                //TEXTURES: Using log & planks
+                //TEXTURES: log & planks
                 .addTag(ModBlockTags.FLAMMABLE, Registries.BLOCK)
                 .addTag(ModBlockTags.BENCHES, Registries.BLOCK)
                 .addTag(ModBlockTags.STRIPPABLE_BENCHES, Registries.BLOCK)
@@ -242,7 +243,7 @@ public class ClutterModule extends SimpleModule {
                         w -> new CompatBenchBlock(Utils.copyPropertySafe(w.planks))
                 )
                 .requiresChildren("stripped_log") //REASON: recipes & textures
-                //TEXTURES: Using stripped_log & planks
+                //TEXTURES: stripped_log & planks
                 .addTag(ModBlockTags.FLAMMABLE, Registries.BLOCK)
                 .addTag(ModBlockTags.BENCHES, Registries.BLOCK)
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
@@ -349,7 +350,7 @@ public class ClutterModule extends SimpleModule {
         }
 
         @Override
-        public InteractionResult use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+        public @NotNull InteractionResult use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
             ItemStack itemStack = player.getItemInHand(hand);
 
             if (itemStack.getItem() instanceof AxeItem && state.is(ModBlockTags.STRIPPABLE_TABLES)) {
@@ -379,7 +380,7 @@ public class ClutterModule extends SimpleModule {
         }
 
         @Override
-        public InteractionResult use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+        public @NotNull InteractionResult use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
             ItemStack itemStack = player.getItemInHand(hand);
             if (itemStack.getItem() instanceof AxeItem && state.is(ModBlockTags.STRIPPABLE_CHAIRS)) {
                 BlockState strippedState = this.getStrippedState(state);
@@ -408,7 +409,7 @@ public class ClutterModule extends SimpleModule {
         }
 
         @Override
-        public InteractionResult use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+        public @NotNull InteractionResult use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
             ItemStack itemStack = player.getItemInHand(hand);
             if (itemStack.getItem() instanceof AxeItem && state.is(ModBlockTags.STRIPPABLE_BENCHES)) {
                 BlockState strippedState = this.getStrippedState(state);
