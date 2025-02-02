@@ -1932,7 +1932,8 @@ public class ChippedModule extends SimpleModule {
         // why do we need this instead of copy parent drop? macaw has doors too and they work
         // chipped adds their loot not via loot table. this is why we need this. no other mod should need this stuff
         // this shouldnt be needed.... why isnt copy parent loot working?
-        List<EntrySet<?>> doors = this.getEntries().stream().filter(e -> e.getName().contains("door")).toList();
+        List<EntrySet<?>> doors = this.getEntries().stream().filter(
+                e -> e.getName().contains("door") && !e.getName().contains("trapdoor")).toList();
         for (var e : doors) {
             if (e instanceof SimpleEntrySet<?, ?> se) {
                 for (var d : se.blocks.values()) {
