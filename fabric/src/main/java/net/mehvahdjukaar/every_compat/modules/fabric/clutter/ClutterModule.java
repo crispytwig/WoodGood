@@ -105,7 +105,7 @@ public class ClutterModule extends SimpleModule {
                 .setTabKey(tab)
                 .defaultRecipe()
                 //REASON: Take a look at their //TEXTURES, you'll see why. Excluded!
-                .addCondition(w -> !w.getId().toString().matches("terrestria:(sakura|yucca_palm)|betternether:(nether_mushroom|nether_reed)"))
+                .excludeBlockTypes("terrestria:(sakura|yucca_palm)|betternether:(nether_mushroom|nether_reed)")
                 .build();
         this.addEntry(tables);
 
@@ -121,7 +121,7 @@ public class ClutterModule extends SimpleModule {
                 .setTabKey(tab)
                 .defaultRecipe()
                 //REASON: Take a look at their //TEXTURES, you'll see why. Excluded!
-                .addCondition(w -> !w.getId().toString().matches("terrestria:(sakura|yucca_palm)|betternether:(nether_mushroom|nether_reed)"))
+                .excludeBlockTypes("terrestria:(sakura|yucca_palm)|betternether:(nether_mushroom|nether_reed)")
                 .build();
         this.addEntry(stripped_tables);
 
@@ -138,7 +138,7 @@ public class ClutterModule extends SimpleModule {
                 .setTabKey(tab)
                 .defaultRecipe()
                 //REASON: Take a look at their //TEXTURES, you'll see why. Excluded!
-                .addCondition(w -> !w.getId().toString().matches("terrestria:(sakura|yucca_palm)|betternether:(nether_mushroom|nether_reed)"))
+                .excludeBlockTypes("terrestria:(sakura|yucca_palm)|betternether:(nether_mushroom|nether_reed)")
                 .build();
         this.addEntry(chairs);
 
@@ -154,7 +154,7 @@ public class ClutterModule extends SimpleModule {
                 .setTabKey(tab)
                 .defaultRecipe()
                 //REASON: Take a look at their //TEXTURES, you'll see why. Excluded!
-                .addCondition(w -> !w.getId().toString().matches("terrestria:(sakura|yucca_palm)|betternether:(nether_mushroom|nether_reed)"))
+                .excludeBlockTypes("terrestria:(sakura|yucca_palm)|betternether:(nether_mushroom|nether_reed)")
                 .build();
         this.addEntry(stripped_chairs);
 
@@ -200,7 +200,7 @@ public class ClutterModule extends SimpleModule {
                 .setTabKey(tab)
                 .defaultRecipe()
                 //REASON: Take a look at their //TEXTURES, you'll see why. Excluded!
-                .addCondition(w -> !w.getId().toString().matches("terrestria:(sakura|yucca_palm)"))
+                .excludeBlockTypes("terrestria:(sakura|yucca_palm)")
                 .build();
         this.addEntry(shelves);
 
@@ -233,7 +233,7 @@ public class ClutterModule extends SimpleModule {
                 .setTabKey(tab)
                 .defaultRecipe()
                 //REASON: Take a look at their //TEXTURES, you'll see why. Excluded!
-                .addCondition(w -> !w.getId().toString().matches("terrestria:(sakura|yucca_palm)"))
+                .excludeBlockTypes("terrestria:(sakura|yucca_palm)")
                 .build();
         this.addEntry(benches);
 
@@ -249,7 +249,7 @@ public class ClutterModule extends SimpleModule {
                 .setTabKey(tab)
                 .defaultRecipe()
                 //REASON: Take a look at their //TEXTURES, you'll see why. Excluded!
-                .addCondition(w -> !w.getId().toString().matches("terrestria:(sakura|yucca_palm)"))
+                .excludeBlockTypes("terrestria:(sakura|yucca_palm)")
                 .build();
         this.addEntry(stripped_benches);
 
