@@ -505,14 +505,20 @@ public abstract class AbstractSimpleEntrySet<T extends BlockType, B extends Bloc
         }
 
         // Exclude Leaves | Wood | Stone - exclusive with addCondition
-        public BL excludeBlockTypes(String modId, String... ids) {
+        public BL excludeBlockTypes(String regEx) {
+            this.addCondition(blockType -> !blockType.getId().toString().matches(regEx));
+            return (BL) this;
+        }
+
+        // Exclude Leaves | Wood | Stone - exclusive with addCondition
+        public BL excludeBlockTypes(String modId, String... typeIds) {
             StringBuilder regexBuilder = new StringBuilder();
 
             // create "biomesoplenty:(fir)" or "biomesoplenty:(fir|dead|...)
             regexBuilder.append(modId).append(":(");
-            for (int i = 0; i < ids.length; i++) {
-                regexBuilder.append(ids[i]);
-                if (i != (ids.length - 1)) regexBuilder.append("|"); // Don't append "|" to the last word's
+            for (int i = 0; i < typeIds.length; i++) {
+                regexBuilder.append(typeIds[i]);
+                if (i != (typeIds.length - 1)) regexBuilder.append("|"); // Don't append "|" to the last word's
             }
             regexBuilder.append(")");
 
