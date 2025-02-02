@@ -170,7 +170,7 @@ public class ClutterModule extends SimpleModule {
                 .addTag(ModBlockTags.CUPBOARDS, Registries.BLOCK)
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTexture(modRes("block/oak_cupboard_inside"))
-                .addTexture(modRes("block/oak_cupboard_doors"))
+                .addTexture(modRes("block/oak_cupboard_door"))
                 .setTabKey(tab)
                 .defaultRecipe()
                 .build();
@@ -405,7 +405,7 @@ public class ClutterModule extends SimpleModule {
 
         private BlockState getStrippedState(BlockState state) {
             return mapBenches.get(state.getBlock()).defaultBlockState().setValue(FACING, state.getValue(FACING))
-                    .setValue(LEGPOSITIONS, state.getValue(LEGPOSITIONS));
+                    .setValue(LEG_POSITIONS, state.getValue(LEG_POSITIONS));
         }
 
         @Override
