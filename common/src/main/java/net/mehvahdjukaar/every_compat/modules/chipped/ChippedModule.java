@@ -354,7 +354,7 @@ public class ChippedModule extends SimpleModule {
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(BlockTags.PLANKS, Registries.BLOCK)
                 .addTag(ItemTags.PLANKS, Registries.ITEM)
-                .createPaletteFromPlanks(this::matchSizeAndModifyLuminance)
+                .createPaletteFromPlanks(this::dullLuminance)
                 .setTabKey(tab)
                 .build();
         this.addEntry(doubleHerringbonePlanks);
@@ -422,7 +422,7 @@ public class ChippedModule extends SimpleModule {
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(BlockTags.PLANKS, Registries.BLOCK)
                 .addTag(ItemTags.PLANKS, Registries.ITEM)
-                .createPaletteFromPlanks(this::matchSizeAndModifyLuminance)
+                .createPaletteFromPlanks(this::dullLuminance)
                 .setTabKey(tab)
                 .build();
         this.addEntry(herringbonePlanks);
@@ -504,19 +504,17 @@ public class ChippedModule extends SimpleModule {
                 .addTag(ItemTags.PLANKS, Registries.ITEM)
                 .createPaletteFromPlanks(p -> {
                     p.reduceDown();
-                    PaletteColor darker = p.getDarkest(); // 2nd darkest after 1st darkest
+                    PaletteColor darker = p.getDarkest().getLightened();
                     p.reduceDown();
+                    PaletteColor dark = p.getDarkest().getLightened();
                     p.reduceDown();
-                    PaletteColor dark = p.getDarkest();
-                    p.reduceDown();
-                    p.reduceUp();
-                    if (p.size() < 11) {
-                        while (p.size() <= 11) {
+                    if (p.size() < 10) {
+                        while (p.size() < 10) {
                             p.increaseInner();
                         }
                     }
                     else {
-                        while (p.size() >= 11) {
+                        while (p.size() > 8) {
                             p.reduce();
                         }
                     }
@@ -557,7 +555,7 @@ public class ChippedModule extends SimpleModule {
                 .addTag(BlockTags.MINEABLE_WITH_AXE, Registries.BLOCK)
                 .addTag(BlockTags.PLANKS, Registries.BLOCK)
                 .addTag(ItemTags.PLANKS, Registries.ITEM)
-                .createPaletteFromPlanks(this::matchSizeAndModifyLuminance)
+                .createPaletteFromPlanks(this::dullLuminance)
                 .setTabKey(tab)
                 .build();
         this.addEntry(slantedPlanks);
@@ -1891,7 +1889,8 @@ public class ChippedModule extends SimpleModule {
         }
     }
 
-    private void matchSizeAndModifyLuminance(Palette p) {
+    private void dullLuminance(Palette p) {
+        p.reduceDown();
         p.changeSizeMatchingLuminanceSpan(0.25F);
     }
 
