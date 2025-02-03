@@ -60,7 +60,7 @@ public class HardcodedBlockType {
         // Similar to above, Architect's Palette - boards will be skipped due to the existing boards in Autumnity
         if (isWoodRegistryOf("", "", "autumnity", "", "maple_boards")) return false;
 
-        // check if TerraFirmaCraft (tfc) mod exist, then won't discards wood types
+        // Ensure blocks to be generated because TerraFirmaCraft has similar name of vanilla woodType (oak, acacia, so on)
         if (isWoodRegistryOf("", "", "tfc", "", "")) return false;
 
         //ecologics and quark azalea. tbh not sure why needed
@@ -68,6 +68,9 @@ public class HardcodedBlockType {
 
         // we always register everything for these (mehvahdjukaar)
         if (isWoodRegistryOf("", "abnww", "architects_palette", "", "")) return false;
+
+        // Ensure the Architects-Palette's boards are generated with Abnormal mods (Upgrade Aquatic, Woodworks)
+        if (isWoodRegistryOf("architects_palette", "", "upgrade_aquatic|autumnity|atmospheric|environmental", "", "")) return false;
 
         return null;
     }
