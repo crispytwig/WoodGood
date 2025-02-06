@@ -83,15 +83,16 @@ public class HardcodedBlockType {
         supportedBlockName = blockName;
         shortenedIdenfity = shortenedId;
 
-            //!! INCLUDE ==========
+                /// ========== EXCLUDE ========== \\\
+        // Traversable-Leaves' leaves is a testing item and should be excluded
+        if (isLeavesRegistryOf("", "", "", "traversable_leaves:dev_leaves", "")) return true;
+
+                /// ========== INCLUDE ========== \\\
         // Unrelated to Quark's ancient_leaves & Alex's Cave (ancient_leaves) should be included
         if (isLeavesRegistryOf("quark", "", "", "alexscaves:ancient", "")) return false;
 
         // Macaw's Fences&Walls or MrCrayFish's Furniture - hedges will be skipped because Quark already has hedges
         if (isLeavesRegistryOf("", "mcf|cfm", "quark", "", "")) return false;
-
-            //!! EXCLUDE ==========
-
 
         return null;
     }
