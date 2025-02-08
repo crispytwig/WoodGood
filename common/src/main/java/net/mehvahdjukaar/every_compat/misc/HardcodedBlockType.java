@@ -37,7 +37,7 @@ public class HardcodedBlockType {
         if (isWoodRegistryOf("", "abnww", "quark", "", "chest")) return true;
 
         // Quark's stripped_post with Ecologics must be excluded beacuse azalea_post and stripped_azalea_post's texture are identical
-        if (isWoodRegistryOf("quark", "", "ecologics", "", "stripped_azalea_post")) return true;
+        if (isWoodRegistryOf("quark", "", "ecologics", "", "stripped_flowering_azalea_post")) return true;
 
 
             /// ========== INCLUDE ========== \\\
