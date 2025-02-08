@@ -68,6 +68,8 @@ public class EveryCompatCommon {
         addOtherCompatMod("macawsroofsbyg", "biomeswevegone", "mcwroofs");
         addOtherCompatMod("mcwbyg", List.of("biomeswevegone", "byg"),
                 "mcwbridges", "mcwroofs", "mcwfences", "mcwfurnitures", "mcwstairs");
+        addOtherCompatMod("mcwbiomesoplenty", "biomesoplenty",
+                "mcwbridges", "mcwroofs", "mcwfences", "mcwfurnitures", "mcwstairs");
 
         // Abnormals Delight
         addOtherCompatMod("abnormals_delight",
