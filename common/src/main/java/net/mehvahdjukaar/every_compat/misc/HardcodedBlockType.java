@@ -36,6 +36,9 @@ public class HardcodedBlockType {
         // Quark & Woodworks have chest & trapped_chest. | is this needed? shouldnt it be covered by the next statements?
         if (isWoodRegistryOf("", "abnww", "quark", "", "chest")) return true;
 
+        // Quark's stripped_post with Ecologics must be excluded beacuse azalea_post and stripped_azalea_post's texture are identical
+        if (isWoodRegistryOf("quark", "", "ecologics", "", "stripped_azalea_post")) return true;
+
 
             /// ========== INCLUDE ========== \\\
         // Refurbished-Furniture's oak_table wasn't generated due to Dawn-Of-Time's waxed_oak_table
