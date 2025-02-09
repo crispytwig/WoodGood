@@ -1,6 +1,5 @@
 package net.mehvahdjukaar.every_compat.misc;
 
-import net.mehvahdjukaar.every_compat.api.SimpleEntrySet;
 import net.mehvahdjukaar.moonlight.api.platform.ClientHelper;
 import net.mehvahdjukaar.moonlight.api.set.BlockType;
 import net.minecraft.resources.ResourceLocation;
