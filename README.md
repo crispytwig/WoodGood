@@ -10,35 +10,35 @@ With this mod you won't need extra compatibility addons and instead only rely on
 
 ## Supported Mods:
 
-- Quark
-- Another Furniture
-- Farmers Delight
-- Decorative Blocks
-- Architects Palette
-- Valhelsia Structures
-- Storage Drawers
-- Twilight Forest
-- Twigs
-- Macaw Mods
-- Woodworks
-- Backpacked
-- Builders Delight
-- Ex Nihilo
-- Lauchs New Shutters
-- Pokecube
-- Premium Wood
-- Productive Bees
-- Woodster
-- Workshop
-- Xerca Mod
-- Camp Chair
-- Chipped
-- Exline Furnitures
-- Friends And Foes
-- Hearth And Home
-- Missing Wilds
-- Infinity Buttons
-- Create
-- More Chest Variatns
-- Variant Vanilla Block
-- MrCrayFish's Refurbished Furniture
+- Another Furniture  
+- Architects Palette  
+- Backpacked  
+- Builders Delight  
+- Camp Chair  
+- Chipped  
+- Create  
+- Decorative Blocks  
+- Ex Nihilo  
+- Exline Furnitures  
+- Farmers Delight  
+- Friends And Foes  
+- Hearth And Home  
+- Infinity Buttons  
+- Lauchs New Shutters  
+- Macaw Mods  
+- Missing Wilds  
+- More Chest Variants  
+- MrCrayFish's Refurbished Furniture  
+- Pokecube  
+- Premium Wood  
+- Productive Bees  
+- Quark  
+- Storage Drawers  
+- Twilight Forest  
+- Twigs  
+- Valhelsia Structures  
+- Variant Vanilla Block  
+- Woodster  
+- Woodworks  
+- Workshop  
+- Xerca Mod  
